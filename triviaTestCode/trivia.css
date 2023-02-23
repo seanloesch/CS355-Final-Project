@@ -1,15 +1,17 @@
-*, *::before, *::after {
+*,
+*::before,
+*::after {
     box-sizing: border-box;
     font-family: Gotham Rounded;
-  }
-  
-  :root {
+}
+
+:root {
     --hue-neutral: 200;
     --hue-wrong: 0;
     --hue-correct: 145;
-  }
-  
-  body {
+}
+
+body {
     --hue: var(--hue-neutral);
     padding: 0;
     margin: 0;
@@ -19,33 +21,36 @@
     justify-content: center;
     align-items: center;
     background-color: hsl(var(--hue), 100%, 20%);
-  }
-  
-  body.correct {
+}
+
+body.correct {
     --hue: var(--hue-correct);
-  }
-  
-  body.wrong {
+}
+
+body.wrong {
     --hue: var(--hue-wrong);
-  }
-  
-  .container {
+}
+#triv{
+    display: none;
+}
+
+.trivia_container {
     width: 800px;
     max-width: 80%;
     background-color: white;
     border-radius: 5px;
     padding: 10px;
     box-shadow: 0 0 10px 2px;
-  }
-  
-  .btn-grid {
+}
+
+.btn-grid {
     display: grid;
     grid-template-columns: repeat(2, auto);
     gap: 10px;
     margin: 20px 0;
-  }
-  
-  .btn {
+}
+
+.btn {
     --hue: var(--hue-neutral);
     border: 1px solid hsl(var(--hue), 100%, 30%);
     background-color: hsl(var(--hue), 100%, 50%);
@@ -53,37 +58,41 @@
     padding: 5px 10px;
     color: white;
     outline: none;
-  }
-  
-  .btn:hover {
+}
+
+.btn:hover {
     border-color: black;
-  }
-  
-  .btn.correct {
+}
+
+.btn.correct {
     --hue: var(--hue-correct);
     color: black;
-  }
-  
-  .btn.wrong {
+}
+
+.btn.wrong {
     --hue: var(--hue-wrong);
-  }
-  
-  .start-btn, .next-btn,.finish-btn {
+}
+
+.start-btn,
+.next-btn,
+.finish-btn,
+.reset-btn {
     font-size: 1.5rem;
     font-weight: bold;
     padding: 10px 20px;
-  }
-  
-  .controls {
+}
+
+.controls, .initScreen {
     display: flex;
     justify-content: center;
     align-items: center;
-  }
-  
-  .hide {
+}
+
+.hide {
     display: none;
-  }
-  #score{
+}
+
+#score {
     position: absolute;
     color: white;
     top: 5vh;
@@ -93,9 +102,19 @@
     font-weight: 600;
     background-color: rgb(0, 0, 51);
     display: none;
-  }
-  #total_score{
+}
+
+#total_score {
     font-weight: 600;
     padding: 8px;
     font-size: larger;
-  }
+}
+
+#pracOrRank {
+    width: 800px;
+    max-width: 80%;
+    background-color: white;
+    border-radius: 5px;
+    padding: 10px;
+    box-shadow: 0 0 10px 2px;
+}
