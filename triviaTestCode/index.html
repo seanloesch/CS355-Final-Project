@@ -19,17 +19,6 @@
     </div>
     <div id="triv">
         <div class="trivia_container">
-            <div class="loginForm">
-                <form action="" method="post">
-
-                    <label id="rank_lable"for="rank">Rank:</label>
-                    <select id="rank" name="rank">
-                        <option value="0">1</option>
-                        <option value="1">2</option>
-                        <option value="2">3</option>
-                    </select>
-                </form>
-            </div>
             <div id="question-container" class="hide">
                 <div id="question">Question</div>
                 <div id="answer-buttons" class="btn-grid">
@@ -42,6 +31,17 @@
             <div class="controls">
                 <p id="total_score"></p><br>
                 <p id="alg_score"></p>
+                <div class="rank-select">
+                    <form action="" method="post">
+    
+                        <span><label id="rank_lable"for="rank">Rank:</label>
+                        <select id="rank" name="rank">
+                            <option value="0">1</option>
+                            <option value="1">2</option>
+                            <option value="2">3</option>
+                        </select></span>
+                    </form>
+                </div>
                 <button id="start-btn" class="start-btn btn">Start</button>
                 <button id="next-btn" class="next-btn btn hide">Next</button>
                 <button id="finish-btn" class="finish-btn btn hide">Finish</button>
@@ -49,6 +49,8 @@
             </div>
         </div>
         <div id="score">
+            <span>Rank: </span>
+            <span id="user_rank">0</span><br>
             <span>Question Number: </span>
             <span id="qnum">0</span>
             <span>/5</span><br>
