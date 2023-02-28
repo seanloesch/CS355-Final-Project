@@ -27,6 +27,8 @@ var userRank = 0;//This will be fed through the SQL but right now it is changed 
 var rank = 0;
 var highestRank = 2;//If a user reaches this level, they are a god among plebs
 
+var rankedGame;
+
 var answered = 0;
 var right = 0;
 var wrong = 0;
@@ -55,21 +57,23 @@ nextButton.addEventListener('click', () => {
 finishButton.addEventListener('click', scores)
 //-------------------------------------------------------------------------------------------------
 //Determines whether practice mode or ranked mode then starts game
-function initPractice(){
+function initPractice() {
     triv.style.display = "block";
     rankedForm.style.display = "block";
     rLable.style.display = "block";
     pracOrRank.style.display = "none";
+    rankedGame = false;
     startButton.classList.remove('hide');
 }
 
-function initRanked(){
+function initRanked() {
     questions = [];
     rank = userRank;
     pracOrRank.style.display = "none";
     rankedForm.style.display = "none";
     rLable.style.display = "none";
     triv.style.display = "block";
+    rankedGame = true;
     startButton.classList.remove('hide');
     retrieveJSONArray();
 }
@@ -77,7 +81,7 @@ function initRanked(){
 function startGame() {
     rankedForm.style.display = "none";
     rLable.style.display = "none";
-
+    document.getElementById('user_rank').innerHTML = rank+1;
     var interval = setInterval(function () {
         if (answered == totalQuestions) {
             finalTime = time;
@@ -145,6 +149,7 @@ function selectAnswer(e) {
         nextButton.classList.remove('hide');
     } else {
         finishButton.classList.remove('hide');
+        clearStatusClass(document.body)
     }
 }
 function scores() {
@@ -161,22 +166,34 @@ function scores() {
     var txt2 = "Your total points where: "
     var p = (right * 10000) / time;
     let points = Math.trunc(p);
+    if (rankedGame == true) {
+        if (points >= 1500) {
+            if (userRank == highestRank) {
+                let resultRank = txt2.concat(points.toString(), ". You passed! You are already the highest rank! Congrats on being a Comp. Sci. SuperStar!!!!");
+                document.getElementById('alg_score').innerHTML = resultRank;
+            }
+            else {
+                let resultRank = txt2.concat(points.toString(), ". You passed! You will be ranked up");
+                document.getElementById('alg_score').innerHTML = resultRank;
+                userRank++;
+            }
 
-    if (points >= 1500) {
-        if(userRank==highestRank){
-            let resultRank = txt2.concat(points.toString(), ". You passed! You are already the highest rank! Congrats on being a Comp. Sci. SuperStar!!!!");
+        }
+        else {
+            let resultRank = txt2.concat(points.toString(), ". You were so Close! Try again!");
+            document.getElementById('alg_score').innerHTML = resultRank;
+        }
+    }
+    else{
+        if (points >= 1500) {
+            let resultRank = txt2.concat(points.toString(), ". You passed!!! Maybe try a ranked game!");
             document.getElementById('alg_score').innerHTML = resultRank;
         }
         else{
-            let resultRank = txt2.concat(points.toString(), ". You passed! You will be ranked up");
-            document.getElementById('alg_score').innerHTML = resultRank;            
-            userRank++;
+            let resultRank = txt2.concat(points.toString(), ". So Close!!! Maybe try another practice ame!");
+            document.getElementById('alg_score').innerHTML = resultRank;
         }
-        
-    }
-    else {
-        let resultRank = txt2.concat(points.toString(), ". You were so Close! Try again!");
-        document.getElementById('alg_score').innerHTML = resultRank;
+
     }
 
 }
@@ -196,7 +213,7 @@ function clearStatusClass(element) {
     element.classList.remove('correct')
     element.classList.remove('wrong')
 }
-function resetGame(){
+function resetGame() {
     pracOrRank.style.display = "block";
     triv.style.display = "none";
     answered = 0;
