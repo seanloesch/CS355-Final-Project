@@ -1,0 +1,137 @@
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    font-family: Gotham Rounded;
+}
+
+:root {
+    --hue-neutral: 200;
+    --hue-wrong: 0;
+    --hue-correct: 145;
+}
+
+body {
+    --hue: var(--hue-neutral);
+    padding: 0;
+    margin: 0;
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    background-color: hsl(var(--hue), 100%, 20%);
+}
+
+body.correct {
+    --hue: var(--hue-correct);
+}
+
+body.wrong {
+    --hue: var(--hue-wrong);
+}
+#trivia-triv{
+    display: none;
+}
+
+.trivia-trivia_container {
+    width: 800px;
+    max-width: 80%;
+    background-color: white;
+    border-radius: 5px;
+    padding: 10px;
+    box-shadow: 0 0 10px 2px;
+}
+
+.trivia-btn-grid {
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    gap: 10px;
+    margin: 20px 0;
+}
+
+.trivia-btn {
+    --hue: var(--hue-neutral);
+    border: 1px solid hsl(var(--hue), 100%, 30%);
+    background-color: hsl(var(--hue), 100%, 50%);
+    border-radius: 5px;
+    padding: 5px 10px;
+    color: white;
+    outline: none;
+}
+
+.trivia-btn:hover {
+    border-color: black;
+}
+
+.trivia-btn.correct {
+    --hue: var(--hue-correct);
+    color: black;
+}
+
+.trivia-btn.wrong {
+    --hue: var(--hue-wrong);
+}
+
+.trivia-start-btn,
+.trivia-next-btn,
+.trivia-finish-btn,
+.trivia-reset-btn,
+.trivia-prac-btn,
+.trivia-rank-btn,
+.trivia-home-btn {
+    font-size: 1.5rem;
+    font-weight: bold;
+    --hue: var(--hue-neutral);
+    border: 1px solid hsl(var(--hue), 100%, 30%);
+    background-color: hsl(var(--hue), 100%, 50%);
+    border-radius: 5px;
+    padding: 5px 10px;
+    color: white;
+    outline: none;
+}
+
+.trivia-controls, .trivia-initScreen {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hide {
+    display: none;
+}
+
+#trivia-score {
+    position: absolute;
+    color: white;
+    top: 5vh;
+    border: 2px solid black;
+    padding: 4px;
+    border-radius: 5px;
+    font-weight: 600;
+    background-color: rgb(0, 0, 51);
+    display: none;
+}
+
+#trivia-total_score {
+    font-weight: 600;
+    padding: 8px;
+    font-size: larger;
+}
+
+#trivia-pracOrRank {
+    width: 800px;
+    max-width: 50%;
+    background-color: white;
+    border-radius: 5px;
+    padding: 10px;
+    box-shadow: 0 0 10px 2px;
+}
+.trivia-prac-btn,
+.trivia-rank-btn {
+    margin: 20px;
+}
+.trivia-rank-select{
+    font-weight: 600;
+    display: flex;
+}

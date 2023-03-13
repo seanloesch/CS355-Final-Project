@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="homepage.css" rel="stylesheet">
+    <link href="trivia.css" rel="stylesheet">
+    <link href="mineDecrypt.css" rel="stylesheet">
+    <script defer src="homepage.js"></script>
+    <script defer src="trivia.js"></script>
+    <script defer src="mineDecrypt.js"></script>
+    <title>Cypher V1</title>
+</head>
+
+<body>
+    <div id="homepage" class="homepage">
+        <button class="tivia-home-button" onclick="playTivia()"></button>
+        <button class="dSweep-home-button" onclick="playDsweeper()"></button>
+    </div>
+    <div id = "trivia" class="trivia hide">
+        <div id="trivia-pracOrRank">
+            <div class="trivia-initScreen">
+                <button id="trivia-prac-btn" class="trivia-prac-btn btn">Practice</button>
+                <button id="trivia-ranked-btn" class="trivia-rank-btn btn">Ranked</button>
+                <button id="trivia-home-btn" class="trivia-home-btn btn">home</button>
+            </div>
+        </div>
+        <div id="trivia-triv">
+            <div class="trivia-trivia_container">
+                <div id="trivia-question-container" class="hide">
+                    <div id="trivia-question">Question</div>
+                    <div id="trivia-answer-buttons" class="trivia-btn-grid">
+                        <button class="trivia-btn">Answer 1</button>
+                        <button class="trivia-btn">Answer 2</button>
+                        <button class="trivia-btn">Answer 3</button>
+                        <button class="trivia-btn">Answer 4</button>
+                    </div>
+                </div>
+                <div class="trivia-controls">
+                    <p id="trivia-total_score"></p><br>
+                    <p id="trivia-alg_score"></p>
+                    <div id="trivia-rank-select" class="trivia-rank-select hide">
+                        <form action="" method="post">
+
+                            <span><label id="trivia-rank_lable" for="rank">Rank:</label>
+                                <select id="trivia-rank" name="trivia-rank">
+                                    <option value="0">1</option>
+                                    <option value="1">2</option>
+                                    <option value="2">3</option>
+                                </select></span>
+                        </form>
+                        <form action="" method="post">
+
+                            <span><label id="trivia_numPracQuestionsLabel" for="trivia_numPracQuestionsLabel">Number of Questions:</label>
+                                <select id="trivia_numPracQuestions" name="trivia_numPracQuestions-rank">
+                                    <option value="5">5</option>
+                                    <option value="10">10</option>
+                                    <option value="15">15</option>
+                                    <option value="20">20</option>
+                                    <option value="25">25</option>
+                                </select></span>
+                        </form>
+                    </div>
+                    <button id="trivia-start-btn" class="trivia-start-btn btn">Start</button>
+                    <button id="trivia-next-btn" class="trivia-next-btn btn hide">Next</button>
+                    <button id="trivia-finish-btn" class="trivia-finish-btn btn hide">Finish</button>
+                    <button id="trivia-reset-btn" class="trivia-reset-btn btn hide">Reset</button>
+                </div>
+            </div>
+            <div id="trivia-score">
+                <span>Rank: </span>
+                <span id="trivia-user_rank">0</span><br>
+                <span>Question Number: </span>
+                <span id="trivia-qnum">0</span>
+                <span id="trivia_scoreboard1"></span><br>
+                <span>Correct: </span>
+                <span id="trivia-total_correct">0</span>
+                <span id="trivia_scoreboard2"></span><br>
+                <span>Wrong: </span>
+                <span id="trivia-total_wrong">0</span>
+                <span id="trivia_scoreboard3"></span><br>
+                <span>Timer: </span>
+                <span id="trivia-timer">0</span>
+            </div>
+        </div>
+    </div>
+    <div id="mine" class="mine hide">
+        <div id="mine-startScreen"class="mine-startScreen">
+            <p id="mine-msg">Mine Decrypt</p><br>
+            <button id="mine-start-btn" class="mine-start-btn btn">Start</button>
+            <button id="mine-home-btn" class="mine-next-btn btn">Home</button>
+        </div>
+        <div id="mine-inGame" class="hide">
+            <div class="mine-numerals">
+                1<br>2<br> 3<br> 4<br> 5<br> 6<br> 7<br> 8<br> 9<br> 10<br> 11<br> 12<br> 13<br>
+                14<br> 15<br> 16<br> 17<br> 18<br> 19<br> 20<br> 21<br> 22<br> 23<br> 24<br> 25<br>26<br>
+            </div>
+            <div class="mine-alphabet">
+                <span>A&nbsp;&nbsp;&nbsp;</span><span>B&nbsp;&nbsp;&nbsp;</span><span>C&nbsp;&nbsp;&nbsp;</span><span>D&nbsp;&nbsp;</span>
+                <span>E&nbsp;&nbsp;&nbsp;</span> <span>F&nbsp;&nbsp;</span> <span>G&nbsp;&nbsp;</span> <span>H&nbsp;&nbsp;</span>
+                <span>I&nbsp;&nbsp;&nbsp;&nbsp;</span> <span>J&nbsp;&nbsp;</span> <span>K&nbsp;&nbsp;</span> <span>L&nbsp;&nbsp;</span>
+                <span>M&nbsp;&nbsp;</span> <span>N&nbsp;&nbsp;</span> <span>O&nbsp;&nbsp;</span> <span>P&nbsp;&nbsp;</span>
+                <span>Q&nbsp;&nbsp;</span> <span>R&nbsp;&nbsp;</span> <span>S&nbsp;&nbsp;</span> <span>T&nbsp;&nbsp;&nbsp;</span>
+                <span>U&nbsp;&nbsp;</span> <span>V&nbsp;</span> <span>W&nbsp;&nbsp;</span> <span>X&nbsp;&nbsp;</span>
+                <span>Y&nbsp;&nbsp;</span> <span>Z&nbsp;&nbsp;</span>
+            </div>
+            <div class="mine-btncontainer">
+                <div id="mine-buttons-container"></div>
+            </div>
+            <div id="mine-question-container">
+                <p id="mine-btnVal">--</p>
+                <div id="mine-question">
+                    <p>Questions:</p>
+                    <p id="mine-mdQ1"></p>
+                    <p id="mine-mdQ2"></p>
+                    <p id="mine-mdQ3"></p>
+                    <p id="mine-mdQ4"></p>
+                    <p id="mine-mdQ5"></p>
+                </div>
+                Timer: <span id="mine-time">05:00</span>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
