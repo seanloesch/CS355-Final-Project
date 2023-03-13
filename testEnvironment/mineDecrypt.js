@@ -10,13 +10,13 @@ var mine_clearing;
 var mine_count;
 var mine_numMinutes = 5;
 
-mine_display = document.querySelector('#mine-time');
+mine_display = document.querySelector('#mine_time');
 
-const mine_startButton = document.getElementById('mine-start-btn');
-const mine_homeButton = document.getElementById('mine-home-btn');
-const mine_inGame = document.getElementById('mine-inGame');
-const mine_msg = document.getElementById('mine-msg');
-const mine_startScreen = document.getElementById('mine-startScreen');
+const mine_startButton = document.getElementById('mine_start_btn');
+const mine_homeButton = document.getElementById('mine_home_btn');
+const mine_inGame = document.getElementById('mine_inGame');
+const mine_msg = document.getElementById('mine_msg');
+const mine_startScreen = document.getElementById('mine_startScreen');
 
 
 for (let i = 0; i < 676; i++) {
@@ -44,7 +44,7 @@ function mine_startGame() {
 }
 
 // Get parent div in which you want to add buttons
-const mine_parent = document.getElementById('mine-buttons-container');
+const mine_parent = document.getElementById('mine_buttons_container');
 function mine_createButtons(){
     // Creates buttons
     for (let i = 0; i < mine_elements.length; i++) {
@@ -71,18 +71,18 @@ const mine_buttonPressed = mine_e => {
     var mine_txt = "You Pressed: "
     var mine_gridVal = mine_r.toString() + mine_c.toString()
     let mine_btnVal = mine_txt.concat(mine_r.toString(), " ", mine_c.toString());
-    document.getElementById('mine-btnVal').innerHTML = mine_btnVal;
+    document.getElementById('mine_btnVal').innerHTML = mine_btnVal;
     var mine_findIn = mine_answers.includes(mine_gridVal);
     mine_e.target.disabled = true;
     if (mine_findIn == true) {
-        mine_e.target.classList.add('mine-correct');
+        mine_e.target.classList.add('mine_correct');
         mine_count = mine_count + 1;
         if (mine_count == mine_totalQuestions) {
             mine_finished();
         }
     }
     else {
-        mine_e.target.classList.add('mine-incorrect');
+        mine_e.target.classList.add('mine_incorrect');
         mine_buzz++;
     }
 }
@@ -130,11 +130,11 @@ function mine_createQuestionList(mine_jsonArray) {
     mine_loadQuestions();
 }
 function mine_loadQuestions() {
-    document.getElementById('mine-mdQ1').innerHTML = mine_questionBoxArray[0];
-    document.getElementById('mine-mdQ2').innerHTML = mine_questionBoxArray[1];
-    document.getElementById('mine-mdQ3').innerHTML = mine_questionBoxArray[2];
-    document.getElementById('mine-mdQ4').innerHTML = mine_questionBoxArray[3];
-    document.getElementById('mine-mdQ5').innerHTML = mine_questionBoxArray[4];
+    document.getElementById('mine_mdQ1').innerHTML = mine_questionBoxArray[0];
+    document.getElementById('mine_mdQ2').innerHTML = mine_questionBoxArray[1];
+    document.getElementById('mine_mdQ3').innerHTML = mine_questionBoxArray[2];
+    document.getElementById('mine_mdQ4').innerHTML = mine_questionBoxArray[3];
+    document.getElementById('mine_mdQ5').innerHTML = mine_questionBoxArray[4];
 }
 
 
@@ -187,7 +187,7 @@ function mine_promptPlayAgain() {
     mine_inGame.classList.add('hide');
 }
 function mine_buttonReset() {
-    var mine_div = document.getElementById('mine-buttons-container');
+    var mine_div = document.getElementById('mine_buttons_container');
     while (mine_div.firstChild) {
         mine_div.removeChild(mine_div.firstChild);
     }
