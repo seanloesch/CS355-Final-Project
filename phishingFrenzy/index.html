@@ -12,13 +12,21 @@
 
 <body>
     <div class="phishingFrenzy">
-        <div id="inGame">
-            
-            
+
+        <div id="difficultySelector">
+            <button id="home">Home</button><br>
+            <p id="playerMessage"></p>
+            <p>Select a difficulty:</p>
+            <button id="easy">Easy</button>
+            <button id="medium">Medium</button>
+            <button id="hard">Hard</button>
+        </div>
+
+        <div id="inGame" class="inGame hide">
             <div id="response" class="response"></div>            
             <h1>Phishing Frenzy</h1>
             <p>Identify and avoid phishing scams to earn points!</p>
-            <p id="messageDisplay"></p>
+
             <p id="emailDisplay"></p>
             <button id="report_button">Report Phishing</button><br>
             <span id="score">Score: </span><span id="scoreDisplay"></span><br>
