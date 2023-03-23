@@ -1,7 +1,7 @@
 var mine_elements = [];
 var mine_add_value = [];
 var mine_rank = 1;
-const mine_totalQuestions = 5;
+const mine_totalQuestions = 1;
 var mine_questionBoxArray = new Array(4);
 var mine_answers = [];
 var mine_shuffledArray = [];
@@ -9,6 +9,7 @@ var mine_buzz;
 var mine_clearing;
 var mine_count;
 var mine_numMinutes = 5;
+var table
 
 mine_display = document.querySelector('#mine_time');
 
@@ -19,7 +20,8 @@ const mine_msg = document.getElementById('mine_msg');
 const mine_startScreen = document.getElementById('mine_startScreen');
 
 
-for (let i = 0; i < 676; i++) {
+
+for (let i = 0; i < 576; i++) {
     var button_String = i.toString;
     mine_add_value = [i];
     mine_elements.push(mine_add_value)
@@ -38,23 +40,59 @@ function mine_startGame() {
     mine_buzz = 0;
     mine_count = 0;
     mine_startTimer(mine_timed, mine_display);
+    table_create();
     mine_retrieveJSONArray();
     mine_createButtons();
     mine_running();
+    
 }
+
+
+//draw our table
+
+function table_create() {
+    const tableArray = document.getElementById('mine_table');
+    
+    for (let i = 0; i <= 24; i++) {
+        if (i == 0){
+            let mineRow = document.createElement('tr');
+            tableArray.appendChild(mineRow);
+            continue;
+        }
+        let mineRow = document.createElement('tr');
+        tableArray.appendChild(mineRow);
+        for (let j = 0; j <= 24; j++){
+            if (j == 0){
+                let mineCol = document.createElement('td');
+                mineRow.appendChild(mineCol);
+                continue;
+            } 
+                let mineCol = document.createElement('td');
+                mineRow.appendChild(mineCol)
+                let mineBtn = document.createElement('button');
+                mineBtn.classList.add('mineBtn')
+                mineBtn.innerHTML = '';
+                mineBtn.value = i + 1;
+                mineCol.appendChild(mineBtn);
+            
+        }
+        
+    }
+  }
+
 
 // Get parent div in which you want to add buttons
 const mine_parent = document.getElementById('mine_buttons_container');
-function mine_createButtons(){
-    // Creates buttons
-    for (let i = 0; i < mine_elements.length; i++) {
-        let mineBtn = document.createElement('button');
-        mineBtn.classList.add('mineBtn')
-        mineBtn.innerHTML = '';
-        mineBtn.value = i + 1;
-        mine_parent.appendChild(mineBtn);
-    }
-}
+// function mine_createButtons(){
+//     // Creates buttons
+//     for (let i = 0; i < mine_elements.length; i++) {
+//         let mineBtn = document.createElement('button');
+//         mineBtn.classList.add('mineBtn')
+//         mineBtn.innerHTML = '';
+//         mineBtn.value = i + 1;
+//         mine_parent.appendChild(mineBtn);
+//     }
+// }
 function mine_running(){
 const mine_buttons = document.getElementsByTagName("button");
 const mine_buttonPressed = mine_e => {
@@ -131,10 +169,10 @@ function mine_createQuestionList(mine_jsonArray) {
 }
 function mine_loadQuestions() {
     document.getElementById('mine_mdQ1').innerHTML = mine_questionBoxArray[0];
-    document.getElementById('mine_mdQ2').innerHTML = mine_questionBoxArray[1];
-    document.getElementById('mine_mdQ3').innerHTML = mine_questionBoxArray[2];
-    document.getElementById('mine_mdQ4').innerHTML = mine_questionBoxArray[3];
-    document.getElementById('mine_mdQ5').innerHTML = mine_questionBoxArray[4];
+    // document.getElementById('mine_mdQ2').innerHTML = mine_questionBoxArray[1];
+    // document.getElementById('mine_mdQ3').innerHTML = mine_questionBoxArray[2];
+    // document.getElementById('mine_mdQ4').innerHTML = mine_questionBoxArray[3];
+    // document.getElementById('mine_mdQ5').innerHTML = mine_questionBoxArray[4];
 }
 
 
