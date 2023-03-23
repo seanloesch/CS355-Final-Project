@@ -24,12 +24,10 @@
             <div id="trivia_initScreen" class="trivia_initScreen">
                 <button id="trivia_prac_btn" class="trivia_prac_btn btn">Practice</button>
                 <button id="trivia_ranked_btn" class="trivia_rank_btn btn">Ranked</button>
-                &nbsp;&nbsp;&nbsp;&nbsp;
                 <button id="trivia_home_btn" class="trivia_home_btn btn">Home</button>
             </div>
             <div id="trivia_PracByRorT" class="trivia_PracByRorT hide">
                 <button id="trivia_PracByR_btn" class="trivia_PracByR_btn btn">Ranked</button>
-                &nbsp;&nbsp;&nbsp;&nbsp;
                 <button id="trivia_PracByT_btn" class="trivia_PracByT_btn btn">Topic</button>
             </div>
         </div>
@@ -45,8 +43,13 @@
                     </div>
                 </div>
                 <div class="trivia_controls">
-                    <p id="trivia_total_score"></p><br>
-                    <p id="trivia_alg_score"></p>
+                    
+                    <div class="trivia_scores_container hide">
+                        <p id="trivia_total_score"></p>
+                        <br>
+                        <p id="trivia_alg_score"></p>
+                    </div>
+
                     <div id="trivia_rank_select" class="trivia_rank_select hide">
                         <form action="" method="post">
                             <div id="trivia_pracByRForm" class="trivia_pracByRForm hide">
