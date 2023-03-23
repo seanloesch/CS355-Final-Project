@@ -634,6 +634,144 @@
                     "correct": true
                 }
             ]
+        },
+        {
+            "topic": "Physical Security",
+            "numCorrect": 1,
+            "question": "What is physical security?",
+            "answers": [
+                {
+                    "text": "A security measure to protect against weather events",
+                    "correct": false
+                },
+                {
+                    "text": "A security measure to prevent theft of physical assets",
+                    "correct": true
+                },
+                {
+                    "text": "A security measure to protect against social engineering attacks",
+                    "correct": false
+                },
+                {
+                    "text": "A security measure to secure digital data",
+                    "correct": false
+                }
+            ]
+        },
+        {
+            "topic": "Physical Security",
+            "numCorrect": 1,
+            "question": "What is a common example of physical security?",
+            "answers": [
+                {
+                    "text": "Anti-virus software",
+                    "correct": false
+                },
+                {
+                    "text": "Firewalls",
+                    "correct": false
+                },
+                {
+                    "text": "Security cameras",
+                    "correct": true
+                },
+                {
+                    "text": "Intrusion Detection System (IDS)",
+                    "correct": false
+                }
+            ]
+        },
+        {
+            "topic": "Physical Security",
+            "numCorrect": 1,
+            "question": "What is the purpose of a security camera?",
+            "answers": [
+                {
+                    "text": "To protect against malware",
+                    "correct": false
+                },
+                {
+                    "text": "To prevent unauthorized access to a network",
+                    "correct": false
+                },
+                {
+                    "text": "To monitor and record activity for security purposes",
+                    "correct": true
+                },
+                {
+                    "text": "To detect and respond to intrusions",
+                    "correct": false
+                }
+            ]
+        },
+        {
+            "topic": "Security Compliance",
+            "numCorrect": 1,
+            "question": "What is security compliance?",
+            "answers": [
+                {
+                    "text": "Security compliance refers to the act of securing a company's financial accounts",
+                    "correct": false
+                },
+                {
+                    "text": "Security compliance is the process of adhering to government regulations related to physical security measures",
+                    "correct": false
+                },
+                {
+                    "text": "Security compliance involves following best practices and guidelines for securing data and IT systems, as well as complying with laws and regulations related to data security",
+                    "correct": true
+                },
+                {
+                    "text": "Security compliance is the process of securing a company's physical assets",
+                    "correct": false
+                }
+            ]
+        },
+        {
+            "topic": "Security Compliance",
+            "numCorrect": 1,
+            "question": "Why is security compliance important in computer security?",
+            "answers": [
+                {
+                    "text": "Security compliance is not important in computer security",
+                    "correct": false
+                },
+                {
+                    "text": "Security compliance is only important in some industries, such as healthcare or finance, but not in others",
+                    "correct": false
+                },
+                {
+                    "text": "Security compliance helps ensure that organizations are following best practices for securing their data and systems, and can also help them avoid costly fines or legal action resulting from non-compliance",
+                    "correct": true
+                },
+                {
+                    "text": "Security compliance is important in computer security only for small businesses",
+                    "correct": false
+                }
+            ]
+        },
+        {
+            "topic": "Security Compliance",
+            "numCorrect": 1,
+            "question": "How often should security compliance be reviewed and updated?",
+            "answers": [
+                {
+                    "text": "Every 5 years",
+                    "correct": false
+                },
+                {
+                    "text": "Once a year",
+                    "correct": true
+                },
+                {
+                    "text": "Only when a major security breach occurs",
+                    "correct": false
+                },
+                {
+                    "text": "Never, as long as the security system is working well",
+                    "correct": false
+                }
+            ]
         }
     ],
     "2": [
@@ -1127,43 +1265,93 @@
             ]
         },
         {
-            "question": "What is 5 * 2?",
+            "topic": "Biometric Authentication",
+            "numCorrect": 1,
+            "question": "Which of the following is not a type of biometric authentication?",
             "answers": [
                 {
-                    "text": "7",
+                    "text": "Facial recognition",
                     "correct": false
                 },
                 {
-                    "text": "19",
+                    "text": "Fingerprint scanning",
                     "correct": false
                 },
                 {
-                    "text": "21",
-                    "correct": false
-                },
-                {
-                    "text": "10",
+                    "text": "Password authentication",
                     "correct": true
+                },
+                {
+                    "text": "Iris scanning",
+                    "correct": false
                 }
             ]
         },
         {
-            "question": "1*2",
+            "topic": "Social Engineering",
+            "numCorrect": 1,
+            "question": "What are the different types of social engineering attacks?",
             "answers": [
                 {
-                    "text": "102",
+                    "text": "Phishing, ransomware, and DDoS",
                     "correct": false
                 },
                 {
-                    "text": "2",
+                    "text": "Shoulder surfing, baiting, and pretexting",
                     "correct": true
                 },
                 {
-                    "text": "92",
+                    "text": "SQL injection, cross-site scripting, and buffer overflow",
                     "correct": false
                 },
                 {
-                    "text": "12",
+                    "text": "Man-in-the-middle, DNS spoofing, and ARP poisoning",
+                    "correct": false
+                }
+            ]
+        },
+        {
+            "topic": "Social Engineering",
+            "numCorrect": 1,
+            "question": "How can social engineering attacks be prevented?",
+            "answers": [
+                {
+                    "text": "By installing anti-virus software on your computer",
+                    "correct": false
+                },
+                {
+                    "text": "By using strong passwords and changing them regularly",
+                    "correct": false
+                },
+                {
+                    "text": "By providing regular training to employees and raising awareness about social engineering techniques",
+                    "correct": true
+                },
+                {
+                    "text": "By encrypting all network traffic and using secure communication protocols",
+                    "correct": false
+                }
+            ]
+        },
+        {
+            "topic": "Social Engineering",
+            "numCorrect": 1,
+            "question": "How do attackers use social engineering to gain access to computer systems?",
+            "answers": [
+                {
+                    "text": "By exploiting software vulnerabilities in the system",
+                    "correct": false
+                },
+                {
+                    "text": "By using brute-force attacks to guess login credentials",
+                    "correct": false
+                },
+                {
+                    "text": "By tricking users into divulging sensitive information or performing actions that compromise the security of the system",
+                    "correct": true
+                },
+                {
+                    "text": "By stealing physical access credentials to gain entry to restricted areas",
                     "correct": false
                 }
             ]
@@ -1631,127 +1819,162 @@
             ]
         },
         {
-            "question": "2\/1",
+            "topic": "Physical Security",
+            "numCorrect": 1,
+            "question": "Which of the following is an example of a physical security vulnerability?",
             "answers": [
                 {
-                    "text": "2",
-                    "correct": true
-                },
-                {
-                    "text": "3",
+                    "text": "Weak password policies",
                     "correct": false
                 },
                 {
-                    "text": "4",
+                    "text": "Outdated software",
                     "correct": false
                 },
                 {
-                    "text": "1",
-                    "correct": false
-                }
-            ]
-        },
-        {
-            "question": "What is 4 \/ 2?",
-            "answers": [
-                {
-                    "text": "8",
+                    "text": "Lack of access controls",
                     "correct": false
                 },
                 {
-                    "text": "2",
-                    "correct": true
-                },
-                {
-                    "text": "76",
-                    "correct": false
-                },
-                {
-                    "text": "3",
-                    "correct": false
-                }
-            ]
-        },
-        {
-            "question": "What is 81 \/ 9?",
-            "answers": [
-                {
-                    "text": "16",
-                    "correct": false
-                },
-                {
-                    "text": "34",
-                    "correct": false
-                },
-                {
-                    "text": "6",
-                    "correct": false
-                },
-                {
-                    "text": "9",
+                    "text": "Unsecured entry points",
                     "correct": true
                 }
             ]
         },
         {
-            "question": "What is 1 \/ 1?",
+            "topic": "Physical Security",
+            "numCorrect": 1,
+            "question": "What is the difference between a physical lock and an electronic lock?",
             "answers": [
                 {
-                    "text": "1",
+                    "text": "Physical locks require keys, while electronic locks use passwords.",
+                    "correct": false
+                },
+                {
+                    "text": "Electronic locks are more secure than physical locks.",
+                    "correct": false
+                },
+                {
+                    "text": "Physical locks can be picked, while electronic locks cannot.",
+                    "correct": false
+                },
+                {
+                    "text": "Physical locks are operated manually, while electronic locks are operated electronically.",
+                    "correct": true
+                }
+            ]
+        },
+        {
+            "topic": "Physical Security",
+            "numCorrect": 1,
+            "question": "An access control system is used to:",
+            "answers": [
+                {
+                    "text": "Detect and respond to security breaches",
+                    "correct": false
+                },
+                {
+                    "text": "Authenticate users and control access to physical spaces",
                     "correct": true
                 },
                 {
-                    "text": "90",
+                    "text": "Protect against malware and viruses",
                     "correct": false
                 },
                 {
-                    "text": "86",
-                    "correct": false
-                },
-                {
-                    "text": "74",
+                    "text": "Encrypt and secure network communications",
                     "correct": false
                 }
             ]
         },
         {
-            "question": "What is 2 \/ 2?",
+            "topic": "Security Compliance",
+            "numCorrect": 1,
+            "question": "What are the consequences of non-compliance with security regulations?",
             "answers": [
                 {
-                    "text": "1",
+                    "text": "There are no consequences.",
+                    "correct": false
+                },
+                {
+                    "text": "The company may be fined.",
                     "correct": true
                 },
                 {
-                    "text": "22",
+                    "text": "The company may be praised for taking risks.",
                     "correct": false
                 },
                 {
-                    "text": "876",
-                    "correct": false
-                },
-                {
-                    "text": "93",
+                    "text": "The company may receive a tax break.",
                     "correct": false
                 }
             ]
         },
         {
-            "question": "What is 8 \/ 4",
+            "topic": "Social Engineering",
+            "numCorrect": 1,
+            "question": "How do attackers gather information for social engineering attacks?",
             "answers": [
                 {
-                    "text": "18",
+                    "text": "By conducting brute-force attacks against the system",
                     "correct": false
                 },
                 {
-                    "text": "2",
+                    "text": "By exploiting software vulnerabilities in the system",
+                    "correct": false
+                },
+                {
+                    "text": "By using publicly available information, such as social media profiles and online directories",
                     "correct": true
                 },
                 {
-                    "text": "17",
+                    "text": "By gaining physical access to the system and stealing confidential information",
+                    "correct": false
+                }
+            ]
+        },
+        {
+            "topic": "Social Engineering",
+            "numCorrect": 1,
+            "question": "What are the signs of a social engineering attack?",
+            "answers": [
+                {
+                    "text": "The system crashes or slows down significantly",
                     "correct": false
                 },
                 {
-                    "text": "19",
+                    "text": "Pop-up messages appear asking for sensitive information",
+                    "correct": true
+                },
+                {
+                    "text": "Files are deleted or corrupted without explanation",
+                    "correct": false
+                },
+                {
+                    "text": "New software is installed on the system without permission",
+                    "correct": false
+                }
+            ]
+        },
+        {
+            "topic": "Social Engineering",
+            "numCorrect": 2,
+            "question": "What are some common targets of social engineering attacks? (Select all that apply)",
+            "answers": [
+                {
+                    "text": "Personal email accounts",
+                    "correct": true
+                },
+                {
+                    "text": "Public transportation systems",
+                    "correct": false
+                },
+                {
+                    "text": "Industrial control systems",
+                    "correct": true
+                },
+                {
+                    "text": "Public water supplies",
                     "correct": false
                 }
             ]
@@ -2173,169 +2396,139 @@
             ]
         },
         {
-            "question": "What is 8 \/ 4",
+            "topic": "Security Compliance",
+            "numCorrect": 1,
+            "question": "What is the role of management in security compliance?",
             "answers": [
                 {
-                    "text": "18",
+                    "text": "Management is not involved in security compliance",
                     "correct": false
                 },
                 {
-                    "text": "2",
+                    "text": "Management sets the security policies and standards but does not enforce them",
+                    "correct": false
+                },
+                {
+                    "text": "Management is responsible for ensuring that security policies and standards are developed, implemented, and followed",
                     "correct": true
                 },
                 {
-                    "text": "17",
-                    "correct": false
-                },
-                {
-                    "text": "19",
+                    "text": "Management is responsible for conducting security audits",
                     "correct": false
                 }
             ]
         },
         {
-            "question": "What is 70 \/ 10?",
+            "topic": "Security Compliance",
+            "numCorrect": 1,
+            "question": "What are some challenges of achieving security compliance?",
             "answers": [
                 {
-                    "text": "7",
+                    "text": "There are no challenges to achieving security compliance.",
+                    "correct": false
+                },
+                {
+                    "text": "Security compliance is a straightforward process that doesn't present any major challenges.",
+                    "correct": false
+                },
+                {
+                    "text": "Keeping up with changing regulations and standards can be a challenge.",
                     "correct": true
                 },
                 {
-                    "text": "19",
-                    "correct": false
-                },
-                {
-                    "text": "21",
-                    "correct": false
-                },
-                {
-                    "text": "18",
+                    "text": "There are no consequences for non-compliance, so there are no challenges to achieving security compliance.",
                     "correct": false
                 }
             ]
         },
         {
-            "question": "2\/1",
+            "topic": "Security Compliance",
+            "numCorrect": 1,
+            "question": "How can companies ensure that their security compliance efforts are effective?",
             "answers": [
                 {
-                    "text": "2",
+                    "text": "By ignoring the regulations and doing what they think is best for their organization",
+                    "correct": false
+                },
+                {
+                    "text": "By conducting regular security audits and assessments",
                     "correct": true
                 },
                 {
-                    "text": "3",
+                    "text": "By only focusing on compliance with the most important regulations",
                     "correct": false
                 },
                 {
-                    "text": "4",
-                    "correct": false
-                },
-                {
-                    "text": "1",
+                    "text": "By outsourcing all security compliance efforts to third-party vendors",
                     "correct": false
                 }
             ]
         },
         {
-            "question": "What is 4 \/ 2?",
+            "topic": "Social Engineering",
+            "numCorrect": 1,
+            "question": "What are the consequences of falling victim to a social engineering attack?",
             "answers": [
                 {
-                    "text": "8",
+                    "text": "Temporary loss of access to email",
                     "correct": false
                 },
                 {
-                    "text": "2",
+                    "text": "Embarrassment",
+                    "correct": false
+                },
+                {
+                    "text": "Financial loss",
                     "correct": true
                 },
                 {
-                    "text": "76",
-                    "correct": false
-                },
-                {
-                    "text": "3",
+                    "text": "Improved security posture",
                     "correct": false
                 }
             ]
         },
         {
-            "question": "What is 81 \/ 9?",
+            "topic": "Social Engineering",
+            "numCorrect": 1,
+            "question": "What are some best practices for creating strong passwords to prevent social engineering attacks?",
             "answers": [
                 {
-                    "text": "16",
+                    "text": "Use the same password for multiple accounts",
                     "correct": false
                 },
                 {
-                    "text": "34",
+                    "text": "Use short and simple passwords",
                     "correct": false
                 },
                 {
-                    "text": "6",
-                    "correct": false
-                },
-                {
-                    "text": "9",
-                    "correct": true
-                }
-            ]
-        },
-        {
-            "question": "What is 1 \/ 1?",
-            "answers": [
-                {
-                    "text": "1",
+                    "text": "Include uppercase and lowercase letters, numbers, and symbols",
                     "correct": true
                 },
                 {
-                    "text": "90",
-                    "correct": false
-                },
-                {
-                    "text": "86",
-                    "correct": false
-                },
-                {
-                    "text": "74",
+                    "text": "Write your password down and keep it in your wallet",
                     "correct": false
                 }
             ]
         },
         {
-            "question": "What is 2 \/ 2?",
+            "topic": "Social Engineering",
+            "numCorrect": 1,
+            "question": "How can email filters and spam blockers help prevent social engineering attacks?",
             "answers": [
                 {
-                    "text": "1",
+                    "text": "They can detect and block all phishing emails",
+                    "correct": false
+                },
+                {
+                    "text": "They can prevent all spam emails from reaching your inbox",
+                    "correct": false
+                },
+                {
+                    "text": "They can detect and flag suspicious emails for further review",
                     "correct": true
                 },
                 {
-                    "text": "22",
-                    "correct": false
-                },
-                {
-                    "text": "876",
-                    "correct": false
-                },
-                {
-                    "text": "93",
-                    "correct": false
-                }
-            ]
-        },
-        {
-            "question": "What is 8 \/ 4",
-            "answers": [
-                {
-                    "text": "18",
-                    "correct": false
-                },
-                {
-                    "text": "2",
-                    "correct": true
-                },
-                {
-                    "text": "17",
-                    "correct": false
-                },
-                {
-                    "text": "19",
+                    "text": "They can encrypt all email traffic to prevent interception",
                     "correct": false
                 }
             ]
@@ -2819,127 +3012,208 @@
             ]
         },
         {
-            "question": "2\/1",
+            "topic": "Physical Security",
+            "numCorrect": 1,
+            "question": "What is the purpose of an uninterrupted power supply (UPS)?",
             "answers": [
                 {
-                    "text": "2",
+                    "text": "To protect against cyber attacks",
+                    "correct": false
+                },
+                {
+                    "text": "To prevent unauthorized access to a network",
+                    "correct": false
+                },
+                {
+                    "text": "To provide backup power to critical equipment in the event of a power outage",
                     "correct": true
                 },
                 {
-                    "text": "3",
-                    "correct": false
-                },
-                {
-                    "text": "4",
-                    "correct": false
-                },
-                {
-                    "text": "1",
+                    "text": "To monitor and record activity for security purposes",
                     "correct": false
                 }
             ]
         },
         {
-            "question": "What is 4 \/ 2?",
+            "topic": "Physical Security",
+            "numCorrect": 1,
+            "question": "What is a security enclave?",
             "answers": [
                 {
-                    "text": "8",
-                    "correct": false
-                },
-                {
-                    "text": "2",
+                    "text": "A secure area within a network where critical data is stored",
                     "correct": true
                 },
                 {
-                    "text": "76",
+                    "text": "A type of encryption algorithm used to secure network traffic",
                     "correct": false
                 },
                 {
-                    "text": "3",
+                    "text": "A type of access control system used to restrict entry to secure areas",
+                    "correct": false
+                },
+                {
+                    "text": "A type of physical lock used to secure doors and windows",
                     "correct": false
                 }
             ]
         },
         {
-            "question": "What is 81 \/ 9?",
+            "topic": "Physical Security",
+            "numCorrect": 1,
+            "question": "What is the purpose of a tamper-evident seal?",
             "answers": [
                 {
-                    "text": "16",
+                    "text": "To provide backup power to critical equipment in the event of a power outage",
                     "correct": false
                 },
                 {
-                    "text": "34",
+                    "text": "To protect against cyber attacks",
                     "correct": false
                 },
                 {
-                    "text": "6",
+                    "text": "To monitor and record activity for security purposes",
                     "correct": false
                 },
                 {
-                    "text": "9",
+                    "text": "To indicate if a package or container has been opened or tampered with",
                     "correct": true
                 }
             ]
         },
         {
-            "question": "What is 1 \/ 1?",
+            "topic": "Security Compliance",
+            "numCorrect": 1,
+            "question": "What is the difference between security compliance and security risk management?",
             "answers": [
                 {
-                    "text": "1",
+                    "text": "Security compliance focuses on meeting regulatory requirements, while security risk management involves identifying and mitigating potential risks and threats to an organization's security.",
                     "correct": true
                 },
                 {
-                    "text": "90",
+                    "text": "Security compliance and security risk management are the same thing and can be used interchangeably.",
                     "correct": false
                 },
                 {
-                    "text": "86",
+                    "text": "Security compliance is the responsibility of IT departments, while security risk management is the responsibility of management.",
                     "correct": false
                 },
                 {
-                    "text": "74",
+                    "text": "Security compliance is a reactive process, while security risk management is a proactive process.",
                     "correct": false
                 }
             ]
         },
         {
-            "question": "What is 2 \/ 2?",
+            "topic": "Security Compliance",
+            "numCorrect": 1,
+            "question": "What are some common security compliance violations?",
             "answers": [
                 {
-                    "text": "1",
+                    "text": "Failure to encrypt sensitive data",
+                    "correct": false
+                },
+                {
+                    "text": "Non-compliance with industry regulations such as HIPAA, PCI DSS, or GDPR",
                     "correct": true
                 },
                 {
-                    "text": "22",
+                    "text": "Not having up-to-date antivirus software",
                     "correct": false
                 },
                 {
-                    "text": "876",
-                    "correct": false
-                },
-                {
-                    "text": "93",
+                    "text": "Not having a disaster recovery plan in place",
                     "correct": false
                 }
             ]
         },
         {
-            "question": "What is 8 \/ 4",
+            "topic": "Security Compliance",
+            "numCorrect": 1,
+            "question": "What is the penalty for violating security compliance standards?",
             "answers": [
                 {
-                    "text": "18",
-                    "correct": false
-                },
-                {
-                    "text": "2",
+                    "text": "Fines and monetary penalties",
                     "correct": true
                 },
                 {
-                    "text": "17",
+                    "text": "Criminal charges and imprisonment",
                     "correct": false
                 },
                 {
-                    "text": "19",
+                    "text": "Revocation of business licenses or permits",
+                    "correct": false
+                },
+                {
+                    "text": "Public shaming and reputation damage",
+                    "correct": false
+                }
+            ]
+        },
+        {
+            "topic": "Social Engineering",
+            "numCorrect": 1,
+            "question": "What is pretexting and how is it used in social engineering attacks?",
+            "answers": [
+                {
+                    "text": "Pretexting is when an attacker poses as a legitimate user to gain access to sensitive data or systems",
+                    "correct": false
+                },
+                {
+                    "text": "Pretexting is when an attacker uses fear or intimidation to trick a victim into providing sensitive information or performing an action",
+                    "correct": false
+                },
+                {
+                    "text": "Pretexting is when an attacker creates a false scenario to gain the trust of a victim and then manipulates them into revealing sensitive information or performing an action",
+                    "correct": true
+                },
+                {
+                    "text": "Pretexting is when an attacker uses fake emails or web pages to steal login credentials or personal information",
+                    "correct": false
+                }
+            ]
+        },
+        {
+            "topic": "Social Engineering",
+            "numCorrect": 1,
+            "question": "What is baiting and how is it used in social engineering attacks?",
+            "answers": [
+                {
+                    "text": "Baiting involves offering a reward or incentive to entice a victim to divulge sensitive information or perform an action that compromises security.",
+                    "correct": true
+                },
+                {
+                    "text": "Baiting is a form of impersonation where the attacker pretends to be someone else in order to gain access to a system or network.",
+                    "correct": false
+                },
+                {
+                    "text": "Baiting is a type of phishing attack that uses social media platforms to trick victims into clicking on malicious links.",
+                    "correct": false
+                },
+                {
+                    "text": "Baiting involves sending unsolicited emails or messages that contain malware or viruses.",
+                    "correct": false
+                }
+            ]
+        },
+        {
+            "topic": "Social Engineering",
+            "numCorrect": 1,
+            "question": "What is quid pro quo and how is it used in social engineering attacks?",
+            "answers": [
+                {
+                    "text": "It is a form of phishing where the attacker sends a message that appears to be from a trusted source to gain access to sensitive information",
+                    "correct": false
+                },
+                {
+                    "text": "It is a form of social engineering where the attacker promises a benefit in exchange for information or access",
+                    "correct": true
+                },
+                {
+                    "text": "It is a form of social engineering where the attacker creates a sense of urgency or panic to manipulate the victim into taking a specific action",
+                    "correct": false
+                },
+                {
+                    "text": "It is a form of social engineering where the attacker impersonates a trusted individual to gain access to sensitive information or resources",
                     "correct": false
                 }
             ]
@@ -3316,232 +3590,200 @@
             ]
         },
         {
-            "question": "What is 81 \/ 9?",
+            "topic": "Physical Security",
+            "numCorrect": 1,
+            "question": "A Faraday cage is designed to protect against physical theft. True or False?",
             "answers": [
                 {
-                    "text": "16",
+                    "text": "True",
                     "correct": false
                 },
                 {
-                    "text": "34",
-                    "correct": false
-                },
-                {
-                    "text": "6",
-                    "correct": false
-                },
-                {
-                    "text": "9",
+                    "text": "False",
                     "correct": true
                 }
             ]
         },
         {
-            "question": "What is 1 \/ 1?",
+            "topic": "Physical Security",
+            "numCorrect": 1,
+            "question": "What is the difference between a proximity card and a smart card?",
             "answers": [
                 {
-                    "text": "1",
+                    "text": "Proximity cards use contactless technology, while smart cards require physical contact with a reader",
                     "correct": true
                 },
                 {
-                    "text": "90",
+                    "text": "Proximity cards have a magnetic stripe, while smart cards have an embedded microchip",
                     "correct": false
                 },
                 {
-                    "text": "86",
+                    "text": "Proximity cards are more secure than smart cards",
                     "correct": false
                 },
                 {
-                    "text": "74",
+                    "text": "There is no difference between the two types of cards",
                     "correct": false
                 }
             ]
         },
         {
-            "question": "What is 2 \/ 2?",
+            "topic": "Physical Security",
+            "numCorrect": 1,
+            "question": "Which of the following is an example of a physical security threat?",
             "answers": [
                 {
-                    "text": "1",
+                    "text": "A virus that infects a computer system",
+                    "correct": false
+                },
+                {
+                    "text": "A phishing email that tricks users into giving away sensitive information",
+                    "correct": false
+                },
+                {
+                    "text": "A person tailgating behind an authorized employee to gain access to a secure area",
                     "correct": true
                 },
                 {
-                    "text": "22",
-                    "correct": false
-                },
-                {
-                    "text": "876",
-                    "correct": false
-                },
-                {
-                    "text": "93",
+                    "text": "A hacker using social engineering techniques to gain access to a network",
                     "correct": false
                 }
             ]
         },
         {
-            "question": "What is 8 \/ 4",
+            "topic": "Security Compliance",
+            "numCorrect": 1,
+            "question": "How does security compliance relate to data privacy regulations?",
             "answers": [
                 {
-                    "text": "18",
+                    "text": "They are unrelated",
                     "correct": false
                 },
                 {
-                    "text": "2",
+                    "text": "Security compliance and data privacy regulations are the same thing",
+                    "correct": false
+                },
+                {
+                    "text": "Security compliance measures are designed to help organizations comply with data privacy regulations",
                     "correct": true
                 },
                 {
-                    "text": "17",
-                    "correct": false
-                },
-                {
-                    "text": "19",
+                    "text": "Data privacy regulations are only concerned with protecting data from cyber attacks",
                     "correct": false
                 }
             ]
         },
         {
-            "question": "What is 70 \/ 10?",
+            "topic": "Security Compliance",
+            "numCorrect": 1,
+            "question": "What are some benefits of achieving security compliance?",
             "answers": [
                 {
-                    "text": "7",
+                    "text": "Avoiding legal and financial penalties",
                     "correct": true
                 },
                 {
-                    "text": "19",
-                    "correct": false
-                },
-                {
-                    "text": "21",
-                    "correct": false
-                },
-                {
-                    "text": "18",
-                    "correct": false
-                }
-            ]
-        },
-        {
-            "question": "2\/1",
-            "answers": [
-                {
-                    "text": "2",
+                    "text": "Ensuring customer trust and loyalty",
                     "correct": true
                 },
                 {
-                    "text": "3",
-                    "correct": false
-                },
-                {
-                    "text": "4",
-                    "correct": false
-                },
-                {
-                    "text": "1",
-                    "correct": false
-                }
-            ]
-        },
-        {
-            "question": "What is 4 \/ 2?",
-            "answers": [
-                {
-                    "text": "8",
-                    "correct": false
-                },
-                {
-                    "text": "2",
+                    "text": "Reducing the risk of data breaches and cyber attacks",
                     "correct": true
                 },
                 {
-                    "text": "76",
-                    "correct": false
-                },
-                {
-                    "text": "3",
-                    "correct": false
-                }
-            ]
-        },
-        {
-            "question": "What is 81 \/ 9?",
-            "answers": [
-                {
-                    "text": "16",
-                    "correct": false
-                },
-                {
-                    "text": "34",
-                    "correct": false
-                },
-                {
-                    "text": "6",
-                    "correct": false
-                },
-                {
-                    "text": "9",
+                    "text": "Reducing the costs associated with security incidents",
                     "correct": true
                 }
             ]
         },
         {
-            "question": "What is 1 \/ 1?",
+            "topic": "Security Compliance",
+            "numCorrect": 1,
+            "question": "How can companies measure their security compliance efforts?",
             "answers": [
                 {
-                    "text": "1",
+                    "text": "By conducting regular security audits",
                     "correct": true
                 },
                 {
-                    "text": "90",
+                    "text": "By implementing the latest security technologies",
                     "correct": false
                 },
                 {
-                    "text": "86",
+                    "text": "By hiring more security personnel",
                     "correct": false
                 },
                 {
-                    "text": "74",
+                    "text": "By setting up firewalls and access controls",
                     "correct": false
                 }
             ]
         },
         {
-            "question": "What is 2 \/ 2?",
+            "topic": "Social Engineering",
+            "numCorrect": 1,
+            "question": "How can social engineering exploits be prevented through vulnerability management?",
             "answers": [
                 {
-                    "text": "1",
+                    "text": "By deploying antivirus software on all systems",
+                    "correct": false
+                },
+                {
+                    "text": "By patching known vulnerabilities on a regular basis",
                     "correct": true
                 },
                 {
-                    "text": "22",
+                    "text": "By disabling all unnecessary services on servers",
                     "correct": false
                 },
                 {
-                    "text": "876",
-                    "correct": false
-                },
-                {
-                    "text": "93",
+                    "text": "By implementing network segmentation to isolate critical assets",
                     "correct": false
                 }
             ]
         },
         {
-            "question": "What is 8 \/ 4",
+            "topic": "Social Engineering",
+            "numCorrect": 1,
+            "question": "What role does human psychology play in social engineering attacks?",
             "answers": [
                 {
-                    "text": "18",
+                    "text": "None, social engineering attacks are purely technical in nature",
                     "correct": false
                 },
                 {
-                    "text": "2",
+                    "text": "Human psychology is not a significant factor in social engineering attacks",
+                    "correct": false
+                },
+                {
+                    "text": "Human psychology is the primary factor in the success of social engineering attacks",
                     "correct": true
                 },
                 {
-                    "text": "17",
+                    "text": "Human psychology is a minor factor in social engineering attacks",
+                    "correct": false
+                }
+            ]
+        },
+        {
+            "topic": "Social Engineering",
+            "numCorrect": 1,
+            "question": "How can user awareness training help prevent social engineering attacks?",
+            "answers": [
+                {
+                    "text": "It can't prevent social engineering attacks",
                     "correct": false
                 },
                 {
-                    "text": "19",
+                    "text": "It can teach employees to recognize and resist social engineering attacks",
+                    "correct": true
+                },
+                {
+                    "text": "It can monitor and block social engineering attacks automatically",
+                    "correct": false
+                },
+                {
+                    "text": "It can only be effective if it is conducted by an external consultant",
                     "correct": false
                 }
             ]
@@ -3894,232 +4136,192 @@
             ]
         },
         {
-            "question": "What is 81 \/ 9?",
+            "topic": "Physical Security",
+            "numCorrect": 1,
+            "question": "What is the difference between an RFID tag and a barcode?",
             "answers": [
                 {
-                    "text": "16",
+                    "text": "RFID tags are more secure than barcodes",
                     "correct": false
                 },
                 {
-                    "text": "34",
+                    "text": "Barcodes are faster to read than RFID tags",
                     "correct": false
                 },
                 {
-                    "text": "6",
-                    "correct": false
-                },
-                {
-                    "text": "9",
-                    "correct": true
-                }
-            ]
-        },
-        {
-            "question": "What is 1 \/ 1?",
-            "answers": [
-                {
-                    "text": "1",
+                    "text": "RFID tags can be read at a distance, while barcodes must be physically scanned",
                     "correct": true
                 },
                 {
-                    "text": "90",
-                    "correct": false
-                },
-                {
-                    "text": "86",
-                    "correct": false
-                },
-                {
-                    "text": "74",
+                    "text": "Barcodes are more expensive than RFID tags",
                     "correct": false
                 }
             ]
         },
         {
-            "question": "What is 2 \/ 2?",
+            "topic": "Physical Security",
+            "numCorrect": 1,
+            "question": "An electronic lock is more secure than a physical lock. True or False?",
             "answers": [
                 {
-                    "text": "1",
-                    "correct": true
-                },
-                {
-                    "text": "22",
+                    "text": "True",
                     "correct": false
                 },
                 {
-                    "text": "876",
-                    "correct": false
-                },
-                {
-                    "text": "93",
-                    "correct": false
-                }
-            ]
-        },
-        {
-            "question": "What is 8 \/ 4",
-            "answers": [
-                {
-                    "text": "18",
-                    "correct": false
-                },
-                {
-                    "text": "2",
-                    "correct": true
-                },
-                {
-                    "text": "17",
-                    "correct": false
-                },
-                {
-                    "text": "19",
-                    "correct": false
-                }
-            ]
-        },
-        {
-            "question": "What is 70 \/ 10?",
-            "answers": [
-                {
-                    "text": "7",
-                    "correct": true
-                },
-                {
-                    "text": "19",
-                    "correct": false
-                },
-                {
-                    "text": "21",
-                    "correct": false
-                },
-                {
-                    "text": "18",
-                    "correct": false
-                }
-            ]
-        },
-        {
-            "question": "2\/1",
-            "answers": [
-                {
-                    "text": "2",
-                    "correct": true
-                },
-                {
-                    "text": "3",
-                    "correct": false
-                },
-                {
-                    "text": "4",
-                    "correct": false
-                },
-                {
-                    "text": "1",
-                    "correct": false
-                }
-            ]
-        },
-        {
-            "question": "What is 4 \/ 2?",
-            "answers": [
-                {
-                    "text": "8",
-                    "correct": false
-                },
-                {
-                    "text": "2",
-                    "correct": true
-                },
-                {
-                    "text": "76",
-                    "correct": false
-                },
-                {
-                    "text": "3",
-                    "correct": false
-                }
-            ]
-        },
-        {
-            "question": "What is 81 \/ 9?",
-            "answers": [
-                {
-                    "text": "16",
-                    "correct": false
-                },
-                {
-                    "text": "34",
-                    "correct": false
-                },
-                {
-                    "text": "6",
-                    "correct": false
-                },
-                {
-                    "text": "9",
+                    "text": "False",
                     "correct": true
                 }
             ]
         },
         {
-            "question": "What is 1 \/ 1?",
+            "topic": "Physical Security",
+            "numCorrect": 1,
+            "question": "True or False: Social engineering attacks can be considered a physical security threat.",
             "answers": [
                 {
-                    "text": "1",
+                    "text": "True",
                     "correct": true
                 },
                 {
-                    "text": "90",
-                    "correct": false
-                },
-                {
-                    "text": "86",
-                    "correct": false
-                },
-                {
-                    "text": "74",
+                    "text": "False",
                     "correct": false
                 }
             ]
         },
         {
-            "question": "What is 2 \/ 2?",
+            "topic": "Security Compliance",
+            "numCorrect": 4,
+            "question": "What are some best practices for achieving security compliance?",
             "answers": [
                 {
-                    "text": "1",
+                    "text": "Regularly review and update security policies and procedures",
                     "correct": true
                 },
                 {
-                    "text": "22",
+                    "text": "Conduct regular security awareness training for employees",
+                    "correct": true
+                },
+                {
+                    "text": "Implement access controls and data encryption",
+                    "correct": true
+                },
+                {
+                    "text": "Perform regular security assessments and penetration testing",
+                    "correct": true
+                }
+            ]
+        },
+        {
+            "topic": "Security Compliance",
+            "numCorrect": 1,
+            "question": "How does security compliance relate to business continuity planning?",
+            "answers": [
+                {
+                    "text": "Security compliance helps to ensure that critical systems and data are protected in the event of a disruption or disaster",
+                    "correct": true
+                },
+                {
+                    "text": "Business continuity planning is not related to security compliance",
                     "correct": false
                 },
                 {
-                    "text": "876",
+                    "text": "Security compliance is not important for business continuity planning",
                     "correct": false
                 },
                 {
-                    "text": "93",
+                    "text": "Business continuity planning is only relevant for natural disasters, not security incidents",
                     "correct": false
                 }
             ]
         },
         {
-            "question": "What is 8 \/ 4",
+            "topic": "Security Compliance",
+            "numCorrect": 3,
+            "question": "How can you ensure that third-party vendors and suppliers are maintaining security compliance after they are onboarded?",
             "answers": [
                 {
-                    "text": "18",
-                    "correct": false
-                },
-                {
-                    "text": "2",
+                    "text": "Conduct regular audits of third-party vendors to ensure compliance",
                     "correct": true
                 },
                 {
-                    "text": "17",
+                    "text": "Require third-party vendors to sign a compliance agreement",
+                    "correct": true
+                },
+                {
+                    "text": "Provide third-party vendors with a compliance checklist",
+                    "correct": true
+                },
+                {
+                    "text": "Assume that third-party vendors are maintaining compliance",
+                    "correct": false
+                }
+            ]
+        },
+        {
+            "topic": "Social Engineering",
+            "numCorrect": 1,
+            "question": "How can organizations effectively respond to social engineering attacks?",
+            "answers": [
+                {
+                    "text": "Ignore the attack and hope it goes away",
                     "correct": false
                 },
                 {
-                    "text": "19",
+                    "text": "Immediately shut down all systems and networks to prevent further damage",
+                    "correct": false
+                },
+                {
+                    "text": "Isolate infected systems to prevent further damage and investigate the attack to determine the extent of the damage",
+                    "correct": true
+                },
+                {
+                    "text": "Delete all suspicious emails and ignore the attack",
+                    "correct": false
+                }
+            ]
+        },
+        {
+            "topic": "Social Engineering",
+            "numCorrect": 1,
+            "question": "What are some emerging trends and technologies in social engineering attacks, and how are they being used to target computer systems?",
+            "answers": [
+                {
+                    "text": "Virtual reality simulations that trick users into revealing sensitive information",
+                    "correct": false
+                },
+                {
+                    "text": "Artificial intelligence algorithms that can mimic human conversation to deceive users",
+                    "correct": true
+                },
+                {
+                    "text": "Robotic process automation that automates the process of gathering information for social engineering attacks",
+                    "correct": false
+                },
+                {
+                    "text": "Blockchain technology that is used to create secure digital identities for users",
+                    "correct": false
+                }
+            ]
+        },
+        {
+            "topic": "Social Engineering",
+            "numCorrect": 1,
+            "question": "How do social engineering attacks exploit the principles of cognitive biases and heuristics?",
+            "answers": [
+                {
+                    "text": "By using brute force attacks to guess passwords",
+                    "correct": false
+                },
+                {
+                    "text": "By exploiting software vulnerabilities in computer systems",
+                    "correct": false
+                },
+                {
+                    "text": "By relying on social relationships and trust to manipulate individuals' thought processes and decision-making abilities",
+                    "correct": true
+                },
+                {
+                    "text": "By using phishing attacks to trick individuals into entering their login credentials",
                     "correct": false
                 }
             ]
@@ -4472,232 +4674,192 @@
             ]
         },
         {
-            "question": "What is 81 \/ 9?",
+            "topic": "Physical Security",
+            "numCorrect": 1,
+            "question": "True or False: Defense in depth is a principle that applies only to cybersecurity and not physical security?",
             "answers": [
                 {
-                    "text": "16",
+                    "text": "True",
                     "correct": false
                 },
                 {
-                    "text": "34",
-                    "correct": false
-                },
-                {
-                    "text": "6",
-                    "correct": false
-                },
-                {
-                    "text": "9",
+                    "text": "False",
                     "correct": true
                 }
             ]
         },
         {
-            "question": "What is 1 \/ 1?",
+            "topic": "Physical Security",
+            "numCorrect": 1,
+            "question": "An RFID tag uses radio waves to communicate and can be read from a distance. True or False?",
             "answers": [
                 {
-                    "text": "1",
+                    "text": "True",
                     "correct": true
                 },
                 {
-                    "text": "90",
-                    "correct": false
-                },
-                {
-                    "text": "86",
-                    "correct": false
-                },
-                {
-                    "text": "74",
+                    "text": "False",
                     "correct": false
                 }
             ]
         },
         {
-            "question": "What is 2 \/ 2?",
+            "topic": "Physical Security",
+            "numCorrect": 1,
+            "question": "What is a type of physical security control that can prevent unauthorized access to a server room?",
             "answers": [
                 {
-                    "text": "1",
+                    "text": "Firewall",
+                    "correct": false
+                },
+                {
+                    "text": "Intrusion Detection System (IDS)",
+                    "correct": false
+                },
+                {
+                    "text": "Biometric authentication",
                     "correct": true
                 },
                 {
-                    "text": "22",
-                    "correct": false
-                },
-                {
-                    "text": "876",
-                    "correct": false
-                },
-                {
-                    "text": "93",
+                    "text": "Virtual Private Network (VPN)",
                     "correct": false
                 }
             ]
         },
         {
-            "question": "What is 8 \/ 4",
+            "topic": "Security Compliance",
+            "numCorrect": 1,
+            "question": "How do you ensure that security compliance requirements are met when outsourcing or offshoring software development?",
             "answers": [
                 {
-                    "text": "18",
+                    "text": "Conduct thorough due diligence before selecting a vendor",
                     "correct": false
                 },
                 {
-                    "text": "2",
-                    "correct": true
-                },
-                {
-                    "text": "17",
+                    "text": "Include security compliance requirements in the contract",
                     "correct": false
                 },
                 {
-                    "text": "19",
-                    "correct": false
-                }
-            ]
-        },
-        {
-            "question": "What is 70 \/ 10?",
-            "answers": [
-                {
-                    "text": "7",
-                    "correct": true
-                },
-                {
-                    "text": "19",
+                    "text": "Regularly review the vendor's security controls",
                     "correct": false
                 },
                 {
-                    "text": "21",
-                    "correct": false
-                },
-                {
-                    "text": "18",
-                    "correct": false
-                }
-            ]
-        },
-        {
-            "question": "2\/1",
-            "answers": [
-                {
-                    "text": "2",
-                    "correct": true
-                },
-                {
-                    "text": "3",
-                    "correct": false
-                },
-                {
-                    "text": "4",
-                    "correct": false
-                },
-                {
-                    "text": "1",
-                    "correct": false
-                }
-            ]
-        },
-        {
-            "question": "What is 4 \/ 2?",
-            "answers": [
-                {
-                    "text": "8",
-                    "correct": false
-                },
-                {
-                    "text": "2",
-                    "correct": true
-                },
-                {
-                    "text": "76",
-                    "correct": false
-                },
-                {
-                    "text": "3",
-                    "correct": false
-                }
-            ]
-        },
-        {
-            "question": "What is 81 \/ 9?",
-            "answers": [
-                {
-                    "text": "16",
-                    "correct": false
-                },
-                {
-                    "text": "34",
-                    "correct": false
-                },
-                {
-                    "text": "6",
-                    "correct": false
-                },
-                {
-                    "text": "9",
+                    "text": "All of these are correct",
                     "correct": true
                 }
             ]
         },
         {
-            "question": "What is 1 \/ 1?",
+            "topic": "Security Compliance",
+            "numCorrect": 1,
+            "question": "What is a strategy for mitigating the risks associated with security compliance violations, such as reputational damage or legal action?",
             "answers": [
                 {
-                    "text": "1",
+                    "text": "Implementing effective security controls",
+                    "correct": false
+                },
+                {
+                    "text": "Conducting regular security audits",
+                    "correct": false
+                },
+                {
+                    "text": "Maintaining proper documentation of security measures",
+                    "correct": false
+                },
+                {
+                    "text": "All of these are correct",
+                    "correct": true
+                }
+            ]
+        },
+        {
+            "topic": "Security Compliance",
+            "numCorrect": 1,
+            "question": "How can you ensure that security compliance programs are aligned with the company's risk appetite and risk management framework?",
+            "answers": [
+                {
+                    "text": "Performing a risk assessment",
+                    "correct": false
+                },
+                {
+                    "text": "Defining the company's risk appetite",
+                    "correct": false
+                },
+                {
+                    "text": "Reviewing and updating the risk management framework",
+                    "correct": false
+                },
+                {
+                    "text": "All of these are correct",
+                    "correct": true
+                }
+            ]
+        },
+        {
+            "topic": "Social Engineering",
+            "numCorrect": 1,
+            "question": "What are the most effective methods for assessing an organization's susceptibility to social engineering attacks?",
+            "answers": [
+                {
+                    "text": "Conducting a penetration test",
+                    "correct": false
+                },
+                {
+                    "text": "Conducting a vulnerability scan",
+                    "correct": false
+                },
+                {
+                    "text": "Conducting a social engineering audit",
                     "correct": true
                 },
                 {
-                    "text": "90",
-                    "correct": false
-                },
-                {
-                    "text": "86",
-                    "correct": false
-                },
-                {
-                    "text": "74",
+                    "text": "Implementing a security information and event management (SIEM) system",
                     "correct": false
                 }
             ]
         },
         {
-            "question": "What is 2 \/ 2?",
+            "topic": "Social Engineering",
+            "numCorrect": 1,
+            "question": "How can machine learning and artificial intelligence be used to detect and prevent social engineering attacks?",
             "answers": [
                 {
-                    "text": "1",
+                    "text": "By analyzing patterns in network traffic to identify abnormal behavior",
                     "correct": true
                 },
                 {
-                    "text": "22",
+                    "text": "By encrypting sensitive information to prevent interception",
                     "correct": false
                 },
                 {
-                    "text": "876",
+                    "text": "By blocking all inbound email messages",
                     "correct": false
                 },
                 {
-                    "text": "93",
+                    "text": "By implementing strict access controls on all network resources",
                     "correct": false
                 }
             ]
         },
         {
-            "question": "What is 8 \/ 4",
+            "topic": "Social Engineering",
+            "numCorrect": 1,
+            "question": "How do social engineering attacks and their impact vary across different cultures and regions?",
             "answers": [
                 {
-                    "text": "18",
+                    "text": "Social engineering attacks are universal and their impact is the same across all cultures and regions",
                     "correct": false
                 },
                 {
-                    "text": "2",
+                    "text": "Social engineering attacks vary in their methods and impact across different cultures and regions due to differences in language, customs, and values",
                     "correct": true
                 },
                 {
-                    "text": "17",
+                    "text": "Social engineering attacks are only prevalent in certain cultures and regions due to the prevalence of cybercrime in those areas",
                     "correct": false
                 },
                 {
-                    "text": "19",
+                    "text": "Social engineering attacks are more effective in certain cultures and regions due to a lack of cybersecurity awareness and education",
                     "correct": false
                 }
             ]
@@ -5058,232 +5220,139 @@
             ]
         },
         {
-            "question": "What is 81 \/ 9?",
+            "topic": "Physical Security",
+            "numCorrect": 1,
+            "question": "What is the purpose of a clean desk policy in physical security?",
             "answers": [
                 {
-                    "text": "16",
-                    "correct": false
-                },
-                {
-                    "text": "34",
-                    "correct": false
-                },
-                {
-                    "text": "6",
-                    "correct": false
-                },
-                {
-                    "text": "9",
-                    "correct": true
-                }
-            ]
-        },
-        {
-            "question": "What is 1 \/ 1?",
-            "answers": [
-                {
-                    "text": "1",
+                    "text": "To prevent unauthorized access to confidential documents",
                     "correct": true
                 },
                 {
-                    "text": "90",
+                    "text": "To ensure that employees are always working",
                     "correct": false
                 },
                 {
-                    "text": "86",
+                    "text": "To reduce clutter in the workspace",
                     "correct": false
                 },
                 {
-                    "text": "74",
+                    "text": "To limit the amount of paper used in the office",
                     "correct": false
                 }
             ]
         },
         {
-            "question": "What is 2 \/ 2?",
+            "topic": "Physical Security",
+            "numCorrect": 1,
+            "question": "What are some of the challenges involved in securing physical access to legacy systems?",
             "answers": [
                 {
-                    "text": "1",
+                    "text": "Legacy systems often lack modern security features",
                     "correct": true
                 },
                 {
-                    "text": "22",
+                    "text": "Legacy systems are typically well-documented",
                     "correct": false
                 },
                 {
-                    "text": "876",
+                    "text": "Legacy systems are rarely connected to the internet",
                     "correct": false
                 },
                 {
-                    "text": "93",
+                    "text": "Legacy systems are easy to upgrade",
                     "correct": false
                 }
             ]
         },
         {
-            "question": "What is 8 \/ 4",
+            "topic": "Physical Security",
+            "numCorrect": 1,
+            "question": "What is a lockout/tagout procedure used for in physical security?",
             "answers": [
                 {
-                    "text": "18",
-                    "correct": false
-                },
-                {
-                    "text": "2",
+                    "text": "To prevent accidental machine start-up during maintenance",
                     "correct": true
                 },
                 {
-                    "text": "17",
+                    "text": "To secure doors and windows",
                     "correct": false
                 },
                 {
-                    "text": "19",
+                    "text": "To disable electronic access control systems",
+                    "correct": false
+                },
+                {
+                    "text": "To prevent unauthorized access to sensitive areas",
                     "correct": false
                 }
             ]
         },
         {
-            "question": "What is 70 \/ 10?",
+            "topic": "Social Engineering",
+            "numCorrect": 1,
+            "question": "What is the role of public awareness campaigns and media coverage in preventing social engineering attacks?",
             "answers": [
                 {
-                    "text": "7",
+                    "text": "They have no impact on preventing social engineering attacks",
+                    "correct": false
+                },
+                {
+                    "text": "They can help raise awareness about the existence of social engineering attacks and the importance of protecting oneself against them",
                     "correct": true
                 },
                 {
-                    "text": "19",
+                    "text": "They can actually increase the likelihood of social engineering attacks by giving attackers more ideas",
                     "correct": false
                 },
                 {
-                    "text": "21",
-                    "correct": false
-                },
-                {
-                    "text": "18",
+                    "text": "They can help attackers by providing them with more information about potential targets",
                     "correct": false
                 }
             ]
         },
         {
-            "question": "2\/1",
+            "topic": "Social Engineering",
+            "numCorrect": 1,
+            "question": "How can organizations effectively measure and quantify the impact and costs of social engineering attacks?",
             "answers": [
                 {
-                    "text": "2",
-                    "correct": true
-                },
-                {
-                    "text": "3",
+                    "text": "They can't, as it is impossible to quantify the full impact and costs of social engineering attacks",
                     "correct": false
                 },
                 {
-                    "text": "4",
+                    "text": "By conducting regular vulnerability assessments and penetration testing",
                     "correct": false
                 },
                 {
-                    "text": "1",
-                    "correct": false
-                }
-            ]
-        },
-        {
-            "question": "What is 4 \/ 2?",
-            "answers": [
-                {
-                    "text": "8",
+                    "text": "By implementing incident response plans and procedures",
                     "correct": false
                 },
                 {
-                    "text": "2",
-                    "correct": true
-                },
-                {
-                    "text": "76",
-                    "correct": false
-                },
-                {
-                    "text": "3",
-                    "correct": false
-                }
-            ]
-        },
-        {
-            "question": "What is 81 \/ 9?",
-            "answers": [
-                {
-                    "text": "16",
-                    "correct": false
-                },
-                {
-                    "text": "34",
-                    "correct": false
-                },
-                {
-                    "text": "6",
-                    "correct": false
-                },
-                {
-                    "text": "9",
+                    "text": "By analyzing the financial and operational impact of past attacks and estimating potential costs of future attacks",
                     "correct": true
                 }
             ]
         },
         {
-            "question": "What is 1 \/ 1?",
+            "topic": "Social Engineering",
+            "numCorrect": 1,
+            "question": "What are the ethical and legal implications of using social engineering techniques to gather intelligence on potential cyber threats or adversaries?",
             "answers": [
                 {
-                    "text": "1",
+                    "text": "There are no ethical or legal implications as long as the information gathered is used for legitimate purposes",
+                    "correct": false
+                },
+                {
+                    "text": "The use of social engineering techniques to gather information without the subject's consent is generally considered unethical and may be illegal",
                     "correct": true
                 },
                 {
-                    "text": "90",
+                    "text": "The use of social engineering techniques to gather information is always illegal, regardless of the purpose",
                     "correct": false
                 },
                 {
-                    "text": "86",
-                    "correct": false
-                },
-                {
-                    "text": "74",
-                    "correct": false
-                }
-            ]
-        },
-        {
-            "question": "What is 2 \/ 2?",
-            "answers": [
-                {
-                    "text": "1",
-                    "correct": true
-                },
-                {
-                    "text": "22",
-                    "correct": false
-                },
-                {
-                    "text": "876",
-                    "correct": false
-                },
-                {
-                    "text": "93",
-                    "correct": false
-                }
-            ]
-        },
-        {
-            "question": "What is 8 \/ 4",
-            "answers": [
-                {
-                    "text": "18",
-                    "correct": false
-                },
-                {
-                    "text": "2",
-                    "correct": true
-                },
-                {
-                    "text": "17",
-                    "correct": false
-                },
-                {
-                    "text": "19",
+                    "text": "The use of social engineering techniques to gather information is always ethical, as long as it is done in the interest of national security",
                     "correct": false
                 }
             ]
@@ -5644,232 +5713,139 @@
             ]
         },
         {
-            "question": "What is 81 \/ 9?",
+            "topic": "Physical Security",
+            "numCorrect": 1,
+            "question": "What is the purpose of a honeycomb grille?",
             "answers": [
                 {
-                    "text": "16",
+                    "text": "To prevent physical access to an area",
                     "correct": false
                 },
                 {
-                    "text": "34",
-                    "correct": false
-                },
-                {
-                    "text": "6",
-                    "correct": false
-                },
-                {
-                    "text": "9",
-                    "correct": true
-                }
-            ]
-        },
-        {
-            "question": "What is 1 \/ 1?",
-            "answers": [
-                {
-                    "text": "1",
+                    "text": "To restrict the flow of air or water",
                     "correct": true
                 },
                 {
-                    "text": "90",
+                    "text": "To block electromagnetic radiation",
                     "correct": false
                 },
                 {
-                    "text": "86",
-                    "correct": false
-                },
-                {
-                    "text": "74",
+                    "text": "To provide privacy",
                     "correct": false
                 }
             ]
         },
         {
-            "question": "What is 2 \/ 2?",
+            "topic": "Physical Security",
+            "numCorrect": 1,
+            "question": "What is a \"red team\" exercise, and how might such an exercise be used to test physical security controls?",
             "answers": [
                 {
-                    "text": "1",
+                    "text": "A red team exercise is a simulated attack conducted by an internal team to identify vulnerabilities in security controls. For physical security, a red team might attempt to gain unauthorized access to a building or facility to test the effectiveness of access controls.",
                     "correct": true
                 },
                 {
-                    "text": "22",
+                    "text": "A red team exercise is a training session for security personnel to practice responding to a security incident. For physical security, a red team might simulate a break-in to test response procedures.",
                     "correct": false
                 },
                 {
-                    "text": "876",
+                    "text": "A red team exercise is a routine audit of security controls performed by an external auditor. For physical security, a red team might review access logs and security camera footage to identify potential weaknesses in the system.",
                     "correct": false
                 },
                 {
-                    "text": "93",
+                    "text": "A red team exercise is a test of a system's ability to recover from a disaster or outage. For physical security, a red team might simulate a power outage or other disruption to test the effectiveness of backup power and contingency plans.",
                     "correct": false
                 }
             ]
         },
         {
-            "question": "What is 8 \/ 4",
+            "topic": "Physical Security",
+            "numCorrect": 1,
+            "question": "What is the difference between a disaster recovery plan and a business continuity plan?",
             "answers": [
                 {
-                    "text": "18",
+                    "text": "There is no difference between the two",
                     "correct": false
                 },
                 {
-                    "text": "2",
+                    "text": "A disaster recovery plan only covers natural disasters, while a business continuity plan covers all types of disruptions",
+                    "correct": false
+                },
+                {
+                    "text": "A disaster recovery plan is focused on restoring IT systems and infrastructure, while a business continuity plan is focused on maintaining business operations",
                     "correct": true
                 },
                 {
-                    "text": "17",
-                    "correct": false
-                },
-                {
-                    "text": "19",
+                    "text": "A business continuity plan is focused on restoring IT systems and infrastructure, while a disaster recovery plan is focused on maintaining business operations",
                     "correct": false
                 }
             ]
         },
         {
-            "question": "What is 70 \/ 10?",
+            "topic": "Social Engineering",
+            "numCorrect": 1,
+            "question": "How can organizations effectively balance the need for user privacy with the need for monitoring and detecting potential social engineering attacks?",
             "answers": [
                 {
-                    "text": "7",
+                    "text": "Organizations should prioritize monitoring and detecting potential social engineering attacks over user privacy concerns",
+                    "correct": false
+                },
+                {
+                    "text": "Organizations should prioritize user privacy over monitoring and detecting potential social engineering attacks",
+                    "correct": false
+                },
+                {
+                    "text": "Organizations should find a balance between monitoring and detecting potential social engineering attacks and respecting user privacy",
                     "correct": true
                 },
                 {
-                    "text": "19",
-                    "correct": false
-                },
-                {
-                    "text": "21",
-                    "correct": false
-                },
-                {
-                    "text": "18",
+                    "text": "Organizations should not be concerned about user privacy when it comes to monitoring and detecting potential social engineering attacks",
                     "correct": false
                 }
             ]
         },
         {
-            "question": "2\/1",
+            "topic": "Social Engineering",
+            "numCorrect": 1,
+            "question": "How can organizations effectively anticipate and respond to emerging or novel social engineering attack vectors, such as those based on emerging technologies or social trends?",
             "answers": [
                 {
-                    "text": "2",
+                    "text": "By relying on traditional security measures such as firewalls and antivirus software",
+                    "correct": false
+                },
+                {
+                    "text": "By creating a culture of security awareness and implementing proactive measures such as employee training and regular security assessments",
                     "correct": true
                 },
                 {
-                    "text": "3",
+                    "text": "By ignoring emerging technologies and social trends that may be vulnerable to social engineering attacks",
                     "correct": false
                 },
                 {
-                    "text": "4",
-                    "correct": false
-                },
-                {
-                    "text": "1",
+                    "text": "By outsourcing security responsibilities to third-party vendors",
                     "correct": false
                 }
             ]
         },
         {
-            "question": "What is 4 \/ 2?",
+            "topic": "Social Engineering",
+            "numCorrect": 1,
+            "question": "What are the implications of social engineering attacks for the future of work, including the potential impacts on remote work and digital collaboration?",
             "answers": [
                 {
-                    "text": "8",
+                    "text": "Social engineering attacks will become less common as more people work remotely and use digital collaboration tools.",
                     "correct": false
                 },
                 {
-                    "text": "2",
+                    "text": "Social engineering attacks will become more common as more people work remotely and use digital collaboration tools.",
                     "correct": true
                 },
                 {
-                    "text": "76",
+                    "text": "Social engineering attacks will remain the same regardless of the shift to remote work and digital collaboration.",
                     "correct": false
                 },
                 {
-                    "text": "3",
-                    "correct": false
-                }
-            ]
-        },
-        {
-            "question": "What is 81 \/ 9?",
-            "answers": [
-                {
-                    "text": "16",
-                    "correct": false
-                },
-                {
-                    "text": "34",
-                    "correct": false
-                },
-                {
-                    "text": "6",
-                    "correct": false
-                },
-                {
-                    "text": "9",
-                    "correct": true
-                }
-            ]
-        },
-        {
-            "question": "What is 1 \/ 1?",
-            "answers": [
-                {
-                    "text": "1",
-                    "correct": true
-                },
-                {
-                    "text": "90",
-                    "correct": false
-                },
-                {
-                    "text": "86",
-                    "correct": false
-                },
-                {
-                    "text": "74",
-                    "correct": false
-                }
-            ]
-        },
-        {
-            "question": "What is 2 \/ 2?",
-            "answers": [
-                {
-                    "text": "1",
-                    "correct": true
-                },
-                {
-                    "text": "22",
-                    "correct": false
-                },
-                {
-                    "text": "876",
-                    "correct": false
-                },
-                {
-                    "text": "93",
-                    "correct": false
-                }
-            ]
-        },
-        {
-            "question": "What is 8 \/ 4",
-            "answers": [
-                {
-                    "text": "18",
-                    "correct": false
-                },
-                {
-                    "text": "2",
-                    "correct": true
-                },
-                {
-                    "text": "17",
-                    "correct": false
-                },
-                {
-                    "text": "19",
+                    "text": "The shift to remote work and digital collaboration will eliminate the need for organizations to protect against social engineering attacks.",
                     "correct": false
                 }
             ]
