@@ -3,6 +3,7 @@ const trivia_startButton = document.getElementById('trivia_start_btn');
 const trivia_nextButton = document.getElementById('trivia_next_btn');
 const trivia_finishButton = document.getElementById('trivia_finish_btn');
 const trivia_resetButton = document.getElementById('trivia_reset_btn');
+const trivia_submitButton = document.getElementById('trivia_submitList_btn');
 
 const trivia_practiceButton = document.getElementById('trivia_prac_btn');
 const trivia_rankedButton = document.getElementById('trivia_ranked_btn');
@@ -22,7 +23,16 @@ const trivia_pracByRForm = document.getElementById('trivia_pracByRForm');
 const trivia_pracByTForm = document.getElementById('trivia_pracByTForm');
 const trivia_initScreen = document.getElementById('trivia_initScreen');
 
+var trivia_scoreboard1 = document.getElementById('trivia_scoreboard1');
+var trivia_scoreboard2 = document.getElementById('trivia_scoreboard2')
+var trivia_scoreboard3 = document.getElementById('trivia_scoreboard3')
+var trivia_scoreboardAnswered = document.getElementById('trivia_qnum');
+var trivia_scoreboardCorrect = document.getElementById('trivia_total_correct');
+var trivia_scoreboardWrong = document.getElementById('trivia_total_wrong');
 var trivia_timer = document.getElementById('trivia_timer');
+
+var trivia_total_score_results = document.getElementById('trivia_total_score')
+var trivia_alg_score = document.getElementById('trivia_alg_score')
 //--------------------------------------------------------------------------------------
 //Initializing all global variables
 var trivia_totalQuestions;
@@ -41,9 +51,17 @@ var trivia_time = 0;
 var trivia_finalTime;
 let trivia_shuffledQuestions, trivia_currentQuestionIndex
 
+var trivia_listTotal = 0;
+var trivia_numCorrectAnswers = 1;
+var trivia_listPercentScore;
+
 var trivia_questions = [];
 var trivia_byTopic = false;
 var trivia_topic;
+
+
+var trivia_pointValue = 1000;
+var trivia_pointTotal = 0;
 //--------------------------------------------------------------------------------------
 //Even listeners for Trivia
 document.getElementById("trivia_rank").addEventListener("input", trivia_changeRank);
@@ -95,7 +113,6 @@ function trivia_initPracByR() {
 }
 function trivia_initPracByT() {
     trivia_topic = document.getElementById('trivia_topic').value;
-    console.log(trivia_topic);
     trivia_pracByTForm.classList.remove('hide');
     trivia_triv.style.display = "block";
     trivia_rankedForm.style.display = "block";
@@ -134,6 +151,7 @@ function trivia_startGame() {
     trivia_rankedForm.style.display = "none";
     document.getElementById('trivia_user_rank').innerHTML = trivia_rank + 1;
     var trivia_interval = setInterval(function () {
+        trivia_decreaseQuestionValue();//subtract 30 points from 1000
         if (trivia_answered == trivia_totalQuestions) {
             trivia_finalTime = trivia_time;
             clearInterval(trivia_interval);
@@ -152,11 +170,16 @@ function trivia_startGame() {
 
     var trivia_division = "/"
     let trivia_divisor_text = trivia_division.concat(trivia_totalQuestions);
-    document.getElementById('trivia_scoreboard1').innerHTML = trivia_divisor_text;
-    document.getElementById('trivia_scoreboard2').innerHTML = trivia_divisor_text;
-    document.getElementById('trivia_scoreboard3').innerHTML = trivia_divisor_text;
-
+    trivia_scoreboard1.innerHTML = trivia_divisor_text;
+    trivia_scoreboard2.innerHTML = trivia_divisor_text;
+    trivia_scoreboard3.innerHTML = trivia_divisor_text;
+    trivia_pointTotal = 0;
     trivia_setNextQuestion()
+}
+function trivia_decreaseQuestionValue() {
+    if (trivia_pointValue > 250) {
+        trivia_pointValue = trivia_pointValue - 10;
+    }
 }
 
 function trivia_setNextQuestion() {
@@ -165,6 +188,7 @@ function trivia_setNextQuestion() {
 }
 
 function trivia_showQuestion(trivia_question) {
+    trivia_pointValue=1000;
     trivia_questionElement.innerText = trivia_question.question
     trivia_question.answers.forEach(answer => {
         const trivia_button = document.createElement('button')
@@ -173,14 +197,24 @@ function trivia_showQuestion(trivia_question) {
         if (answer.correct) {
             trivia_button.dataset.correct = answer.correct;
         }
-        trivia_button.addEventListener('click', trivia_selectAnswer)
-        trivia_answerButtonsElement.appendChild(trivia_button)
+        if (trivia_question.numCorrect != 1) {
+            trivia_numCorrectAnswers = trivia_question.numCorrect
+            trivia_submitButton.classList.remove('hide');
+            trivia_listTotal = 0;
+            trivia_button.addEventListener('click', trivia_selectMultipleAnswers);
+            trivia_answerButtonsElement.appendChild(trivia_button);
+        }
+        else {
+            trivia_numCorrectAnswers = 1;
+            trivia_button.addEventListener('click', trivia_selectAnswer);
+            trivia_answerButtonsElement.appendChild(trivia_button);
+        }
     })
 }
 
 function trivia_resetState() {
-    trivia_clearStatusClass(document.body)
-    trivia_nextButton.classList.add('hide')
+    trivia_clearStatusClass(document.body);
+    trivia_nextButton.classList.add('hide');
     while (trivia_answerButtonsElement.firstChild) {
         trivia_answerButtonsElement.removeChild(trivia_answerButtonsElement.firstChild)
     }
@@ -193,64 +227,135 @@ function trivia_selectAnswer(trivia_e) {
     Array.from(trivia_answerButtonsElement.children).forEach(trivia_button => {
         trivia_setStatusClass(trivia_button, trivia_button.dataset.correct);
         trivia_button.disabled = true;
-    })
-
+    });
+    
     trivia_answered = trivia_answered + 1;
     if (trivia_correct) {
         trivia_right = trivia_right + 1;
+        trivia_pointTotal = trivia_pointTotal+trivia_pointValue;
     }
     else {
         trivia_wrong = trivia_wrong + 1;
     }
-    document.getElementById('trivia_qnum').innerHTML = trivia_answered;
-    document.getElementById('trivia_total_correct').innerHTML = trivia_right;
-    document.getElementById('trivia_total_wrong').innerHTML = trivia_wrong;
+    trivia_displayIngameScores();
     if (trivia_questions.length > trivia_currentQuestionIndex + 1) {
         trivia_nextButton.classList.remove('hide');
     } else {
         trivia_finishButton.classList.remove('hide');
         trivia_clearStatusClass(document.body)
     }
-
 }
-function trivia_scores() {
-    trivia_resetButton.classList.remove('hide');
-    trivia_questionContainerElement.classList.add('hide')
-    trivia_finishButton.classList.add('hide')
-    var trivia_txt1 = "Your total score was: ";
-    var trivia_finalScore = (trivia_right / trivia_answered) * 100;
-    let trivia_result = trivia_txt1.concat(trivia_right.toString(), "/", trivia_answered.toString(), " which is ", trivia_finalScore.toString(), "%");
-    document.getElementById('trivia_total_score').innerHTML = trivia_result;
-    var trivia_txt2 = "Your total points where: "
-    var trivia_p = (trivia_right * 10000) / trivia_time;
-    let trivia_points = Math.trunc(trivia_p);
-    if (trivia_rankedGame == true) {
-        if (trivia_points >= 1500) {
-            if (trivia_userRank == trivia_highestRank) {
-                let trivia_resultRank = trivia_txt2.concat(trivia_points.toString(), ". You passed! You are already the highest rank! Congrats on being a Comp. Sci. SuperStar!!!!");
-                document.getElementById('trivia_alg_score').innerHTML = trivia_resultRank;
-            }
-            else {
-                let trivia_resultRank = trivia_txt2.concat(trivia_points.toString(), ". You passed! You will be ranked up");
-                document.getElementById('trivia_alg_score').innerHTML = trivia_resultRank;
-                trivia_userRank++;
-            }
+function trivia_selectMultipleAnswers(trivia_e) {
+    const trivia_selectedButton = trivia_e.target
+    const trivia_correct = trivia_selectedButton.dataset.correct
+    if (trivia_selectedButton.classList.contains('trivia_selectedCorrect') || trivia_selectedButton.classList.contains('trivia_selectedWrong')) {
+        if (trivia_selectedButton.classList.contains('trivia_selectedCorrect')) {
+            trivia_selectedButton.classList.remove('trivia_selectedCorrect');
+            trivia_listTotal = trivia_listTotal - 1;
         }
         else {
-            let trivia_resultRank = trivia_txt2.concat(trivia_points.toString(), ". You were so Close! Try again!");
-            document.getElementById('trivia_alg_score').innerHTML = trivia_resultRank;
+            trivia_selectedButton.classList.remove('trivia_selectedWrong');
+            trivia_listTotal = trivia_listTotal + 1;
         }
     }
     else {
-        if (trivia_points >= 1500) {
-            let trivia_resultRank = trivia_txt2.concat(trivia_points.toString(), ". You passed!!! Maybe try a ranked game!");
-            document.getElementById('trivia_alg_score').innerHTML = trivia_resultRank;
+        if (trivia_correct && trivia_selectedButton.classList.contains('trivia_selectedCorrect') != true) {
+            trivia_selectedButton.classList.add('trivia_selectedCorrect');
+            trivia_listTotal = trivia_listTotal + 1;
         }
         else {
-            let trivia_resultRank = trivia_txt2.concat(trivia_points.toString(), ". So Close!!! Maybe try another practice ame!");
-            document.getElementById('trivia_alg_score').innerHTML = trivia_resultRank;
+            trivia_selectedButton.classList.add('trivia_selectedWrong');
+            trivia_listTotal = trivia_listTotal - 1;
         }
+    }
+}
+trivia_submitButton.addEventListener('click', () => {
+    Array.from(trivia_answerButtonsElement.children).forEach(trivia_button => {
+        trivia_removeSelectedListClass(trivia_button);
+    })
+    Array.from(trivia_answerButtonsElement.children).forEach(trivia_button => {
+        trivia_setStatusClass(trivia_button, trivia_button.dataset.correct);
+        trivia_button.disabled = true;
+    });
+    trivia_submitButton.classList.add('hide');
 
+    trivia_answered = trivia_answered + 1;
+
+    trivia_listPercentScoreCorrect = trivia_listTotal / trivia_numCorrectAnswers;
+    trivia_listPercentScoreWrong = 1 - trivia_listPercentScoreCorrect;
+
+    var trivia_rounded = Math.trunc((trivia_pointValue*trivia_listPercentScoreCorrect));
+    trivia_pointTotal = trivia_pointTotal+trivia_rounded;
+
+    if (trivia_listTotal <= 0) {
+        trivia_wrong = trivia_wrong + 1;
+    }
+    else {
+        trivia_right = trivia_right + trivia_listPercentScoreCorrect;
+        trivia_wrong = trivia_wrong + trivia_listPercentScoreWrong;
+    }
+    trivia_displayIngameScores();
+    if (trivia_questions.length > trivia_currentQuestionIndex + 1) {
+        trivia_nextButton.classList.remove('hide');
+    } else {
+        trivia_finishButton.classList.remove('hide');
+        trivia_clearStatusClass(document.body)
+    }
+});
+
+function trivia_scoringValueCorrections(x) {
+    return Number.parseFloat(x).toFixed(2);
+}
+function trivia_displayIngameScores() {
+    trivia_c = trivia_scoringValueCorrections(trivia_right);
+    trivia_w = trivia_scoringValueCorrections(trivia_wrong);
+    trivia_scoreboardAnswered.innerHTML = trivia_answered;
+    trivia_scoreboardCorrect.innerHTML = trivia_c;
+    trivia_scoreboardWrong.innerHTML = trivia_w;
+}
+
+function trivia_scores() {
+    trivia_resetButton.classList.remove('hide');
+    trivia_questionContainerElement.classList.add('hide');
+    trivia_finishButton.classList.add('hide');
+    var trivia_txt1 = "Your total score was: ";
+    var trivia_finalScore = (trivia_right / trivia_answered) * 100;
+    trivia_finalScore = trivia_scoringValueCorrections(trivia_finalScore);
+    trivia_right = trivia_scoringValueCorrections(trivia_right);
+    let trivia_result = trivia_txt1.concat(trivia_right.toString(), "/", trivia_answered.toString(), " which is ", trivia_finalScore.toString(), "%");
+    trivia_total_score_results.innerHTML = trivia_result;
+    var trivia_txt2 = "Your total points are: "
+    if (trivia_rankedGame == true) {
+        if (trivia_pointTotal >= 20000) {
+            if (trivia_userRank == trivia_highestRank) {
+                let trivia_resultRank = trivia_txt2.concat(trivia_pointTotal.toString(), ". You passed! You are already the highest rank! Congrats on being a Comp. Sci. SuperStar!!!!");
+                trivia_alg_score.innerHTML = trivia_resultRank;
+            }
+            else {
+                let trivia_resultRank = trivia_txt2.concat(trivia_pointTotal.toString(), ". You passed! You will be ranked up");
+                trivia_alg_score.innerHTML = trivia_resultRank;
+                trivia_userRank++;
+            }
+        }
+        else if (trivia_pointTotal < 20000 && trivia_pointTotal >= 15000) {
+                let trivia_resultRank = trivia_txt2.concat(trivia_pointTotal.toString(), ". You were so close to ranking up! Try again.");
+                trivia_alg_score.innerHTML = trivia_resultRank;
+        }
+        else{
+            if (trivia_userRank == 0) {
+                let trivia_resultRank = trivia_txt2.concat(trivia_pointTotal.toString(), ". Thanks for playing");
+                trivia_alg_score.innerHTML = trivia_resultRank;
+            }
+            else {
+                let trivia_resultRank = trivia_txt2.concat(trivia_pointTotal.toString(), ". You scored below the required amount, you will be ranked down");
+                trivia_alg_score.innerHTML = trivia_resultRank;
+                trivia_userRank--;
+            }
+        }
+    }
+    else {
+            let trivia_resultRank = trivia_txt2.concat(trivia_pointTotal.toString(), "! Congrats!");
+            trivia_alg_score.innerHTML = trivia_resultRank;
     }
 
 }
@@ -264,6 +369,10 @@ function trivia_setStatusClass(element, correct) {
         element.classList.add('wrong');
     }
 
+}
+function trivia_removeSelectedListClass(element) {
+    element.classList.remove('trivia_selectedCorrect');
+    element.classList.remove('trivia_selectedWrong');
 }
 
 function trivia_clearStatusClass(element) {
@@ -280,12 +389,12 @@ function trivia_resetGame() {
 
     trivia_resetButton.classList.add('hide');
 
-    document.getElementById('trivia_qnum').innerHTML = trivia_answered;
-    document.getElementById('trivia_total_correct').innerHTML = trivia_right;
-    document.getElementById('trivia_total_wrong').innerHTML = trivia_wrong;
+    trivia_scoreboardAnswered.innerHTML = trivia_answered;
+    trivia_scoreboardCorrect.innerHTML = trivia_right;
+    trivia_scoreboardWrong.innerHTML = trivia_wrong;
 
-    document.getElementById('trivia_total_score').innerHTML = "";
-    document.getElementById('trivia_alg_score').innerHTML = "";
+    trivia_total_score_results.innerHTML = "";
+    trivia_alg_score.innerHTML = "";
 
     trivia_pracByRorT_btns.classList.add('hide');
     trivia_initScreen.classList.remove('hide');
