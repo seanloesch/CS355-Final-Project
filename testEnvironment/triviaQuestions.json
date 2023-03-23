@@ -772,6 +772,29 @@
                     "correct": false
                 }
             ]
+        },
+        {
+            "topic": "Risk Management",
+            "numCorrect": 1,
+            "question": "What is risk management in the context of computer science?",
+            "answers": [
+                {
+                    "text": "Risk management in computer science involves identifying potential risks or threats to a system or network, assessing their likelihood and potential impact, and taking steps to mitigate or manage those risks. This can involve implementing security measures, creating disaster recovery plans, and regularly monitoring and updating systems to address new threats.",
+                    "correct": true
+                },
+                {
+                    "text": "Risk management in computer science involves identifying potential opportunities for innovation and growth, and taking calculated risks to pursue those opportunities. This can involve investing in new technologies, developing new products or services, and exploring new markets.",
+                    "correct": false
+                },
+                {
+                    "text": "Risk management in computer science involves identifying potential legal or regulatory risks, such as data privacy or intellectual property issues, and taking steps to ensure compliance with relevant laws and regulations. This can involve developing policies and procedures, conducting audits, and seeking legal advice when necessary.",
+                    "correct": false
+                },
+                {
+                    "text": "Risk management in computer science involves identifying potential financial risks, such as budget overruns or revenue losses, and taking steps to mitigate those risks. This can involve financial forecasting, cost-benefit analysis, and contingency planning.",
+                    "correct": false
+                }
+            ]
         }
     ],
     "2": [
@@ -1265,7 +1288,7 @@
             ]
         },
         {
-            "topic": "Biometric Authentication",
+            "topic": "Physical Security",
             "numCorrect": 1,
             "question": "Which of the following is not a type of biometric authentication?",
             "answers": [
@@ -1352,6 +1375,98 @@
                 },
                 {
                     "text": "By stealing physical access credentials to gain entry to restricted areas",
+                    "correct": false
+                }
+            ]
+        },
+        {
+            "topic": "Vulnerabilities",
+            "numCorrect": 1,
+            "question": "How are vulnerabilities discovered and reported?",
+            "answers": [
+                {
+                    "text": "Vulnerabilities are discovered and reported by automated software tools.",
+                    "correct": false
+                },
+                {
+                    "text": "Vulnerabilities are discovered and reported by hackers who exploit them for personal gain.",
+                    "correct": false
+                },
+                {
+                    "text": "Vulnerabilities are discovered and reported by security researchers who specialize in identifying software flaws.",
+                    "correct": true
+                },
+                {
+                    "text": "Vulnerabilities are reported by users who experience problems with software, and are then investigated by the software vendor.",
+                    "correct": false
+                }
+            ]
+        },
+        {
+            "topic": "Vulnerabilities",
+            "numCorrect": 1,
+            "question": "What is the difference between a zero-day vulnerability and a known vulnerability?",
+            "answers": [
+                {
+                    "text": "A zero-day vulnerability is a newly discovered vulnerability that has not yet been disclosed to the software vendor or the public, while a known vulnerability is a flaw that has been previously identified and can be patched by the software vendor.",
+                    "correct": true
+                },
+                {
+                    "text": "A zero-day vulnerability is a vulnerability that has been patched by the software vendor, while a known vulnerability is a flaw that has not yet been identified and patched.",
+                    "correct": false
+                },
+                {
+                    "text": "A zero-day vulnerability is a vulnerability that is only known by attackers, while a known vulnerability is a flaw that is well-documented and understood by the cybersecurity community.",
+                    "correct": false
+                },
+                {
+                    "text": "A zero-day vulnerability is a vulnerability that can only be exploited by insiders with privileged access to a system, while a known vulnerability can be exploited by anyone who has access to the system.",
+                    "correct": false
+                }
+            ]
+        },
+        {
+            "topic": "Vulnerabilities",
+            "numCorrect": 1,
+            "question": "How are vulnerabilities classified?",
+            "answers": [
+                {
+                    "text": "Vulnerabilities are classified based on the type of software that is affected, such as operating systems or applications.",
+                    "correct": false
+                },
+                {
+                    "text": "Vulnerabilities are classified based on the severity of their impact on a system, such as low, medium, or high.",
+                    "correct": false
+                },
+                {
+                    "text": "Vulnerabilities are classified based on the method of exploitation, such as through a web application or a network.",
+                    "correct": false
+                },
+                {
+                    "text": "Vulnerabilities are classified based on the root cause of the vulnerability, such as buffer overflow or cross-site scripting.",
+                    "correct": true
+                }
+            ]
+        },
+        {
+            "topic": "Risk Management",
+            "numCorrect": 1,
+            "question": "Why is risk management important in computer science?",
+            "answers": [
+                {
+                    "text": "To identify and manage potential risks to computer systems and networks.",
+                    "correct": true
+                },
+                {
+                    "text": "To pursue opportunities for innovation and growth by taking calculated risks.",
+                    "correct": false
+                },
+                {
+                    "text": "To ensure compliance with relevant laws and regulations related to computer science.",
+                    "correct": false
+                },
+                {
+                    "text": "To mitigate potential financial risks associated with computer science.",
                     "correct": false
                 }
             ]
@@ -1978,6 +2093,75 @@
                     "correct": false
                 }
             ]
+        },
+        {
+            "topic": "Vulnerabilities",
+            "numCorrect": 1,
+            "question": "What is vulnerability scanning?",
+            "answers": [
+                {
+                    "text": "Vulnerability scanning is the process of identifying vulnerabilities in software by attempting to exploit them.",
+                    "correct": false
+                },
+                {
+                    "text": "Vulnerability scanning is the process of analyzing source code to identify potential security flaws.",
+                    "correct": false
+                },
+                {
+                    "text": "Vulnerability scanning is the process of scanning networks or systems to identify known vulnerabilities.",
+                    "correct": true
+                },
+                {
+                    "text": "Vulnerability scanning is the process of hardening a system to prevent the exploitation of known vulnerabilities.",
+                    "correct": false
+                }
+            ]
+        },
+        {
+            "topic": "Vulnerabilities",
+            "numCorrect": 1,
+            "question": "What is the difference between a vulnerability and an exploit?",
+            "answers": [
+                {
+                    "text": "A vulnerability is a flaw in software that can be exploited by attackers, while an exploit is the actual technique or code used to take advantage of the vulnerability.",
+                    "correct": true
+                },
+                {
+                    "text": "A vulnerability is a type of attack that seeks to exploit a system's weaknesses, while an exploit is a weakness in software that is often used by attackers to carry out a vulnerability.",
+                    "correct": false
+                },
+                {
+                    "text": "A vulnerability is a specific type of security incident that affects software, while an exploit is a general term used to describe any malicious activity on a system.",
+                    "correct": false
+                },
+                {
+                    "text": "A vulnerability is a type of software error that can cause crashes or other system problems, while an exploit is a tool used by developers to test software for vulnerabilities.",
+                    "correct": false
+                }
+            ]
+        },
+        {
+            "topic": "Vulnerabilities",
+            "numCorrect": 1,
+            "question": "What are some common types of vulnerabilities?",
+            "answers": [
+                {
+                    "text": "Denial-of-service (DoS) attacks, distributed denial-of-service (DDoS) attacks, and brute-force attacks.",
+                    "correct": false
+                },
+                {
+                    "text": "Cross-site scripting (XSS), SQL injection, and buffer overflow vulnerabilities.",
+                    "correct": true
+                },
+                {
+                    "text": "Phishing, malware, and social engineering attacks.",
+                    "correct": false
+                },
+                {
+                    "text": "Man-in-the-middle (MITM) attacks, rootkits, and Trojan horses.",
+                    "correct": false
+                }
+            ]
         }
     ],
     "4": [
@@ -2530,6 +2714,144 @@
                 {
                     "text": "They can encrypt all email traffic to prevent interception",
                     "correct": false
+                }
+            ]
+        },
+        {
+            "topic": "Vulnerabilities",
+            "numCorrect": 1,
+            "question": "How can organizations prioritize vulnerability remediation?",
+            "answers": [
+                {
+                    "text": "Organizations should prioritize vulnerability remediation based on the age of the vulnerability, with the oldest vulnerabilities being addressed first.",
+                    "correct": false
+                },
+                {
+                    "text": "Organizations should prioritize vulnerability remediation based on the complexity of the vulnerability, with the most complex vulnerabilities being addressed first.",
+                    "correct": false
+                },
+                {
+                    "text": "Organizations should prioritize vulnerability remediation based on the severity of the vulnerability, with the most severe vulnerabilities being addressed first.",
+                    "correct": true
+                },
+                {
+                    "text": "Organizations should prioritize vulnerability remediation based on the likelihood of the vulnerability being exploited, with the most likely vulnerabilities being addressed first.",
+                    "correct": false
+                }
+            ]
+        },
+        {
+            "topic": "Vulnerabilities",
+            "numCorrect": 1,
+            "question": "How does the severity of a vulnerability affect remediation prioritization?",
+            "answers": [
+                {
+                    "text": "The severity of a vulnerability has no impact on remediation prioritization.",
+                    "correct": false
+                },
+                {
+                    "text": "The severity of a vulnerability is the only factor considered when prioritizing remediation.",
+                    "correct": false
+                },
+                {
+                    "text": "The severity of a vulnerability is an important factor in prioritizing remediation, with more severe vulnerabilities being addressed first.",
+                    "correct": true
+                },
+                {
+                    "text": "The severity of a vulnerability is only considered after all other factors have been taken into account.",
+                    "correct": false
+                }
+            ]
+        },
+        {
+            "topic": "Vulnerabilities",
+            "numCorrect": 1,
+            "question": "How can vulnerabilities be mitigated or eliminated?",
+            "answers": [
+                {
+                    "text": "Vulnerabilities can be mitigated or eliminated by ignoring them and hoping that attackers don't find them.",
+                    "correct": false
+                },
+                {
+                    "text": "Vulnerabilities can be mitigated or eliminated by purchasing and installing antivirus software on all computers.",
+                    "correct": false
+                },
+                {
+                    "text": "Vulnerabilities can be mitigated or eliminated by implementing security patches as soon as they become available.",
+                    "correct": true
+                },
+                {
+                    "text": "Vulnerabilities can be mitigated or eliminated by creating a security perimeter around the organization's network.",
+                    "correct": false
+                }
+            ]
+        },
+        {
+            "topic": "Risk Management",
+            "numCorrect": 1,
+            "question": "What is a primary step involved in risk management?",
+            "answers": [
+                {
+                    "text": "Identifying potential risks",
+                    "correct": false
+                },
+                {
+                    "text": "Assessing the likelihood and impact of identified risks",
+                    "correct": false
+                },
+                {
+                    "text": "Developing and implementing strategies to manage or mitigate identified risks",
+                    "correct": false
+                },
+                {
+                    "text": "All of the above",
+                    "correct": true
+                }
+            ]
+        },
+        {
+            "topic": "Risk Management",
+            "numCorrect": 1,
+            "question": "What is the difference between risk management and vulnerability management?",
+            "answers": [
+                {
+                    "text": "Risk management involves identifying and assessing potential risks, and developing strategies to mitigate or manage those risks. Vulnerability management involves identifying and addressing vulnerabilities or weaknesses in a system or network that could be exploited by attackers.",
+                    "correct": true
+                },
+                {
+                    "text": "Risk management is concerned with financial risks, while vulnerability management is concerned with security risks.",
+                    "correct": false
+                },
+                {
+                    "text": "Risk management involves identifying and addressing existing risks, while vulnerability management involves identifying and addressing potential risks.",
+                    "correct": false
+                },
+                {
+                    "text": "There is no difference between risk management and vulnerability management; the terms can be used interchangeably.",
+                    "correct": false
+                }
+            ]
+        },
+        {
+            "topic": "Risk Management",
+            "numCorrect": 1,
+            "question": "What are the primary risks that computer systems face?",
+            "answers": [
+                {
+                    "text": "Unauthorized access to sensitive data",
+                    "correct": false
+                },
+                {
+                    "text": "Malware infections and cyber attacks",
+                    "correct": false
+                },
+                {
+                    "text": "Hardware or software failure",
+                    "correct": false
+                },
+                {
+                    "text": "All of the above",
+                    "correct": true
                 }
             ]
         }
@@ -3217,6 +3539,52 @@
                     "correct": false
                 }
             ]
+        },
+        {
+            "topic": "Risk Management",
+            "numCorrect": 1,
+            "question": "How can organizations identify and assess risks in their computing environments?",
+            "answers": [
+                {
+                    "text": "Conducting regular vulnerability assessments and penetration testing",
+                    "correct": false
+                },
+                {
+                    "text": "Reviewing access controls and permissions",
+                    "correct": false
+                },
+                {
+                    "text": "Identifying and tracking assets and data",
+                    "correct": false
+                },
+                {
+                    "text": "All of the above",
+                    "correct": true
+                }
+            ]
+        },
+        {
+            "topic": "Risk Management",
+            "numCorrect": 1,
+            "question": "What is the role of risk assessment in risk management?",
+            "answers": [
+                {
+                    "text": "To identify and evaluate potential risks to an organization or system",
+                    "correct": false
+                },
+                {
+                    "text": "To prioritize risks based on their likelihood and potential impact",
+                    "correct": false
+                },
+                {
+                    "text": "To develop strategies to manage or mitigate identified risks",
+                    "correct": false
+                },
+                {
+                    "text": "All of the above",
+                    "correct": true
+                }
+            ]
         }
     ],
     "6": [
@@ -3787,6 +4155,144 @@
                     "correct": false
                 }
             ]
+        },
+        {
+            "topic": "Vulnerabilities",
+            "numCorrect": 1,
+            "question": "How can individuals protect themselves from vulnerabilities in their personal devices and applications?",
+            "answers": [
+                {
+                    "text": "Individuals can protect themselves by never downloading any apps or software.",
+                    "correct": false
+                },
+                {
+                    "text": "Individuals can protect themselves by always running the latest version of their operating system and applications.",
+                    "correct": true
+                },
+                {
+                    "text": "Individuals can protect themselves by disabling all security features on their devices and applications.",
+                    "correct": false
+                },
+                {
+                    "text": "Individuals can protect themselves by never using public Wi-Fi networks.",
+                    "correct": false
+                }
+            ]
+        },
+        {
+            "topic": "Vulnerabilities",
+            "numCorrect": 1,
+            "question": "What is the impact of vulnerabilities?",
+            "answers": [
+                {
+                    "text": "Vulnerabilities have no impact on computer systems or organizations.",
+                    "correct": false
+                },
+                {
+                    "text": "Vulnerabilities can be a minor inconvenience that has little impact on computer systems or organizations.",
+                    "correct": false
+                },
+                {
+                    "text": "Vulnerabilities can have a significant impact on computer systems and organizations, including data breaches, financial losses, and damage to reputation.",
+                    "correct": true
+                },
+                {
+                    "text": "Vulnerabilities only affect individual users and do not have any impact on organizations.",
+                    "correct": false
+                }
+            ]
+        },
+        {
+            "topic": "Vulnerabilities",
+            "numCorrect": 1,
+            "question": "How can vulnerabilities in critical infrastructure systems be managed?",
+            "answers": [
+                {
+                    "text": "Vulnerabilities in critical infrastructure systems cannot be managed and must be accepted as unavoidable risks.",
+                    "correct": false
+                },
+                {
+                    "text": "Vulnerabilities in critical infrastructure systems can be managed by disconnecting them from the internet.",
+                    "correct": false
+                },
+                {
+                    "text": "Vulnerabilities in critical infrastructure systems can be managed by implementing rigorous security controls and monitoring systems.",
+                    "correct": true
+                },
+                {
+                    "text": "Vulnerabilities in critical infrastructure systems can be managed by relying on physical security measures rather than technical security measures.",
+                    "correct": false
+                }
+            ]
+        },
+        {
+            "topic": "Risk Management",
+            "numCorrect": 1,
+            "question": "What is residual risk and how is it managed?",
+            "answers": [
+                {
+                    "text": "Residual risk is the level of risk that remains after implementing risk management strategies. It is managed by monitoring and reviewing the effectiveness of the implemented strategies, and making adjustments as necessary to further mitigate the residual risk.",
+                    "correct": true
+                },
+                {
+                    "text": "Residual risk is the risk that remains after a security incident or breach occurs. It is managed by restoring systems and data to their previous state, and implementing additional security measures to prevent future incidents.",
+                    "correct": false
+                },
+                {
+                    "text": "Residual risk is the risk associated with using outdated or unsupported hardware or software. It is managed by regularly updating systems and replacing outdated hardware and software.",
+                    "correct": false
+                },
+                {
+                    "text": "Residual risk is the risk associated with human error or negligence. It is managed by providing training and awareness programs, and implementing strict policies and procedures.",
+                    "correct": false
+                }
+            ]
+        },
+        {
+            "topic": "Risk Management",
+            "numCorrect": 1,
+            "question": "What are the limitations of traditional quantitative risk analysis approaches in complex and dynamic computer systems?",
+            "answers": [
+                {
+                    "text": "May not capture full range of risks and their interdependencies. Relies on historical data and assumptions that may not apply in rapidly changing environments. Time-consuming and costly.",
+                    "correct": true
+                },
+                {
+                    "text": "Effective in capturing all types of risks and adaptable to changing environments.",
+                    "correct": false
+                },
+                {
+                    "text": "Can be easily applied and does not require specialized expertise.",
+                    "correct": false
+                },
+                {
+                    "text": "Sufficient for identifying risks but requires extensive data collection and analysis.",
+                    "correct": false
+                }
+            ]
+        },
+        {
+            "topic": "Risk Management",
+            "numCorrect": 1,
+            "question": "How can risk management be integrated into the software development lifecycle to ensure that security is built into the design and development of systems and applications?",
+            "answers": [
+                {
+                    "text": "By performing threat modeling, conducting security code reviews, and integrating security testing into the development process.",
+                    "correct": true
+                },
+                {
+                    "text": "By performing a one-time risk assessment at the beginning of the software development lifecycle.",
+                    "correct": false
+                },
+                {
+                    "text": "By relying solely on automated tools to identify and mitigate security risks during the development process.",
+                    "correct": false
+                },
+                {
+                    "text": "By conducting security testing only after the software has been developed and before it is released to production.",
+                    "correct": false
+                }
+            ]
         }
     ],
     "7": [
@@ -3883,7 +4389,7 @@
             ]
         },
         {
-            "topic": "Authorization",
+            "topic": "Authentication",
             "numCorrect": 1,
             "question": "What is the most trustworthy form of authorization?",
             "answers": [
@@ -3906,7 +4412,7 @@
             ]
         },
         {
-            "topic": "Authorization",
+            "topic": "Authentication",
             "numCorrect": 1,
             "question": "Why is it important to hide forms of authorization?",
             "answers": [
@@ -4322,6 +4828,144 @@
                 },
                 {
                     "text": "By using phishing attacks to trick individuals into entering their login credentials",
+                    "correct": false
+                }
+            ]
+        },
+        {
+            "topic": "Vulnerabilities",
+            "numCorrect": 1,
+            "question": "What is the relationship between vulnerability management and incident response?",
+            "answers": [
+                {
+                    "text": "There is no relationship between vulnerability management and incident response.",
+                    "correct": false
+                },
+                {
+                    "text": "Vulnerability management and incident response are the same thing.",
+                    "correct": false
+                },
+                {
+                    "text": "Vulnerability management is a proactive approach to identifying and addressing vulnerabilities in systems, while incident response is a reactive approach to addressing security incidents that have already occurred.",
+                    "correct": true
+                },
+                {
+                    "text": "Incident response is a proactive approach to identifying and addressing vulnerabilities in systems, while vulnerability management is a reactive approach to addressing security incidents that have already occurred.",
+                    "correct": false
+                }
+            ]
+        },
+        {
+            "topic": "Vulnerabilities",
+            "numCorrect": 2,
+            "question": "How can organizations manage and mitigate vulnerabilities in legacy systems and applications that are no longer supported by vendors or developers? (Select all that apply)",
+            "answers": [
+                {
+                    "text": "They can't. Once a system or application is no longer supported, it is impossible to manage or mitigate vulnerabilities.",
+                    "correct": false
+                },
+                {
+                    "text": "They can rely on anti-virus software to protect against known vulnerabilities.",
+                    "correct": false
+                },
+                {
+                    "text": "They can implement compensating controls, such as firewalls or intrusion detection systems, to help protect against vulnerabilities.",
+                    "correct": true
+                },
+                {
+                    "text": "They can migrate to newer systems or applications that are still supported by vendors or developers.",
+                    "correct": true
+                }
+            ]
+        },
+        {
+            "topic": "Vulnerabilities",
+            "numCorrect": 1,
+            "question": "What are the unique challenges and considerations when conducting vulnerability assessments and remediation?",
+            "answers": [
+                {
+                    "text": "There are no unique challenges or considerations when conducting vulnerability assessments and remediation.",
+                    "correct": false
+                },
+                {
+                    "text": "Vulnerability assessments and remediation are always straightforward and simple processes.",
+                    "correct": false
+                },
+                {
+                    "text": "Unique challenges and considerations when conducting vulnerability assessments and remediation include identifying all potential vulnerabilities, prioritizing which vulnerabilities to remediate first, and ensuring that remediation efforts do not cause any unintended consequences.",
+                    "correct": true
+                },
+                {
+                    "text": "The only consideration when conducting vulnerability assessments and remediation is to patch all identified vulnerabilities as quickly as possible.",
+                    "correct": false
+                }
+            ]
+        },
+        {
+            "topic": "Risk Management",
+            "numCorrect": 1,
+            "question": "What are some challenges and considerations when conducting risk assessments in highly regulated industries?",
+            "answers": [
+                {
+                    "text": "Relying too heavily on qualitative risk assessments and failing to utilize quantitative risk analysis tools, ignoring the potential for cyberattacks and data breaches, and failing to consider the impact of supply chain disruptions.",
+                    "correct": false
+                },
+                {
+                    "text": "Ensuring compliance with relevant regulations, managing sensitive data appropriately, and maintaining documentation to support findings and recommendations.",
+                    "correct": true
+                },
+                {
+                    "text": "Focusing only on financial risks and ignoring legal and reputational risks, neglecting to involve stakeholders in the risk assessment process, and failing to regularly review and update risk assessments.",
+                    "correct": false
+                },
+                {
+                    "text": "Not adequately assessing the risks posed by new and emerging technologies, failing to consider the impact of external events such as natural disasters or geopolitical instability, and underestimating the potential for human error.",
+                    "correct": false
+                }
+            ]
+        },
+        {
+            "topic": "Risk Management",
+            "numCorrect": 1,
+            "question": "How can organizations effectively manage and mitigate emerging risks associated with new technologies and trends?",
+            "answers": [
+                {
+                    "text": "By staying informed about new and emerging technologies and trends, conducting regular risk assessments, and implementing a proactive risk management strategy.",
+                    "correct": false
+                },
+                {
+                    "text": "By ignoring new and emerging technologies and trends and focusing only on existing risks, investing heavily in insurance policies to mitigate potential losses, and relying on outdated risk management frameworks.",
+                    "correct": false
+                },
+                {
+                    "text": "By adopting a reactive approach to risk management, waiting until emerging risks become actual threats before taking action, and relying on external experts to identify and manage emerging risks.",
+                    "correct": false
+                },
+                {
+                    "text": "By establishing cross-functional teams to assess and manage emerging risks, collaborating with industry experts and peers, and investing in research and development to stay ahead of emerging trends.",
+                    "correct": true
+                }
+            ]
+        },
+        {
+            "topic": "Risk Management",
+            "numCorrect": 1,
+            "question": "How can organizations balance the need for security with the need for innovation and agility in a rapidly changing business and technology environment?",
+            "answers": [
+                {
+                    "text": "By prioritizing innovation and agility over security, accepting some level of risk as a cost of doing business, and relying on insurance policies to mitigate potential losses.",
+                    "correct": false
+                },
+                {
+                    "text": "By prioritizing security over innovation and agility, implementing strict policies and procedures to reduce risk, and limiting access to critical systems and data.",
+                    "correct": false
+                },
+                {
+                    "text": "By finding a balance between security, innovation, and agility, involving security experts in the design and development process, and implementing flexible security measures that can adapt to changing business and technology needs.",
+                    "correct": true
+                },
+                {
+                    "text": "By outsourcing security to external providers, allowing them to manage security risks while the organization focuses on innovation and agility.",
                     "correct": false
                 }
             ]
@@ -4863,6 +5507,144 @@
                     "correct": false
                 }
             ]
+        },
+        {
+            "topic": "Vulnerabilities",
+            "numCorrect": 1,
+            "question": "How can organizations identify and address vulnerabilities that exist in third-party software libraries and components that are used in their applications?",
+            "answers": [
+                {
+                    "text": "There is no way to identify and address vulnerabilities in third-party software libraries and components.",
+                    "correct": false
+                },
+                {
+                    "text": "Organizations can only rely on the software vendors to address any vulnerabilities in third-party software libraries and components.",
+                    "correct": false
+                },
+                {
+                    "text": "Organizations can regularly scan their systems and applications for vulnerabilities and use vulnerability management tools to identify and prioritize vulnerabilities in third-party software libraries and components.",
+                    "correct": true
+                },
+                {
+                    "text": "Organizations can simply avoid using third-party software libraries and components altogether to eliminate the risk of vulnerabilities.",
+                    "correct": false
+                }
+            ]
+        },
+        {
+            "topic": "Vulnerabilities",
+            "numCorrect": 1,
+            "question": "How can machine learning and artificial intelligence be used to detect and remediate vulnerabilities in complex systems with a large number of interconnected components?",
+            "answers": [
+                {
+                    "text": "Machine learning and artificial intelligence cannot be used to detect or remediate vulnerabilities in complex systems.",
+                    "correct": false
+                },
+                {
+                    "text": "Machine learning and artificial intelligence can only be used to detect vulnerabilities, but not to remediate them.",
+                    "correct": false
+                },
+                {
+                    "text": "Machine learning and artificial intelligence can be used to analyze large amounts of data and detect patterns that may indicate vulnerabilities. This information can be used to prioritize remediation efforts and suggest potential remediation strategies.",
+                    "correct": true
+                },
+                {
+                    "text": "Machine learning and artificial intelligence can be used to completely automate vulnerability remediation in complex systems.",
+                    "correct": false
+                }
+            ]
+        },
+        {
+            "topic": "Vulnerabilities",
+            "numCorrect": 1,
+            "question": "What are some strategies for managing vulnerabilities in a highly dynamic and rapidly changing environment?",
+            "answers": [
+                {
+                    "text": "There are no strategies for managing vulnerabilities in a highly dynamic and rapidly changing environment.",
+                    "correct": false
+                },
+                {
+                    "text": "The only strategy for managing vulnerabilities in a highly dynamic and rapidly changing environment is to simply accept the risks associated with those vulnerabilities.",
+                    "correct": false
+                },
+                {
+                    "text": "Strategies for managing vulnerabilities in a highly dynamic and rapidly changing environment include continuous monitoring, prioritizing vulnerabilities based on potential impact, and implementing automated remediation strategies.",
+                    "correct": true
+                },
+                {
+                    "text": "The best strategy for managing vulnerabilities in a highly dynamic and rapidly changing environment is to simply patch all vulnerabilities as soon as they are identified.",
+                    "correct": false
+                }
+            ]
+        },
+        {
+            "topic": "Risk Management",
+            "numCorrect": 1,
+            "question": "How can organizations effectively communicate risk information to non-technical stakeholders?",
+            "answers": [
+                {
+                    "text": "Organizations can communicate risk information to non-technical stakeholders by using simple and clear language, providing visual aids such as charts and graphs, and focusing on the potential impact on business objectives and goals.",
+                    "correct": true
+                },
+                {
+                    "text": "Organizations can communicate risk information to non-technical stakeholders by using technical jargon and terminology, providing detailed technical reports, and focusing on the technical details of the systems and processes involved.",
+                    "correct": false
+                },
+                {
+                    "text": "Organizations can communicate risk information to non-technical stakeholders by ignoring the technical details and only focusing on high-level business goals and objectives.",
+                    "correct": false
+                },
+                {
+                    "text": "Organizations can communicate risk information to non-technical stakeholders by using fear-mongering tactics and exaggerating the potential risks and consequences.",
+                    "correct": false
+                }
+            ]
+        },
+        {
+            "topic": "Risk Management",
+            "numCorrect": 1,
+            "question": "What are some best practices for conducting risk assessments in a decentralized and distributed computing environment?",
+            "answers": [
+                {
+                    "text": "Ensure that all stakeholders are involved in the risk assessment process, including IT and non-IT staff.",
+                    "correct": false
+                },
+                {
+                    "text": "Conduct a comprehensive inventory of all hardware, software, and data assets across the entire computing environment.",
+                    "correct": true
+                },
+                {
+                    "text": "Use a standard risk assessment methodology and tools to ensure consistency and accuracy of results.",
+                    "correct": false
+                },
+                {
+                    "text": "Conduct regular penetration testing and vulnerability scans to identify potential risks and vulnerabilities.",
+                    "correct": false
+                }
+            ]
+        },
+        {
+            "topic": "Risk Management",
+            "numCorrect": 1,
+            "question": "How can organizations ensure that their risk management processes are aligned with industry best practices and standards?",
+            "answers": [
+                {
+                    "text": "By regularly reviewing and updating their risk management processes to ensure they are consistent with the latest industry best practices and standards.",
+                    "correct": true
+                },
+                {
+                    "text": "By outsourcing their risk management processes to third-party providers who specialize in industry best practices and standards.",
+                    "correct": false
+                },
+                {
+                    "text": "By relying solely on internal expertise and experience to develop their risk management processes.",
+                    "correct": false
+                },
+                {
+                    "text": "By following the risk management processes of other organizations in their industry.",
+                    "correct": false
+                }
+            ]
         }
     ],
     "9": [
@@ -5356,6 +6138,213 @@
                     "correct": false
                 }
             ]
+        },
+        {
+            "topic": "Security Compliance",
+            "numCorrect": 3,
+            "question": "What are some considerations for implementing security compliance in industries with unique regulatory requirements, such as healthcare or finance? (Select all that apply)",
+            "answers": [
+                {
+                    "text": "Ensuring compliance with industry-specific laws and regulations",
+                    "correct": true
+                },
+                {
+                    "text": "Conducting regular risk assessments to identify potential threats and vulnerabilities",
+                    "correct": true
+                },
+                {
+                    "text": "Implementing security controls that meet or exceed industry standards",
+                    "correct": true
+                },
+                {
+                    "text": "All of these are incorrect",
+                    "correct": false
+                }
+            ]
+        },
+        {
+            "topic": "Security Compliance",
+            "numCorrect": 3,
+            "question": "How can companies ensure security compliance when they are relying on third-party providers for critical security functions? (Select all that apply)",
+            "answers": [
+                {
+                    "text": "Conducting thorough due diligence before selecting a third-party provider",
+                    "correct": true
+                },
+                {
+                    "text": "Including specific security requirements in the contract with the third-party provider",
+                    "correct": true
+                },
+                {
+                    "text": "Establishing clear communication channels and regularly monitoring the third-party provider's security practices",
+                    "correct": true
+                },
+                {
+                    "text": "All of these are incorrect",
+                    "correct": false
+                }
+            ]
+        },
+        {
+            "topic": "Security Compliance",
+            "numCorrect": 1,
+            "question": "What are the ethical considerations around conducting security compliance assessments? (Select all that apply)",
+            "answers": [
+                {
+                    "text": "Ensuring that the assessment is conducted in a transparent and fair manner",
+                    "correct": true
+                },
+                {
+                    "text": "Protecting the privacy and confidentiality of individuals and organizations being assessed",
+                    "correct": true
+                },
+                {
+                    "text": "Avoiding conflicts of interest and ensuring the assessment is conducted independently and impartially",
+                    "correct": true
+                },
+                {
+                    "text": "Focusing solely on compliance and not considering broader ethical issues",
+                    "correct": false
+                }
+            ]
+        },
+        {
+            "topic": "Vulnerabilities",
+            "numCorrect": 1,
+            "question": "What are some best practices for conducting vulnerability assessments and remediation in highly regulated industries?",
+            "answers": [
+                {
+                    "text": "There are no best practices for conducting vulnerability assessments and remediation in highly regulated industries.",
+                    "correct": false
+                },
+                {
+                    "text": "Best practices for conducting vulnerability assessments and remediation in highly regulated industries include avoiding the use of automated tools and relying on manual testing and remediation processes.",
+                    "correct": false
+                },
+                {
+                    "text": "Best practices for conducting vulnerability assessments and remediation in highly regulated industries include following industry-specific regulations and guidelines, conducting regular assessments, and prioritizing vulnerabilities based on potential impact.",
+                    "correct": true
+                },
+                {
+                    "text": "The best practice for conducting vulnerability assessments and remediation in highly regulated industries is to outsource the process to a third-party vendor.",
+                    "correct": false
+                }
+            ]
+        },
+        {
+            "topic": "Vulnerabilities",
+            "numCorrect": 1,
+            "question": "How can organizations manage and mitigate vulnerabilities in legacy systems and applications that are no longer supported by vendors or developers?",
+            "answers": [
+                {
+                    "text": "Organizations cannot manage and mitigate vulnerabilities in legacy systems and applications that are no longer supported by vendors or developers.",
+                    "correct": false
+                },
+                {
+                    "text": "The only way to manage and mitigate vulnerabilities in legacy systems and applications that are no longer supported by vendors or developers is to replace them with newer, supported systems.",
+                    "correct": false
+                },
+                {
+                    "text": "Organizations can manage and mitigate vulnerabilities in legacy systems and applications that are no longer supported by vendors or developers by implementing compensating controls, such as network segmentation and access controls, and applying patches and updates as they become available.",
+                    "correct": true
+                },
+                {
+                    "text": "The best way to manage and mitigate vulnerabilities in legacy systems and applications that are no longer supported by vendors or developers is to disconnect them from the network.",
+                    "correct": false
+                }
+            ]
+        },
+        {
+            "topic": "Vulnerabilities",
+            "numCorrect": 1,
+            "question": "What are the ethical considerations when conducting vulnerability research on emerging technologies, such as artificial intelligence or quantum computing?",
+            "answers": [
+                {
+                    "text": "There are no ethical considerations when conducting vulnerability research on emerging technologies.",
+                    "correct": false
+                },
+                {
+                    "text": "Researchers should prioritize their findings over any ethical considerations.",
+                    "correct": false
+                },
+                {
+                    "text": "Ethical considerations when conducting vulnerability research on emerging technologies include the potential impact on individuals and society, ensuring that research is conducted in a controlled environment, and obtaining informed consent from participants.",
+                    "correct": true
+                },
+                {
+                    "text": "Ethical considerations do not apply to vulnerability research on emerging technologies, as the potential benefits of the research outweigh any potential harm.",
+                    "correct": false
+                }
+            ]
+        },
+        {
+            "topic": "Risk Management",
+            "numCorrect": 1,
+            "question": "How can organizations effectively manage and mitigate risks associated with emerging legal and regulatory frameworks?",
+            "answers": [
+                {
+                    "text": "By ignoring the changes in legal and regulatory frameworks and continuing with their current practices.",
+                    "correct": false
+                },
+                {
+                    "text": "By lobbying against the changes in legal and regulatory frameworks that may negatively impact their business.",
+                    "correct": false
+                },
+                {
+                    "text": "By proactively monitoring changes in legal and regulatory frameworks, assessing the potential impact on their business, and implementing changes to comply with the new requirements.",
+                    "correct": true
+                },
+                {
+                    "text": "By waiting until the changes in legal and regulatory frameworks are finalized before taking any action.",
+                    "correct": false
+                }
+            ]
+        },
+        {
+            "topic": "Risk Management",
+            "numCorrect": 1,
+            "question": "What are some best practices for conducting risk assessments in complex and interconnected systems?",
+            "answers": [
+                {
+                    "text": "Assuming that all risks have been identified and can be mitigated.",
+                    "correct": false
+                },
+                {
+                    "text": "Focusing only on the most critical systems and ignoring less important ones.",
+                    "correct": false
+                },
+                {
+                    "text": "Using a collaborative approach that involves all stakeholders and subject matter experts in the risk assessment process.",
+                    "correct": true
+                },
+                {
+                    "text": "Performing risk assessments only once and not revisiting them on a regular basis.",
+                    "correct": false
+                }
+            ]
+        },
+        {
+            "topic": "Risk Management",
+            "numCorrect": 1,
+            "question": "How can organizations ensure that their risk management programs are resilient to emerging threats and risks, such as new forms of malware or cyberattacks?",
+            "answers": [
+                {
+                    "text": "By relying on outdated risk management frameworks and ignoring emerging threats and risks.",
+                    "correct": false
+                },
+                {
+                    "text": "By investing heavily in the latest cybersecurity technologies to protect against emerging threats and risks.",
+                    "correct": false
+                },
+                {
+                    "text": "By implementing a flexible risk management program that can adapt to emerging threats and risks, regularly reviewing and updating it, and ensuring that all stakeholders are aware of the latest risks and mitigation strategies.",
+                    "correct": true
+                },
+                {
+                    "text": "By outsourcing all risk management functions to a third-party vendor.",
+                    "correct": false
+                }
+            ]
         }
     ],
     "10": [
@@ -5846,6 +6835,213 @@
                 },
                 {
                     "text": "The shift to remote work and digital collaboration will eliminate the need for organizations to protect against social engineering attacks.",
+                    "correct": false
+                }
+            ]
+        },
+        {
+            "topic": "Security Compliance",
+            "numCorrect": 1,
+            "question": "How can organizations effectively communicate security compliance requirements?",
+            "answers": [
+                {
+                    "text": "Providing regular training and awareness programs to employees and stakeholders",
+                    "correct": true
+                },
+                {
+                    "text": "Issuing a one-time memo or email to all employees and stakeholders",
+                    "correct": false
+                },
+                {
+                    "text": "Posting the requirements on the company's intranet or website",
+                    "correct": false
+                },
+                {
+                    "text": "Hiring a third-party consultant to communicate the requirements to employees and stakeholders",
+                    "correct": false
+                }
+            ]
+        },
+        {
+            "topic": "Security Compliance",
+            "numCorrect": 3,
+            "question": "How can organizations ensure that their security compliance efforts are resilient to emerging threats and risks? (Select all that apply)",
+            "answers": [
+                {
+                    "text": "Staying up to date on the latest threats and vulnerabilities and adjusting compliance efforts accordingly",
+                    "correct": true
+                },
+                {
+                    "text": "Conducting regular security assessments to identify potential new risks and threats",
+                    "correct": true
+                },
+                {
+                    "text": "Establishing a security culture that emphasizes continuous improvement and learning",
+                    "correct": true
+                },
+                {
+                    "text": "Implementing a rigid security compliance framework that cannot be adjusted as new threats emerge",
+                    "correct": false
+                }
+            ]
+        },
+        {
+            "topic": "Security Compliance",
+            "numCorrect": 1,
+            "question": "How can an organization achieve security compliance in an environment with no established or widely recognized compliance standards, such as emerging technologies or industries?",
+            "answers": [
+                {
+                    "text": "Adopting a risk-based approach to security and implementing security controls that address the unique risks of the environment",
+                    "correct": true
+                },
+                {
+                    "text": "Ignoring security compliance altogether until established standards are created",
+                    "correct": false
+                },
+                {
+                    "text": "Relying on the compliance standards of similar environments or industries as a guide",
+                    "correct": false
+                },
+                {
+                    "text": "Outsourcing security compliance to a third-party provider",
+                    "correct": false
+                }
+            ]
+        },
+        {
+            "topic": "Vulnerabilities",
+            "numCorrect": 1,
+            "question": "How can organizations manage and mitigate vulnerabilities in systems and applications that have been designed with security as an afterthought or have been 'bolted on' as an after-the-fact measure?",
+            "answers": [
+                {
+                    "text": "Organizations cannot manage and mitigate vulnerabilities in systems and applications that have been designed with security as an afterthought or have been 'bolted on.'",
+                    "correct": false
+                },
+                {
+                    "text": "The best way to manage and mitigate vulnerabilities in systems and applications that have been designed with security as an afterthought or have been 'bolted on' is to replace them with more secure systems.",
+                    "correct": false
+                },
+                {
+                    "text": "Organizations can manage and mitigate vulnerabilities in systems and applications that have been designed with security as an afterthought or have been 'bolted on' by conducting security assessments, implementing compensating controls, such as network segmentation and access controls, and applying patches and updates as they become available.",
+                    "correct": true
+                },
+                {
+                    "text": "The best way to manage and mitigate vulnerabilities in systems and applications that have been designed with security as an afterthought or have been 'bolted on' is to disconnect them from the network.",
+                    "correct": false
+                }
+            ]
+        },
+        {
+            "topic": "Vulnerabilities",
+            "numCorrect": 1,
+            "question": "How can organizations effectively balance the need to share vulnerability information and collaborate with other organizations with the need to protect sensitive data and intellectual property?",
+            "answers": [
+                {
+                    "text": "Organizations should not share vulnerability information with other organizations to protect sensitive data and intellectual property.",
+                    "correct": false
+                },
+                {
+                    "text": "Organizations should share vulnerability information with other organizations only if they have a strong business relationship and have signed non-disclosure agreements.",
+                    "correct": false
+                },
+                {
+                    "text": "Organizations can effectively balance the need to share vulnerability information and collaborate with other organizations by establishing clear policies and procedures for sharing information, classifying information according to its sensitivity, and using secure communication channels.",
+                    "correct": true
+                },
+                {
+                    "text": "Organizations should share all vulnerability information with other organizations to foster collaboration and innovation.",
+                    "correct": false
+                }
+            ]
+        },
+        {
+            "topic": "Vulnerabilities",
+            "numCorrect": 1,
+            "question": "What is the role of vulnerabilities in advanced persistent threats (APTs) and how can organizations effectively detect and mitigate these threats?",
+            "answers": [
+                {
+                    "text": "Vulnerabilities play a minor role in APTs, which are primarily carried out through social engineering and other non-technical means.",
+                    "correct": false
+                },
+                {
+                    "text": "Vulnerabilities are the primary means by which APTs gain access to systems and data, and organizations can effectively detect and mitigate these threats by implementing strong access controls and monitoring systems.",
+                    "correct": true
+                },
+                {
+                    "text": "Vulnerabilities are not a significant factor in APTs, which are typically carried out by insiders with authorized access to systems and data.",
+                    "correct": false
+                },
+                {
+                    "text": "Vulnerabilities are an important factor in APTs, but there is no effective way for organizations to detect or mitigate these threats.",
+                    "correct": false
+                }
+            ]
+        },
+        {
+            "topic": "Risk Management",
+            "numCorrect": 1,
+            "question": "What are the limitations of current risk management frameworks in addressing emerging threats, such as artificial intelligence, quantum computing, and advanced persistent threats (APTs)?",
+            "answers": [
+                {
+                    "text": "They are designed to handle emerging threats and can adapt to changing technology landscapes.",
+                    "correct": false
+                },
+                {
+                    "text": "They are effective in identifying and mitigating all types of emerging threats.",
+                    "correct": false
+                },
+                {
+                    "text": "They lack the necessary flexibility to address emerging threats and often focus on historical data and known risks.",
+                    "correct": true
+                },
+                {
+                    "text": "They are not relevant for emerging threats and should be completely replaced.",
+                    "correct": false
+                }
+            ]
+        },
+        {
+            "topic": "Risk Management",
+            "numCorrect": 1,
+            "question": "How can organizations effectively manage and mitigate risks associated with the intersection of technology and human behavior, such as insider threats and social engineering attacks?",
+            "answers": [
+                {
+                    "text": "By investing solely in technological solutions, such as firewalls and antivirus software.",
+                    "correct": false
+                },
+                {
+                    "text": "By hiring more IT staff to monitor and protect against insider threats and social engineering attacks.",
+                    "correct": false
+                },
+                {
+                    "text": "By implementing a comprehensive risk management program that combines technology, policies, and employee training.",
+                    "correct": true
+                },
+                {
+                    "text": "By ignoring the risks associated with the intersection of technology and human behavior, since they are too difficult to manage.",
+                    "correct": false
+                }
+            ]
+        },
+        {
+            "topic": "Risk Management",
+            "numCorrect": 1,
+            "question": "What are some effective strategies for managing and mitigating reputational risks associated with data breaches and other cyber incidents?",
+            "answers": [
+                {
+                    "text": "Denying that the data breach or cyber incident occurred.",
+                    "correct": false
+                },
+                {
+                    "text": "Blaming a third-party vendor for the incident.",
+                    "correct": false
+                },
+                {
+                    "text": "Being transparent with customers and stakeholders about what happened and what steps are being taken to prevent similar incidents in the future.",
+                    "correct": true
+                },
+                {
+                    "text": "Threatening legal action against anyone who discusses the incident publicly.",
                     "correct": false
                 }
             ]
