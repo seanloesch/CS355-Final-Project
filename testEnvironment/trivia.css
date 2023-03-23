@@ -9,6 +9,7 @@
     --hue-neutral: 200;
     --hue-wrong: 0;
     --hue-correct: 145;
+    --hue-selected: 201;
 }
 
 body {
@@ -21,12 +22,17 @@ body {
     justify-content: center;
     align-items: center;
     background-color: hsl(var(--hue), 100%, 20%);
+    overflow: hidden;
 }
 
 body.correct {
     --hue: var(--hue-correct);
 }
-
+.trivia{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 body.wrong {
     --hue: var(--hue-wrong);
 }
@@ -72,6 +78,12 @@ body.wrong {
 .trivia_btn.wrong {
     --hue: var(--hue-wrong);
 }
+.trivia_btn.trivia_selectedCorrect {
+    background-color: blue;
+}
+.trivia_btn.trivia_selectedWrong {
+    background-color: blue;
+}
 
 .trivia_start_btn,
 .trivia_next_btn,
@@ -81,7 +93,8 @@ body.wrong {
 .trivia_rank_btn,
 .trivia_home_btn,
 .trivia_PracByR_btn,
-.trivia_PracByT_btn {
+.trivia_PracByT_btn,
+.trivia_submitList_btn {
     font-size: 1.5rem;
     font-weight: bold;
     --hue: var(--hue-neutral);
@@ -92,11 +105,26 @@ body.wrong {
     color: white;
     outline: none;
 }
+.trivia_start_btn:hover,
+.trivia_next_btn:hover,
+.trivia_finish_btn:hover,
+.trivia_reset_btn:hover,
+.trivia_prac_btn:hover,
+.trivia_rank_btn:hover,
+.trivia_home_btn:hover,
+.trivia_PracByR_btn:hover,
+.trivia_PracByT_btn:hover,
+.trivia_submitList_btn:hover {
+    --hue: var(--hue-neutral);
+    border: 1px solid hsl(var(--hue), 100%, 10%);
+    background-color: hsl(var(--hue), 100%, 30%);
+}
 
-.trivia_controls, .trivia_initScreen {
+.trivia_controls, .trivia_initScreen, .trivia_PracByRorT {
     display: flex;
     justify-content: center;
     align-items: center;
+    margin: auto;
 }
 
 .hide {
@@ -128,6 +156,9 @@ body.wrong {
     border-radius: 5px;
     padding: 10px;
     box-shadow: 0 0 10px 2px;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
 }
 .trivia_prac_btn,
 .trivia_rank_btn {
@@ -136,4 +167,5 @@ body.wrong {
 .trivia_rank_select{
     font-weight: 600;
     display: flex;
+    text-align: center;
 }
