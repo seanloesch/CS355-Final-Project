@@ -22,6 +22,7 @@ const trivia_pracByRorT_btns = document.getElementById('trivia_PracByRorT');
 const trivia_pracByRForm = document.getElementById('trivia_pracByRForm');
 const trivia_pracByTForm = document.getElementById('trivia_pracByTForm');
 const trivia_initScreen = document.getElementById('trivia_initScreen');
+const trivia_controls = document.getElementById('trivia_controls')
 
 var trivia_scoreboard1 = document.getElementById('trivia_scoreboard1');
 var trivia_scoreboard2 = document.getElementById('trivia_scoreboard2')
@@ -146,6 +147,7 @@ function trivia_resetClassList() {
 }
 //--------------------------------------------------------------------------------------
 function trivia_startGame() {
+
     trivia_resetClassList;
     trivia_byTopic = false;
     trivia_rankedForm.style.display = "none";
@@ -315,6 +317,9 @@ function trivia_displayIngameScores() {
 }
 
 function trivia_scores() {
+
+    // trivia_controls.classList.remove('hide');
+
     trivia_resetButton.classList.remove('hide');
     trivia_questionContainerElement.classList.add('hide');
     trivia_finishButton.classList.add('hide');
