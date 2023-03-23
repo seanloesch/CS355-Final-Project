@@ -1,12 +1,13 @@
 let score = 0;
 let time = 0;
-var emails = null;
+var emails;
 var scoreDisplay;
 var timeDisplay;
 var emailDisplay;
 var reportButton;
-var startButton
+var timerInterval;
 var emailInterval;
+var pointInterval;
 const gameTime = 60;
 var easy = 3000;
 var medium = 2000;
@@ -15,6 +16,8 @@ var difficulty;
 var gameOverMessage;
 
 var startTime;
+
+var endGame = false;
 
 scoreDisplay = document.getElementById("scoreDisplay");
 timeDisplay = document.getElementById("timeDisplay");
@@ -32,30 +35,45 @@ easyButton.addEventListener('click', () => {
     startTime = Math.floor(Date.now() / 1000);
     difficulty = easy;
     point = difficulty;
-    phishingFrenzy();
     difficultySelector.classList.add('hide');
     playGame.classList.remove('hide');
+    startGame();
 });
 
 mediumButton.addEventListener('click', () => {
     startTime = Math.floor(Date.now() / 1000);
     difficulty = medium;
     point = difficulty;
-    phishingFrenzy();
     difficultySelector.classList.add('hide');
     playGame.classList.remove('hide');
+    startGame();
 });
 
 hardButton.addEventListener('click', () => {
     startTime = Math.floor(Date.now() / 1000);
     difficulty = hard;
     point = difficulty;
-    phishingFrenzy();
     difficultySelector.classList.add('hide');
     playGame.classList.remove('hide');
+    startGame();
 });
 
+function startGame() {
+    score = 0;
+    time = 0;
+    scoreDisplay;
+    timeDisplay;
+    emailDisplay;
+    reportButton;
+    endGame = false;
+    emailInterval;
+    gameOverMessage = "";
+    phishingFrenzy()
+}
+
 function phishingFrenzy() {
+
+    updateGame();
 
     score = 0;
 
@@ -100,25 +118,29 @@ function phishingFrenzy() {
 
         const randomText = emailTexts[randomIndex].text;
         const randomphishing = emailTexts[randomIndex].phishing;
-        return {
+        emails = {
             text: randomText,
             phishing: randomphishing,
         };
+
+        console.log(emails);
     }
 
     reportButton.addEventListener('click', () => {
 
         console.log("click");
 
-        if (emails.phishing) {
-            score=score+point;
-            clearInterval(emailInterval)
-            emailInt();
-            updateGame();
-        }
-        else {
-            gameOverMessage = "That was a real Email"
-            gameOver();
+        if (emails != null) {
+            if (emails.phishing) {
+                score = score + point;
+                clearInterval(emailInterval)
+                emailInt();
+                updateGame();
+            }
+            else {
+                gameOverMessage = "That was a real Email"
+                gameOver();
+            }
         }
     });
 
@@ -149,15 +171,17 @@ function phishingFrenzy() {
     }
 
     function updateGame() {
-        clearInterval(pointInterval);
-        pointInt();
-        point = difficulty;
-        emails = generateEmail();
-        console.log(emails.phishing);
-        emailDisplay.innerText = emails.text
 
-        console.log(emails.text)
-        console.log(emails.phishing)
+        if (endGame == false) {
+            generateEmail();
+            emailDisplay.innerText = emails.text
+            pointInt();
+            point = difficulty;
+        }
+        else {
+            clearInterval(emailInterval);
+            clearInterval(pointInterval);
+        }
     }
 
     function gameWin() {
@@ -179,6 +203,9 @@ function phishingFrenzy() {
     function restartGame() {
         playGame.classList.add('hide');
         difficultySelector.classList.remove('hide')
+        console.log("-----------------")
+        
+        endGame = true;
     }
 
     let timerInterval = setInterval(updateScoreAndTime, 1000);
@@ -186,11 +213,11 @@ function phishingFrenzy() {
     function emailInt() { emailInterval = setInterval(checkEmail, difficulty); }
     emailInt();
 
-
     function pointInt() { pointInterval = setInterval(lowerScore, 100); }
     pointInt();
 
     function lowerScore(){
         point = point - 100;
     }
+
 }
