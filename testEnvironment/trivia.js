@@ -23,6 +23,7 @@ const trivia_pracByRForm = document.getElementById('trivia_pracByRForm');
 const trivia_pracByTForm = document.getElementById('trivia_pracByTForm');
 const trivia_initScreen = document.getElementById('trivia_initScreen');
 const trivia_controls = document.getElementById('trivia_controls')
+const trivia_scores_container = document.getElementById('trivia_scores_container')
 
 var trivia_scoreboard1 = document.getElementById('trivia_scoreboard1');
 var trivia_scoreboard2 = document.getElementById('trivia_scoreboard2')
@@ -103,7 +104,7 @@ function trivia_initPractice() {
 }
 function trivia_initPracByR() {
     trivia_pracByRForm.classList.remove('hide');
-    trivia_triv.style.display = "block";
+    trivia_triv.classList.remove('hide');
     trivia_rankedForm.style.display = "block";
     trivia_pracOrRank.style.display = "none";
     trivia_rankedGame = false;
@@ -115,7 +116,7 @@ function trivia_initPracByR() {
 function trivia_initPracByT() {
     trivia_topic = document.getElementById('trivia_topic').value;
     trivia_pracByTForm.classList.remove('hide');
-    trivia_triv.style.display = "block";
+    trivia_triv.classList.remove('hide');
     trivia_rankedForm.style.display = "block";
     trivia_pracOrRank.style.display = "none";
     trivia_rankedGame = false;
@@ -131,7 +132,7 @@ function trivia_initRanked() {
     trivia_rank = trivia_userRank;
     trivia_pracOrRank.style.display = "none";
     trivia_rankedForm.style.display = "none";
-    trivia_triv.style.display = "block";
+    trivia_triv.classList.remove('hide');
     trivia_rankedGame = true;
     trivia_startButton.classList.remove('hide');
     trivia_totalQuestions = 25;
@@ -148,7 +149,7 @@ function trivia_resetClassList() {
 //--------------------------------------------------------------------------------------
 function trivia_startGame() {
 
-    trivia_resetClassList;
+    trivia_resetClassList();
     trivia_byTopic = false;
     trivia_rankedForm.style.display = "none";
     document.getElementById('trivia_user_rank').innerHTML = trivia_rank + 1;
@@ -318,7 +319,7 @@ function trivia_displayIngameScores() {
 
 function trivia_scores() {
 
-    // trivia_controls.classList.remove('hide');
+    trivia_scores_container.classList.remove('hide');
 
     trivia_resetButton.classList.remove('hide');
     trivia_questionContainerElement.classList.add('hide');
@@ -385,8 +386,11 @@ function trivia_clearStatusClass(element) {
     element.classList.remove('wrong')
 }
 function trivia_resetGame() {
+
+    trivia_scores_container.classList.add('hide');
+
     trivia_pracOrRank.style.display = "block";
-    trivia_triv.style.display = "none";
+    trivia_triv.classList.add('hide');
     trivia_answered = 0;
     trivia_right = 0;
     trivia_wrong = 0;
