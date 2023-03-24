@@ -1,15 +1,15 @@
-.mine_btncontainer{
+.kh_btncontainer{
     position: absolute;
     width: 600px;
     top: 30px;
     left: 20px;
 }
-.mine_categories_buttons {
+.kh_categories_buttons {
     display: grid;
     grid-template-columns: 35px 35px 35px 35px 35px;
 }
 
-.mine_table{
+.kh_table{
     border-collapse: collapse;
 }
 
@@ -21,10 +21,10 @@ th, td {
     margin: 0px;
     margin-top: 0px;
   }
-.mine_item {
+.kh_item {
     padding: 10px;
 }
-.mineBtn { 
+.khBtn { 
     color:black; 
     font: bold 84% 'trebuchet ms',helvetica,sans-serif;
     font-size: 6px; 
@@ -37,31 +37,31 @@ th, td {
     margin-top: 3px;
     margin-left: 3px; */
 }
-.mineBtn:hover{
+.khBtn:hover{
     background-color: rgb(0, 0, 110);
     color: white;
 }
-.mine_numerals{
+.kh_numerals{
     position: absolute;
     top: 30px;
     line-height: 24.2px;
     left: 3px;
     text-align: center;
 }
-.mine_numerals,.mine_alphabet{
+.kh_numerals,.kh_alphabet{
     color: white;
     background-color: rgb(0, 0, 96);
     border: 1px solid black;
     border-radius: 10px;
 }
-.mine_alphabet{
+.kh_alphabet{
     position: absolute;
     top:10px;
     left:28px;
     margin: 0;
     padding-left: 2px;
 }
-#mine_question_container{
+#kh_question_container{
     position: flex;
     right: 5px;
     top: 5vh;
@@ -73,15 +73,15 @@ th, td {
     border-radius: 20px;
     text-align: center;
 }
-.mine_incorrect{
+.kh_incorrect{
     background-color: red;
 }
-.mine_correct{
+.kh_correct{
     background-color: limegreen;
 }
 
-.mine_start_btn,
-.mine_next_btn{
+.kh_start_btn,
+.kh_next_btn{
     --hue: var(--hue-neutral);
     border: 1px solid hsl(var(--hue), 100%, 30%);
     background-color: hsl(var(--hue), 100%, 50%);
@@ -96,7 +96,7 @@ th, td {
     width: 100px;
 }
 
-.mine_controls, .mine_initScreen {
+.kh_controls, .kh_initScreen {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -118,7 +118,7 @@ body {
     align-items: center;
     background-color: hsl(var(--hue), 100%, 20%);
 }
-.mine_startScreen{
+.kh_startScreen{
     background-color: white;
     border-radius: 5px;
     padding: 10px;
