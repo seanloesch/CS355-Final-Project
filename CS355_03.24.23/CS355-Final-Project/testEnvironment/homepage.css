@@ -1,0 +1,16 @@
+.tivia_home_button,.dSweep_home_button{
+    background-size: cover; 
+    background-position: center;
+    height: 70px;
+    width: 140px;
+    border-radius: 5px;
+}
+.tivia_home_button { 
+    background-image: url("img/trivia_background.jpg");
+}
+.dSweep_home_button{
+    background-image: url("img/decipherSweeper.png");
+}
+.tivia_home_button:hover,.dSweep_home_button:hover{
+    filter: brightness(50%);
+}
