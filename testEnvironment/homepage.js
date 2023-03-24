@@ -4,5 +4,5 @@ function playTivia(){
 }
 function playDsweeper(){
     document.getElementById("homepage").classList.add("hide");
-    document.getElementById("mine").classList.remove("hide");
+    document.getElementById("kh").classList.remove("hide");
 }
