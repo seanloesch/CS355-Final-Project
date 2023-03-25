@@ -31,7 +31,6 @@
       "table_size_rows": 24,
       "table_size_column":24, 
       "answer": "A5",
-      "Alphabet": ["\u0391","\u0391","\u0391","\u0391","\u0391"],
       "story": [
         {
           "type": "Caesar cipher shift by two",

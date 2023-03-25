@@ -58,13 +58,33 @@ function table_create() {
             let tableRow = document.createElement('tr');
             tableArray.appendChild(tableRow);
             for (let c = 0; c <= 26; c++) {
-
+                
+            
+                
                 var str = c.toString();
 
-                if (c<10) {
-                    str = "";
-                    str = str.concat("0",c.toString());
+                //if greek alphabet is true
+                if (true) {
+                    str = "\u03B1";
+                    if (c == 0) {
+                        str = "00";
+                    } 
+                    
+                    if (c > 17){
+                        console.log("930");
+                        str = String.fromCharCode(str.charCodeAt(0) + 1);
+                    }
+                    
+                    str = String.fromCharCode(str.charCodeAt(0) + c - 1);
+                    
+                    
+                    
+                    
                 }
+                // if (c<10) {
+                //     str = "";
+                //     str = str.concat("0",c.toString());
+                // }
                 let tableCol = document.createElement('td');
                 tableCol.innerText = str;
                 tableRow.appendChild(tableCol);
