@@ -7,10 +7,10 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="homepage.css" rel="stylesheet">
     <link href="trivia.css" rel="stylesheet">
-    <link href="mineDecrypt.css" rel="stylesheet">
+    <link href="keyhunter.css" rel="stylesheet">
     <script defer src="homepage.js"></script>
     <script defer src="trivia.js"></script>
-    <script defer src="mineDecrypt.js"></script>
+    <script defer src="keyhunter.js"></script>
     <title>Cypher V1</title>
 </head>
 
@@ -119,19 +119,19 @@
 
 <!--this is where cypher starts-->
 
-    <div id="mine" class="mine hide">
-        <div id="mine_startScreen" class="mine_startScreen">
-            <p id="mine_msg">Mine Decrypt</p><br>
-            <button id="mine_start_btn" class="mine_start_btn btn">Start</button>
-            <button id="mine_home_btn" class="mine_next_btn btn">Home</button>
+    <div id="kh" class="kh hide">
+        <div id="kh_startScreen" class="kh_startScreen">
+            <p id="kh_msg">Key Hunter</p><br>
+            <button id="kh_start_btn" class="kh_start_btn btn">Start</button>
+            <button id="kh_home_btn" class="kh_next_btn btn">Home</button>
         </div>
-        <div id="mine_inGame" class="hide">
+        <div id="kh_inGame" class="hide">
 
-            <!-- <div class="mine_numerals">
+            <!-- <div class="kh_numerals">
                 1<br>2<br> 3<br> 4<br> 5<br> 6<br> 7<br> 8<br> 9<br> 10<br> 11<br> 12<br> 13<br>
                 14<br> 15<br> 16<br> 17<br> 18<br> 19<br> 20<br> 21<br> 22<br> 23<br> 24<br> 25<br>26<br>
             </div>
-            <div class="mine_alphabet">
+            <div class="kh_alphabet">
                 <span>A&nbsp;&nbsp;&nbsp;</span><span>B&nbsp;&nbsp;&nbsp;</span><span>C&nbsp;&nbsp;&nbsp;</span><span>D&nbsp;&nbsp;</span>
                 <span>E&nbsp;&nbsp;&nbsp;</span> <span>F&nbsp;&nbsp;</span> <span>G&nbsp;&nbsp;</span>
                 <span>H&nbsp;&nbsp;</span>
@@ -144,34 +144,34 @@
                 <span>U&nbsp;&nbsp;</span> <span>V&nbsp;</span> <span>W&nbsp;&nbsp;</span> <span>X&nbsp;&nbsp;</span>
                 <span>Y&nbsp;&nbsp;</span> <span>Z&nbsp;&nbsp;</span>
             </div> -->
-            <!-- <div class="mine_btncontainer">
-                <div id="mine_buttons_container"></div>
-            </div> -->
+            <div class="kh_btncontainer">
+                <div id="kh_buttons_container"></div>
+            </div>
 
-            <div class="mine_table_container" >
-                <table id="mine_table">
+            <div class="kh_table_container" >
+                <table id="kh_table">
                 </table>
             </div>
 
-            <div id="mine_question_container">
-                <!-- <p id="mine_btnVal">--</p> -->
-                <div id="mine_question">
+            <div id="kh_question_container">
+                <p id="kh_btnVal">--</p>
+                <div id="kh_question">
                     
-                </div>
-                Timer: <span id="mine_time">05:00</span>
+            </div>
+                Timer: <span id="kh_time">05:00</span>
             </div>
             
-            <div id="mine_question_container">
-                <!-- <p id="mine_btnVal">--</p> -->
-                <div id="mine_question">
+            <div id="kh_question_container">
+                <p id="kh_btnVal">--</p>
+                <div id="kh_question">
                     <p>Prompt:</p>
-                    <p id="mine_mdQ1"></p>
-                    <!-- <p id="mine_mdQ2"></p>
-                    <p id="mine_mdQ3"></p>
-                    <p id="mine_mdQ4"></p>
-                    <p id="mine_mdQ5"></p> -->
+                    <p id="kh_mdQ1"></p>
+                    <!-- <p id="kh_mdQ2"></p>
+                    <p id="kh_mdQ3"></p>
+                    <p id="kh_mdQ4"></p>
+                    <p id="kh_mdQ5"></p> -->
                 </div>
-                <!-- Timer: <span id="mine_time">05:00</span> -->
+                <!-- Timer: <span id="kh_time">05:00</span> -->
             </div>
         </div>
     </div>
