@@ -48,11 +48,15 @@ function kh_startGame() {
 }
 
 
-//draw our table
+//convert decimal to hexidecimal
+function d2h(d) { return (+d).toString(16).toUpperCase(); }
 
+function d2b(d) { return (+d).toString(2).toUpperCase(); }
+
+//draw our table
 function table_create() {
     const tableArray = document.getElementById('kh_table');
-    var colIncrement = 0;
+    var colIncrement = 1;
     for (let i = 0; i <= 26; i++) {
         if(i==0){
             let tableRow = document.createElement('tr');
@@ -97,15 +101,14 @@ function table_create() {
         for (let j = 0; j <= 26; j++) {
             if (j == 0) {
 
-                var str = colIncrement.toString();
 
-                if (colIncrement<10) {
-                    str = "";
-                    str = str.concat("0",colIncrement.toString());
-                }
+                var str = d2b(colIncrement.toString());
+                str = String(str).padStart(6, '0');
+
                 let tableCol = document.createElement('td');
                 tableRow.appendChild(tableCol);
                 tableCol.innerText = str;
+
                 colIncrement++;
                 continue;
             }
