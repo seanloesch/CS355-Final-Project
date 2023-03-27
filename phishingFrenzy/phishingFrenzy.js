@@ -1,252 +1,169 @@
-let score = 0;
-let time = 0;
-var emails;
-var scoreDisplay;
-var timeDisplay;
-var emailDisplay;
-var reportButton;
-var timerInterval;
-var emailInterval;
-var pointInterval;
-const gameTime = 60;
-var easy = 3000;
-var medium = 2000;
-var hard = 1000;
-var difficulty;
-var gameOverMessage;
-const win = "win"
-const lose = "lose"
-const reload = "reload"
+var pf_userName = "Ryan" //this will change depending on PHP
 
-var startTime;
+let pf_score = 0;
+var pf_emails, pf_difficulty, pf_gameOverMessage, pf_startTime, pf_timerInterval, pf_subtractInterval, pf_scoreMultiplier;
+const pf_gameTime = 60, pf_points = 10;
+var pf_easy = 1, pf_medium = 2, pf_hard = 3, pf_endGame = false, pf_scoreSubtractor = 0;
+const pf_win = "win", pf_lose = "lose", pf_reload = "reload";
 
-var endGame = false;
+var pf_scoreDisplay = document.getElementById("pf_scoreDisplay");
+var pf_timeDisplay = document.getElementById("pf_timeDisplay");
+var pf_emailDisplay = document.getElementById("pf_emailDisplay");
+var pf_phishingButton = document.getElementById("pf_phishBtn");
+var pf_legitButton = document.getElementById("pf_legitBtn");
+var pf_easyButton = document.getElementById("pf_easy");
+var pf_mediumButton = document.getElementById("pf_medium");
+var pf_hardButton = document.getElementById("pf_hard");
+var pf_playGame = document.getElementById('pf_inGame')
+var pf_difficultySelector = document.getElementById('pf_difficultySelector')
+var pf_playerMessage = document.getElementById('pf_playerMessage')
 
-scoreDisplay = document.getElementById("scoreDisplay");
-timeDisplay = document.getElementById("timeDisplay");
-emailDisplay = document.getElementById("emailDisplay");
-reportButton = document.getElementById("report_button");
-easyButton = document.getElementById("easy");
-mediumButton = document.getElementById("medium");
-hardButton = document.getElementById("hard");
-playGame = document.getElementById('inGame')
-difficultySelector = document.getElementById('difficultySelector')
-playerMessage = document.getElementById('playerMessage')
-
-easyButton.addEventListener('click', () => {
-    difficulty = easy;
-    startGame();
+pf_easyButton.addEventListener('click', () => {
+    pf_difficulty = pf_easy;
+    pf_scoreMultiplier = pf_easy;
+    pf_startGame();
 });
 
-mediumButton.addEventListener('click', () => {
-    difficulty = medium;
-    startGame();
+pf_mediumButton.addEventListener('click', () => {
+    pf_difficulty = pf_medium;
+    pf_scoreMultiplier = pf_medium
+    pf_startGame();
 });
 
-hardButton.addEventListener('click', () => {
-    difficulty = hard;
-    startGame();
+pf_hardButton.addEventListener('click', () => {
+    pf_difficulty = pf_hard;
+    pf_scoreMultiplier = pf_hard
+    pf_startGame();
 });
 
-function startGame() {
-    difficultySelector.classList.add('hide');
-    playGame.classList.remove('hide');
-    point = difficulty;
-    score = 0;
-    time = 0;
-    endGame = false;
-    emailInterval = null;
-    email = null;
-    startTime = Math.floor(Date.now() / 1000);
+function pf_startGame() {
+    pf_difficultySelector.classList.add('hide');
+    pf_playGame.classList.remove('hide');
+    pf_score = 0;
+    pf_endGame = false;
+    pf_startTime = Math.floor(Date.now() / 1000);
     phishingFrenzy()
 }
 
 function phishingFrenzy() {
+    var pf_emailTexts = [];
+    pf_retrieveJSONArray();
 
-    updateGame(reload);
-    function updateGame(x) {
-        clearInterval(emailInterval);
-        clearInterval(pointInterval);
-        if (x === reload) {
-            generateEmail();
-            console.log(emails);
-            emailDisplay.innerText = emails.text
-            emailInterval = setInterval(function () {
-                checkEmail(false);
-            }, difficulty);
-            point = difficulty;
-            pointInterval = setInterval(function () {
-                lowerScore();
-            }, 100);
+    function pf_updateGame(x) {
+        pf_scoreSubtractor = 0;
+        pf_scoreDisplay.innerText = pf_score;
+        clearInterval(pf_subtractInterval);
+        if (x === pf_reload) {
+            pf_generateEmail();
+            pf_emailDisplay.innerText = pf_emails.text
+            pf_subtractInterval = setInterval(function () { if (pf_scoreSubtractor < 10) { pf_scoreSubtractor++ } }, 1000);
         }
-        else if (x === lose) {
-            gameOver();
+        else if (x === pf_lose) {
+            pf_gameOver();
         }
         else {
-            gameWin();
+            pf_gameWin();
         }
     }
 
-    reportButton.addEventListener('click', reportButtonClick);
-    function reportButtonClick() { checkEmail(true); }
+    pf_phishingButton.addEventListener('click', pf_phishingButtonClick);
+    function pf_phishingButtonClick() { pf_checkEmail(true); }
 
-    function checkEmail(reported) {
-        if (reported) {
-            if (emails.phishing) {
-                score = score + point;
-                updateGame(reload);
+    pf_legitButton.addEventListener('click', pf_legitButtonClick);
+    function pf_legitButtonClick() { pf_checkEmail(false); }
+
+    function pf_checkEmail(pf_reported) {
+        if (pf_reported) {
+            if (pf_emails.phishing) {
+                pf_scoreAlgorithm();
+                pf_updateGame(pf_reload);
             }
             else {
-                gameOverMessage = "That was a real Email"
-                endGame = true;
-                updateGame(lose);
+                pf_gameOverMessage = "That was a real Email"
+                pf_endGame = true;
+                pf_updateGame(pf_lose);
             }
         }
         else {
-            if (emails.phishing) {
-                gameOverMessage = "You have been phished!!!";
-                updateGame(lose);
+            if (pf_emails.phishing) {
+                pf_gameOverMessage = "You have been phished!!!";
+                pf_updateGame(pf_lose);
             }
             else {
-                score = score + 1000;
-                updateGame(reload);
+                pf_scoreAlgorithm();
+                pf_updateGame(pf_reload);
             }
         }
     }
-    function lowerScore() {
-        if (point <= 0) {
-            clearInterval(pointInterval);
-        }
-        else {
-            point = point - 100;
-        }
-    }
+    function pf_scoreAlgorithm() { pf_score = pf_score + ((pf_points - pf_scoreSubtractor) * pf_scoreMultiplier); }
 
-    function gameWin() {
-        restartGame();
-        playerMessage.innerText = `Congratulations! You've won! Final Score: ${score}`;
-    }
-
-    function gameOver() {
-        restartGame();
-        playerMessage.innerText = gameOverMessage;
-    }
-
-    function restartGame() {
-        clearInterval(timerInterval);
-        playGame.classList.add('hide');
-        difficultySelector.classList.remove('hide')
-        reportButton.removeEventListener('click', reportButtonClick);
-    }
-
-    let timerInterval = setInterval(updateScoreAndTime, 1000);
-    function updateScoreAndTime() {
-        var elapsedTime = Math.floor(Date.now() / 1000) - startTime;
-        var timeRemaining = gameTime - elapsedTime;
-        if (timeRemaining <= 0) {
-            endGame = true;
-            updateGame(win);
-        }
-        scoreDisplay.innerText = score;
-        timeDisplay.innerText = timeRemaining;
-    }
-    function generateEmail() {
-
-        const emailTexts = [
-            {
-                phishing: false,
-                text: "Hello [Your Name], I hope this email finds you well. We are excited to announce a new product that we think you will love. Check it out at the link below.",
-            },
-            {
-                phishing: true,
-                text: "Important notice: Your Apple ID has been suspended due to suspicious activity. Click this link to restore your account and prevent further damage.",
-            },
-            {
-                phishing: false,
-                text: "Dear [Recipient Name], thank you for your recent purchase. Your order has been shipped and should arrive within 2-3 business days. You can track your package at the link below.",
-            },
-            {
-                phishing: true,
-                text: "URGENT: Your Google account has been hacked! Click this link to reset your password and secure your account immediately.",
-            },
-            {
-                phishing: false,
-                text: "Hi [Recipient Name], I wanted to touch base and see how things are going with the project. Let me know if there's anything I can do to help.",
-            },
-            {
-                phishing: true,
-                text: "Security alert: Your Facebook account has been compromised! Click this link to verify your account information and prevent unauthorized access.",
-            },
-            {
-                phishing: false,
-                text: "Hello [Your Name], I hope this email finds you well. I wanted to share an interesting article I came across that I thought you might enjoy. Check it out at the link below.",
-            },
-            {
-                phishing: true,
-                text: "Attention: Your Microsoft account has been breached! Click this link to change your password and protect your sensitive information.",
-            },
-            {
-                phishing: false,
-                text: "Good morning, I wanted to follow up on the job application you submitted. Can you please provide your availability for an interview?"
-            },
-            {
-                phishing: true,
-                text: "Your Facebook account has been flagged for suspicious activity! Click this link to secure your account before it's too late."
-            },
-            {
-                phishing: false,
-                text: "Dear [Name], I hope this email finds you well. I wanted to touch base with you about the upcoming conference. Are you planning to attend?"
-            },
-            {
-                phishing: true,
-                text: "Your Netflix subscription has been canceled! Click this link to reactivate your account and avoid any additional charges."
-            },
-            {
-                phishing: false,
-                text: "Hi [Name], just wanted to let you know that the team is making great progress on the project. We should be able to meet our deadline without any issues."
-            },
-            {
-                phishing: true,
-                text: "Your Apple ID has been locked for security reasons! Click this link to unlock your account and avoid permanent suspension."
-            },
-            {
-                phishing: false,
-                text: "Dear valued customer, we have an exciting offer just for you! Click the link to learn more.",
-            },
-            {
-                phishing: true,
-                text: "Your bank account has been frozen! Click this link to verify your identity and unlock your account.",
-            },
-            {
-                phishing: false,
-                text: "Hi there, just following up on the proposal we discussed last week. Can you give me a call to discuss further?",
-            },
-            {
-                phishing: true,
-                text: "Your Amazon account has been hacked! Click this link to reset your password and secure your account.",
-            },
-            {
-                phishing: false,
-                text: "Greetings, I wanted to touch base with you about the project timeline. Are we still on track for the end of the month?",
-            },
-            {
-                phishing: true,
-                text: "Your PayPal account has been compromised! Click this link to verify your account information and prevent further damage.",
-            },
-            {
-                phishing: false,
-                text: "Hello, please review the attached document and let me know your thoughts. Thank you!",
-            },
-            {
-                phishing: true,
-                text: "Your account has been compromised! Click this link to reset your password immediately!",
-            },
-        ];
-
-        var randomIndex = Math.floor(Math.random() * emailTexts.length)
-        emails = {
-            text: emailTexts[randomIndex].text,
-            phishing: emailTexts[randomIndex].phishing,
+    function pf_generateEmail() {
+        var pf_randomIndex = Math.floor(Math.random() * pf_emailTexts.length)
+        var pf_eText =pf_emailTexts[pf_randomIndex].text;
+        if(pf_eText.includes('[Name]')){pf_eText=pf_eText.replace('[Name]', pf_userName)}
+        pf_emails = {
+            text: pf_eText,
+            phishing: pf_emailTexts[pf_randomIndex].phishing,
         };
+    }
+
+    function pf_gameWin() {
+        pf_restartGame();
+        pf_playerMessage.innerText = `Congratulations! You've won! Final Score: ${pf_score}`;
+    }
+
+    function pf_gameOver() {
+        pf_restartGame();
+        pf_playerMessage.innerText = pf_gameOverMessage;
+    }
+
+    function pf_restartGame() {
+        clearInterval(pf_timerInterval);
+        pf_playGame.classList.add('hide');
+        pf_difficultySelector.classList.remove('hide')
+        pf_phishingButton.removeEventListener('click', pf_phishingButtonClick);
+        pf_legitButton.removeEventListener('click', pf_legitButtonClick);
+    }
+
+    let pf_timerInterval = setInterval(pf_updateScoreAndTime, 1000);
+    function pf_updateScoreAndTime() {
+        var pf_elapsedTime = Math.floor(Date.now() / 1000) - pf_startTime;
+        var pf_timeRemaining = pf_gameTime - pf_elapsedTime;
+        pf_timeDisplay.innerText = pf_timeRemaining;
+        if (pf_timeRemaining <= 0) {
+            pf_endGame = true;
+            pf_updateGame(pf_win);
+        }
+    }
+    function pf_retrieveJSONArray() {
+        var pf_obj = [];
+        var pf_jsonArray = [];
+
+        var oXHR = new XMLHttpRequest();
+        // Initiate request.
+        oXHR.onreadystatechange = reportStatus;
+        oXHR.open("GET", "./phishingFrenzy.json", true);  // get json file.
+        oXHR.send();
+        function reportStatus() {
+            if (oXHR.readyState == 4) {		// Check if request is complete.
+                pf_obj = JSON.parse(this.responseText);
+                pf_jsonArray = Object.values(pf_obj);
+                pf_createEmailList(pf_jsonArray);
+            }
+        }
+    }
+    function pf_createEmailList(pf_jsonArray) {
+        var pf_questionlength = pf_jsonArray[0].length;
+        var pf_oneDimensionalArray = [];
+        for (var i = 0; i < pf_questionlength; i++) {
+            if (pf_jsonArray[0][i].dif == pf_difficulty) {
+                pf_oneDimensionalArray.push(pf_jsonArray[0][i]);
+            }
+        }
+        for (var i = 0; i < pf_oneDimensionalArray.length; i++) {
+            pf_emailTexts[i] = pf_oneDimensionalArray[i];
+        }
+        console.log(pf_emailTexts.length)
+        pf_updateGame(pf_reload);
     }
 }
