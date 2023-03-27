@@ -1,0 +1,429 @@
+{
+    "1": [
+        {
+            "dif": 1,
+            "phishing": false,
+            "text": "Hello [Name], I hope this email finds you well. We are excited to announce a new product that we think you will love. Check it out at the link below."
+        },
+        {
+            "dif": 1,
+            "phishing": true,
+            "text": "Important notice: Your Apple ID has been suspended due to suspicious activity. Click this link to restore your account and prevent further damage."
+        },
+        {
+            "dif": 1,
+            "phishing": false,
+            "text": "Dear [Name], thank you for your recent purchase. Your order has been shipped and should arrive within 2-3 business days. You can track your package at the link below."
+        },
+        {
+            "dif": 1,
+            "phishing": true,
+            "text": "URGENT: Your Google account has been hacked! Click this link to reset your password and secure your account immediately."
+        },
+        {
+            "dif": 1,
+            "phishing": false,
+            "text": "Hi [Name], I wanted to touch base and see how things are going with the project. Let me know if there's anything I can do to help."
+        },
+        {
+            "dif": 1,
+            "phishing": true,
+            "text": "Security alert: Your Facebook account has been compromised! Click this link to verify your account information and prevent unauthorized access."
+        },
+        {
+            "dif": 1,
+            "phishing": false,
+            "text": "Hello [Name], I hope this email finds you well. I wanted to share an interesting article I came across that I thought you might enjoy. Check it out at the link below."
+        },
+        {
+            "dif": 1,
+            "phishing": true,
+            "text": "Attention: Your Microsoft account has been breached! Click this link to change your password and protect your sensitive information."
+        },
+        {
+            "dif": 1,
+            "phishing": false,
+            "text": "Good morning, I wanted to follow up on the job application you submitted. Can you please provide your availability for an interview?"
+        },
+        {
+            "dif": 1,
+            "phishing": true,
+            "text": "Your Facebook account has been flagged for suspicious activity! Click this link to secure your account before it's too late."
+        },
+        {
+            "dif": 1,
+            "phishing": false,
+            "text": "Dear [Name], I hope this email finds you well. I wanted to touch base with you about the upcoming conference. Are you planning to attend?"
+        },
+        {
+            "dif": 1,
+            "phishing": true,
+            "text": "Your Netflix subscription has been canceled! Click this link to reactivate your account and avoid any additional charges."
+        },
+        {
+            "dif": 1,
+            "phishing": false,
+            "text": "Hi [Name], just wanted to let you know that the team is making great progress on the project. We should be able to meet our deadline without any issues."
+        },
+        {
+            "dif": 1,
+            "phishing": true,
+            "text": "Your Apple ID has been locked for security reasons! Click this link to unlock your account and avoid permanent suspension."
+        },
+        {
+            "dif": 1,
+            "phishing": false,
+            "text": "Dear valued customer, we have an exciting offer just for you! Click the link to learn more."
+        },
+        {
+            "dif": 1,
+            "phishing": true,
+            "text": "Your bank account has been frozen! Click this link to verify your identity and unlock your account."
+        },
+        {
+            "dif": 1,
+            "phishing": false,
+            "text": "Hi there, just following up on the proposal we discussed last week. Can you give me a call to discuss further?"
+        },
+        {
+            "dif": 1,
+            "phishing": true,
+            "text": "Your Amazon account has been hacked! Click this link to reset your password and secure your account."
+        },
+        {
+            "dif": 2,
+            "phishing": false,
+            "text": "Greetings, I wanted to touch base with you about the project timeline. Are we still on track for the end of the month?"
+        },
+        {
+            "dif": 2,
+            "phishing": true,
+            "text": "Your PayPal account has been compromised! Click this link to verify your account information and prevent further damage."
+        },
+        {
+            "dif": 3,
+            "phishing": false,
+            "text": "Hello, please review the attached document and let me know your thoughts. Thank you!"
+        },
+        {
+            "dif": 3,
+            "phishing": true,
+            "text": "Hi [Name], Your account has been compromised! Click this link to reset your password immediately!"
+        },
+        {
+            "dif": 1,
+            "phishing": false,
+            "text": "Dear [Name], we wanted to remind you that your subscription is about to expire. Renew now to avoid any service interruptions."
+        },
+        {
+            "dif": 1,
+            "phishing": true,
+            "text": "Your account has been locked due to suspicious activity. Click this link to verify your account and avoid permanent suspension."
+        },
+        {
+            "dif": 1,
+            "phishing": false,
+            "text": "Hi [Name], we are pleased to inform you that you have been selected for an exclusive offer. Check it out at the link below."
+        },
+        {
+            "dif": 1,
+            "phishing": true,
+            "text": "URGENT: Your Amazon account has been hacked! Click this link to reset your password and prevent unauthorized access."
+        },
+        {
+            "dif": 1,
+            "phishing": false,
+            "text": "Dear [Name], we would like to thank you for your recent donation. Your generosity will make a difference in the lives of many."
+        },
+        {
+            "dif": 1,
+            "phishing": true,
+            "text": "Your account has been flagged for suspicious activity! Click this link to verify your account information and prevent further damage."
+        },
+        {
+            "dif": 1,
+            "phishing": false,
+            "text": "Hello [Name], I hope this email finds you well. We would like to invite you to our upcoming event. RSVP at the link below."
+        },
+        {
+            "dif": 1,
+            "phishing": true,
+            "text": "Your account has been compromised! Click this link to secure your account and prevent further damage."
+        },
+        {
+            "dif": 1,
+            "phishing": false,
+            "text": "Hi [Name], we wanted to update you on the status of your recent support ticket. Please log in to your account to view the response."
+        },
+        {
+            "dif": 1,
+            "phishing": true,
+            "text": "Your account has been suspended due to suspicious activity! Click this link to restore your account and prevent permanent suspension."
+        },
+        {
+            "dif": 2,
+            "phishing": false,
+            "text": "Dear [Name], we hope you are enjoying our service. Don't forget to refer your friends for a chance to win a prize."
+        },
+        {
+            "dif": 2,
+            "phishing": true,
+            "text": "[Name],Your account has been hacked! Click this link to reset your password and secure your information."
+        },
+        {
+            "dif": 3,
+            "phishing": false,
+            "text": "Hi [Name], we wanted to let you know that we have updated our privacy policy. Please review it at the link below."
+        },
+        {
+            "dif": 3,
+            "phishing": true,
+            "text": "Hi [Name], Your account has been compromised! Click this link to verify your account information and prevent further damage."
+        },
+        {
+            "dif": 2,
+            "phishing": false,
+            "text": "Dear [Name], we are excited to offer you a free trial of our premium service. Try it now and see the difference."
+        },
+        {
+            "dif": 2,
+            "phishing": true,
+            "text": "Your account has been locked due to suspicious activity! Click this link to reset your password and avoid permanent suspension."
+        },
+        {
+            "dif": 3,
+            "phishing": false,
+            "text": "Dear [Name], we are writing to inform you that your account has been temporarily suspended due to suspicious activity. Please contact our customer support team at the number listed on our website to verify your identity and reactivate your account."
+        },
+        {
+            "dif": 3,
+            "phishing": true,
+            "text": "Important notification: Your account has been accessed from a new device. Please log in to your account and verify your identity to prevent unauthorized access. Click this link to proceed."
+        },
+        {
+            "dif": 3,
+            "phishing": false,
+            "text": "Hello [Name], we are excited to announce that you have been selected as the winner of our monthly prize draw! Please follow the instructions in the attached file to claim your prize."
+        },
+        {
+            "dif": 3,
+            "phishing": true,
+            "text": "URGENT: Your account has been compromised and we have detected unauthorized transactions. Please click this link to verify your identity and secure your account."
+        },
+        {
+            "dif": 3,
+            "phishing": false,
+            "text": "Dear [Name], we are pleased to inform you that you have been selected to participate in a survey regarding our products and services. Please click the link below to take the survey and receive a discount code."
+        },
+        {
+            "dif": 3,
+            "phishing": true,
+            "text": "Hello [Name], We have detected suspicious activity on your account. Please log in and change your password immediately to prevent unauthorized access. Click this link to proceed."
+        },
+        {
+            "dif": 3,
+            "phishing": false,
+            "text": "Hello [Name], we wanted to inform you that there has been a change to your flight schedule. Please log in to your account to view the updated itinerary and make any necessary changes."
+        },
+        {
+            "dif": 3,
+            "phishing": true,
+            "text": "Hello [Name], Your account has been locked due to suspicious activity. To unlock your account, please click this link and verify your identity immediately."
+        },
+        {
+            "dif": 3,
+            "phishing": false,
+            "text": "Dear [Name], we are excited to inform you that your application for the position of [Job Title] has been accepted. Please log in to your account to view the details and accept the offer."
+        },
+        {
+            "dif": 3,
+            "phishing": true,
+            "text": "[Name], Your account has been breached and we have detected unauthorized access. To prevent further damage, please click this link and verify your identity immediately."
+        },
+        {
+            "dif": 2,
+            "phishing": false,
+            "text": "Hello [Name], I wanted to follow up on our meeting last week. I think we made some good progress, but I wanted to make sure we're still on the same page."
+        },
+        {
+            "dif": 2,
+            "phishing": true,
+            "text": "Your bank account has been compromised! Please log in to your account to verify your identity and restore your account access."
+        },
+        {
+            "dif": 2,
+            "phishing": false,
+            "text": "Dear [Name], thank you for your interest in our product. As a token of our appreciation, please enjoy this 20% off coupon code for your next purchase."
+        },
+        {
+            "dif": 2,
+            "phishing": true,
+            "text": "URGENT: Your email account has been hacked! Please log in to your account to reset your password and prevent further damage."
+        },
+        {
+            "dif": 2,
+            "phishing": false,
+            "text": "Hello [Name], I just wanted to check in and see if you had any questions or concerns about the product. We're here to help in any way we can."
+        },
+        {
+            "dif": 2,
+            "phishing": true,
+            "text": "Your PayPal account has been suspended due to suspicious activity. Please log in to your account to resolve the issue and restore your account access."
+        },
+        {
+            "dif": 2,
+            "phishing": false,
+            "text": "Hi [Name], congratulations on your recent promotion! We're excited to see what you'll accomplish in your new role."
+        },
+        {
+            "dif": 2,
+            "phishing": true,
+            "text": "Your social security number has been compromised! Please log in to your account to verify your identity and protect your sensitive information."
+        },
+        {
+            "dif": 2,
+            "phishing": false,
+            "text": "Dear [Name], we noticed that you left some items in your cart without completing your purchase. Would you like us to send you a reminder email with a special offer?"
+        },
+        {
+            "dif": 2,
+            "phishing": true,
+            "text": "Your Amazon account has been locked! Please log in to your account to verify your information and avoid permanent suspension."
+        },
+        {
+            "dif": 2,
+            "phishing": false,
+            "text": "Dear [Name], I hope this email finds you well. I wanted to follow up on our meeting last week and see if you had any additional questions or concerns."
+        },
+        {
+            "dif": 2,
+            "phishing": true,
+            "text": "Your account has been flagged for suspicious activity. Click the link below to verify your identity and prevent your account from being locked."
+        },
+        {
+            "dif": 2,
+            "phishing": false,
+            "text": "Hello [Name], I just wanted to remind you about the upcoming conference next month. Are you still planning to attend? Let me know if you need any assistance with travel arrangements."
+        },
+        {
+            "dif": 2,
+            "phishing": true,
+            "text": "Your email account has been hacked! Click this link to change your password and secure your account immediately."
+        },
+        {
+            "dif": 2,
+            "phishing": false,
+            "text": "Hi [Name], just wanted to touch base with you and see how the new project is coming along. Let me know if there's anything I can do to help."
+        },
+        {
+            "dif": 2,
+            "phishing": true,
+            "text": "Your account has been compromised! Click the link below to reset your password and prevent unauthorized access."
+        },
+        {
+            "dif": 2,
+            "phishing": false,
+            "text": "Dear [Name], I wanted to follow up on the proposal we discussed and see if you had any questions or concerns. Please let me know if you need any additional information."
+        },
+        {
+            "dif": 2,
+            "phishing": true,
+            "text": "Your account has been suspended due to suspicious activity. Click the link below to restore your account and prevent permanent closure."
+        },
+        {
+            "dif": 2,
+            "phishing": false,
+            "text": "Hello [Name], I hope this email finds you well. I wanted to let you know that we have a new job opening in our department. Please let me know if you're interested and I can send you the details."
+        },
+        {
+            "dif": 2,
+            "phishing": true,
+            "text": "Your bank account has been compromised! Click this link to change your password and prevent further damage."
+        },
+        {
+            "dif": 2,
+            "phishing": false,
+            "text": "Dear [Name], congratulations on your recent promotion! I wanted to touch base with you and see how everything is going in your new role."
+        },
+        {
+            "dif": 2,
+            "phishing": true,
+            "text": "Your account has been locked due to suspicious activity. Click the link below to verify your identity and unlock your account."
+        },
+        {
+            "dif": 2,
+            "phishing": false,
+            "text": "Hello [Name], I wanted to remind you about the upcoming company retreat next month. We have some exciting activities planned and I hope to see you there!"
+        },
+        {
+            "dif": 2,
+            "phishing": true,
+            "text": "Your account has been compromised! Click the link below to verify your identity and prevent unauthorized access."
+        },
+        {
+            "dif": 2,
+            "phishing": false,
+            "text": "Hi [Name], I wanted to follow up on the job application you submitted and let you know that we're still in the process of reviewing candidates. We'll be in touch soon!"
+        },
+        {
+            "dif": 3,
+            "phishing": false,
+            "text": "Dear [Name], your recent purchase has been shipped and is on its way. You can track your package at the link below."
+        },
+        {
+            "dif": 3,
+            "phishing": false,
+            "text": "Hi [Name], just a friendly reminder that your subscription will renew in a few days. If you'd like to make any changes, you can manage your subscription at the link below."
+        },
+        {
+            "dif": 3,
+            "phishing": false,
+            "text": "Hello [Name], we're excited to announce a new feature that we think you'll love. Check it out at the link below and let us know what you think!"
+        },
+        {
+            "dif": 3,
+            "phishing": true,
+            "text": "Dear [Name], we have detected a potential security issue with your account. Please verify your account details by clicking on the following link to avoid any account suspension. Thank you for your cooperation."
+        },
+        {
+            "dif": 3,
+            "phishing": true,
+            "text": "Greetings [Name], we have noticed an unusual login attempt on your account. Please verify your identity by logging in and updating your account information. Click on this link to proceed."
+        },
+        {
+            "dif": 3,
+            "phishing": true,
+            "text": "Hello [Name], we have received your request to change your account password. If you did not make this request, please ignore this email. Otherwise, please click on the following link to proceed with the password change."
+        },
+        {
+            "dif": 3,
+            "phishing": true,
+            "text": "Dear valued customer, We have identified a potential security threat to your account. Please verify your account information by clicking on the following link to avoid any potential damage to your account."
+        },
+        {
+            "dif": 3,
+            "phishing": true,
+            "text": "Hello [Name], Your account has been temporarily suspended due to suspicious activity. To reactivate your account, please click the following link and update your information."
+        },
+        {
+            "dif": 3,
+            "phishing": true,
+            "text": "Greetings [Name], We regret to inform you that your account has been compromised. Please click the link below to verify your identity and secure your account."
+        },
+        {
+            "dif": 3,
+            "phishing": false,
+            "text": "Dear [Name], Please be advised that your account has been locked due to suspicious activity. To unlock your account, please click the link below and follow the instructions. If you did not initiate this action, please contact our support team immediately."
+        },
+        {
+            "dif": 3,
+            "phishing": false,
+            "text": "Dear [Name], Your account password will expire in 2 days. To update your password, please click the link below and follow the instructions. If you have already updated your password, please ignore this message. Thank you."
+        },
+        {
+            "dif": 3,
+            "phishing": false,
+            "text": "Dear [Name], As part of our ongoing security efforts, we will be performing system maintenance on our servers. During this time, you may experience intermittent service disruptions. We apologize for any inconvenience this may cause. Thank you for your patience."
+        }
+    ]
+}
