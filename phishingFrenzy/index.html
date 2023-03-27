@@ -13,21 +13,24 @@
 <body>
     <div id="phishingFrenzy" class="phishingFrenzy">
 
-        <div id="difficultySelector" class="difficultySelector">
-            <button id="home" class="home">Home</button><br>
-            <p id="playerMessage" class="playerMessage"></p>
-            <p class="playerMessage">Select a difficulty:</p>
-            <button id="easy" class="easy">Easy</button>
-            <button id="medium" class="medium">Medium</button>
-            <button id="hard" class="hard">Hard</button>
+        <div id="pf_difficultySelector" class="pf_difficultySelector">
+            <button id="pf_home" class="pf_home">Home</button><br>
+            <p id="pf_playerMessage" class="pf_playerMessage"></p>
+            <p class="pf_playerMessage">Select a difficulty:</p>
+            <button id="pf_easy" class="pf_easy">Easy</button>
+            <button id="pf_medium" class="pf_medium">Medium</button>
+            <button id="pf_hard" class="pf_hard">Hard</button>
         </div>
 
-        <div id="inGame" class="inGame hide">
-            <div class="emailScreen">
-                <p id="scoreDisplay" class="scoreDisplay">0</p>
-                <p id="timeDisplay" class="timeDisplay">60</p>
-                <p id="emailDisplay" class="emailDisplay"></p>
-                <button id="report_button" class="report_button">Report Phishing</button>
+        <div id="pf_inGame" class="pf_inGame hide">
+            <div class="pf_emailScreen">
+                <p id="pf_scoreDisplay" class="pf_scoreDisplay">0</p>
+                <p id="pf_timeDisplay" class="pf_timeDisplay">60</p>
+                <p id="pf_emailDisplay" class="pf_emailDisplay"></p>
+                <div class="pf_btnDisplay">
+                    <button id="pf_phishBtn" class="pf_phishBtn">Phishing</button>
+                    <button id="pf_legitBtn" class="pf_legitBtn">Legitimate</button>
+                </div>
             </div>
         </div>
     </div>
