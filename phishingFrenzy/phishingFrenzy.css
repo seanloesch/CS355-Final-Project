@@ -18,7 +18,7 @@ body{
     background-repeat: no-repeat center center fixed;
     background-size: cover;
 }
-.difficultySelector{
+.pf_difficultySelector{
     max-width: 80%;
     background-color: white;
     border-radius: 5px;
@@ -29,10 +29,10 @@ body{
     justify-content: center;
     align-items: center;
 }
-.home,
-.easy,
-.medium,
-.hard {
+.pf_home,
+.pf_easy,
+.pf_medium,
+.pf_hard {
     font-size: 1.5rem;
     font-weight: bold;
     border: 1px solid black;
@@ -44,21 +44,20 @@ body{
     height: 50px;
     text-shadow:-1px -1px 0 black, 1px -1px 0 black,-1px 1px 0 black, 1px 1px 0 black;
 }
-.home:hover,
-.easy:hover,
-.medium:hover,
-.hard:hover {
+.pf_home:hover,
+.pf_easy:hover,
+.pf_medium:hover,
+.pf_hard:hover {
     border: 2px solid black;
     background-color: aqua;
 }
-.home:active,
-.easy:active,
-.medium:active,
-.hard:active,
-.report_button:active {
+.pf_home:active,
+.pf_easy:active,
+.pf_medium:active,
+.pf_hard:active{
     background-color:black;
 }
-.emailScreen {
+.pf_emailScreen {
     position:relative;
     margin: 0px;
     width: 575px;
@@ -75,19 +74,19 @@ body{
     align-items: center;
     height: 500px;
 }
-.scoreDisplay{
+.pf_scoreDisplay{
     position: absolute;
     font-size: x-large;
     top: 90px;
     left:100px;
 }
-.timeDisplay{
+.pf_timeDisplay{
     position: absolute;
     font-size: x-large;
     top: 47px;
     left:100px;
 }
-.emailDisplay{
+.pf_emailDisplay{
     overflow: hidden;
     position: absolute;
     width: 500px;
@@ -95,23 +94,68 @@ body{
     left:40px;
     font-size: x-large;
 }
-.report_button {
-    position: absolute;
-    top: 450px;
-    font-size: 1.5rem;
-    font-weight: bold;
-    border: 1px solid black;
-    background-color: red;
-    border-radius: 5px;
-    padding: 5px 10px;
-    color: white;
-    outline: none;
-    height: 50px;
-    text-shadow:-1px -1px 0 black, 1px -1px 0 black,-1px 1px 0 black, 1px 1px 0 black;
-}
-.playerMessage{
+
+.pf_playerMessage{
     color: aqua;
     text-shadow:-1px -1px 0 black, 1px -1px 0 black,-1px 1px 0 black, 1px 1px 0 black;
     font-weight: 500;
     font-size: xx-large;
+}
+.pf_btnDisplay{
+    position: absolute;
+    display: flex;
+    top: 350px;
+}
+.pf_phishBtn,
+.pf_legitBtn{
+    position: relative;
+    color: rgba(255, 255, 255, 1);
+    text-decoration: none;
+    font-family: 'Yanone Kaffeesatz';
+    font-weight: 700;
+    font-size: 2em;
+    padding: 4px;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    border-radius: 8px;
+    margin: 100px auto;
+    width: 160px;
+    text-align: center;
+    -webkit-transition: all .1s ease;
+    -moz-transition: all .1s ease;
+    -ms-transition: all .1s ease;
+    -o-transition: all .1s ease;
+    transition: all .1s ease;
+}
+
+.pf_phishBtn {
+    background-color: red;
+    -webkit-box-shadow: 0px 9px 0px rgb(151, 18, 0), 0px 9px 25px rgba(0, 0, 0, .7);
+    -moz-box-shadow: 0px 9px 0px rgba(151, 18, 0), 0px 9px 25px rgba(0, 0, 0, .7);
+    box-shadow: 0px 9px 0px rgba(151, 18, 0), 0px 9px 25px rgba(0, 0, 0, .7);
+    margin-right: 4px;
+}
+
+.pf_phishBtn:active{
+    color: black;
+    -webkit-box-shadow: 0px 3px 0px rgba(151, 18, 0), 0px 3px 6px rgba(0, 0, 0, .9);
+    -moz-box-shadow: 0px 3px 0px rgba(151, 18, 0), 0px 3px 6px rgba(0, 0, 0, .9);
+    box-shadow: 0px 3px 0px rgba(151, 18, 0), 0px 3px 6px rgba(0, 0, 0, .9);
+    position: relative;
+    top: 6px;
+}
+.pf_legitBtn{
+    background-color: lime;
+    -webkit-box-shadow: 0px 9px 0px rgb(0, 139, 0), 0px 9px 25px rgba(0, 0, 0, .7);
+    -moz-box-shadow: 0px 9px 0px rgb(0, 139, 0), 0px 9px 25px rgba(0, 0, 0, .7);
+    box-shadow: 0px 9px 0px rgba(0, 139, 0), 0px 9px 25px rgba(0, 0, 0, .7);
+    margin-left: 4px;
+}
+.pf_legitBtn:active{
+    color: black;
+    -webkit-box-shadow: 0px 3px 0px (0, 139, 0), 0px 3px 6px rgba(0, 0, 0, .9);
+    -moz-box-shadow: 0px 3px 0px rgba(0, 139, 0), 0px 3px 6px rgba(0, 0, 0, .9);
+    box-shadow: 0px 3px 0px rgba(0, 139, 0), 0px 3px 6px rgba(0, 0, 0, .9);
+    position: relative;
+    top: 6px;
 }
