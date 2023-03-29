@@ -1,6 +1,7 @@
 .trivia_home_button,
 .dSweep_home_button,
-.phishingFrenzy_home_button{
+.phishingFrenzy_home_button,
+.game4_home_button{
     background-size: cover; 
     background-position: center;
     height: 70px;
@@ -10,7 +11,8 @@
 }
 .trivia_home_button:hover,
 .dSweep_home_button:hover,
-.phishingFrenzy_home_button:hover{
+.phishingFrenzy_home_button:hover,
+.game4_home_button{
     filter: brightness(50%);
 }
 
@@ -22,4 +24,7 @@
 }
 .phishingFrenzy_home_button{
     background-image: url("img/phishingFrenzyBtn.png");
+}
+.game4_home_button{
+    background-color: rgb(47, 47, 47);
 }
