@@ -1,0 +1,298 @@
+body{
+    margin: auto;
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+}
+.pf_phishingFrenzyGame{
+    height: 100vh;
+    width: 100vw;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url("img/background.jpg");
+    background-repeat: no-repeat center center fixed;
+    background-size: cover;
+}
+.pf_emailBackGround{
+    position: relative;
+    margin: auto;
+    background-image: url("img/emailBackground.png");
+    background-repeat: no-repeat center center fixed;
+    background-size: cover;
+    border-radius: 5px;
+    border: 1px solid black;
+    box-shadow: 0 0 10px 2px;
+    width: 1153px;
+    height: 588px;
+}
+.pf_emailScreen {
+    position:absolute;
+    margin: 0px;
+    top: 180px;
+    left: 360px;
+    width: 400px;
+    display: flex;
+    padding: 10px;
+    text-align: center;
+    margin: auto;
+    justify-content: center;
+    height: 375px;
+}
+.pf_difficultySelector{
+    position: absolute;
+    top: 170px;
+    left: 400px;
+    width: 400px;
+    border-radius: 5px;
+    padding: 10px;
+    margin: auto;
+    justify-content: center;
+    align-items: center;
+}
+.pf_home,
+.pf_easy,
+.pf_medium,
+.pf_hard {
+    background: none!important;
+  border: none;
+  padding: 0!important;
+  /*optional*/
+  font-family: arial, sans-serif;
+  /*input has OS specific font-family*/
+  color: #069;
+  text-decoration: underline;
+  cursor: pointer;
+}
+.pf_home:active,
+.pf_easy:active,
+.pf_medium:active,
+.pf_hard:active{
+    color:rgb(79, 0, 79);
+}
+.pf_scoreDisplay,
+.pf_timeDisplay,
+.pf_emailDisplay{
+    position: absolute;
+    font-size: x-large;
+}
+
+.pf_scoreDisplay{
+    top: 95px;
+    left:450px;
+}
+.pf_timeDisplay{
+    top: 70px;
+    left:450px;
+}
+.pf_addrDisplay{
+    position: absolute;
+    font-size: medium;
+    top: 50px;
+    left:530px;
+}
+.pf_emailDisplay{
+    overflow: hidden;
+    width: 500px;
+    top: 10px;
+    left:40px;
+}
+
+.pf_playerMessage{
+    font-weight: 500;
+    font-size: large;
+}
+.pf_btnDisplay{
+    position: absolute;
+    display: flex;
+    top: 220px;
+    left: 90px;
+    width: 400px;
+    justify-content: center;
+}
+.pf_phishBtn,
+.pf_legitBtn{
+    position: relative;
+    color: rgba(255, 255, 255, 1);
+    text-decoration: none;
+    font-family: 'Yanone Kaffeesatz';
+    font-weight: 700;
+    font-size: 2em;
+    padding: 4px;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    border-radius: 8px;
+    margin: 100px auto;
+    width: 160px;
+    text-align: center;
+    -webkit-transition: all .1s ease;
+    -moz-transition: all .1s ease;
+    -ms-transition: all .1s ease;
+    -o-transition: all .1s ease;
+    transition: all .1s ease;
+}
+
+.pf_phishBtn {
+    background-color: red;
+    -webkit-box-shadow: 0px 9px 0px rgb(151, 18, 0), 0px 9px 25px rgba(0, 0, 0, .7);
+    -moz-box-shadow: 0px 9px 0px rgba(151, 18, 0), 0px 9px 25px rgba(0, 0, 0, .7);
+    box-shadow: 0px 9px 0px rgba(151, 18, 0), 0px 9px 25px rgba(0, 0, 0, .7);
+    margin-left: 4px;
+}
+
+.pf_phishBtn:active{
+    color: black;
+    -webkit-box-shadow: 0px 3px 0px rgba(151, 18, 0), 0px 3px 6px rgba(0, 0, 0, .9);
+    -moz-box-shadow: 0px 3px 0px rgba(151, 18, 0), 0px 3px 6px rgba(0, 0, 0, .9);
+    box-shadow: 0px 3px 0px rgba(151, 18, 0), 0px 3px 6px rgba(0, 0, 0, .9);
+    position: relative;
+    top: 6px;
+}
+.pf_legitBtn{
+    background-color: lime;
+    -webkit-box-shadow: 0px 9px 0px rgb(0, 139, 0), 0px 9px 25px rgba(0, 0, 0, .7);
+    -moz-box-shadow: 0px 9px 0px rgb(0, 139, 0), 0px 9px 25px rgba(0, 0, 0, .7);
+    box-shadow: 0px 9px 0px rgba(0, 139, 0), 0px 9px 25px rgba(0, 0, 0, .7);
+    margin-right: 4px;
+}
+.pf_legitBtn:active{
+    color: black;
+    -webkit-box-shadow: 0px 3px 0px (0, 139, 0), 0px 3px 6px rgba(0, 0, 0, .9);
+    -moz-box-shadow: 0px 3px 0px rgba(0, 139, 0), 0px 3px 6px rgba(0, 0, 0, .9);
+    box-shadow: 0px 3px 0px rgba(0, 139, 0), 0px 3px 6px rgba(0, 0, 0, .9);
+    position: relative;
+    top: 6px;
+}
+.pf_legitInbox,
+.pf_pishInbox{
+    position: absolute;
+    top: 109px;
+    height: 471px;
+    width: 225px;
+    margin: 0px;
+}
+.pf_legitInbox{
+    left: 146px;
+}
+.pf_pishInbox{
+    right: 10px;
+}
+.pf_inboxItem{
+    position: relative;
+    width: 100%;
+    height: 41.5px;
+    background-color: white;
+    border: 1px solid black;
+}
+.pf_dot{
+    position: absolute;
+    top: 13px;
+    left: 13px;
+    height: 15px;
+    width: 15px;
+    background-image: url("img/emptyDot.png");
+    background-repeat: no-repeat center center fixed;
+    background-size: cover;
+    border-radius: 10px;
+}
+.pf_addrInbox{
+    position: absolute;
+    left: 35px;
+    overflow: hidden;
+    font-size: 12px;
+    line-height: 42px;
+}
+.pf_life,
+.pf_correctL,
+.pf_wrongL,
+.pf_correctP,
+.pf_wrongP{
+    background-repeat: no-repeat center center fixed;
+    background-size: cover;
+}
+
+.pf_correctL{
+    background-image: url("img/greenCheckDot.png");
+}
+.pf_wrongL{
+    background-image: url("img/redCheckDot.png");
+}
+.pf_correctP{
+    background-image: url("img/greenfishDot.png");
+}
+.pf_wrongP{
+    background-image: url("img/redfishDot.png");
+}
+.pf_explanationInbox{
+    width: 100%;
+}
+.pf_explanContainer{
+    position:absolute;
+    margin: 0px;
+    top: 180px;
+    left: 395px;
+    width: 490px;
+    padding: 10px;
+    text-align: center;
+    margin: auto;
+    justify-content: center;
+    height: 380px;
+    z-index: 1000;
+    background-color: white;
+    border: 1px solid black;
+    font-size: large;
+}
+.pf_subjectText,
+.pf_scoreText,
+.pf_timeText,
+.pf_fromText{
+    position: absolute;
+    font-size: 15px;
+}
+.pf_fromText{
+    left: 487px;
+    top: 67px;
+}
+.pf_timeText{
+    left: 403px;
+    top: 97px;
+}
+.pf_scoreText{
+    left: 403px;
+    top: 125px;
+}
+.pf_subjectText{
+    left: 460px;
+    top: 153px;
+}
+.pf_LInboxText{
+    position: absolute;
+    left: 170px;
+    top: 63px;
+    font-weight: bolder;
+}
+.pf_PInboxText{
+    position: absolute;
+    left: 940px;
+    top: 63px;
+    font-weight: bolder;
+}
+.pf_livesContainer{
+    margin: 0;
+    position: absolute;
+    display: flex;
+    left: 800px;
+}
+.pf_life{
+    height: 20px;
+    width: 20px;
+    background-image: url("img/bait.png");
+    border-radius: 15px;
+    border: 1px solid black;
+    margin-left: 9px;
+}
+.pf_lostLife{
+    background-image:none;
+    background-color: black;
+}

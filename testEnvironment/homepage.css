@@ -1,0 +1,25 @@
+.trivia_home_button,
+.dSweep_home_button,
+.phishingFrenzy_home_button{
+    background-size: cover; 
+    background-position: center;
+    height: 70px;
+    width: 140px;
+    border-radius: 5px;
+    transition: .6s;
+}
+.trivia_home_button:hover,
+.dSweep_home_button:hover,
+.phishingFrenzy_home_button:hover{
+    filter: brightness(50%);
+}
+
+.trivia_home_button { 
+    background-image: url("img/trivia_background.jpg");
+}
+.dSweep_home_button{
+    background-image: url("img/decipherSweeper.png");
+}
+.phishingFrenzy_home_button{
+    background-image: url("img/phishingFrenzyBtn.png");
+}

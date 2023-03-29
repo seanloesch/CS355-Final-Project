@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="homepage.css" rel="stylesheet">
+    <link href="trivia.css" rel="stylesheet">
+    <link href="mineDecrypt.css" rel="stylesheet">
+    <script defer src="phishingFrenzy.js"></script>
+    <link href="phishingFrenzy.css" rel="stylesheet">
+    <script defer src="homepage.js"></script>
+    <script defer src="trivia.js"></script>
+    <script defer src="mineDecrypt.js"></script>
+    <title>Cypher V1</title>
+</head>
+
+<body>
+    <div id="homepage" class="homepage">
+        <button class="trivia_home_button" onclick="playTrivia()"></button>
+        <button class="dSweep_home_button" onclick="playDsweeper()"></button>
+        <button class="phishingFrenzy_home_button" onclick="playPhishingFrenzy()"></button>
+    </div>
+
+    <div id="trivia" class="trivia hide">
+        <div id="trivia_pracOrRank">
+            <div id="trivia_initScreen" class="trivia_initScreen">
+                <button id="trivia_prac_btn" class="trivia_prac_btn btn">Practice</button>
+                <button id="trivia_ranked_btn" class="trivia_rank_btn btn">Ranked</button>
+                <button id="trivia_home_btn" class="trivia_home_btn btn">Home</button>
+            </div>
+
+            <div id="trivia_PracByRorT" class="trivia_PracByRorT hide">
+                <button id="trivia_PracByR_btn" class="trivia_PracByR_btn btn">Ranked</button>
+                <button id="trivia_PracByT_btn" class="trivia_PracByT_btn btn">Topic</button>
+            </div>
+        </div>
+
+        <div id="trivia_triv" class="trivia_triv hide">
+            <div id="trivia_score">
+                <div id="trivia_score_rank">
+                    <span>Rank:&nbsp;</span>
+                    <span id="trivia_user_rank">0</span>
+                </div>
+                <hr id="trivia_score_hr">
+
+                <span>Question Number: </span>
+                <span id="trivia_qnum">0</span>
+                <span id="trivia_scoreboard1"></span><br>
+                <span>Correct: </span>
+                <span id="trivia_total_correct">0</span>
+                <span id="trivia_scoreboard2"></span><br>
+                <span>Wrong: </span>
+                <span id="trivia_total_wrong">0</span>
+                <span id="trivia_scoreboard3"></span><br>
+                <span>Timer: </span>
+                <span id="trivia_timer">0</span>
+            </div>
+
+            <div class="trivia_trivia_container">
+                <div id="trivia_question_container" class="hide">
+                    <div id="trivia_question">Question</div>
+                    <hr>
+
+                    <div id="trivia_answer_buttons" class="trivia_btn_grid">
+                        <button class="trivia_btn">Answer 1</button>
+                        <button class="trivia_btn">Answer 2</button>
+                        <button class="trivia_btn">Answer 3</button>
+                        <button class="trivia_btn">Answer 4</button>
+                    </div>
+                </div>
+
+                <div class="trivia_controls">
+
+                    <div id="trivia_scores_container" class="trivia_scores_container hide">
+                        <p id="trivia_total_score"></p>
+                        <p id="trivia_alg_score"></p>
+                    </div>
+
+                    <div id="trivia_rank_select" class="trivia_rank_select hide">
+                        <form action="" method="post">
+                            <div id="trivia_pracByRForm" class="trivia_pracByRForm hide">
+                                <span>
+                                    <label id="trivia_rank_label" for="rank">Rank:</label>
+
+                                    <select id="trivia_rank" name="trivia_rank">
+                                        <option value="0">1</option>
+                                        <option value="1">2</option>
+                                        <option value="2">3</option>
+                                        <option value="3">4</option>
+                                        <option value="4">5</option>
+                                        <option value="5">6</option>
+                                        <option value="6">7</option>
+                                        <option value="7">8</option>
+                                        <option value="8">9</option>
+                                        <option value="9">10</option>
+                                    </select>
+                                </span>
+                            </div>
+                        </form>
+                        <form action="" method="post">
+                            <div id="trivia_pracByTForm" class="trivia_pracByTForm hide">
+                                <span>
+                                    <label id="trivia_topic_label" for="topic">Topic:</label>
+
+                                    <select id="trivia_topic" name="trivia_topic">
+                                        <option value="Access Control">Access Control</option>
+                                        <option value="Authentication">Authentication</option>
+                                        <option value="Cryptography">Cryptography</option>
+                                        <option value="Network Security">Network Security</option>
+                                        <option value="Malware Protection">Malware Protection</option>
+                                        <option value="Vulnerabilities">Vulnerabilities</option>
+                                        <option value="Risk Management">Risk Management</option>
+                                        <option value="Security Compliance">Security Compliance</option>
+                                        <option value="Physical Security">Physical Security</option>
+                                        <option value="Social Engineering">Social Engineering</option>
+                                    </select>
+                                </span>
+                            </div>
+                        </form>
+                        <form action="" method="post">
+                            <span>
+                                <label id="trivia_numPracQuestionsLabel" for="trivia_numPracQuestionsLabel">Number of
+                                    Questions:
+                                </label>
+
+                                <select id="trivia_numPracQuestions" name="trivia_numPracQuestions_rank">
+                                    <option value="5">5</option>
+                                    <option value="10">10</option>
+                                    <option value="15">15</option>
+                                    <option value="20">20</option>
+                                    <option value="25">25</option>
+                                </select>
+                            </span>
+                        </form>
+                    </div>
+                    <button id="trivia_start_btn" class="trivia_start_btn btn">Start</button>
+                    <button id="trivia_next_btn" class="trivia_next_btn btn hide">Next</button>
+                    <button id="trivia_finish_btn" class="trivia_finish_btn btn hide">Finish</button>
+                    <button id="trivia_reset_btn" class="trivia_reset_btn btn hide">Reset</button>
+                    <button id="trivia_submitList_btn" class="trivia_submitList_btn btn hide">Submit</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div id="mine" class="mine hide">
+        <div id="mine_startScreen" class="mine_startScreen">
+            <p id="mine_msg">Mine Decrypt</p>
+            <br>
+
+            <button id="mine_start_btn" class="mine_start_btn btn">Start</button>
+            <button id="mine_home_btn" class="mine_next_btn btn">Home</button>
+        </div>
+
+        <div id="mine_inGame" class="hide">
+            <div class="mine_numerals">
+                1<br>2<br> 3<br> 4<br> 5<br> 6<br> 7<br> 8<br> 9<br> 10<br> 11<br> 12<br> 13<br>
+                14<br> 15<br> 16<br> 17<br> 18<br> 19<br> 20<br> 21<br> 22<br> 23<br> 24<br> 25<br>26<br>
+            </div>
+
+            <div class="mine_alphabet">
+                <span>A&nbsp;&nbsp;&nbsp;</span><span>B&nbsp;&nbsp;&nbsp;</span><span>C&nbsp;&nbsp;&nbsp;</span><span>D&nbsp;&nbsp;</span>
+                <span>E&nbsp;&nbsp;&nbsp;</span> <span>F&nbsp;&nbsp;</span> <span>G&nbsp;&nbsp;</span>
+                <span>H&nbsp;&nbsp;</span>
+                <span>I&nbsp;&nbsp;&nbsp;&nbsp;</span> <span>J&nbsp;&nbsp;</span> <span>K&nbsp;&nbsp;</span>
+                <span>L&nbsp;&nbsp;</span>
+                <span>M&nbsp;&nbsp;</span> <span>N&nbsp;&nbsp;</span> <span>O&nbsp;&nbsp;</span>
+                <span>P&nbsp;&nbsp;</span>
+                <span>Q&nbsp;&nbsp;</span> <span>R&nbsp;&nbsp;</span> <span>S&nbsp;&nbsp;</span>
+                <span>T&nbsp;&nbsp;&nbsp;</span>
+                <span>U&nbsp;&nbsp;</span> <span>V&nbsp;</span> <span>W&nbsp;&nbsp;</span> <span>X&nbsp;&nbsp;</span>
+                <span>Y&nbsp;&nbsp;</span> <span>Z&nbsp;&nbsp;</span>
+            </div>
+
+            <div class="mine_btncontainer">
+                <div id="mine_buttons_container"></div>
+            </div>
+
+            <div id="mine_question_container">
+                <p id="mine_btnVal">--</p>
+
+                <div id="mine_question">
+                    <p>Questions:</p>
+                    <p id="mine_mdQ1"></p>
+                    <p id="mine_mdQ2"></p>
+                    <p id="mine_mdQ3"></p>
+                    <p id="mine_mdQ4"></p>
+                    <p id="mine_mdQ5"></p>
+                </div>
+
+                Timer: <span id="mine_time">05:00</span>
+            </div>
+        </div>
+    </div>
+    <div id="phishingFrenzy" class="phishingFrenzy hide">
+        <div class="pf_phishingFrenzyGame">
+            <div class="pf_emailBackGround">
+
+                <div class="pf_livesContainer">
+                    <div>Lives:</div>
+                    <div id="pf_life1" class="pf_life"></div>
+                    <div id="pf_life2" class="pf_life"></div>
+                    <div id="pf_life3" class="pf_life"></div>
+                </div>
+
+                <div class="pf_addrTimeScore">
+                    <p id="pf_addrDisplay" class="pf_addrDisplay">legitOrPhish@lorp.com</p>
+                    <p id="pf_scoreDisplay" class="pf_scoreDisplay">0</p>
+                    <p id="pf_timeDisplay" class="pf_timeDisplay">60</p>
+                </div>
+
+                <div class="pf_fromText">From</div>
+                <div class="pf_timeText">Time</div>
+                <div class="pf_scoreText">Score</div>
+                <div class="pf_subjectText">Determine if the following email is a phishing scam!</div>
+                <div class="pf_LInboxText">Legitimate Inbox:</div>
+                <div class="pf_PInboxText">Phishing Inbox:</div>
+
+                <div id="pf_legitInbox" class="pf_legitInbox">
+                    <div class="pf_inboxItem" onmouseover="pf_explanShow(pf_legit1E,pf_legit1M)"
+                        onmouseleave="pf_explanHide(pf_legit1E,pf_legit1M)">
+                        <div id="pf_dot_legit_line1" class="pf_dot"></div>
+                        <div id="pf_addrInbox_legit_line1" class="pf_addrInbox">[Empty]</div>
+                    </div>
+                    <div class="pf_inboxItem" onmouseover="pf_explanShow(pf_legit2E,pf_legit2M)"
+                        onmouseleave="pf_explanHide(pf_legit2E,pf_legit2M)">
+                        <div id="pf_dot_legit_line2" class="pf_dot"></div>
+                        <div id="pf_addrInbox_legit_line2" class="pf_addrInbox">[Empty]</div>
+                    </div>
+                    <div class="pf_inboxItem" onmouseover="pf_explanShow(pf_legit3E,pf_legit3M)"
+                        onmouseleave="pf_explanHide(pf_legit3E,pf_legit3M)">
+                        <div id="pf_dot_legit_line3" class="pf_dot"></div>
+                        <div id="pf_addrInbox_legit_line3" class="pf_addrInbox">[Empty]</div>
+                    </div>
+                    <div class="pf_inboxItem" onmouseover="pf_explanShow(pf_legit4E,pf_legit4M)"
+                        onmouseleave="pf_explanHide(pf_legit4E,pf_legit4M)">
+                        <div id="pf_dot_legit_line4" class="pf_dot"></div>
+                        <div id="pf_addrInbox_legit_line4" class="pf_addrInbox">[Empty]</div>
+                    </div>
+                    <div class="pf_inboxItem" onmouseover="pf_explanShow(pf_legit5E,pf_legit5M)"
+                        onmouseleave="pf_explanHide(pf_legit5E,pf_legit5M)">
+                        <div id="pf_dot_legit_line5" class="pf_dot"></div>
+                        <div id="pf_addrInbox_legit_line5" class="pf_addrInbox">[Empty]</div>
+                    </div>
+                    <div class="pf_inboxItem" onmouseover="pf_explanShow(pf_legit6E,pf_legit6M)"
+                        onmouseleave="pf_explanHide(pf_legit6E,pf_legit6M)">
+                        <div id="pf_dot_legit_line6" class="pf_dot"></div>
+                        <div id="pf_addrInbox_legit_line6" class="pf_addrInbox">[Empty]</div>
+                    </div>
+                    <div class="pf_inboxItem" onmouseover="pf_explanShow(pf_legit7E,pf_legit7M)"
+                        onmouseleave="pf_explanHide(pf_legit7E,pf_legit7M)">
+                        <div id="pf_dot_legit_line7" class="pf_dot"></div>
+                        <div id="pf_addrInbox_legit_line7" class="pf_addrInbox">[Empty]</div>
+                    </div>
+                    <div class="pf_inboxItem" onmouseover="pf_explanShow(pf_legit8E,pf_legit8M)"
+                        onmouseleave="pf_explanHide(pf_legit8E,pf_legit8M)">
+                        <div id="pf_dot_legit_line8" class="pf_dot"></div>
+                        <div id="pf_addrInbox_legit_line8" class="pf_addrInbox">[Empty]</div>
+                    </div>
+                    <div class="pf_inboxItem" onmouseover="pf_explanShow(pf_legit9E,pf_legit9M)"
+                        onmouseleave="pf_explanHide(pf_legit9E,pf_legit9M)">
+                        <div id="pf_dot_legit_line9" class="pf_dot"></div>
+                        <div id="pf_addrInbox_legit_line9" class="pf_addrInbox">[Empty]</div>
+                    </div>
+                    <div class="pf_inboxItem" onmouseover="pf_explanShow(pf_legit10E,pf_legit10M)"
+                        onmouseleave="pf_explanHide(pf_legit10E,pf_legit10M)">
+                        <div id="pf_dot_legit_line10" class="pf_dot"></div>
+                        <div id="pf_addrInbox_legit_line10" class="pf_addrInbox">[Empty]</div>
+                    </div>
+                    <div class="pf_inboxItem" onmouseover="pf_explanShow(pf_legit11E,pf_legit11M)"
+                        onmouseleave="pf_explanHide(pf_legit11E,pf_legit11M)">
+                        <div id="pf_dot_legit_line11" class="pf_dot"></div>
+                        <div id="pf_addrInbox_legit_line11" class="pf_addrInbox">[Empty]</div>
+                    </div>
+                </div>
+
+                <div id="pf_phishInbox" class="pf_pishInbox">
+                    <div class="pf_inboxItem" onmouseover="pf_explanShow(pf_phish1E,pf_phish1M)"
+                        onmouseleave="pf_explanHide(pf_phish1E,pf_phish1M)">
+                        <div id="pf_dot_phish_line1" class="pf_dot"></div>
+                        <div id="pf_addrInbox_phish_line1" class="pf_addrInbox">[Empty]</div>
+                    </div>
+                    <div class="pf_inboxItem" onmouseover="pf_explanShow(pf_phish2E,pf_phish2M)"
+                        onmouseleave="pf_explanHide(pf_phish2E,pf_phish2M)">
+                        <div id="pf_dot_phish_line2" class="pf_dot"></div>
+                        <div id="pf_addrInbox_phish_line2" class="pf_addrInbox">[Empty]</div>
+                    </div>
+                    <div class="pf_inboxItem" onmouseover="pf_explanShow(pf_phish3E,pf_phish3M)"
+                        onmouseleave="pf_explanHide(pf_phish3E,pf_phish3M)">
+                        <div id="pf_dot_phish_line3" class="pf_dot"></div>
+                        <div id="pf_addrInbox_phish_line3" class="pf_addrInbox">[Empty]</div>
+                    </div>
+                    <div class="pf_inboxItem" onmouseover="pf_explanShow(pf_phish4E,pf_phish4M)"
+                        onmouseleave="pf_explanHide(pf_phish4E,pf_phish4M)">
+                        <div id="pf_dot_phish_line4" class="pf_dot"></div>
+                        <div id="pf_addrInbox_phish_line4" class="pf_addrInbox">[Empty]</div>
+                    </div>
+                    <div class="pf_inboxItem" onmouseover="pf_explanShow(pf_phish5E,pf_phish5M)"
+                        onmouseleave="pf_explanHide(pf_phish5E,pf_phish5M)">
+                        <div id="pf_dot_phish_line5" class="pf_dot"></div>
+                        <div id="pf_addrInbox_phish_line5" class="pf_addrInbox">[Empty]</div>
+                    </div>
+                    <div class="pf_inboxItem" onmouseover="pf_explanShow(pf_phish6E,pf_phish6M)"
+                        onmouseleave="pf_explanHide(pf_phish6E,pf_phish6M)">
+                        <div id="pf_dot_phish_line6" class="pf_dot"></div>
+                        <div id="pf_addrInbox_phish_line6" class="pf_addrInbox">[Empty]</div>
+                    </div>
+                    <div class="pf_inboxItem" onmouseover="pf_explanShow(pf_phish7E,pf_phish7M)"
+                        onmouseleave="pf_explanHide(pf_phish7E,pf_phish7M)">
+                        <div id="pf_dot_phish_line7" class="pf_dot"></div>
+                        <div id="pf_addrInbox_phish_line7" class="pf_addrInbox">[Empty]</div>
+                    </div>
+                    <div class="pf_inboxItem" onmouseover="pf_explanShow(pf_phish8E,pf_phish8M)"
+                        onmouseleave="pf_explanHide(pf_phish8E,pf_phish8M)">
+                        <div id="pf_dot_phish_line8" class="pf_dot"></div>
+                        <div id="pf_addrInbox_phish_line8" class="pf_addrInbox">[Empty]</div>
+                    </div>
+                    <div class="pf_inboxItem" onmouseover="pf_explanShow(pf_phish9E,pf_phish9M)"
+                        onmouseleave="pf_explanHide(pf_phish9E,pf_phish9M)">
+                        <div id="pf_dot_phish_line9" class="pf_dot"></div>
+                        <div id="pf_addrInbox_phish_line9" class="pf_addrInbox">[Empty]</div>
+                    </div>
+                    <div class="pf_inboxItem" onmouseover="pf_explanShow(pf_phish10E,pf_phish10M)"
+                        onmouseleave="pf_explanHide(pf_phish10E,pf_phish10M)">
+                        <div id="pf_dot_phish_line10" class="pf_dot"></div>
+                        <div id="pf_addrInbox_phish_line10" class="pf_addrInbox">[Empty]</div>
+                    </div>
+                    <div class="pf_inboxItem" onmouseover="pf_explanShow(pf_phish11E,pf_phish11M)"
+                        onmouseleave="pf_explanHide(pf_phish11E,pf_phish11M)">
+                        <div id="pf_dot_phish_line11" class="pf_dot"></div>
+                        <div id="pf_addrInbox_phish_line11" class="pf_addrInbox">[Empty]</div>
+                    </div>
+                </div>
+                <div id="pf_explanContainer" class="pf_explanContainer hide">
+                    <p><b>Message:</b></p>
+                    <hr>
+                    <div id="pf_LmsgInbox_1" class="pf_explanationInbox hide">[Empty]</div>
+                    <div id="pf_LmsgInbox_2" class="pf_explanationInbox hide">[Empty]</div>
+                    <div id="pf_LmsgInbox_3" class="pf_explanationInbox hide">[Empty]</div>
+                    <div id="pf_LmsgInbox_4" class="pf_explanationInbox hide">[Empty]</div>
+                    <div id="pf_LmsgInbox_5" class="pf_explanationInbox hide">[Empty]</div>
+                    <div id="pf_LmsgInbox_6" class="pf_explanationInbox hide">[Empty]</div>
+                    <div id="pf_LmsgInbox_7" class="pf_explanationInbox hide">[Empty]</div>
+                    <div id="pf_LmsgInbox_8" class="pf_explanationInbox hide">[Empty]</div>
+                    <div id="pf_LmsgInbox_9" class="pf_explanationInbox hide">[Empty]</div>
+                    <div id="pf_LmsgInbox_10" class="pf_explanationInbox hide">[Empty]</div>
+                    <div id="pf_LmsgInbox_11" class="pf_explanationInbox hide">[Empty]</div>
+
+                    <div id="pf_PmsgInbox_1" class="pf_explanationInbox hide">[Empty]</div>
+                    <div id="pf_PmsgInbox_2" class="pf_explanationInbox hide">[Empty]</div>
+                    <div id="pf_PmsgInbox_3" class="pf_explanationInbox hide">[Empty]</div>
+                    <div id="pf_PmsgInbox_4" class="pf_explanationInbox hide">[Empty]</div>
+                    <div id="pf_PmsgInbox_5" class="pf_explanationInbox hide">[Empty]</div>
+                    <div id="pf_PmsgInbox_6" class="pf_explanationInbox hide">[Empty]</div>
+                    <div id="pf_PmsgInbox_7" class="pf_explanationInbox hide">[Empty]</div>
+                    <div id="pf_PmsgInbox_8" class="pf_explanationInbox hide">[Empty]</div>
+                    <div id="pf_PmsgInbox_9" class="pf_explanationInbox hide">[Empty]</div>
+                    <div id="pf_PmsgInbox_10" class="pf_explanationInbox hide">[Empty]</div>
+                    <div id="pf_PmsgInbox_11" class="pf_explanationInbox hide">[Empty]</div>
+                    <hr>
+                    <p><b>Explanation:</b></p>
+                    <hr>
+                    <div id="pf_explanationInbox_legit_line1" class="pf_explanationInbox hide">There is no email</div>
+                    <div id="pf_explanationInbox_legit_line2" class="pf_explanationInbox hide">There is no email</div>
+                    <div id="pf_explanationInbox_legit_line3" class="pf_explanationInbox hide">There is no email</div>
+                    <div id="pf_explanationInbox_legit_line4" class="pf_explanationInbox hide">There is no email</div>
+                    <div id="pf_explanationInbox_legit_line5" class="pf_explanationInbox hide">There is no email</div>
+                    <div id="pf_explanationInbox_legit_line6" class="pf_explanationInbox hide">There is no email</div>
+                    <div id="pf_explanationInbox_legit_line7" class="pf_explanationInbox hide">There is no email</div>
+                    <div id="pf_explanationInbox_legit_line8" class="pf_explanationInbox hide">There is no email</div>
+                    <div id="pf_explanationInbox_legit_line9" class="pf_explanationInbox hide">There is no email</div>
+                    <div id="pf_explanationInbox_legit_line10" class="pf_explanationInbox hide">There is no email</div>
+                    <div id="pf_explanationInbox_legit_line11" class="pf_explanationInbox hide">There is no email</div>
+
+                    <div id="pf_explanationInbox_phish_line1" class="pf_explanationInbox hide">There is no email</div>
+                    <div id="pf_explanationInbox_phish_line2" class="pf_explanationInbox hide">There is no email</div>
+                    <div id="pf_explanationInbox_phish_line3" class="pf_explanationInbox hide">There is no email</div>
+                    <div id="pf_explanationInbox_phish_line4" class="pf_explanationInbox hide">There is no email</div>
+                    <div id="pf_explanationInbox_phish_line5" class="pf_explanationInbox hide">There is no email</div>
+                    <div id="pf_explanationInbox_phish_line6" class="pf_explanationInbox hide">There is no email</div>
+                    <div id="pf_explanationInbox_phish_line7" class="pf_explanationInbox hide">There is no email</div>
+                    <div id="pf_explanationInbox_phish_line8" class="pf_explanationInbox hide">There is no email</div>
+                    <div id="pf_explanationInbox_phish_line9" class="pf_explanationInbox hide">There is no email</div>
+                    <div id="pf_explanationInbox_phish_line10" class="pf_explanationInbox hide">There is no email</div>
+                    <div id="pf_explanationInbox_phish_line11" class="pf_explanationInbox hide">There is no email</div>
+                </div>
+
+                <div id="pf_difficultySelector" class="pf_difficultySelector">
+                    <p id="pf_playerMessage" class="pf_playerMessage">URGENT!!!! Click the link below to adjust your
+                        DiFfIcUlTy settings:</p>
+                    <button id="pf_easy"
+                        class="pf_easy">http://www.easy.com/rll/DyzZxHtqLqI6BBjRp2syzNpl9HP/kc7XRxgz8Sx</button>
+                    <button id="pf_medium"
+                        class="pf_medium">http://www.medium.com/aHKV4rag4CHcmyShUmO4r7uiZ1RRKu530pGKtO</button>
+                    <button id="pf_hard"
+                        class="pf_hard">http://www.hard.com/rll/ssfflf3F36jxTkZNribqX97X8r33pcRxM2S/1gv</button>
+                    <hr>
+                    <button id="pf_home"
+                        class="pf_home">http://www.home.com/VzcTOj4ZCsX80q5uMv_4jaNLgwNer8Y1MS7SR5za1X</button><br>
+                </div>
+
+                <div id="pf_inGame" class="pf_inGame hide">
+                    <div class="pf_emailScreen">
+                        <p id="pf_emailDisplay" class="pf_emailDisplay"></p>
+                        <div class="pf_btnDisplay">
+                            <button id="pf_legitBtn" class="pf_legitBtn">Legitimate</button>
+                            <button id="pf_phishBtn" class="pf_phishBtn">Phishing</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
