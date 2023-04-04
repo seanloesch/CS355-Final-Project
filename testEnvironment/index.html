@@ -8,8 +8,8 @@
     <link href="homepage.css" rel="stylesheet">
     <link href="trivia.css" rel="stylesheet">
     <link href="mineDecrypt.css" rel="stylesheet">
-    <script defer src="phishingFrenzy.js"></script>
     <link href="phishingFrenzy.css" rel="stylesheet">
+    <script defer src="phishingFrenzy.js"></script>
     <script defer src="homepage.js"></script>
     <script defer src="trivia.js"></script>
     <script defer src="mineDecrypt.js"></script>
@@ -196,220 +196,180 @@
         </div>
     </div>
     <div id="phishingFrenzy" class="phishingFrenzy hide">
-        <div class="pf_phishingFrenzyGame">
-            <div class="pf_emailBackGround">
-
+        <div class="pf_emailBackGround">
+            <div class="pf_topMostBar">
+                <div class="pf_topMostBarEmailDesign">
+                    <div class="pf_topMostBarEmailDesignHome">Home&nbsp;</div>
+                    <div class="pf_topMostBarEmailDesignView">View</div>
+                    <div class="pf_topMostBarEmailDesignHelp">Help</div>
+                    <div class="pf_topMostBarEmailDesignMessage">Message</div>
+                    <div class="pf_topMostBarEmailDesignInsert">Insert</div>
+                    <div class="pf_topMostBarEmailDesignFormatText">Format text</div>
+                    <div class="pf_topMostBarEmailDesignOptions">Options</div>
+                </div>
                 <div class="pf_livesContainer">
                     <div>Lives:</div>
                     <div id="pf_life1" class="pf_life"></div>
                     <div id="pf_life2" class="pf_life"></div>
                     <div id="pf_life3" class="pf_life"></div>
                 </div>
+            </div>
+            <div class="pf_secondTopMostBar"></div>
 
-                <div class="pf_addrTimeScore">
-                    <p id="pf_addrDisplay" class="pf_addrDisplay">legitOrPhish@lorp.com</p>
-                    <p id="pf_scoreDisplay" class="pf_scoreDisplay">0</p>
-                    <p id="pf_timeDisplay" class="pf_timeDisplay">60</p>
-                </div>
-
-                <div class="pf_fromText">From</div>
-                <div class="pf_timeText">Time</div>
-                <div class="pf_scoreText">Score</div>
-                <div class="pf_subjectText">Determine if the following email is a phishing scam!</div>
-                <div class="pf_LInboxText">Legitimate Inbox:</div>
-                <div class="pf_PInboxText">Phishing Inbox:</div>
-
-                <div id="pf_legitInbox" class="pf_legitInbox">
-                    <div class="pf_inboxItem" onmouseover="pf_explanShow(pf_legit1E,pf_legit1M)"
-                        onmouseleave="pf_explanHide(pf_legit1E,pf_legit1M)">
-                        <div id="pf_dot_legit_line1" class="pf_dot"></div>
-                        <div id="pf_addrInbox_legit_line1" class="pf_addrInbox">[Empty]</div>
-                    </div>
-                    <div class="pf_inboxItem" onmouseover="pf_explanShow(pf_legit2E,pf_legit2M)"
-                        onmouseleave="pf_explanHide(pf_legit2E,pf_legit2M)">
-                        <div id="pf_dot_legit_line2" class="pf_dot"></div>
-                        <div id="pf_addrInbox_legit_line2" class="pf_addrInbox">[Empty]</div>
-                    </div>
-                    <div class="pf_inboxItem" onmouseover="pf_explanShow(pf_legit3E,pf_legit3M)"
-                        onmouseleave="pf_explanHide(pf_legit3E,pf_legit3M)">
-                        <div id="pf_dot_legit_line3" class="pf_dot"></div>
-                        <div id="pf_addrInbox_legit_line3" class="pf_addrInbox">[Empty]</div>
-                    </div>
-                    <div class="pf_inboxItem" onmouseover="pf_explanShow(pf_legit4E,pf_legit4M)"
-                        onmouseleave="pf_explanHide(pf_legit4E,pf_legit4M)">
-                        <div id="pf_dot_legit_line4" class="pf_dot"></div>
-                        <div id="pf_addrInbox_legit_line4" class="pf_addrInbox">[Empty]</div>
-                    </div>
-                    <div class="pf_inboxItem" onmouseover="pf_explanShow(pf_legit5E,pf_legit5M)"
-                        onmouseleave="pf_explanHide(pf_legit5E,pf_legit5M)">
-                        <div id="pf_dot_legit_line5" class="pf_dot"></div>
-                        <div id="pf_addrInbox_legit_line5" class="pf_addrInbox">[Empty]</div>
-                    </div>
-                    <div class="pf_inboxItem" onmouseover="pf_explanShow(pf_legit6E,pf_legit6M)"
-                        onmouseleave="pf_explanHide(pf_legit6E,pf_legit6M)">
-                        <div id="pf_dot_legit_line6" class="pf_dot"></div>
-                        <div id="pf_addrInbox_legit_line6" class="pf_addrInbox">[Empty]</div>
-                    </div>
-                    <div class="pf_inboxItem" onmouseover="pf_explanShow(pf_legit7E,pf_legit7M)"
-                        onmouseleave="pf_explanHide(pf_legit7E,pf_legit7M)">
-                        <div id="pf_dot_legit_line7" class="pf_dot"></div>
-                        <div id="pf_addrInbox_legit_line7" class="pf_addrInbox">[Empty]</div>
-                    </div>
-                    <div class="pf_inboxItem" onmouseover="pf_explanShow(pf_legit8E,pf_legit8M)"
-                        onmouseleave="pf_explanHide(pf_legit8E,pf_legit8M)">
-                        <div id="pf_dot_legit_line8" class="pf_dot"></div>
-                        <div id="pf_addrInbox_legit_line8" class="pf_addrInbox">[Empty]</div>
-                    </div>
-                    <div class="pf_inboxItem" onmouseover="pf_explanShow(pf_legit9E,pf_legit9M)"
-                        onmouseleave="pf_explanHide(pf_legit9E,pf_legit9M)">
-                        <div id="pf_dot_legit_line9" class="pf_dot"></div>
-                        <div id="pf_addrInbox_legit_line9" class="pf_addrInbox">[Empty]</div>
-                    </div>
-                    <div class="pf_inboxItem" onmouseover="pf_explanShow(pf_legit10E,pf_legit10M)"
-                        onmouseleave="pf_explanHide(pf_legit10E,pf_legit10M)">
-                        <div id="pf_dot_legit_line10" class="pf_dot"></div>
-                        <div id="pf_addrInbox_legit_line10" class="pf_addrInbox">[Empty]</div>
-                    </div>
-                    <div class="pf_inboxItem" onmouseover="pf_explanShow(pf_legit11E,pf_legit11M)"
-                        onmouseleave="pf_explanHide(pf_legit11E,pf_legit11M)">
-                        <div id="pf_dot_legit_line11" class="pf_dot"></div>
-                        <div id="pf_addrInbox_legit_line11" class="pf_addrInbox">[Empty]</div>
-                    </div>
-                </div>
-
-                <div id="pf_phishInbox" class="pf_pishInbox">
-                    <div class="pf_inboxItem" onmouseover="pf_explanShow(pf_phish1E,pf_phish1M)"
-                        onmouseleave="pf_explanHide(pf_phish1E,pf_phish1M)">
-                        <div id="pf_dot_phish_line1" class="pf_dot"></div>
-                        <div id="pf_addrInbox_phish_line1" class="pf_addrInbox">[Empty]</div>
-                    </div>
-                    <div class="pf_inboxItem" onmouseover="pf_explanShow(pf_phish2E,pf_phish2M)"
-                        onmouseleave="pf_explanHide(pf_phish2E,pf_phish2M)">
-                        <div id="pf_dot_phish_line2" class="pf_dot"></div>
-                        <div id="pf_addrInbox_phish_line2" class="pf_addrInbox">[Empty]</div>
-                    </div>
-                    <div class="pf_inboxItem" onmouseover="pf_explanShow(pf_phish3E,pf_phish3M)"
-                        onmouseleave="pf_explanHide(pf_phish3E,pf_phish3M)">
-                        <div id="pf_dot_phish_line3" class="pf_dot"></div>
-                        <div id="pf_addrInbox_phish_line3" class="pf_addrInbox">[Empty]</div>
-                    </div>
-                    <div class="pf_inboxItem" onmouseover="pf_explanShow(pf_phish4E,pf_phish4M)"
-                        onmouseleave="pf_explanHide(pf_phish4E,pf_phish4M)">
-                        <div id="pf_dot_phish_line4" class="pf_dot"></div>
-                        <div id="pf_addrInbox_phish_line4" class="pf_addrInbox">[Empty]</div>
-                    </div>
-                    <div class="pf_inboxItem" onmouseover="pf_explanShow(pf_phish5E,pf_phish5M)"
-                        onmouseleave="pf_explanHide(pf_phish5E,pf_phish5M)">
-                        <div id="pf_dot_phish_line5" class="pf_dot"></div>
-                        <div id="pf_addrInbox_phish_line5" class="pf_addrInbox">[Empty]</div>
-                    </div>
-                    <div class="pf_inboxItem" onmouseover="pf_explanShow(pf_phish6E,pf_phish6M)"
-                        onmouseleave="pf_explanHide(pf_phish6E,pf_phish6M)">
-                        <div id="pf_dot_phish_line6" class="pf_dot"></div>
-                        <div id="pf_addrInbox_phish_line6" class="pf_addrInbox">[Empty]</div>
-                    </div>
-                    <div class="pf_inboxItem" onmouseover="pf_explanShow(pf_phish7E,pf_phish7M)"
-                        onmouseleave="pf_explanHide(pf_phish7E,pf_phish7M)">
-                        <div id="pf_dot_phish_line7" class="pf_dot"></div>
-                        <div id="pf_addrInbox_phish_line7" class="pf_addrInbox">[Empty]</div>
-                    </div>
-                    <div class="pf_inboxItem" onmouseover="pf_explanShow(pf_phish8E,pf_phish8M)"
-                        onmouseleave="pf_explanHide(pf_phish8E,pf_phish8M)">
-                        <div id="pf_dot_phish_line8" class="pf_dot"></div>
-                        <div id="pf_addrInbox_phish_line8" class="pf_addrInbox">[Empty]</div>
-                    </div>
-                    <div class="pf_inboxItem" onmouseover="pf_explanShow(pf_phish9E,pf_phish9M)"
-                        onmouseleave="pf_explanHide(pf_phish9E,pf_phish9M)">
-                        <div id="pf_dot_phish_line9" class="pf_dot"></div>
-                        <div id="pf_addrInbox_phish_line9" class="pf_addrInbox">[Empty]</div>
-                    </div>
-                    <div class="pf_inboxItem" onmouseover="pf_explanShow(pf_phish10E,pf_phish10M)"
-                        onmouseleave="pf_explanHide(pf_phish10E,pf_phish10M)">
-                        <div id="pf_dot_phish_line10" class="pf_dot"></div>
-                        <div id="pf_addrInbox_phish_line10" class="pf_addrInbox">[Empty]</div>
-                    </div>
-                    <div class="pf_inboxItem" onmouseover="pf_explanShow(pf_phish11E,pf_phish11M)"
-                        onmouseleave="pf_explanHide(pf_phish11E,pf_phish11M)">
-                        <div id="pf_dot_phish_line11" class="pf_dot"></div>
-                        <div id="pf_addrInbox_phish_line11" class="pf_addrInbox">[Empty]</div>
-                    </div>
-                </div>
-                <div id="pf_explanContainer" class="pf_explanContainer hide">
-                    <p class="pf_explanHeader"><b>Message:</b></p>
-                    <hr>
-                    <div id="pf_LmsgInbox_1" class="pf_explanationInbox hide">[Empty]</div>
-                    <div id="pf_LmsgInbox_2" class="pf_explanationInbox hide">[Empty]</div>
-                    <div id="pf_LmsgInbox_3" class="pf_explanationInbox hide">[Empty]</div>
-                    <div id="pf_LmsgInbox_4" class="pf_explanationInbox hide">[Empty]</div>
-                    <div id="pf_LmsgInbox_5" class="pf_explanationInbox hide">[Empty]</div>
-                    <div id="pf_LmsgInbox_6" class="pf_explanationInbox hide">[Empty]</div>
-                    <div id="pf_LmsgInbox_7" class="pf_explanationInbox hide">[Empty]</div>
-                    <div id="pf_LmsgInbox_8" class="pf_explanationInbox hide">[Empty]</div>
-                    <div id="pf_LmsgInbox_9" class="pf_explanationInbox hide">[Empty]</div>
-                    <div id="pf_LmsgInbox_10" class="pf_explanationInbox hide">[Empty]</div>
-                    <div id="pf_LmsgInbox_11" class="pf_explanationInbox hide">[Empty]</div>
-
-                    <div id="pf_PmsgInbox_1" class="pf_explanationInbox hide">[Empty]</div>
-                    <div id="pf_PmsgInbox_2" class="pf_explanationInbox hide">[Empty]</div>
-                    <div id="pf_PmsgInbox_3" class="pf_explanationInbox hide">[Empty]</div>
-                    <div id="pf_PmsgInbox_4" class="pf_explanationInbox hide">[Empty]</div>
-                    <div id="pf_PmsgInbox_5" class="pf_explanationInbox hide">[Empty]</div>
-                    <div id="pf_PmsgInbox_6" class="pf_explanationInbox hide">[Empty]</div>
-                    <div id="pf_PmsgInbox_7" class="pf_explanationInbox hide">[Empty]</div>
-                    <div id="pf_PmsgInbox_8" class="pf_explanationInbox hide">[Empty]</div>
-                    <div id="pf_PmsgInbox_9" class="pf_explanationInbox hide">[Empty]</div>
-                    <div id="pf_PmsgInbox_10" class="pf_explanationInbox hide">[Empty]</div>
-                    <div id="pf_PmsgInbox_11" class="pf_explanationInbox hide">[Empty]</div>
-                    <hr>
-                    <p class="pf_explanHeader"><b>Explanation:</b></p>
-                    <hr>
-                    <div id="pf_explanationInbox_legit_line1" class="pf_explanationInbox hide">There is no email</div>
-                    <div id="pf_explanationInbox_legit_line2" class="pf_explanationInbox hide">There is no email</div>
-                    <div id="pf_explanationInbox_legit_line3" class="pf_explanationInbox hide">There is no email</div>
-                    <div id="pf_explanationInbox_legit_line4" class="pf_explanationInbox hide">There is no email</div>
-                    <div id="pf_explanationInbox_legit_line5" class="pf_explanationInbox hide">There is no email</div>
-                    <div id="pf_explanationInbox_legit_line6" class="pf_explanationInbox hide">There is no email</div>
-                    <div id="pf_explanationInbox_legit_line7" class="pf_explanationInbox hide">There is no email</div>
-                    <div id="pf_explanationInbox_legit_line8" class="pf_explanationInbox hide">There is no email</div>
-                    <div id="pf_explanationInbox_legit_line9" class="pf_explanationInbox hide">There is no email</div>
-                    <div id="pf_explanationInbox_legit_line10" class="pf_explanationInbox hide">There is no email</div>
-                    <div id="pf_explanationInbox_legit_line11" class="pf_explanationInbox hide">There is no email</div>
-
-                    <div id="pf_explanationInbox_phish_line1" class="pf_explanationInbox hide">There is no email</div>
-                    <div id="pf_explanationInbox_phish_line2" class="pf_explanationInbox hide">There is no email</div>
-                    <div id="pf_explanationInbox_phish_line3" class="pf_explanationInbox hide">There is no email</div>
-                    <div id="pf_explanationInbox_phish_line4" class="pf_explanationInbox hide">There is no email</div>
-                    <div id="pf_explanationInbox_phish_line5" class="pf_explanationInbox hide">There is no email</div>
-                    <div id="pf_explanationInbox_phish_line6" class="pf_explanationInbox hide">There is no email</div>
-                    <div id="pf_explanationInbox_phish_line7" class="pf_explanationInbox hide">There is no email</div>
-                    <div id="pf_explanationInbox_phish_line8" class="pf_explanationInbox hide">There is no email</div>
-                    <div id="pf_explanationInbox_phish_line9" class="pf_explanationInbox hide">There is no email</div>
-                    <div id="pf_explanationInbox_phish_line10" class="pf_explanationInbox hide">There is no email</div>
-                    <div id="pf_explanationInbox_phish_line11" class="pf_explanationInbox hide">There is no email</div>
-                </div>
-
-                <div id="pf_difficultySelector" class="pf_difficultySelector">
-                    <p id="pf_playerMessage" class="pf_playerMessage">URGENT!!!! Click the link below to adjust your
-                        DiFfIcUlTy settings:</p>
-                    <button id="pf_easy"
-                        class="pf_easy">http://www.easy.com/rll/DyzZxHtqLqI6BBjRp2syzNpl9HP/kc7XRxgz8Sx</button>
-                    <button id="pf_medium"
-                        class="pf_medium">http://www.medium.com/aHKV4rag4CHcmyShUmO4r7uiZ1RRKu530pGKtO</button>
-                    <button id="pf_hard"
-                        class="pf_hard">http://www.hard.com/rll/ssfflf3F36jxTkZNribqX97X8r33pcRxM2S/1gv</button>
-                    <hr>
-                    <button id="pf_home"
-                        class="pf_home">http://www.home.com/VzcTOj4ZCsX80q5uMv_4jaNLgwNer8Y1MS7SR5za1X</button><br>
-                </div>
-
-                <div id="pf_inGame" class="pf_inGame hide">
-                    <div class="pf_emailScreen">
-                        <p id="pf_emailDisplay" class="pf_emailDisplay"></p>
-                        <div class="pf_btnDisplay">
-                            <button id="pf_legitBtn" class="pf_legitBtn">Legitimate</button>
-                            <button id="pf_phishBtn" class="pf_phishBtn">Phishing</button>
+            <div class="pf_mainSet">
+                <div class="pf_leftContainer">
+                    <div class="pf_leftLeftEmailDesign">
+                        <div class="pf_favorites">
+                            <div class="pf_favoritesTopText">&nbsp;&emsp;&#x2304;&ensp; Favorites</div>
+                            <div class="pf_favoritesListBox">
+                                <div class="pf_favoritesListBoxImg">
+                                    <div class="pf_faveimg pf_selectedInbox"><img class="leftEmailDesignImgs"
+                                            src="img/inboxSceenshot.png"></div>
+                                    <div class="pf_faveimg"><img class="leftEmailDesignImgs" src="img/sentItemsImg.png">
+                                    </div>
+                                    <div class="pf_faveimg"><img class="leftEmailDesignImgs" src="img/draftsImg.png">
+                                    </div>
+                                </div>
+                                <div class="pf_favoritesListBoxText">
+                                    <div class="pf_faveSpace pf_selectedInbox"><b>Inbox</b></div>
+                                    <div class="pf_faveSpace">Sent Items</div>
+                                    <div class="pf_faveSpace">Drafts</div>
+                                    <div class="pf_faveSpace pf_bText">Add Favorite</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pf_folders">
+                            <div class="pf_foldersTopText">&nbsp;&emsp;&#x2304;&ensp; Folders</div>
+                            <div class="pf_foldersListBox">
+                                <div class="pf_foldersListBoxImg">
+                                    <div class="pf_foldimg"><img class="leftEmailDesignImgs"
+                                            src="img/inboxSceenshot.png"></div>
+                                    <div class="pf_foldimg"><img class="leftEmailDesignImgs" src="img/draftsImg.png">
+                                    </div>
+                                    <div class="pf_foldimg"><img class="leftEmailDesignImgs" src="img/sentItemsImg.png">
+                                    </div>
+                                    <div class="pf_foldimg"><img class="leftEmailDesignImgs"
+                                            src="img/deletedItemsImg.png"></div>
+                                    <div class="pf_foldimg"><img class="leftEmailDesignImgs" src="img/junkEmail.png">
+                                    </div>
+                                    <div class="pf_foldimg"><img class="leftEmailDesignImgs" src="img/archiveimg.png">
+                                    </div>
+                                    <div class="pf_foldimg"><img class="leftEmailDesignImgs" src="img/pf_notes.png">
+                                    </div>
+                                    <div class="pf_foldimg"><img class="leftEmailDesignImgs" src="img/pf_foldImg.png">
+                                    </div>
+                                    <div class="pf_foldimg"><img class="leftEmailDesignImgs" src="img/pf_foldImg.png">
+                                    </div>
+                                </div>
+                                <div class="pf_foldersListBoxText">
+                                    <div class="pf_foldSpace">Inbox</div>
+                                    <div class="pf_foldSpace">Drafts</div>
+                                    <div class="pf_foldSpace">Sent Items</div>
+                                    <div class="pf_foldSpace">Deleted Items</div>
+                                    <div class="pf_foldSpace">Junk Email</div>
+                                    <div class="pf_foldSpace">Archive</div>
+                                    <div class="pf_foldSpace">Notes</div>
+                                    <div class="pf_foldSpace">Conversation His...</div>
+                                    <div class="pf_foldSpace">RSS Feeds</div>
+                                    <div class="pf_foldSpace pf_bText">Create new folder</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pf_folders">
+                            <div class="pf_foldersTopText">&nbsp;&emsp;&#x2304;&ensp; Groups</div>
+                            <div class="pf_foldersListBox">
+                                <div class="pf_foldersListBoxImg">
+                                </div>
+                                <div class="pf_foldersListBoxText">
+                                    <div class="pf_foldSpace pf_bText">Discover groups</div>
+                                    <div class="pf_foldSpace pf_bText">Manage groups</div>
+                                </div>
+                            </div>
                         </div>
                     </div>
+                    <div class="pf_leftInboxWhole">
+                        <div class="pf_topEmailDesign">
+                            <div class="pf_topEmailDesignTop">
+                                <div class="pf_topEmailDesignTopCheck"><img class="pf_check"
+                                        src="img/pf_greyCheck2.png"></div>
+                                <div class="pf_LInboxText">Legitimate Inbox:</div>
+                                <div class="pf_topEmailDesignTopFilter"></div>
+                            </div>
+                            <div class="pf_topEmailDesignBottom"></div>
+                        </div>
+                        <div class="pf_inboxes">
+                            <div class="pf_blueBar"><img class="pf_blueBarimg" src="img/pf_blueBar.png"></div>
+                            <div id="pf_legitInbox" class="pf_legitInbox"></div>
+                        </div>
+                    </div>
+                    <div class="pf_scrollDesign"></div>
+                </div>
+                <div class="pf_middleContainer">
+                    <div class="pf_middleWhitespace"></div>
+                    <div class="pf_wholeFrom">
+                        <div class="pf_sendbtn"><img class="sendImg" src="img/pf_blueSend.png"></div>
+                        <div id="pf_addrDisplay" class="pf_addrDisplay">legitOrPhish@lorp.com</div>
+                        <div class="fromEnd"><img class="pf_fromEndImg" src="img/pf_fromEndImg.png"></div>
+                    </div>
+                    <div class="pf_wholeTimer">
+                        <img class="time_scoreImgs" src="img/pf_timeImg.png">
+                        <p id="pf_timeDisplay" class="pf_consoleText">60</p>
+                    </div>
+                    <div class="pf_wholeScore">
+                        <img class="time_scoreImgs" src="img/pf_scoreImg.png">
+                        <p id="pf_scoreDisplay" class="pf_consoleText">0</p>
+                    </div>
+                    <div class="pf_wholeAddSubject">
+                        <span class="pf_subjectText">The Subject:</span><span>&ensp;Determine if the following email is
+                            a phishing scam!</span>
+                    </div>
+                    <div class="pf_wholeEmail">
+                        <div id="pf_explanContainer" class="pf_explanContainer hide"></div>
+
+                        <div id="pf_difficultySelector" class="pf_difficultySelector">
+                            <p id="pf_playerMessage" class="pf_playerMessage">URGENT!!!! Click the link below to
+                                adjust your
+                                DiFfIcUlTy settings:</p>
+                            <button id="pf_easy"
+                                class="pf_easy">http://www.easy.com/rll/DyzZxHtqLqI6BBjRp2syzNpl9HP/kc7XRxgz8Sx</button>
+                            <button id="pf_medium"
+                                class="pf_medium">http://www.medium.com/aHKV4rag4CHcmyShUmO4r7uiZ1RRKu530pGKtO</button>
+                            <button id="pf_hard"
+                                class="pf_hard">http://www.hard.com/rll/ssfflf3F36jxTkZNribqX97X8r33pcRxM2S/1gv</button>
+                            <hr>
+                            <button id="pf_home"
+                                class="pf_home">http://www.home.com/VzcTOj4ZCsX80q5uMv_4jaNLgwNer8Y1MS7SR5za1X</button><br>
+                        </div>
+
+                        <div id="pf_inGame" class="pf_inGame hide">
+                            <div class="pf_emailScreen">
+                                <div id="pf_emailDisplay" class="pf_emailDisplay"></div>
+                                <div class="pf_btnDisplay">
+                                    <button id="pf_legitBtn" class="pf_legitBtn">Legitimate</button>
+                                    <button id="pf_phishBtn" class="pf_phishBtn">Phishing</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="pf_rightContainer">
+                    <div class="pf_rightInboxWhole">
+                        <div class="pf_topEmailDesign">
+                            <div class="pf_topEmailDesignTop">
+                                <div class="pf_topEmailDesignTopCheck"><img class="pf_check" src="img/pf_greyfish.png">
+                                </div>
+                                <div class="pf_LInboxText">Phishing Inbox:</div>
+                                <div class="pf_topEmailDesignTopFilter"></div>
+                            </div>
+                            <div class="pf_topEmailDesignBottom"></div>
+                        </div>
+                        <div class="pf_inboxes">
+                            <div class="pf_blueBar"><img class="pf_blueBarimg" src="img/pf_blueBar.png"></div>
+                            <div id="pf_phishInbox" class="pf_pishInbox"></div>
+                        </div>
+                        <div class="pf_rightInbox"></div>
+                    </div>
+                    <div class="pf_scrollDesign"></div>
                 </div>
             </div>
         </div>
