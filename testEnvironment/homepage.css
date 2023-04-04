@@ -28,3 +28,6 @@
 .game4_home_button{
     background-color: rgb(47, 47, 47);
 }
+.hide{
+    display: none;
+}
