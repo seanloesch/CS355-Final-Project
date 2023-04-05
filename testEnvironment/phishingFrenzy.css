@@ -158,7 +158,7 @@ body {
 
 .pf_inboxItem {
     position: relative;
-    height: 8.7%;
+    height: 9%;
     background-color: white;
     border: 1px solid rgb(126, 126, 126);
 }
@@ -538,7 +538,6 @@ body {
 }
 
 .pf_middleContainer {
-    border: 1px solid black;
     width: 45%;
     height: 100%;
 }
@@ -546,7 +545,6 @@ body {
 .pf_wholeFrom {
     width: 100%;
     height: 7%;
-    border: 1px solid black;
     display: flex;
     align-items: center;
 }
@@ -554,7 +552,6 @@ body {
 .pf_wholeScore {
     width: 100%;
     height: 5.5%;
-    border: 1px solid black;
     display: flex;
     align-items: center;
 }
@@ -562,7 +559,6 @@ body {
 .pf_wholeAddSubject {
     width: 100%;
     height: 5%;
-    border: 1px solid black;
     display: flex;
     align-items: center;
 }
@@ -570,7 +566,6 @@ body {
 .pf_wholeEmail {
     width: 100%;
     height: 74%;
-    border: 1px solid black;
     display: flex;
 }
 
@@ -601,7 +596,6 @@ body {
 .pf_wholeTimer {
     width: 100%;
     height: 5.5%;
-    border: 1px solid black;
     display: flex;
     align-items: center;
 }
@@ -613,4 +607,19 @@ body {
 }
 .hide{
     display: none;
+}
+
+.pf_smallGreyHr{
+    height: 1px;
+    background-color: lightgray;
+    line-height: 0px;
+    margin: 0;
+    width: 90%;
+    margin-left: 5%;
+}
+.pf_smallBlackHr{
+    height: 1px;
+    line-height: 0px;
+    margin: 0;
+    background-color: black;
 }
