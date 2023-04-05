@@ -35,6 +35,10 @@ body {
 .pf_easy,
 .pf_medium,
 .pf_hard {
+    text-align: left;
+    font-size:1vmax;
+    line-height: 100%;
+    width: 98%;
     background: none !important;
     border: none;
     padding: 0 !important;
@@ -161,6 +165,7 @@ body {
     height: 9%;
     background-color: white;
     border: 1px solid rgb(126, 126, 126);
+    border-radius: 5px;
 }
 
 .pf_dot {
@@ -179,7 +184,7 @@ body {
     position: absolute;
     left: 35px;
     overflow: hidden;
-    font-size: 12px;
+    font-size: .8vmax;
     line-height: 42px;
 }
 
@@ -214,13 +219,14 @@ body {
 
 .pf_explanContainer {
     height: 100%;
-    width: 100%;
+    width: 99%;
     text-align: center;
     margin: auto;
     justify-content: center;
     z-index: 1000;
     background-color: white;
     border: 1px solid black;
+    border-radius: 5px;
     font-size: large;
 }
 
@@ -316,6 +322,7 @@ body {
 .pf_mainSet {
     height: 89%;
     display: flex;
+    
 }
 
 .pf_leftContainer {
@@ -358,13 +365,14 @@ body {
 }
 
 .pf_blueBarimg {
-    height: 100%;
+    height: 99%;
 }
 
 .pf_scrollDesign {
     height: 100%;
     width: 5.5%;
     background-image: url("img/pf_scroll.png");
+    border-top: 1px solid lightgray;
 }
 
 .pf_middleWhitespace {
@@ -489,7 +497,7 @@ body {
 }
 
 .pf_topEmailDesign {
-    height: 8%;
+    height: 9%;
     width: 100%;
 }
 
@@ -516,17 +524,18 @@ body {
     align-items: center;
 }
 
-.pf_LInboxText {
-    font-size: .8rem;
+.pf_inboxText {
+    font-size:1vmax;
+    line-height: 100%;
     font-weight: bolder;
-    width: 70%;
+    width: 60%;
     height: 100%;
     display: flex;
     align-items: center;
 }
 
 .pf_topEmailDesignTopFilter {
-    width: 25%;
+    width: 30%;
     align-self: right;
     background-image: url("img/pf_inboxFilter.png");
     background-repeat: no-repeat center center fixed;
@@ -540,6 +549,7 @@ body {
 .pf_middleContainer {
     width: 45%;
     height: 100%;
+    border-top: 1px solid lightgray;
 }
 
 .pf_wholeFrom {
@@ -581,7 +591,8 @@ body {
 }
 .pf_addrDisplay {
     width: 55%;
-    font-size: medium;
+    font-size:1vmax;
+    line-height: 100%;
 }
 .fromEnd{
     width: 19%;
@@ -603,10 +614,13 @@ body {
     height: 99%;
 }
 .pf_subjectText{
+    font-size:1.25vmax;
+    line-height: 100%;
     color: gray;
 }
-.hide{
-    display: none;
+.pf_subjectTextResponse{
+    font-size:1.25vmax;
+    line-height: 100%;
 }
 
 .pf_smallGreyHr{
@@ -622,4 +636,7 @@ body {
     line-height: 0px;
     margin: 0;
     background-color: black;
+}
+.hide{
+    display: none;
 }
