@@ -1,4 +1,4 @@
-var pf_userName = "Ryan" //this will change depending on PHP
+var pf_userName = document.getElementById("nickname").innerHTML;
 
 let pf_score = 0;
 var pf_emails, pf_difficulty, pf_gameOverMessage, pf_startTime, pf_timerInterval, pf_subtractInterval, pf_scoreMultiplier;
