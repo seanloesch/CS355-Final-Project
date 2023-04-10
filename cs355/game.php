@@ -57,10 +57,9 @@ if($nickname == null){
     <div id="homepage" class="homepage">
         <div class="hp_top">
             <div class="header">
-                <h1>Secure Arcade</h1>
-                <p>Login successfull!!! Welcome
-                    <?php echo $nickname; ?>
-                </p>
+                <h1>Secure Arcade</h1><br>
+                <span>Login successfull!!! Welcome</span>
+                <span id="nickname"><?php echo $nickname; ?></span>
             </div>
             <div class="navbar">
                 <a href="logout.php">Log Out</a>
