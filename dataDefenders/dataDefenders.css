@@ -1,0 +1,115 @@
+body{
+    width: 100vw;
+    height: 100vh;
+    background-color: black;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+.serverContent{
+    border: 2px solid lime;
+    height: 80vh;
+    width: 80vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+.server{
+    border: 2px solid lime;
+    margin: 4px;
+    width: 90%;
+    height: 22%;
+    color: lime;
+    display: flex;
+    padding: 8px;
+}
+.serverText{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+    width: 33%;
+    font-size: 15px;
+    margin: auto;
+    gap: 4px;
+}
+.serverTitle{
+    line-height: 33%;
+}
+.serverhealth{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 33%;
+}
+.monitorContent{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 33%;
+}
+.circle
+{
+  width: 10px;
+  height:10px;
+  bordeR: 1px solid;
+  border-radius: 50%;
+  background-color: lime;
+}
+.inputboxes{
+    border: 1px solid;
+    text-align: center;
+}
+.checkLogs,
+.checkCameras{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 30%;
+    width: 70%;
+    border: 1px solid;
+    margin: 4px;
+}
+.checkLogs:hover,
+.checkCameras:hover{
+    cursor:pointer;
+    border: 5px solid;
+    font-weight: 1000;
+}
+.error1{
+    border: 2px solid orange;
+    color: orange;
+}
+.error2{
+    border: 2px solid red;
+    color: red;
+}
+.Lighterror1{
+    background-color: orange;
+}
+.Lighterror2{
+    background-color: red;
+}
+.off{
+    background-color: black;
+}
+.reportButton{
+    font-size: x-large;
+    font-weight: bolder;
+    color: lime;
+    border:3px dotted lime;
+    margin: 0;
+}
+.reportButton:hover{
+    cursor:pointer;
+    background-color: lime;
+    color: black;
+}
