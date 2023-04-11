@@ -48,6 +48,7 @@ if($nickname == null){
     <script defer src="trivia.js"></script>
     <script defer src="keyhunter.js"></script>
     <script defer src="datadefenders.js"></script>
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
     <title>Secure Arcade</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -69,7 +70,7 @@ if($nickname == null){
         <div class="hp_bottom">
             <div class="hp_gameBTNs">
                 <button class="trivia_home_button hp_btn" onclick="playTrivia()"></button>
-                <button class="keyHunters_home_button hp_btn" onclick="playkeyHunters()"></button><br>
+                <button class="keyHunters_home_button hp_btn" onclick="playkeyHunters()"></button>
                 <button class="phishingFrenzy_home_button hp_btn" onclick="playPhishingFrenzy()"></button>
                 <button class="dataDefenders_home_button hp_btn" onclick="playDataDefenders()"></button>
             </div>
