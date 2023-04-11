@@ -5,7 +5,7 @@ body,
     width: 100vw;
     display: flex;
     flex-direction: column;
-    background-color: black;
+    background-color: #191919;
 }
 
 .hp_top {
@@ -16,7 +16,6 @@ body,
 .header {
     padding: 50px;
     text-align: center;
-    background: black;
     color: white;
     text-shadow: 2px 2px 3px lime;
     border-bottom: 2px solid lime;
@@ -28,23 +27,25 @@ body,
 
 .navbar {
     overflow: hidden;
-    background-color: #d8d8d8;
-    border-bottom: 1px solid lime;
+    color: #191919;
+    background-color: lime;
+    border-bottom: 2px solid lime;
 }
 
 .navbar a {
     float: left;
     display: block;
-    color: black;
     text-align: center;
-    padding: 14px 35px;
+    padding: 14px 20px;
     text-decoration: none;
     border-right: 1px solid gray;
+    font-size: 18px;
+    border-radius: 5px;
+    transition: .6s;
 }
 
 .navbar a:hover {
-    background-color: #6f6f6f;
-    color: black;
+    filter: brightness(50%);
 }
 .hp_bottom {
     height: 60%;
