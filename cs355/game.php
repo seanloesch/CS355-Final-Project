@@ -64,15 +64,64 @@ if($nickname == null){
             </div>
             <div class="navbar">
                 <a href="logout.php">Log Out</a>
-                <a href="logout.php">Save</a>
+                <a href="">Save</a>
             </div>
         </div>
         <div class="hp_bottom">
+            <div class="hp_bottom_left">
+                <div class="hp_table">
+                <table class="scoretable">
+  <tr>
+    <th>Game</th>
+    <th>Score</th>
+  </tr>
+  <tr>
+    <td>Trivia Rank</td>
+    <td>5</td>
+  </tr>
+  <tr>
+    <td>Key Hunter Score</td>
+    <td>3702</td>
+  </tr>
+  <tr>
+    <td>Phish Frenzy HS</td>
+    <td>197</td>
+  </tr>
+  <tr>
+    <td>Data Def. Lvl</td>
+    <td>2</td>
+  </tr>
+</table>
+
+</div>
+            </div>
+            <div class="hp_bottom_middle">
             <div class="hp_gameBTNs">
                 <button class="trivia_home_button hp_btn" onclick="playTrivia()"></button>
                 <button class="keyHunters_home_button hp_btn" onclick="playkeyHunters()"></button>
                 <button class="phishingFrenzy_home_button hp_btn" onclick="playPhishingFrenzy()"></button>
                 <button class="dataDefenders_home_button hp_btn" onclick="playDataDefenders()"></button>
+            </div>
+            </div>
+            <div class="hp_bottom_right">
+            <div class="feature">
+                <i class="fas fa-lock"></i>
+                <h4 class="hp_h4Header">Secure</h4>
+                <p class="hp_info">Our website is completely secure and safe to use. You can play our games with peace of mind, knowing
+                    that your personal information is protected.</p>
+            </div>
+            <div class="feature">
+                <i class="fas fa-gamepad"></i>
+                <h4 class="hp_h4Header">Fun</h4>
+                <p class="hp_info">Our games are designed to be fun and engaging. We have a wide variety of games to choose from, so
+                    you're sure to find something you enjoy.</p>
+            </div>
+            <div class="feature">
+                <i class="fas fa-dollar-sign"></i>
+                <h4 class="hp_h4Header">Free</h4>
+                <p class="hp_info">All of our games are completely free to play. You don't need to spend any money to have fun on our
+                    website.</p>
+            </div>
             </div>
         </div>
     </div>
