@@ -16,3 +16,12 @@ Fullname: admin
 email: admin@cs355.com
 security question: city where born
 security answer: usa
+
+12. I created a new user that everyone can use
+username: John Doe
+password: Th15is@Str0n8P@ssw0rD
+
+Fullname: Johnny
+email: midterm@uwec.edu
+security question: name of dog
+security answer: UWEC
