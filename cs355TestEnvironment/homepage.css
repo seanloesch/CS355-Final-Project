@@ -152,18 +152,23 @@ body,
     align-items: center;
 }
 
-.hp_table {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
 .scoretable {
     width: 350px;
     color: lime;
     border-spacing: 5px;
     table-layout: fixed;
-    margin: 0 auto;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.scoretable tbody {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.scoretable tr {
+    display: flex;
 }
 
 .scoretable th,
@@ -179,16 +184,69 @@ body,
     font-size: .9rem;
 }
 
-.hp_h4Header{
+.hp_h4Header {
     line-height:5%;
-    display: inline;
+    align-self: center;
 }
 
-.fas{
-    display: inline;
-}
-
-.hp_info{
+.hp_info {
     padding-bottom: 3px;
     border-bottom: 1px solid lime;
+}
+
+@media screen and (max-width: 1560px) {
+    .hp_bottom_container {
+        flex-direction: column;
+        height: fit-content;
+        padding-top: 30px;
+    }
+
+    .hp_bottom_left {
+        width: fit-content;
+    }
+
+    .hp_bottom_middle {
+        width: fit-content;
+    }
+
+    .hp_gameBTNs {
+        width: 700px;
+        padding: 30px 0px 30px 0px;
+    }
+
+    .hp_gameBTNs > button {
+        height: 150px;
+    }
+
+    .hp_h4Header {
+        text-align: center;
+    }
+}
+
+@media screen and (max-width: 730px) {
+    .scoretable th,
+    .scoretable td {
+        width: 140px;
+    }
+
+    .hp_gameBTNs {
+        width: 300px;
+        grid-template-areas: 
+            "a"
+            "b"
+            "c"
+            "d";
+    }
+
+    .scoretable {
+        width: 300px;
+    }
+
+    .hp_bottom_right {
+        width: 300px;
+    }
+
+    .hp_bottom_left {
+        width: fit-content;
+    }
 }
