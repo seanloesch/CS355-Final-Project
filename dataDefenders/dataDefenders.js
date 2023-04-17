@@ -20,21 +20,24 @@ var boolFast = false
 
 var ddDayInterval;
 
-function fastForward(){
+let person = prompt("Please enter your name");
+document.getElementById('ddUsername').innerText = person;
+
+function fastForward() {
     console.log(boolFast)
-    if(boolFast){
-        boolFast=false
+    if (boolFast) {
+        boolFast = false
         daySpeed = 1000;
     }
-    else{
-        boolFast=true
+    else {
+        boolFast = true
         daySpeed = 50;
     }
     dayInt();
 }
 dayInt();
 
-function dayInt(){
+function dayInt() {
     clearInterval(ddDayInterval)
     ddDayInterval = setInterval(function () {
         minuteCount++;
