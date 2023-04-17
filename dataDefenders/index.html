@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="dataDefenders.css" rel="stylesheet">
+    <script defer src="dataDefenders.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <body>
+        <div id="ddOpenScreen" class="ddOpenScreen">
+            <div class="ddhome">
+                <table class="ddScoresDisplay">
+                    <tr>
+                        <th>Welcome: </th>
+                        <th>[Username]</th>
+                    </tr>
+                    <tr>
+                        <td>Money:</td>
+                        <td>$<span id="ddMoney">0.00</span></td>
+                    </tr>
+                    <tr>
+                        <td>Websites:</td>
+                        <td id="ddNumWebsites">0</td>
+                    </tr>
+                    <tr>
+                        <td>Saves: </td>
+                        <td id="ddSaves">0</td>
+                    </tr>
+                    <tr>
+                        <td>Crashes: </td>
+                        <td id="ddCrashes">0</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div id="ddtaskbar" class="ddtaskbar">
+            <div class="ddLeftTaskBar">
+                <div class="ddWIcons">
+                    <div id="ddSunny" class="ddSunny"><i class="ddSun fa fa-sun-o" aria-hidden="true"></i></div>
+                    <div id="ddCloudy" class="ddCloudy hide"><i class="ddCloud fa fa-cloud" aria-hidden="true"></i>
+                    </div>
+                    <div id="ddRainy" class="ddRainy hide"><i class="ddRain fa fa-tint" aria-hidden="true"></i>
+                    </div>
+                </div>
+                <div class="ddtempAndDesc">
+                    <div class="ddTempurature"><span id="ddTemp">31</span><span>&#176;F</span></div>
+                    <div id="ddWeatherDesc" class="ddWeatherDesc">Sunny</div>
+                </div>
+            </div>
+            <div class="ddMiddleTaskBar">
+                <button class="ddTaskBtn ddTaskBtnHome"><i class="fa fa-home" aria-hidden="true"></i></button>
+                <button class="ddTaskBtn" onclick="ddOpenTab('ddwebsitesList')">Websites</button>
+                <button class="ddTaskBtn" onclick="ddOpenTab('ddServerRoom')">Servers</button>
+                <button class="ddTaskBtn ddTaskBtnReport" onclick="ddOpenTab('ddreport')">Report</button>
+                <button class="ddTaskBtn" onclick="ddOpenTab('ddcams')">Sec. Cams</button>
+                <button class="ddTaskBtn" onclick="ddOpenTab('ddperform')">Performance</button>
+                <button class="ddTaskBtn" onclick="fastForward()"><i class="fa fa-fast-forward"
+                        aria-hidden="true"></i></button>
+            </div>
+            <div class="ddRightTaskBar">
+                <i class="taskdetail fa fa-chevron-up" aria-hidden="true"></i>
+                <i class="taskdetail fa fa-wifi"></i>
+                <i class="taskdetail fa fa-volume-up" aria-hidden="true"></i>
+                <i class="taskdetail fa fa-battery-three-quarters" aria-hidden="true"></i>
+                <div class="ddDateAndTimeTask">
+                    <div class="ddTime"><span id="ddhour">9</span>:<span id="ddminute">00</span> <span
+                            id="ddDayHalf">AM</span></div>
+                    <div class="ddDate">Day <span id="ddDayCount">001</span></div>
+                </div>
+                <i class="fa fa-bell-o" aria-hidden="true"></i>
+            </div>
+        </div>
+        <div id="ddwebsitesList" class="ddwebsitesList hide"></div>
+        <div id="ddServerRoom" class="ddServerRoom hide">
+            <div class="serverContent">
+                <div id="server1" class="server">
+                    <div class="serverText">
+                        <div class="ipContent">
+                            <span class="ipText">IP Connections:</span>
+                            <span id="IPServer1" class="inputboxes">192.168.1.0</span>
+                        </div>
+                        <div class="sysCallsContent">
+                            <span class="sysCallsText"># System Calls:</span>
+                            <span id="sysCallsServer1" class="inputboxes">0</span>
+                        </div>
+                        <div class="dataFlow">
+                            <span class="ipText">Data Flow:</span>
+                            <span id="dataFlowServer1" class="inputboxes">10011101011001</span>
+                        </div>
+                    </div>
+                    <div class="serverhealth">
+                        <h1 class="serverTitle">Server 1</h1>
+                        <div id="circleServer1" class="circle"></div>
+                        <p id="runServer1">running</p>
+                    </div>
+                    <div class="monitorContent">
+                        <p>Connection: <span id="connectionHP1"></span></p>
+                        <p>Download Speed: <span id="downloadSpeedHP1"></span></p>
+                        <p>Upload Speed: <span id="uploadSpeedHP1"></span></p>
+                    </div>
+                </div>
+                <div id="server2" class="server">
+                    <div class="serverText">
+                        <div class="ipContent">
+                            <span class="ipText">IP Connections:</span>
+                            <span id="IPServer2" class="inputboxes">192.168.1.0</span>
+                        </div>
+                        <div class="sysCallsContent">
+                            <span class="sysCallsText"># System Calls:</span>
+                            <span id="sysCallsServer2" class="inputboxes">0</span>
+                        </div>
+                        <div class="dataFlow">
+                            <span class="ipText">Data Flow:</span>
+                            <span id="dataFlowServer2" class="inputboxes">10011101011001</span>
+                        </div>
+                    </div>
+                    <div class="serverhealth">
+                        <h1 class="serverTitle">Server 2</h1>
+                        <div id="circleServer2" class="circle"></div>
+                        <p id="runServer2">running</p>
+                    </div>
+                    <div class="monitorContent">
+                        <p>Connection: <span id="connectionHP2"></span></p>
+                        <p>Download Speed: <span id="downloadSpeedHP2"></span></p>
+                        <p>Upload Speed: <span id="uploadSpeedHP2"></span></p>
+                    </div>
+                </div>
+                <div id="server3" class="server">
+                    <div class="serverText">
+                        <div class="ipContent">
+                            <span class="ipText">IP Connections:</span>
+                            <span id="IPServer3" class="inputboxes">192.168.1.0</span>
+                        </div>
+                        <div class="sysCallsContent">
+                            <span class="sysCallsText"># System Calls:</span>
+                            <span id="sysCallsServer3" class="inputboxes">0</span>
+                        </div>
+                        <div class="dataFlow">
+                            <span class="ipText">Data Flow:</span>
+                            <span id="dataFlowServer3" class="inputboxes">10011101011001</span>
+                        </div>
+                    </div>
+                    <div class="serverhealth">
+                        <h1 class="serverTitle">Server 3</h1>
+                        <div id="circleServer3" class="circle"></div>
+                        <p id="runServer3">running</p>
+                    </div>
+                    <div class="monitorContent">
+                        <p>Connection: <span id="connectionHP3"></span></p>
+                        <p>Download Speed: <span id="downloadSpeedHP3"></span></p>
+                        <p>Upload Speed: <span id="uploadSpeedHP3"></span></p>
+                    </div>
+                </div>
+                <div id="server4" class="server">
+                    <div class="serverText">
+                        <div class="ipContent">
+                            <span class="ipText">IP Connections:</span>
+                            <span id="IPServer4" class="inputboxes">192.168.1.0</span>
+                        </div>
+                        <div class="sysCallsContent">
+                            <span class="sysCallsText"># System Calls:</span>
+                            <span id="sysCallsServer4" class="inputboxes">0</span>
+                        </div>
+                        <div class="dataFlow">
+                            <span class="ipText">Data Flow:</span>
+                            <span id="dataFlowServer4" class="inputboxes">10011101011001</span>
+                        </div>
+                    </div>
+                    <div class="serverhealth">
+                        <h1 class="serverTitle">Server 4</h1>
+                        <div id="circleServer4" class="circle"></div>
+                        <p id="runServer4">running</p>
+                    </div>
+                    <div class="monitorContent">
+                        <p>Connection: <span id="connectionHP4"></span></p>
+                        <p>Download Speed: <span id="downloadSpeedHP4"></span></p>
+                        <p>Upload Speed: <span id="uploadSpeedHP4"></span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="ddcams" class="ddcams hide"></div>
+        <div id="ddreport" class="ddreport hide"></div>
+        <div id="ddwebsitesList" class="ddwebsitesList hide"></div>
+        <div id="ddperform" class="ddperform hide">
+    </body>
+
+</html>
+
+</body>
+
+</html>
