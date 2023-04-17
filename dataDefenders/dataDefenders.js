@@ -64,8 +64,8 @@ function ddSetDateAndTime() {
     else { ddDayCount.innerText = dayCount; }
 }
 
+ddDisplayNewWeatherReport();
 function ddDisplayNewWeatherReport() {
-    console.log('Weather icons:', ddWeatherIcons);
     ddWeatherIcons.forEach(icon => { if (icon.classList.contains('hide')) { icon.classList.remove('hide') } });
     ddTemp.innerText = Math.floor(Math.random() * (90 - 30 + 1)) + 30;
     let ddrandomWeather = Math.floor(Math.random() * 3);
