@@ -95,3 +95,7 @@ html{
   top: 0;
   border-radius: 10px;
 }
+.toLogin-Button:hover:after {
+  background: rgb(183, 183, 183);
+  transition: .6s;
+}
