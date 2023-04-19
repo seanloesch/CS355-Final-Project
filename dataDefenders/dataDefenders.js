@@ -16,22 +16,26 @@ var dayhalf = "AM"
 var dayCount = 1;
 
 var daySpeed = 1000;
-var boolFast = false
+var boolFast = false;
+
+//These will be updated as attacks are implemented (currently hard coded) 0 is good 1 is medium 2 is bad
+var ddServState = [0, 1, 2, 0]
 
 var ddDayInterval;
 
 let person = prompt("Please enter your name");
 document.getElementById('ddUsername').innerText = person;
-
+var fastForwardBtn = document.getElementById('ddFastFowardBtn');
 function fastForward() {
-    console.log(boolFast)
     if (boolFast) {
-        boolFast = false
+        boolFast = false;
         daySpeed = 1000;
+        fastForwardBtn.classList.remove('ddcolorRed');
     }
     else {
-        boolFast = true
+        boolFast = true;
         daySpeed = 50;
+        fastForwardBtn.classList.add('ddcolorRed');
     }
     dayInt();
 }
@@ -125,6 +129,7 @@ setInterval(function () {
 var syscalls = [0, 0, 0, 0];
 setInterval(function () {
     updateMonitor();
+    updateLogStatus();
     const random_sys = Math.random() < 0.4;
     const random_ip = Math.random() < 0.2;
     const random_bit = Math.random() < 0.5;
@@ -162,31 +167,36 @@ function generateRandomIP() {
     return IP;
 }
 
+//this is randomization for testing
+var ddServeSwapState = 0;
+servers.forEach(servers => ddUpdateServer(servers));
 setInterval(function () {
-    servers.forEach(servers => randomizeServer(servers));
+    servers.forEach(servers => ddUpdateServer(servers));
+    ddServeSwapState++;
+    if (ddServeSwapState == 3) { ddServeSwapState = 0 }
+    ddServState[3] = ddServeSwapState;
 }, 5000);
 
-function randomizeServer(serv) {
-    if (rand50()) {
-        if (serv.classList.contains('error1')) {
-            serv.classList.remove('error1')
-            circles[servers.indexOf(serv)].classList.remove('Lighterror1')
-        }
-        else if (serv.classList.contains('error2')) {
-            serv.classList.remove('error2')
-            circles[servers.indexOf(serv)].classList.remove('Lighterror2')
-        }
-        else {
-            if (rand50()) {
-                serv.classList.add('error1');
-                circles[servers.indexOf(serv)].classList.add('Lighterror1')
-            }
-            else {
-                serv.classList.add('error2');
-                circles[servers.indexOf(serv)].classList.add('Lighterror2')
-            }
-        }
+function ddUpdateServer(serv) {
+    var servID = (parseInt(serv.getAttribute('id').slice(-1))) - 1;
+    var ddServerCondition = ddServState[servID]
+    if (serv.classList.contains('error1')) {
+        serv.classList.remove('error1')
+        circles[servers.indexOf(serv)].classList.remove('Lighterror1')
     }
+    if (serv.classList.contains('error2')) {
+        serv.classList.remove('error2')
+        circles[servers.indexOf(serv)].classList.remove('Lighterror2')
+    }
+    if (ddServerCondition == 1) {
+        serv.classList.add('error1')
+        circles[servers.indexOf(serv)].classList.add('Lighterror1')
+    }
+    if (ddServerCondition == 2) {
+        serv.classList.add('error2')
+        circles[servers.indexOf(serv)].classList.add('Lighterror2')
+    }
+
 }
 function updateMonitor() {
     ddHPconnection.forEach(connSpeed => { connSpeed.innerText = Math.floor(Math.random() * 101); });
@@ -195,7 +205,7 @@ function updateMonitor() {
 }
 
 var ddOpenScreen = document.getElementById('ddOpenScreen');
-const ddtabList = ['ddwebsitesList', 'ddServerRoom', 'ddcams', 'ddreport', 'ddperform'];
+const ddtabList = ['ddwebsitesList', 'ddServerRoom', 'ddcams', 'ddreport', 'ddMsg'];
 const ddTabs = ddtabList.map(id => document.getElementById(id));
 var placeholder;
 
@@ -214,4 +224,386 @@ function ddOpenTab(tab) {
             }
         });
     }
+}
+// Define an array of objects with website information
+const websites = [
+    {
+        name: "Website 1",
+        domain: "www.website1.com",
+        path: "/var/www/website1",
+        ipAddress: "192.168.1.1",
+        serverSoftware: "Apache",
+        serverID: "Server 1"
+    },
+    {
+        name: "Website 2",
+        domain: "www.website2.com",
+        path: "/var/www/website2",
+        ipAddress: "192.168.1.2",
+        serverSoftware: "Nginx",
+        serverID: "Server 2"
+    },
+    {
+        name: "Website 3",
+        domain: "www.website3.com",
+        path: "/var/www/website3",
+        ipAddress: "192.168.1.3",
+        serverSoftware: "Apache",
+        serverID: "Server 3"
+    },
+    {
+        name: "Website 4",
+        domain: "www.website4.com",
+        path: "/var/www/website4",
+        ipAddress: "192.168.1.4",
+        serverSoftware: "Apache",
+        serverID: "Server 4"
+    },
+    {
+        name: "Ben",
+        domain: "www.ben.com",
+        path: "/var/www/ben",
+        ipAddress: "192.168.1.5",
+        serverSoftware: "Apache",
+        serverID: "Server 1"
+    },
+    {
+        name: "Ryan",
+        domain: "www.ryan.com",
+        path: "/var/www/ryan",
+        ipAddress: "192.168.1.6",
+        serverSoftware: "Apache",
+        serverID: "Server 3"
+    },
+    {
+        name: "Jordan",
+        domain: "www.jordan.com",
+        path: "/var/www/ryan",
+        ipAddress: "192.168.1.7",
+        serverSoftware: "Apache",
+        serverID: "Server 4"
+    },
+    {
+        name: "Sean",
+        domain: "www.sean.com",
+        path: "/var/www/sean",
+        ipAddress: "192.168.1.8",
+        serverSoftware: "Apache",
+        serverID: "Server 1"
+    },
+    {
+        name: "Jacob",
+        domain: "www.jacob.com",
+        path: "/var/www/jacob",
+        ipAddress: "192.168.1.9",
+        serverSoftware: "Apache",
+        serverID: "Server 3"
+    }
+];
+
+// Get the tbody element of the table
+const tbody = document.querySelector("#websiteTable tbody");
+createWebsiteTable();
+function createWebsiteTable() {
+    // Loop through each website and create a row in the table
+    for (let i = 0; i < websites.length; i++) {
+
+        var color;
+
+        if (i % 2 == 0) { color = "lightgrey" }
+        else { color = "white" }
+
+        const website = websites[i];
+        const row = document.createElement("tr");
+        row.style.backgroundColor = color
+        const nameCell = document.createElement("td");
+        const domainCell = document.createElement("td");
+        const pathCell = document.createElement("td");
+        const ipAddressCell = document.createElement("td");
+        const serverSoftwareCell = document.createElement("td");
+        const serverIDCell = document.createElement("td");
+        const fileCell = document.createElement("td");
+        nameCell.textContent = website.name;
+        domainCell.textContent = website.domain;
+        pathCell.textContent = website.path;
+        ipAddressCell.textContent = website.ipAddress;
+        serverSoftwareCell.textContent = website.serverSoftware;
+        serverIDCell.textContent = website.serverID;
+        fileCell.textContent = '\u{0001F4C1}';
+        fileCell.classList.add('ddFile');
+        fileCell.setAttribute("id", `file${i}`);
+        row.appendChild(nameCell);
+        row.appendChild(domainCell);
+        row.appendChild(pathCell);
+        row.appendChild(ipAddressCell);
+        row.appendChild(serverSoftwareCell);
+        row.appendChild(serverIDCell);
+        row.appendChild(fileCell);
+        tbody.appendChild(row);
+    }
+}
+const canvas = document.getElementById('ddGraphCanvas');
+const ctx = canvas.getContext('2d');
+
+var data = [10, 15, 40, 35, 30, 32, 25, 27, 9, 20, 23]; // Example data
+let maxDataPoints = 10; // Maximum number of data points to display
+let interval = 1000; // Interval in milliseconds between updates
+let x = 0; // Starting x-coordinate
+
+var ddPowerConsumpstion = 0;
+var ddGraphColor;
+var Cm = 0
+var ddGraphInt;
+function updateLogStatus() {
+    // Update the status div minus connections made
+    var ddLogConnection = Math.floor(Math.random() * 101);
+    document.getElementById("logConnection").innerHTML = ddLogConnection + "%";
+    document.getElementById("logDownloadSpeed").innerHTML = speeds() + " KB/s";
+    document.getElementById("logUploadSpeed").innerHTML = speeds() + " KB/s";
+
+    // Array of sample data for each table cell
+    const requestMethods = ["GET", "POST", "PUT", "DELETE"];
+    const urls = ["/home", "/about", "/services", "/contact"];
+    const statusCodes = ["200", "404", "500"];
+    const systemCalls = ["450", "500", "600", "800"];
+
+    // Function to generate a random integer between min and max (inclusive)
+    function getRandomInt(min, max) {
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+    function speeds() {
+        return Math.floor(Math.random() * 10001);
+    }
+    function finalIPvalue() {
+        var first = Math.floor(Math.random() * 192);
+        var second = Math.floor(Math.random() * 99);
+        var third = Math.floor(Math.random() * 256)
+        var ip = first + "." + second + "." + third
+        return ip;
+    }
+    function returnDate() {
+        const today = new Date();
+        const year = today.getFullYear();
+        const month = String(today.getMonth() + 1).padStart(2, '0');
+        const day = String(today.getDate()).padStart(2, '0');
+        return `${year}-${month}-${day}`;
+    }
+    function returnTime(i) {
+        const now = new Date();
+        return `${now.getHours()}:${now.getMinutes()}:${now.getSeconds() + i}`;
+    }
+
+    // Loop through each table row and generate random data for each cell
+    const table = document.getElementById("ddlogTable");
+    const rows = table.getElementsByTagName("tr");
+    if (Math.random() < 0.3) {
+        for (let i = 1; i < rows.length; i++) {
+            const cells = rows[i].getElementsByTagName("td");
+            cells[0].textContent = returnDate();
+            cells[1].textContent = returnTime(i);
+            cells[2].textContent = finalIPvalue();
+            cells[3].textContent = requestMethods[getRandomInt(0, requestMethods.length - 1)];
+            cells[4].textContent = urls[getRandomInt(0, urls.length - 1)];
+            cells[5].textContent = statusCodes[getRandomInt(0, statusCodes.length - 1)];
+            cells[6].textContent = speeds() + " KB/s";
+            cells[7].textContent = speeds() + " KB/s";
+            cells[8].textContent = systemCalls[getRandomInt(0, systemCalls.length - 1)];
+        }
+        Cm = Cm + (Math.floor(Math.random() * 4))
+        document.getElementById("logConnectionsMade").innerHTML = Cm;
+    }
+}
+
+function ddOpenLogs(ddserverId) {
+    if (ddserverId == 'back') { clearInterval(ddGraphInt) }
+    else {
+        document.getElementById('ddServerRoom').classList.add('hide');
+        document.getElementById('ddtaskbar').classList.add('hide');
+        document.getElementById('ddServerLogs').classList.remove('hide');
+        document.getElementById('ddservid').innerText = ddserverId;
+        var logState = ddServState[ddserverId - 1];
+        if (logState == 0) {
+            ddGraphColor = 'rgba(0, 255, 0, 0.2)';
+            data = [10, 15, 40, 35, 30, 32, 25, 27, 9, 20, 23];
+        }
+        if (logState == 1) {
+            ddGraphColor = 'rgba(255, 255, 0, 0.2)';
+            data = [60, 70, 65, 75, 70, 82, 95, 77, 94, 60, 55];
+
+        }
+        if (logState == 2) {
+            ddGraphColor = 'rgba(255, 0, 0, 0.2)';
+            data = [110, 115, 140, 135, 130, 132, 125, 127, 109, 120, 123];
+        }
+        // Clear canvas
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        // Draw graph
+        ctx.beginPath();
+        ctx.moveTo(0, canvas.height - data[0]);
+        for (let i = 0; i < data.length; i++) {
+            x += canvas.width / maxDataPoints;
+            ctx.lineTo(x, canvas.height - data[i]);
+        }
+        ctx.lineTo(canvas.width, canvas.height);
+        ctx.lineTo(0, canvas.height);
+        ctx.fillStyle = ddGraphColor;
+        ctx.fill();
+        ctx.stroke();
+
+        ddGraphInt = setInterval(() => {
+            // Update data
+            logState = ddServState[ddserverId - 1];
+            ddCheckLogClassList(logState);
+            data.shift();
+            if (logState == 0) {
+                ddGraphColor = 'rgba(0, 255, 0, 0.2)';
+                data.push(Math.floor(Math.random() * 50));
+            }
+            if (logState == 1) {
+                ddGraphColor = 'rgba(255, 255, 0, 0.2)';
+                data.push(Math.floor(Math.random() * 50) + 50);
+
+            }
+            if (logState == 2) {
+                ddGraphColor = 'rgba(255, 0, 0, 0.2)';
+                data.push(Math.floor(Math.random() * 50) + 100);
+            }
+
+            // Clear canvas
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            // Draw graph
+            ctx.beginPath();
+            ctx.moveTo(0, canvas.height - data[0]);
+            for (let i = 0; i < data.length; i++) {
+                x += canvas.width / maxDataPoints;
+                ctx.lineTo(x, canvas.height - data[i]);
+            }
+            ctx.lineTo(canvas.width, canvas.height);
+            ctx.lineTo(0, canvas.height);
+            ctx.fillStyle = ddGraphColor;
+            ctx.fill();
+            ctx.stroke();
+
+            // Reset x-coordinate if necessary
+            //if (x > 11) {
+            x = 0;
+            //}
+
+        }, interval);
+    }
+}
+var ddCurrentLogColor = document.getElementById('ddServerLogs')
+function ddCheckLogClassList(ddUpdateLogColor) {
+    if (ddCurrentLogColor.classList.contains('ddLogYellow')) {
+        ddCurrentLogColor.classList.remove('ddLogYellow')
+    }
+    if (ddCurrentLogColor.classList.contains('ddLogRed')) {
+        ddCurrentLogColor.classList.remove('ddLogRed')
+    }
+    if (ddUpdateLogColor == 1) { ddCurrentLogColor.classList.add('ddLogYellow') }
+    if (ddUpdateLogColor == 2) { ddCurrentLogColor.classList.add('ddLogRed') }
+}
+function ddlogBack() {
+    document.getElementById('ddServerRoom').classList.remove('hide');
+    document.getElementById('ddtaskbar').classList.remove('hide');
+    document.getElementById('ddServerLogs').classList.add('hide');
+    ddOpenLogs('back')
+}
+
+
+
+function addMessage(ddMsgSender, ddDateMessage, ddwebsiteName, ddMessage) {
+    const senderContainer = document.querySelector('.ddSenderContainer');
+    const messageContainer = document.querySelector('.ddMessage');
+
+    // Create a new sender box element
+    const senderBox = document.createElement('div');
+    senderBox.classList.add('ddDomainSender');
+
+    // Add click event listener to the sender box
+    senderBox.addEventListener('click', () => {
+        if (messageContainer.classList.contains('hide')) {
+            messageContainer.classList.remove('hide')
+        }
+        // Remove the active class from all sender boxes
+        const activeSenders = document.querySelectorAll('.ddDomainSender.active');
+        activeSenders.forEach((sender) => {
+            sender.classList.remove('active');
+        });
+
+        // Add the active class to the clicked sender box
+        senderBox.classList.add('active');
+
+        // Remove all existing messages from the message container
+        messageContainer.innerHTML = '';
+
+        // Create a new message div element
+        const messageTopDiv = document.createElement('div');
+        messageTopDiv.classList.add('ddMessageTop');
+
+        // Add the message content to the message div
+        const messageFromDiv = document.createElement('div');
+        const messageSentDiv = document.createElement('div');
+        const messageDomainDiv = document.createElement('div');
+        //add \r\n in text everywhere You want for line-break (new line)
+        messageFromDiv.textContent = "From: " + ddMsgSender + "\r\n";
+        messageTopDiv.appendChild(messageFromDiv);
+        messageTopDiv.appendChild(document.createElement('hr'));
+        messageSentDiv.textContent = "Sent on: " + ddDateMessage + "\r\n";
+        messageTopDiv.appendChild(messageSentDiv);
+        messageTopDiv.appendChild(document.createElement('hr'));
+        messageDomainDiv.textContent = "Website Domain: " + ddwebsiteName + "\r\n";
+        messageTopDiv.appendChild(messageDomainDiv);
+        messageTopDiv.appendChild(document.createElement('hr'));
+
+        const messageDiv = document.createElement('div');
+        messageDiv.textContent = ddMessage;
+        messageTopDiv.appendChild(messageDiv);
+
+        // Add the message div to the message container
+        messageContainer.appendChild(messageTopDiv);
+    });
+
+    // Add the sender name and date to the sender box
+    const senderNameDiv = document.createElement('div');
+    senderNameDiv.classList.add('ddMessageSender');
+    senderNameDiv.textContent = ddMsgSender;
+
+    const messageDateDiv = document.createElement('div');
+    messageDateDiv.classList.add('ddmessageDate');
+    messageDateDiv.textContent = ddDateMessage;
+
+    senderBox.appendChild(senderNameDiv);
+    senderBox.appendChild(messageDateDiv);
+
+    // Add the website name to the sender box
+    const websiteNameDiv = document.createElement('div');
+    websiteNameDiv.textContent = ddwebsiteName;
+    senderBox.appendChild(websiteNameDiv);
+
+    // Insert the sender box at the top of the sender container
+    senderContainer.insertBefore(senderBox, senderContainer.firstChild);
+
+    // Scroll the sender container to the top
+    senderContainer.scrollTop = 0;
+    // Scroll the sender container to the bottom
+    //senderContainer.scrollTop = senderContainer.scrollHeight;
+}
+
+addMessage("staff", `Day 001 9:00 AM`, "www.staff.com", `Welcome To Data Defenders! staff`)
+
+function intMsg() {
+    var name = ["Ryan","Ben","Jacob","Jordan","Sean"];
+    var web = ["www.ryan.com","www.ben.com","www.jacob.com","www.jordan.com","www.sean.com",];
+    let randomIndex = Math.floor(Math.random() * 5);
+
+    var msgEx = ["I am having network Problems", "I cant seem to open files", "URGENT my computer is very slow","Thanks for the help","Can you help me? join the voice call"]
+    let randomMsg = Math.floor(Math.random() * 5);
+    var minMsg = minuteCount
+    var dayMsg = dayCount
+    if (minuteCount < 10) { minMsg = "0" + minuteCount; }
+    if (dayCount < 10) { dayMsg = "00" + dayCount; }
+    else if (dayCount < 100) { dayMsg = "0" + dayCount; }
+    addMessage(name[randomIndex],`Day ${dayMsg} ${hourCount}:${minMsg} ${dayhalf}`,web[randomIndex],msgEx[randomMsg])
+
 }
