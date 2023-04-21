@@ -329,6 +329,12 @@ function trivia_displayIngameScores() {
 function trivia_scores() {
 
     trivia_scores_container.classList.remove('hide');
+    if (trivia.classList.contains('triviaCorrect')) {
+        trivia.classList.remove('triviaCorrect');
+    }
+    if (trivia.classList.contains('triviaWrong')) {
+        trivia.classList.remove('triviaWrong');
+    }
 
     trivia_resetButton.classList.remove('hide');
     trivia_questionContainerElement.classList.add('hide');
