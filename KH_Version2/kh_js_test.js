@@ -15,8 +15,12 @@ var textbox = document.getElementById('kh_question');
 
 let isCaeser = false;
 let isPigPen = false;
+let isTransposition = false;
+let caeserDone = false;
+let pigPenDone = false;
+let transpositionDone = false;
 const randomCaesarCipherVal = Math.floor(Math.random() * 5) + 1; // Random caeser between 1 and 6
-var randomCipherChosen = Math.floor(Math.random() * 2) + 1; // Random caeser between 1 and 6
+var randomCipherChosen = Math.floor(Math.random() * 3) + 1; // random cipher between 1 and 3
 var plainTextPrompt;
 
 kh_display = document.querySelector('#kh_time');
@@ -105,21 +109,23 @@ function table_create() {
   const button = table.rows[randomRow].cells[randomCol].querySelector('.khBtn');
   button.dataset.correct = 'true'; // Mark the button as correct
   switch (randomCipherChosen){
-    case 1:
+    case (1):
       isCaeser = true;
+      document.getElementById('kh_question').innerHTML = " a Caeser Cipher shift by " + randomCaesarCipherVal + " The column is " +  ((randomCaesarCipherVal+randomCol) +9).toString(36).toUpperCase() + " The row is "+  randomRow;
       break;
     case 2:
       isPigPen = true;
+      plainTextPrompt = " a PigPen Cipher! The answer is row " + spellOutNumber(randomRow) + " and the column is " +  spellOutNumber(randomCol);
+      generatePigPen(plainTextPrompt);
       break;
+    case 3: 
+      isTransposition = true;
+      plainTextPrompt = " A basic transposition Cipher the answer is row " + spellOutNumber(randomRow) + " and the column is " +  spellOutNumber(randomCol);
+
+      document.getElementById('kh_question').innerHTML = shiftBackwardByValue(plainTextPrompt, randomCaesarCipherVal);
   }
   // Return the coordinates of the correct button
-  if (isCaeser){
-    document.getElementById('kh_question').innerHTML = " a Caeser Cipher shift by " + randomCaesarCipherVal + " The column is " +  ((randomCaesarCipherVal+randomCol) +9).toString(36).toUpperCase() + " The row is "+  randomRow;
-  }
-  else if (isPigPen){
-    plainTextPrompt = " a PigPen Cipher! The answer is row " + spellOutNumber(randomRow) + " and the column is " +  spellOutNumber(randomCol);
-    generatePigPen(plainTextPrompt);
-  }
+ 
   return [randomRow, randomCol];
   }
 
@@ -174,6 +180,21 @@ function generatePigPen(plaintext) {
           textbox.appendChild(img);
       }
   }
+}
+
+function shiftBackwardByValue(plaintext, shiftBy) {
+  // Split the plaintext into an array of words
+  const words = plaintext.split(' ');
+
+  // Shift each letter within each word by two characters to the left
+  const shiftedWords = words.map(word => {
+    const chars = word.split('');
+    const shiftedChars = chars.slice(shiftBy).concat(chars.slice(0, shiftBy));
+    return shiftedChars.join('');
+  });
+
+  // Join the shifted words back into a string and return it
+  return shiftedWords.join(' ');
 }
 
 
