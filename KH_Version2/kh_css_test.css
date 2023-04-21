@@ -42,7 +42,7 @@ th, td {
     color:black; 
     /* font: bold 84% 'trebuchet ms',helvetica,sans-serif; */
     /* font-size: 6px;  */
-    background-color:aqua; 
+    background-color:green; 
 
     border:1px solid black;
     width: 20px;
@@ -90,10 +90,10 @@ th, td {
 
 
 .kh_incorrect{
-    background-color: red;
+    background-color: brown;
 }
 .kh_correct{
-    background-color: limegreen;
+    background-color: gold;
 }
 
 .kh_start_btn,
