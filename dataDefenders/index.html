@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="dataDefenders.css" rel="stylesheet">
+    <script defer src="dataDefenders.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="ddOpenScreen" class="ddOpenScreen">
+        <div class="ddhome">
+            <table class="ddScoresDisplay">
+                <tr>
+                    <th>Welcome: </th>
+                    <th id="ddUsername"></th>
+                </tr>
+                <tr>
+                    <td>Money:</td>
+                    <td>$<span id="ddMoney">0.00</span></td>
+                </tr>
+                <tr>
+                    <td>Websites:</td>
+                    <td id="ddNumWebsites">0</td>
+                </tr>
+                <tr>
+                    <td>Saves: </td>
+                    <td id="ddSaves">0</td>
+                </tr>
+                <tr>
+                    <td>Crashes: </td>
+                    <td id="ddCrashes">0</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div id="ddtaskbar" class="ddtaskbar">
+        <div class="ddLeftTaskBar">
+            <div class="ddWIcons">
+                <div id="ddSunny" class="ddSunny hide"><i class="ddSun fa fa-sun-o" aria-hidden="true"></i></div>
+                <div id="ddCloudy" class="ddCloudy hide"><i class="ddCloud fa fa-cloud" aria-hidden="true"></i>
+                </div>
+                <div id="ddRainy" class="ddRainy hide"><i class="ddRain fa fa-tint" aria-hidden="true"></i>
+                </div>
+            </div>
+            <div class="ddtempAndDesc">
+                <div class="ddTempurature"><span id="ddTemp"></span><span>&#176;F</span></div>
+                <div id="ddWeatherDesc" class="ddWeatherDesc"></div>
+            </div>
+        </div>
+        <div class="ddMiddleTaskBar">
+            <button class="ddTaskBtn ddTaskBtnHome"><i class="fa fa-home" aria-hidden="true"></i></button>
+            <button class="ddTaskBtn" onclick="ddOpenTab('ddwebsitesList')">Websites</button>
+            <button class="ddTaskBtn" onclick="ddOpenTab('ddServerRoom')">Servers</button>
+            <button class="ddTaskBtn ddTaskBtnReport" onclick="ddOpenTab('ddreport')">Report</button>
+            <button class="ddTaskBtn" onclick="ddOpenTab('ddcams')">Sec. Cams</button>
+            <button class="ddTaskBtn" onclick="ddOpenTab('ddMsg')">Messages</button>
+            <button class="ddTaskBtn" onclick="fastForward()"><i id="ddFastFowardBtn" class="fa fa-fast-forward"
+                    aria-hidden="true"></i></button>
+        </div>
+        <div class="ddRightTaskBar">
+            <i class="taskdetail fa fa-chevron-up" aria-hidden="true"></i>
+            <i class="taskdetail fa fa-wifi"></i>
+            <i class="taskdetail fa fa-volume-up" aria-hidden="true"></i>
+            <i class="taskdetail fa fa-battery-three-quarters" aria-hidden="true"></i>
+            <div class="ddDateAndTimeTask">
+                <div class="ddTime"><span id="ddhour">9</span>:<span id="ddminute">00</span> <span
+                        id="ddDayHalf">AM</span></div>
+                <div class="ddDate">Day <span id="ddDayCount">001</span></div>
+            </div>
+            <i class="fa fa-bell-o" aria-hidden="true"></i>
+        </div>
+    </div>
+    <div id="ddwebsitesList" class="ddwebsitesList hide">
+        <table id="websiteTable" class="ddWebsitesTable">
+            <thead>
+                <tr>
+                    <th>Website Name</th>
+                    <th>Domain Name</th>
+                    <th>Directory Path</th>
+                    <th>IP Address</th>
+                    <th>Server Software</th>
+                    <th>Server ID</th>
+                    <th>Files</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+
+    </div>
+    <div id="ddServerRoom" class="ddServerRoom hide">
+        <div class="serverContent">
+            <div id="server1" class="server" onclick="ddOpenLogs(1)">
+                <div class="serverText">
+                    <div class="ipContent">
+                        <span class="ipText">IP Connections:</span>
+                        <span id="IPServer1" class="inputboxes">192.168.1.0</span>
+                    </div>
+                    <div class="sysCallsContent">
+                        <span class="sysCallsText"># System Calls:</span>
+                        <span id="sysCallsServer1" class="inputboxes">0</span>
+                    </div>
+                    <div class="dataFlow">
+                        <span class="ipText">Data Flow:</span>
+                        <span id="dataFlowServer1" class="inputboxes">10011101011001</span>
+                    </div>
+                </div>
+                <div class="serverhealth">
+                    <h1 class="serverTitle">Server 1</h1>
+                    <div id="circleServer1" class="circle"></div>
+                    <p id="runServer1">running</p>
+                </div>
+                <div class="monitorContent">
+                    <p>Connection: <span id="connectionHP1"></span></p>
+                    <p>Download Speed: <span id="downloadSpeedHP1"></span></p>
+                    <p>Upload Speed: <span id="uploadSpeedHP1"></span></p>
+                </div>
+            </div>
+            <div id="server2" class="server" onclick="ddOpenLogs(2)">
+                <div class="serverText">
+                    <div class="ipContent">
+                        <span class="ipText">IP Connections:</span>
+                        <span id="IPServer2" class="inputboxes">192.168.1.0</span>
+                    </div>
+                    <div class="sysCallsContent">
+                        <span class="sysCallsText"># System Calls:</span>
+                        <span id="sysCallsServer2" class="inputboxes">0</span>
+                    </div>
+                    <div class="dataFlow">
+                        <span class="ipText">Data Flow:</span>
+                        <span id="dataFlowServer2" class="inputboxes">10011101011001</span>
+                    </div>
+                </div>
+                <div class="serverhealth">
+                    <h1 class="serverTitle">Server 2</h1>
+                    <div id="circleServer2" class="circle"></div>
+                    <p id="runServer2">running</p>
+                </div>
+                <div class="monitorContent">
+                    <p>Connection: <span id="connectionHP2"></span></p>
+                    <p>Download Speed: <span id="downloadSpeedHP2"></span></p>
+                    <p>Upload Speed: <span id="uploadSpeedHP2"></span></p>
+                </div>
+            </div>
+            <div id="server3" class="server" onclick="ddOpenLogs(3)">
+                <div class="serverText">
+                    <div class="ipContent">
+                        <span class="ipText">IP Connections:</span>
+                        <span id="IPServer3" class="inputboxes">192.168.1.0</span>
+                    </div>
+                    <div class="sysCallsContent">
+                        <span class="sysCallsText"># System Calls:</span>
+                        <span id="sysCallsServer3" class="inputboxes">0</span>
+                    </div>
+                    <div class="dataFlow">
+                        <span class="ipText">Data Flow:</span>
+                        <span id="dataFlowServer3" class="inputboxes">10011101011001</span>
+                    </div>
+                </div>
+                <div class="serverhealth">
+                    <h1 class="serverTitle">Server 3</h1>
+                    <div id="circleServer3" class="circle"></div>
+                    <p id="runServer3">running</p>
+                </div>
+                <div class="monitorContent">
+                    <p>Connection: <span id="connectionHP3"></span></p>
+                    <p>Download Speed: <span id="downloadSpeedHP3"></span></p>
+                    <p>Upload Speed: <span id="uploadSpeedHP3"></span></p>
+                </div>
+            </div>
+            <div id="server4" class="server" onclick="ddOpenLogs(4)">
+                <div class="serverText">
+                    <div class="ipContent">
+                        <span class="ipText">IP Connections:</span>
+                        <span id="IPServer4" class="inputboxes">192.168.1.0</span>
+                    </div>
+                    <div class="sysCallsContent">
+                        <span class="sysCallsText"># System Calls:</span>
+                        <span id="sysCallsServer4" class="inputboxes">0</span>
+                    </div>
+                    <div class="dataFlow">
+                        <span class="ipText">Data Flow:</span>
+                        <span id="dataFlowServer4" class="inputboxes">10011101011001</span>
+                    </div>
+                </div>
+                <div class="serverhealth">
+                    <h1 class="serverTitle">Server 4</h1>
+                    <div id="circleServer4" class="circle"></div>
+                    <p id="runServer4">running</p>
+                </div>
+                <div class="monitorContent">
+                    <p>Connection: <span id="connectionHP4"></span></p>
+                    <p>Download Speed: <span id="downloadSpeedHP4"></span></p>
+                    <p>Upload Speed: <span id="uploadSpeedHP4"></span></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="ddServerLogs" class="ddServerLogs hide">
+        <div class="ddLogHead">
+            <h1 class="ddServerLogHeader">Server Log <span id="ddservid">1</span></h1>
+        </div>
+        <div class="ddlogTableContainer">
+            <table id="ddlogTable" class="ddlogTable">
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Time</th>
+                        <th>IP Address</th>
+                        <th>Request Method</th>
+                        <th>URL</th>
+                        <th>Status Code</th>
+                        <th>Download Speed</th>
+                        <th>Upload Speed</th>
+                        <th>System Calls</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr id="logRow1">
+                        <td id="date1">2023-04-07</td>
+                        <td id="time1">12:34:56</td>
+                        <td id="ip1">192.168.1.1</td>
+                        <td id="method1">GET</td>
+                        <td id="url1">/home</td>
+                        <td id="statusCode1">200</td>
+                        <td id="downloadSpeed1">1024 KB/s</td>
+                        <td id="uploadSpeed1">512 KB/s</td>
+                        <td id="systemCalls1">450</td>
+                    </tr>
+                    <tr id="logRow2">
+                        <td id="date2">2023-04-07</td>
+                        <td id="time2">13:45:12</td>
+                        <td id="ip2">192.168.1.2</td>
+                        <td id="method2">POST</td>
+                        <td id="url2">/contact</td>
+                        <td id="statusCode2">404</td>
+                        <td id="downloadSpeed2">512 KB/s</td>
+                        <td id="uploadSpeed2">256 KB/s</td>
+                        <td id="systemCalls2">500</td>
+                    </tr>
+                    <tr id="logRow3">
+                        <td id="date3">2023-04-07</td>
+                        <td id="time3">14:22:36</td>
+                        <td id="ip3">192.168.1.3</td>
+                        <td id="method3">GET</td>
+                        <td id="url3">/about</td>
+                        <td id="statusCode3">200</td>
+                        <td id="downloadSpeed3">2048 KB/s</td>
+                        <td id="uploadSpeed3">1024 KB/s</td>
+                        <td id="systemCalls3">600</td>
+                    </tr>
+                    <tr id="logRow4">
+                        <td id="date4">2023-04-07</td>
+                        <td id="time4">15:10:45</td>
+                        <td id="ip4">192.168.1.4</td>
+                        <td id="method4">GET</td>
+                        <td id="url5">/services</td>
+                        <td id="statusCode4">200</td>
+                        <td id="downloadSpeed4">4096 KB/s</td>
+                        <td id="uploadSpeed4">2048 KB/s</td>
+                        <td id="systemCalls4">800</td>
+
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="ddBottomLogContainer">
+            <div class="ddlogStatsContainer">
+                <div id="logStatus" class="logStatus">
+                    <p>Connection: <span id="logConnection"></span></p>
+                    <p>Download Speed: <span id="logDownloadSpeed"></span></p>
+                    <p>Upload Speed: <span id="logUploadSpeed"></span></p>
+                    <p>Connections Made: <span id="logConnectionsMade">0</span></p>
+                    <button id="ddLogBackBtn" class="ddLogBackBtn" onclick="ddlogBack()">Back</button>
+                </div>
+            </div>
+            <div class="ddLogGraphContainer">
+                <div class="ddGraphWhole">
+                    <div class="ddTopGraph">Performance</div>
+                    <div class="ddGraphMiddle">
+                        <div class="ddLeftGraph">
+                            <div class="percentElement">100%-</div>
+                            <div class="percentElement">90%-</div>
+                            <div class="percentElement">80%-</div>
+                            <div class="percentElement">70%-</div>
+                            <div class="percentElement">60%-</div>
+                            <div class="percentElement">50%-</div>
+                            <div class="percentElement">40%-</div>
+                            <div class="percentElement">30%-</div>
+                            <div class="percentElement">20%-</div>
+                            <div class="percentElement">10%-</div>
+                            <div class="percentElement">0%-</div>
+                        </div>
+                        <canvas id="ddGraphCanvas" class="ddGraphCanvas"></canvas>
+                    </div>
+                    <div class="ddBtmGraph">
+                        <div class="ddBtmGraphInterval">
+                            <div class="ddtimeElement">|</div>
+                            <div class="ddtimeElement">|</div>
+                            <div class="ddtimeElement">|</div>
+                            <div class="ddtimeElement">|</div>
+                            <div class="ddtimeElement">|</div>
+                            <div class="ddtimeElement">|</div>
+                            <div class="ddtimeElement">|</div>
+                            <div class="ddtimeElement">|</div>
+                            <div class="ddtimeElement">|</div>
+                            <div class="ddtimeElement">|</div>
+                        </div>
+                        <p class="ddtimeLabel">Seconds</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="ddcams" class="ddcams hide"></div>
+    <div id="ddreport" class="ddreport hide">
+        <form class="ddReportform">
+            <h1 class="ddreportHeader">Report Form</h1>
+            <label class="ddlabel" for="attackType">Type of Attack:</label>
+            <input type="text" id="attackType" name="attackType" required>
+
+            <label class="ddlabel" for="attackDescription">Description of Attack:</label>
+            <textarea id="attackDescription" name="attackDescription" rows="5" required></textarea>
+
+            <label class="ddlabel" for="courseOfAction">Recommended Course of Action:</label>
+            <textarea id="courseOfAction" name="courseOfAction" rows="5" required></textarea>
+
+            <label class="ddlabel" for="signature">Signature:</label>
+            <input type="text" id="signature" name="signature" required>
+
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+    <div id="ddMsg" class="ddMsg hide">
+        <div class="ddSenderBox">
+            <h2 class="ddmessageTitle">Messages</h2>
+            <div class="ddSenderContainer">
+                <!-- Sender Information will be added dynamically through JavaScript -->
+            </div>
+        </div>
+        <div class="ddMessageContainer">
+            <div class="ddMessageBox">
+                <div class="ddMessage hide">
+                    <!-- Messages will be added dynamically through JavaScript -->
+                </div>
+            </div>
+            <button onclick="intMsg()">New Message</button>
+        </div>
+    </div>
+</body>
+
+</html>
+
+</body>
+
+</html>

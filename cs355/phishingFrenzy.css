@@ -1,0 +1,566 @@
+.phishingFrenzy {
+    margin: auto;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: url(img/background.jpg) no-repeat center center fixed;
+    background-size:cover;
+    overflow: hidden;
+}
+
+.pf_emailBackGround {
+    background-color: white;
+    border-radius: 5px;
+    border: 1px solid black;
+    box-shadow: 0 0 10px 2px;
+    width: 85vw;
+    height: 85vh;
+}
+
+.pf_home,
+.pf_easy,
+.pf_medium,
+.pf_hard {
+    font: 1vmax arial, sans-serif;
+    text-align: left;
+    width: 98%;
+    background: none;
+    border: none;
+    color: #069;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.pf_home:active,
+.pf_easy:active,
+.pf_medium:active,
+.pf_hard:active {
+    color: black;
+}
+
+.pf_home:hover,
+.pf_easy:hover,
+.pf_medium:hover,
+.pf_hard:hover {
+    color: rgb(79, 0, 79);
+}
+
+.pf_playerMessage {
+    font-weight: 500;
+    font-size: large;
+}
+
+.pf_emailScreen {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    justify-content: center;
+}
+
+.pf_emailDisplay {
+    height: 60%;
+    width: 100%;
+    font-size: x-large;
+}
+
+.pf_inGame {
+    width: 100%;
+    height: 100%;
+}
+
+.pf_btnDisplay {
+    display: flex;
+    height: 15%;
+    justify-content: center;
+}
+
+.pf_phishBtn,
+.pf_legitBtn {
+    position: relative;
+    color: #fff;
+    text-decoration: none;
+    font: 700 2em 'Yanone Kaffeesatz';
+    padding: 4px;
+    border-radius: 8px;
+    width: 160px;
+    text-align: center;
+    transition: all .1s ease;
+}
+
+.pf_phishBtn {
+    background-color: red;
+    -webkit-box-shadow: 0px 9px 0px rgb(151, 18, 0), 0px 9px 25px rgba(0, 0, 0, .7);
+    -moz-box-shadow: 0px 9px 0px rgba(151, 18, 0), 0px 9px 25px rgba(0, 0, 0, .7);
+    box-shadow: 0px 9px 0px rgba(151, 18, 0), 0px 9px 25px rgba(0, 0, 0, .7);
+    margin-left: 4px;
+}
+
+.pf_phishBtn:active {
+    color: black;
+    -webkit-box-shadow: 0px 3px 0px rgba(151, 18, 0), 0px 3px 6px rgba(0, 0, 0, .9);
+    -moz-box-shadow: 0px 3px 0px rgba(151, 18, 0), 0px 3px 6px rgba(0, 0, 0, .9);
+    box-shadow: 0px 3px 0px rgba(151, 18, 0), 0px 3px 6px rgba(0, 0, 0, .9);
+    position: relative;
+    top: 6px;
+}
+
+.pf_legitBtn {
+    background-color: lime;
+    -webkit-box-shadow: 0px 9px 0px rgb(0, 139, 0), 0px 9px 25px rgba(0, 0, 0, .7);
+    -moz-box-shadow: 0px 9px 0px rgb(0, 139, 0), 0px 9px 25px rgba(0, 0, 0, .7);
+    box-shadow: 0px 9px 0px rgba(0, 139, 0), 0px 9px 25px rgba(0, 0, 0, .7);
+    margin-right: 4px;
+}
+
+.pf_legitBtn:active {
+    color: black;
+    -webkit-box-shadow: 0px 3px 0px rgba(0, 139, 0), 0px 3px 6px rgba(0, 0, 0, .9);
+    -moz-box-shadow: 0px 3px 0px rgba(0, 139, 0), 0px 3px 6px rgba(0, 0, 0, .9);
+    box-shadow: 0px 3px 0px rgba(0, 139, 0), 0px 3px 6px rgba(0, 0, 0, .9);
+    position: relative;
+    top: 6px;
+}
+
+.pf_pishInbox,
+.pf_legitInbox {
+    width: 97%;
+    display: flex;
+    flex-direction: column;
+}
+
+.pf_inboxItem {
+    position: relative;
+    height: 9%;
+    background-color: white;
+    border: 1px solid rgb(126, 126, 126);
+    border-radius: 5px;
+}
+
+.pf_dot {
+    position: absolute;
+    top: 13px;
+    left: 13px;
+    height: 15px;
+    width: 15px;
+    background-image: url("img/emptyDot.png");
+    border-radius: 10px;
+}
+
+.pf_addrInbox {
+    position: absolute;
+    left: 35px;
+    overflow: hidden;
+    font-size: .8vmax;
+    line-height: 42px;
+}
+
+.pf_life,
+.pf_correctL,
+.pf_wrongL,
+.pf_correctP,
+.pf_wrongP,
+.pf_secondTopMostBar,
+.pf_topEmailDesignTopFilter{
+    background-repeat: no-repeat center center fixed;
+    background-size: cover;
+}
+
+.pf_correctL {
+    background-image: url("img/greenCheckDot.png");
+}
+
+.pf_wrongL {
+    background-image: url("img/redCheckDot.png");
+}
+
+.pf_correctP {
+    background-image: url("img/greenfishDot.png");
+}
+
+.pf_wrongP {
+    background-image: url("img/redfishDot.png");
+}
+
+.pf_explanContainer {
+    height: 100%;
+    width: 99%;
+    text-align: center;
+    justify-content: center;
+    z-index: 1;
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 5px;
+    font-size: large;
+}
+
+.pf_consoleText {
+    font-size: large;
+}
+
+.pf_life {
+    height: 20px;
+    width: 20px;
+    background-image: url("img/bait.png");
+    border-radius: 15px;
+    border: 1px solid black;
+    margin-left: 9px;
+}
+
+.pf_lostLife {
+    background-image: none;
+    background-color: black;
+}
+
+.pf_topMostBar {
+    display: flex;
+    background-color: rgb(250, 250, 250);
+    height: 4.5%;
+    border-radius: 5px;
+    margin: 0;
+    align-items: center;
+}
+
+.pf_topMostBarEmailDesign {
+    display: flex;
+    width: 50%;
+    font-size: .8rem;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.pf_topMostBarEmailDesignHome {
+    text-align: center;
+    width: 16%;
+}
+
+.pf_topMostBarEmailDesignView,
+.pf_topMostBarEmailDesignHelp {
+    width: 12%;
+}
+
+.pf_topMostBarEmailDesignMessage {
+    width: 20%;
+    font-weight: bold;
+    text-decoration-line: underline;
+    text-decoration-color: #1F327E;
+    text-decoration-thickness: 3px;
+}
+
+.pf_topMostBarEmailDesignInsert {
+    width: 14%;
+}
+
+.pf_topMostBarEmailDesignFormatText {
+    width: 16%;
+}
+
+.pf_topMostBarEmailDesignOptions {
+    text-align: right;
+    width: 14%;
+}
+
+.pf_livesContainer {
+    display: flex;
+    width: 50%;
+    padding-left: 25%;
+}
+
+.pf_secondTopMostBar {
+    height: 6%;
+    background-image: url("img/pf_emailFontBar.png");
+}
+
+.pf_mainSet {
+    height: 89%;
+    display: flex;
+}
+
+.pf_leftContainer {
+    width: 34%;
+    display: flex;
+    font-size: .7rem;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.pf_rightContainer {
+    width: 21%;
+    display: flex;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.pf_leftLeftEmailDesign {
+    width: 36%;
+}
+
+.pf_leftInboxWhole{
+    width: 58.5%;
+}
+.pf_rightInboxWhole {
+    width: 96%;
+}
+.pf_leftInboxWhole,
+.pf_rightInboxWhole{
+    border: 1px solid lightgray;
+    border-radius: 5px;
+    box-shadow: 0 0 1px .3px;
+}
+
+.pf_inboxes {
+    height: 92%;
+    display: flex;
+}
+
+.pf_blueBar {
+    width: 3%;
+}
+
+.pf_blueBarimg {
+    height: 99%;
+}
+
+.pf_scrollDesign {
+    width: 5.5%;
+    background-image: url("img/pf_scroll.png");
+    border-top: 1px solid lightgray;
+}
+
+.pf_middleWhitespace {
+    height: 1%;
+}
+
+.pf_rightInbox {
+    height: 88.75%;
+}
+
+.pf_rightScrollDesign {
+    width: 4%;
+}
+
+.pf_bText {
+    color: #1F327E;
+}
+
+.pf_favorites {
+    height: 17%;
+    background-color: white;
+}
+
+.pf_favoritesTopText {
+    height: 32%;
+    line-height: 350%;
+}
+
+.pf_favoritesListBox {
+    height: 66%;
+    display: flex;
+}
+
+.pf_favoritesListBoxImg {
+    width: 27%;
+}
+
+.pf_favoritesListBoxText {
+    width: 73%;
+    margin: 0;
+    padding: 0;
+}
+
+.pf_selectedInbox {
+    background-color: rgb(245, 246, 250);
+}
+
+.pf_faveSpace {
+    height: 24%;
+}
+
+.leftEmailDesignImgs {
+    height: 70%;
+    padding-right: 4px;
+}
+
+.pf_faveimg {
+    margin: 1px;
+    height: 24%;
+    display: flex;
+    justify-content: right;
+}
+
+.pf_folders {
+    background-color: white;
+    height: 32%;
+}
+
+.pf_foldTopText {
+    height: 32%;
+    line-height: 350%;
+}
+
+.pf_foldersListBox {
+    height: 66%;
+    display: flex;
+}
+
+.pf_foldersListBoxImg {
+    width: 27%;
+}
+
+.pf_foldersListBoxText {
+    width: 73%;
+    margin: 0;
+    padding: 0;
+}
+
+.pf_foldSpace {
+    height: 13.7%;
+}
+
+.pf_foldimg {
+    margin: 1px;
+    height: 13.5%;
+    display: flex;
+    justify-content: right;
+}
+
+.pf_topEmailDesign {
+    height: 9%;
+}
+
+.pf_topEmailDesignTop {
+    background-color: white;
+    height: 62%;
+    display: flex;
+    justify-content: center;
+    border-radius: 5px
+}
+
+.pf_topEmailDesignBottom {
+    background-color: rgb(245, 246, 250);
+    height: 38%;
+}
+
+.pf_topEmailDesignTopCheck {
+    width: 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+}
+
+.pf_inboxText {
+    font-size: 1vmax;
+    line-height: 100%;
+    font-weight: bolder;
+    width: 60%;
+    display: flex;
+    align-items: center;
+}
+
+.pf_topEmailDesignTopFilter {
+    width: 30%;
+    align-self: right;
+    background-image: url("img/pf_inboxFilter.png");
+}
+
+.pf_check {
+    height: 60%;
+}
+
+.pf_middleContainer {
+    width: 45%;
+    border-top: 1px solid lightgray;
+}
+
+.pf_wholeFrom {
+    height: 7%;
+    display: flex;
+    align-items: center;
+}
+
+.pf_wholeScore {
+    height: 5.5%;
+    display: flex;
+    align-items: center;
+}
+
+.pf_wholeAddSubject {
+    height: 5%;
+    display: flex;
+    align-items: center;
+}
+
+.pf_wholeEmail {
+    height: 74%;
+    display: flex;
+}
+
+.pf_sendbtn {
+    width: 25%;
+    display: flex;
+    align-items: center;
+
+}
+
+.sendImg {
+    width: 100%;
+}
+
+.pf_addrDisplay {
+    width: 55%;
+    font-size: 1vmax;
+    line-height: 100%;
+}
+
+.fromEnd {
+    width: 19%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.pf_fromEndImg {
+    width: 100%;
+}
+
+.pf_wholeTimer {
+    height: 5.5%;
+    display: flex;
+    align-items: center;
+}
+
+.time_scoreImgs {
+    height: 99%;
+}
+
+.pf_subjectText {
+    font-size: 1.25vmax;
+    line-height: 100%;
+    color: gray;
+}
+
+.pf_subjectTextResponse {
+    font-size: 1.25vmax;
+    line-height: 100%;
+}
+
+.pf_smallGreyHr {
+    height: 1px;
+    background-color: lightgray;
+    line-height: 0px;
+    margin: 0;
+    width: 90%;
+    margin-left: 5%;
+}
+
+.pf_smallBlackHr {
+    height: 1px;
+    line-height: 0px;
+    margin: 0;
+    background-color: black;
+}
+
+.hide {
+    display: none;
+}

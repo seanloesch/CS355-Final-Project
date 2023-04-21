@@ -1,0 +1,252 @@
+body,
+.homepage {
+    margin: auto;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    background-color: #191919;
+}
+
+.hp_top {
+    height: 215px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.header {
+    padding: 50px;
+    text-align: center;
+    color: white;
+    text-shadow: 2px 2px 3px lime;
+}
+
+.header h1 {
+    font-size: 40px;
+    padding-bottom: 50px;
+    margin: 0px;
+}
+
+.navbar {
+    width: 100%;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #191919;
+    background-color: lime;
+}
+
+.links {
+    width: 1920px;
+    height: inherit;
+    overflow: hidden;
+}
+
+.navbar a {
+    height: inherit;
+    float: left;
+    display: block;
+    text-align: center;
+    padding: 14px 20px;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: bold;
+    color: #191919;
+    transition: .6s;
+}
+
+.navbar a:hover {
+    background-color: rgb(0, 124, 0);
+    color: white;
+}
+
+.hp_bottom {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: lime;
+}
+
+.hp_bottom_container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 1600px;
+    height: 700px;
+}
+
+.hp_bottom_middle {
+    width: 800px; /* 50% of 1920px */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hp_bottom_right {
+    width: 400px; /* 25% of 1920px */
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+.hp_bottom_right_container {
+    width: 350px;
+}
+
+.hp_gameBTNs {
+    padding: 100px 25px 100px 25px;
+    height: fit-content;
+    width: inherit;
+    display: grid;
+    grid-template-areas:
+        "a b"
+        "c d";
+    grid-gap: 2px;
+}
+
+.hp_gameBTNs > button {
+    height: 200px;
+    display: flex;
+    justify-content: center;
+}
+
+.hp_btn {
+    background-size: cover;
+    background-position: center;
+    border-radius: 5px;
+    transition: .6s;
+}
+
+.hp_btn:hover {
+    filter: brightness(50%);
+}
+
+.trivia_home_button {
+    background-image: url("img/trivia_background.jpg");
+}
+
+.keyHunters_home_button {
+    background-image: url("img/keyHunterHomeButtonImg.png");
+}
+
+.phishingFrenzy_home_button {
+    background-image: url("img/phishingFrenzyBtn.png");
+}
+
+.dataDefenders_home_button {
+    background-image: url("img/ddHomescreen.png");
+}
+
+.hide {
+    display: none;
+}
+
+.hp_bottom_left {
+    width: 400px; /* 25% of 1920px */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.scoretable {
+    width: 350px;
+    color: lime;
+    border-spacing: 5px;
+    table-layout: fixed;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.scoretable tbody {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.scoretable tr {
+    display: flex;
+}
+
+.scoretable th,
+.scoretable td {
+    width: 160px;
+    background-color: #191919;
+    padding: 8px 0px 8px 0px;
+    border: 1px solid lime;
+    justify-content: center;
+}
+
+.scoretable td {
+    font-size: .9rem;
+}
+
+.hp_h4Header {
+    line-height:5%;
+    align-self: center;
+}
+
+.hp_info {
+    padding-bottom: 3px;
+    border-bottom: 1px solid lime;
+}
+
+@media screen and (max-width: 1560px) {
+    .hp_bottom_container {
+        flex-direction: column;
+        height: fit-content;
+        padding-top: 30px;
+    }
+
+    .hp_bottom_left {
+        width: fit-content;
+    }
+
+    .hp_bottom_middle {
+        width: fit-content;
+    }
+
+    .hp_gameBTNs {
+        width: 700px;
+        padding: 30px 0px 30px 0px;
+    }
+
+    .hp_gameBTNs > button {
+        height: 150px;
+    }
+
+    .hp_h4Header {
+        text-align: center;
+    }
+}
+
+@media screen and (max-width: 730px) {
+    .scoretable th,
+    .scoretable td {
+        width: 140px;
+    }
+
+    .hp_gameBTNs {
+        width: 300px;
+        grid-template-areas: 
+            "a"
+            "b"
+            "c"
+            "d";
+    }
+
+    .scoretable {
+        width: 300px;
+    }
+
+    .hp_bottom_right {
+        width: 300px;
+    }
+
+    .hp_bottom_left {
+        width: fit-content;
+    }
+}
