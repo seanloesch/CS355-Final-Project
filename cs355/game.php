@@ -211,7 +211,7 @@ if($nickname == null){
                     </div>
 
                     <div id="trivia_rank_select" class="trivia_rank_select hide">
-                        <form action="" method="post">
+                        <form id="trivia_form" action="" method="post">
                             <div id="trivia_pracByRForm" class="trivia_pracByRForm hide">
                                 <span>
                                     <label id="trivia_rank_label" for="rank">Rank:</label>
@@ -231,7 +231,7 @@ if($nickname == null){
                                 </span>
                             </div>
                         </form>
-                        <form action="" method="post">
+                        <form id="trivia_form" action="" method="post">
                             <div id="trivia_pracByTForm" class="trivia_pracByTForm hide">
                                 <span>
                                     <label id="trivia_topic_label" for="topic">Topic:</label>
@@ -251,7 +251,7 @@ if($nickname == null){
                                 </span>
                             </div>
                         </form>
-                        <form action="" method="post">
+                        <form id="trivia_form" action="" method="post">
                             <span>
                                 <label id="trivia_numPracQuestionsLabel" for="trivia_numPracQuestionsLabel">Number of
                                     Questions:
