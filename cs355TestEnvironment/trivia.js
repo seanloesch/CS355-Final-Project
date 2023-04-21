@@ -1,4 +1,5 @@
 //Initializing trivia HTML
+const trivia = document.getElementById('trivia');
 const trivia_startButton = document.getElementById('trivia_start_btn');
 const trivia_nextButton = document.getElementById('trivia_next_btn');
 const trivia_finishButton = document.getElementById('trivia_finish_btn');
@@ -217,6 +218,12 @@ function trivia_showQuestion(trivia_question) {
 
 function trivia_resetState() {
     trivia_clearStatusClass(document.body);
+    if (trivia.classList.contains('triviaCorrect')) {
+        trivia.classList.remove('triviaCorrect');
+    }
+    if (trivia.classList.contains('triviaWrong')) {
+        trivia.classList.remove('triviaWrong');
+    }
     trivia_nextButton.classList.add('hide');
     while (trivia_answerButtonsElement.firstChild) {
         trivia_answerButtonsElement.removeChild(trivia_answerButtonsElement.firstChild)
@@ -236,9 +243,11 @@ function trivia_selectAnswer(trivia_e) {
     if (trivia_correct) {
         trivia_right = trivia_right + 1;
         trivia_pointTotal = trivia_pointTotal+trivia_pointValue;
+        trivia.classList.add('triviaCorrect');
     }
     else {
         trivia_wrong = trivia_wrong + 1;
+        trivia.classList.add('triviaWrong');
     }
     trivia_displayIngameScores();
     if (trivia_questions.length > trivia_currentQuestionIndex + 1) {
