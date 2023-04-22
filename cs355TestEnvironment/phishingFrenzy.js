@@ -47,7 +47,7 @@ function createInbox() {
     pf_phishArray.reverse()
     pf_legitArray = pf_legitArray.slice(0, 11)
     pf_phishArray = pf_phishArray.slice(0, 11)
-    for (let i = 0; i <= 10; i++) {
+    for (let i = 0; i < 10; i++) {
         var pf_Laddress = pf_legitArray[i].addr
         var pf_Paddress = pf_phishArray[i].addr
         var pf_Ldot = pf_legitArray[i].answered
