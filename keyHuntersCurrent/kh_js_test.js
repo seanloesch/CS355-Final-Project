@@ -9,6 +9,7 @@ var kh_buzz;
 var kh_clearing;
 var kh_count;
 var kh_numMinutes = 5;
+var kh_panelActive = false;
 var i = 0;
 var correctButton;
 var textbox = document.getElementById('kh_question');
@@ -34,11 +35,25 @@ const kh_homeButton = document.getElementById('kh_home_btn');
 const kh_inGame = document.getElementById('kh_inGame');
 const kh_msg = document.getElementById('kh_msg');
 const kh_startScreen = document.getElementById('kh_startScreen');
+const kh_panelContainer = document.getElementById('kh_panel_container');
+const kh_dictPanel = document.getElementById('kh_dict_panel');
+const kh_msgPanel = document.getElementById('kh_msg_panel');
+const kh_notePanel = document.getElementById('kh_note_panel');
+const kh_helpPanel = document.getElementById('kh_help_panel');
+
+const kh_dictButton = document.getElementById('kh_dict_button');
+const kh_msgButton = document.getElementById('kh_msg_button');
+const kh_noteButton = document.getElementById('kh_note_button');
+const kh_helpButton = document.getElementById('kh_help_button');
 
 
 
 kh_easyButton.addEventListener('click', kh_startGame);
 kh_homeButton.addEventListener('click', kh_goHome);
+kh_dictButton.addEventListener('click', kh_toggleDict);
+kh_msgButton.addEventListener('click', kh_toggleMsg);
+kh_noteButton.addEventListener('click', kh_toggleNote);
+kh_helpButton.addEventListener('click', kh_toggleHelp);
 
 function kh_startGame() {
   kh_easyButton.classList.add('hide');
@@ -46,6 +61,10 @@ function kh_startGame() {
   kh_msg.classList.add('hide');
   kh_startScreen.classList.add('hide');
   kh_inGame.classList.remove('hide');
+  kh_dictPanel.classList.add('hide');
+  kh_msgPanel.classList.add('hide');
+  kh_notePanel.classList.add('hide');
+  kh_helpPanel.classList.add('hide');
   kh_buzz = 0;
   kh_count = 0;
   //var kh_timed = 60 * kh_numMinutes;
@@ -59,7 +78,25 @@ function kh_startGame() {
 }
 
 
+function kh_toggleDict() {
+  if (kh_panelActive == false) {
+    kh_dictPanel.classList.remove('hide');
+    kh_panelActive = true;
+  } else {
+    kh_dictPanel.classList.add('hide');
+    kh_panelActive = false;
+  }
+}
 
+function kh_toggleMsg() {
+  if (kh_panelActive == false) {
+    kh_msgPanel.classList.remove('hide');
+    kh_panelActive = true;
+  } else {
+    kh_msgPanel.classList.add('hide');
+    kh_panelActive = false;
+  }
+}
 
 
 //draw our table
