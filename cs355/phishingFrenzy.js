@@ -1,4 +1,5 @@
-var pf_userName = document.getElementById("nickname").innerHTML;
+var pf_userName = "nickname" //this will change depending on PHP
+
 let pf_score = 0;
 var pf_emails, pf_difficulty, pf_gameOverMessage, pf_startTime, pf_timerInterval, pf_subtractInterval, pf_scoreMultiplier;
 const pf_gameTime = 60, pf_points = 10;
@@ -46,7 +47,7 @@ function createInbox() {
     pf_phishArray.reverse()
     pf_legitArray = pf_legitArray.slice(0, 11)
     pf_phishArray = pf_phishArray.slice(0, 11)
-    for (let i = 0; i <= 10; i++) {
+    for (let i = 0; i < 10; i++) {
         var pf_Laddress = pf_legitArray[i].addr
         var pf_Paddress = pf_phishArray[i].addr
         var pf_Ldot = pf_legitArray[i].answered
