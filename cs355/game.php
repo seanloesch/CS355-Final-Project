@@ -444,7 +444,6 @@ if($nickname == null){
                     <div class="pf_scrollDesign"></div>
                 </div>
                 <div class="pf_middleContainer">
-                    <div class="pf_middleWhitespace"></div>
                     <div class="pf_wholeFrom">
                         <div class="pf_sendbtn"><img class="sendImg" src="img/pf_blueSend.png"></div>
                         <div id="pf_addrDisplay" class="pf_addrDisplay">legitOrPhish@lorp.com</div>
@@ -511,7 +510,6 @@ if($nickname == null){
                             <div class="pf_blueBar"><img class="pf_blueBarimg" src="img/pf_blueBar.png"></div>
                             <div id="pf_phishInbox" class="pf_pishInbox"></div>
                         </div>
-                        <div class="pf_rightInbox"></div>
                     </div>
                     <div class="pf_scrollDesign"></div>
                 </div>
