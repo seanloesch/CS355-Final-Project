@@ -10,6 +10,7 @@ var kh_clearing;
 var kh_count;
 var kh_numMinutes = 5;
 
+<<<<<<< HEAD:CS355-Final-Project-Jordan/testEnvironment/keyhunter.js
 var kh_storyLine = [];
 
 var kh_inGameRank;
@@ -19,15 +20,23 @@ kh_display = document.querySelector('#kh_time');
 const kh_easy_btn = document.getElementById('kh_easy');
 const kh_medium_btn = document.getElementById('kh_medium');
 const kh_hard_btn = document.getElementById('kh_hard');
+=======
+
+kh_display = document.querySelector('#kh_time');
+
+>>>>>>> origin/Jacob:testEnvironment/keyhunter.js
 const kh_startButton = document.getElementById('kh_start_btn');
 const kh_homeButton = document.getElementById('kh_home_btn');
 const kh_inGame = document.getElementById('kh_inGame');
 const kh_msg = document.getElementById('kh_msg');
 const kh_startScreen = document.getElementById('kh_startScreen');
 
+<<<<<<< HEAD:CS355-Final-Project-Jordan/testEnvironment/keyhunter.js
 // before start game, we'll need to set parameters based on difficulty, or any other variables.(check)
 // once start is clicked, generate random json array array with parameters being true. ie story = 2 = variables associated with that story (check)
 // with params given by json array, do table create.
+=======
+>>>>>>> origin/Jacob:testEnvironment/keyhunter.js
 
 
 for (let i = 0; i < 676; i++) {
@@ -36,6 +45,7 @@ for (let i = 0; i < 676; i++) {
     kh_elements.push(kh_add_value)
 }
 
+<<<<<<< HEAD:CS355-Final-Project-Jordan/testEnvironment/keyhunter.js
 //kh_startButton.addEventListener('click', kh_startGame);
 kh_homeButton.addEventListener('click', kh_goHome);
 
@@ -58,6 +68,11 @@ function kh_hard(){
     kh_startGame();
 }
 
+=======
+kh_startButton.addEventListener('click', kh_startGame);
+kh_homeButton.addEventListener('click', kh_goHome);
+
+>>>>>>> origin/Jacob:testEnvironment/keyhunter.js
 function kh_startGame() {
     kh_startButton.classList.add('hide');
     kh_homeButton.classList.add('hide');
@@ -68,8 +83,14 @@ function kh_startGame() {
     kh_buzz = 0;
     kh_count = 0;
     kh_startTimer(kh_timed, kh_display);
+<<<<<<< HEAD:CS355-Final-Project-Jordan/testEnvironment/keyhunter.js
     kh_retrieveJSONArray();
     table_create();
+=======
+    table_create();
+    kh_retrieveJSONArray();
+    //kh_createButtons();
+>>>>>>> origin/Jacob:testEnvironment/keyhunter.js
     kh_running();
 
 }
@@ -102,7 +123,11 @@ function table_create() {
                     } 
                     
                     if (c > 17){
+<<<<<<< HEAD:CS355-Final-Project-Jordan/testEnvironment/keyhunter.js
                         //console.log("930");
+=======
+                        console.log("930");
+>>>>>>> origin/Jacob:testEnvironment/keyhunter.js
                         str = String.fromCharCode(str.charCodeAt(0) + 1);
                     }
                     
@@ -220,6 +245,7 @@ function kh_retrieveJSONArray() {
     }
 }
 function kh_createQuestionList(kh_jsonArray) {
+<<<<<<< HEAD:CS355-Final-Project-Jordan/testEnvironment/keyhunter.js
     //Here is where we would determine the rankings and set questions\
     var kh_questionlength = kh_jsonArray[kh_inGameRank].length;
     var kh_oneDimensionalArray = [];
@@ -259,6 +285,23 @@ function kh_createQuestionList(kh_jsonArray) {
     //     console.log(kh_questionBoxArray[i]);
     //     kh_answers.push(kh_a);
     // }
+=======
+    //Here is where we would determine the rankings and set questions
+    var kh_Gamerank = kh_rank-1;
+    var kh_questionlength = kh_jsonArray[kh_Gamerank].length;
+    var kh_oneDimensionalArray = [];
+    for (var i = 0; i < kh_questionlength; i++) {
+        kh_oneDimensionalArray.push(kh_jsonArray[kh_Gamerank][i]);
+    }
+
+    for (let i = 0; i < kh_totalQuestions; i++) {
+        var kh_q = kh_oneDimensionalArray[i].question;
+        var kh_a = kh_oneDimensionalArray[i].answer;
+        kh_questionBoxArray[i] = kh_q;
+        console.log(kh_questionBoxArray[i]);
+        kh_answers.push(kh_a);
+    }
+>>>>>>> origin/Jacob:testEnvironment/keyhunter.js
     kh_loadQuestions();
 }
 function kh_loadQuestions() {

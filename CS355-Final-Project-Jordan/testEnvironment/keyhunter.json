@@ -30,6 +30,7 @@
     {
       "table_size_rows": 24,
       "table_size_column":24, 
+<<<<<<< HEAD:CS355-Final-Project-Jordan/testEnvironment/keyhunter.json
       "answer": "1",
       "Alphabet": "Greek",
       "story": [
@@ -145,6 +146,10 @@
       "table_size_column":24, 
       "answer": "A5",
       "Alphabet": "Greek",
+=======
+      "answer": "A5",
+      "Alphabet": ["\u0391","\u0391","\u0391","\u0391","\u0391"],
+>>>>>>> origin/Jacob:testEnvironment/keyhunter.json
       "story": [
         {
           "type": "Caesar cipher shift by two",
@@ -172,7 +177,10 @@
       "table_size_rows": 26,
       "table_size_column":26, 
       "answer": "A5",
+<<<<<<< HEAD:CS355-Final-Project-Jordan/testEnvironment/keyhunter.json
       "Alphabet": "Greek",
+=======
+>>>>>>> origin/Jacob:testEnvironment/keyhunter.json
       "story": [
         {
           "type": "Caesar cipher shift by three",
