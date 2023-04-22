@@ -21,7 +21,7 @@ let caeserDone = false;
 let pigPenDone = false;
 let transpositionDone = false;
 const randomCaesarCipherVal = Math.floor(Math.random() * 5) + 1; // Random caeser between 1 and 6
-var randomCipherChosen = Math.floor(Math.random() * 3) + 1; // random cipher between 1 and 3
+
 var plainTextPrompt;
 
 kh_display = document.querySelector('#kh_time');
@@ -52,8 +52,26 @@ kh_easyButton.addEventListener('click', kh_startGame);
 kh_homeButton.addEventListener('click', kh_goHome);
 kh_dictButton.addEventListener('click', kh_toggleDict);
 kh_msgButton.addEventListener('click', kh_toggleMsg);
-kh_noteButton.addEventListener('click', kh_toggleNote);
-kh_helpButton.addEventListener('click', kh_toggleHelp);
+// kh_noteButton.addEventListener('click', kh_toggleNote);
+// kh_helpButton.addEventListener('click', kh_toggleHelp);
+
+
+function randomCipherChosen() {
+  var randomNum;
+  if (document.getElementById("kh_easy_btn").checked) {
+    randomNum = Math.floor(Math.random() * 3) + 1;
+  } else if (document.getElementById("kh_medium_btn").checked) {
+    randomNum = Math.floor(Math.random() * 3) + 4;
+  }
+  return randomNum;
+}
+
+
+
+var randomCipherChosenValue = randomCipherChosen();
+console.log("random chosen cipher value is " + randomCipherChosenValue);
+
+
 
 function kh_startGame() {
   kh_easyButton.classList.add('hide');
@@ -67,6 +85,7 @@ function kh_startGame() {
   kh_helpPanel.classList.add('hide');
   kh_buzz = 0;
   kh_count = 0;
+  
   //var kh_timed = 60 * kh_numMinutes;
   // kh_startTimer(kh_timed, kh_display);
 
@@ -76,6 +95,12 @@ function kh_startGame() {
 
   kh_running();
 }
+
+
+
+
+
+// toggling the notepad functions
 
 
 function kh_toggleDict() {
@@ -143,8 +168,6 @@ function table_create() {
 function setCorrectButton() {
   const randomRow = Math.floor(Math.random() * 25) + 1; // Random row between 1 and 26
   const randomCol = Math.floor(Math.random() * 25) + 1; // Random column between 1 and 26
-
-
   // Set the correct button
   const table = document.getElementById('kh_table');
   const button = table.rows[randomRow].cells[randomCol].querySelector('.khBtn');

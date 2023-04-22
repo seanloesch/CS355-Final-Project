@@ -84,7 +84,8 @@ th, td {
 
 .kh_question_container {
     position: flex;
-    right: 5px;
+    float: left;
+    margin-left: -40px;
     top: 5vh;
     font-weight: bolder;
     font-size: x-large;
@@ -95,7 +96,11 @@ th, td {
     border-radius: 20px;
     text-align: center;
     margin: 40px;
+
+    
 }
+
+
 
 .kh_panel_container {
     position: absolute;
@@ -276,7 +281,7 @@ th, td {
     justify-content: center;
     align-items: center;
     background-color: rgb(0, 68, 102);
-    background-image: url('img/keyHunterStartBack.jpeg');
+    background-image: url('img/keyHunterStartBack');
     background-size:cover;
 }
 
@@ -296,7 +301,7 @@ th, td {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-image: url('img/keyHunterBack.jpeg');
+    background-image: url('img/keyHunterBack');
     background-size:cover;
 }
 
