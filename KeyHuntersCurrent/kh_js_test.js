@@ -21,6 +21,7 @@ let caeserDone = false;
 let pigPenDone = false;
 let transpositionDone = false;
 const randomCaesarCipherVal = Math.floor(Math.random() * 5) + 1; // Random caeser between 1 and 6
+var randomCipherChosenValue;
 
 var plainTextPrompt;
 
@@ -48,28 +49,30 @@ const kh_helpButton = document.getElementById('kh_help_button');
 
 
 
-kh_easyButton.addEventListener('click', kh_startGame);
+kh_easyButton.addEventListener('click', randomCipherChosen);
+function randomCipherChosen(){
+  kh_startGame();
+  randomCipherChosenValue = Math.floor(Math.random() * 3) + 1;
+  console.log("random chosen cipher value is " + randomCipherChosenValue);
+  correctButton = setCorrectButton(randomCipherChosenValue);
+  console.log(`Correct button: row ${correctButton[0]}, column ${correctButton[1]}`);
+}
+
+kh_mediumButton.addEventListener('click', randomMediumCipherChosen);
+function randomMediumCipherChosen(){
+  kh_startGame();
+  randomCipherChosenValue = Math.floor(Math.random() * 3) + 4;
+  console.log("random chosen cipher value is " + randomCipherChosenValue);
+  correctButton = setCorrectButton(randomCipherChosenValue);
+  console.log(`Correct button: row ${correctButton[0]}, column ${correctButton[1]}`);
+}
+
+
 kh_homeButton.addEventListener('click', kh_goHome);
 kh_dictButton.addEventListener('click', kh_toggleDict);
 kh_msgButton.addEventListener('click', kh_toggleMsg);
 // kh_noteButton.addEventListener('click', kh_toggleNote);
 // kh_helpButton.addEventListener('click', kh_toggleHelp);
-
-
-function randomCipherChosen() {
-  var randomNum;
-  if (document.getElementById("kh_easy_btn").checked) {
-    randomNum = Math.floor(Math.random() * 3) + 1;
-  } else if (document.getElementById("kh_medium_btn").checked) {
-    randomNum = Math.floor(Math.random() * 3) + 4;
-  }
-  return randomNum;
-}
-
-
-
-var randomCipherChosenValue = randomCipherChosen();
-console.log("random chosen cipher value is " + randomCipherChosenValue);
 
 
 
@@ -90,8 +93,7 @@ function kh_startGame() {
   // kh_startTimer(kh_timed, kh_display);
 
   table_create();
-  correctButton = setCorrectButton();
-  console.log(`Correct button: row ${correctButton[0]}, column ${correctButton[1]}`);
+  
 
   kh_running();
 }
@@ -165,17 +167,20 @@ function table_create() {
   }
 }
 
-function setCorrectButton() {
+function setCorrectButton(ranValue) {
   const randomRow = Math.floor(Math.random() * 25) + 1; // Random row between 1 and 26
   const randomCol = Math.floor(Math.random() * 25) + 1; // Random column between 1 and 26
   // Set the correct button
   const table = document.getElementById('kh_table');
   const button = table.rows[randomRow].cells[randomCol].querySelector('.khBtn');
   button.dataset.correct = 'true'; // Mark the button as correct
-  switch (randomCipherChosen) {
-    case (1):
+  
+  switch (ranValue) {
+    case 1:
       isCaeser = true;
+      
       document.getElementById('kh_question').innerHTML = " a Caeser Cipher shift by " + randomCaesarCipherVal + " The column is " + ((randomCaesarCipherVal + randomCol) + 9).toString(36).toUpperCase() + " The row is " + randomRow;
+      document.getElementById('question_box').innerHTML = "3";
       break;
     case 2:
       isPigPen = true;
@@ -185,11 +190,27 @@ function setCorrectButton() {
     case 3:
       isTransposition = true;
       plainTextPrompt = " A basic transposition Cipher the answer is row " + spellOutNumber(randomRow) + " and the column is " + spellOutNumber(randomCol);
-
       document.getElementById('kh_question').innerHTML = shiftBackwardByValue(plainTextPrompt, randomCaesarCipherVal);
+      break;
+    case 4:
+      isAtbash = true;
+      plainTextPrompt = "atbash cipher, the answer you are looking for is " + spellOutNumber(randomRow) + " and the column is " + spellOutNumber(randomCol);
+      document.getElementById('kh_question').innerHTML = atbashCipher(plainTextPrompt);
+      break;
+    case 5:
+      isAtbash = true;
+      plainTextPrompt = "zigzag cipher, the answer you are looking for is " + spellOutNumber(randomRow) + " and the column is " + spellOutNumber(randomCol);
+      document.getElementById('kh_question').innerHTML = zigzagCipher(plainTextPrompt,2);
+      
+      break;
+    case 6:
+      isAtbash = true;
+      plainTextPrompt = "atbash cipher, the answer you are looking for is " + spellOutNumber(randomRow) + " and the column is " + spellOutNumber(randomCol);
+      document.getElementById('kh_question').innerHTML = atbashCipher(plainTextPrompt);
+      break;
   }
   // Return the coordinates of the correct button
-
+  
   return [randomRow, randomCol];
 }
 
@@ -243,6 +264,7 @@ function generatePigPen(plaintext) {
   }
 }
 
+
 function shiftBackwardByValue(plaintext, shiftBy) {
   // Split the plaintext into an array of words
   const words = plaintext.split(' ');
@@ -256,6 +278,79 @@ function shiftBackwardByValue(plaintext, shiftBy) {
 
   // Join the shifted words back into a string and return it
   return shiftedWords.join(' ');
+}
+
+function atbashCipher(plaintext) {
+  const letters = 'abcdefghijklmnopqrstuvwxyz';
+  let result = '';
+
+  for (let i = 0; i < plaintext.length; i++) {
+    const letter = plaintext[i].toLowerCase();
+    const index = letters.indexOf(letter);
+    
+    if (index !== -1) {
+      const reverseIndex = letters.length - index - 1;
+      const reverseLetter = letters[reverseIndex];
+      result += (plaintext[i] === letter) ? reverseLetter : reverseLetter.toUpperCase();
+    } else {
+      result += plaintext[i];
+    }
+  }
+
+  return result;
+}
+
+function zigzagCipher(plaintext, numRows) {
+  if (numRows === 1) {
+    return plaintext;
+  }
+
+  const rows = new Array(numRows).fill('');
+  let currentRow = 0;
+  let direction = -1;
+
+  for (let i = 0; i < plaintext.length; i++) {
+    rows[currentRow] += plaintext[i];
+    
+    if (currentRow === 0 || currentRow === numRows - 1) {
+      direction *= -1;
+    }
+    
+    currentRow += direction;
+  }
+
+  return rows.join('');
+}
+
+function spellOutNumber(num) {
+  const ones = ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine'];
+  const tens = [null, null, 'twenty', 'thirty', 'forty', 'fifty', 'sixty', 'seventy', 'eighty', 'ninety'];
+  const teens = ['ten', 'eleven', 'twelve', 'thirteen', 'fourteen', 'fifteen', 'sixteen', 'seventeen', 'eighteen', 'nineteen'];
+
+  if (num < 0 || num > 9999) {
+    return 'Number out of range';
+  }
+
+  let words = '';
+
+  let tensAndOnes = num % 100;
+
+  if (tensAndOnes >= 10 && tensAndOnes < 20) {
+    words += teens[tensAndOnes - 10];
+  } else {
+    let tensDigit = Math.floor(tensAndOnes / 10);
+    let onesDigit = tensAndOnes % 10;
+
+    if (tensDigit > 0) {
+      words += tens[tensDigit] + ' ';
+    }
+
+    if (onesDigit > 0) {
+      words += ones[onesDigit];
+    }
+  }
+
+  return words.trim();
 }
 
 
@@ -319,33 +414,3 @@ function kh_goHome() {
   document.getElementById("homepage").classList.remove("hide");
 }
 
-function spellOutNumber(num) {
-  const ones = ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine'];
-  const tens = [null, null, 'twenty', 'thirty', 'forty', 'fifty', 'sixty', 'seventy', 'eighty', 'ninety'];
-  const teens = ['ten', 'eleven', 'twelve', 'thirteen', 'fourteen', 'fifteen', 'sixteen', 'seventeen', 'eighteen', 'nineteen'];
-
-  if (num < 0 || num > 9999) {
-    return 'Number out of range';
-  }
-
-  let words = '';
-
-  let tensAndOnes = num % 100;
-
-  if (tensAndOnes >= 10 && tensAndOnes < 20) {
-    words += teens[tensAndOnes - 10];
-  } else {
-    let tensDigit = Math.floor(tensAndOnes / 10);
-    let onesDigit = tensAndOnes % 10;
-
-    if (tensDigit > 0) {
-      words += tens[tensDigit] + ' ';
-    }
-
-    if (onesDigit > 0) {
-      words += ones[onesDigit];
-    }
-  }
-
-  return words.trim();
-}
