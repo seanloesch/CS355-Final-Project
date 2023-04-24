@@ -36,6 +36,7 @@
                     <td id="ddCrashes">0</td>
                 </tr>
             </table>
+            <button onclick="dd_createMalware()">MalwareAttack</button>
         </div>
     </div>
     <div id="ddtaskbar" class="ddtaskbar">
@@ -76,9 +77,10 @@
         </div>
     </div>
     <div id="ddwebsitesList" class="ddwebsitesList hide">
-        <table id="websiteTable" class="ddWebsitesTable">
+        <table id="ddWebsitesTable" class="ddWebsitesTable">
             <thead>
                 <tr>
+                    <th>Status</th>
                     <th>Website Name</th>
                     <th>Domain Name</th>
                     <th>Directory Path</th>
@@ -91,7 +93,16 @@
             <tbody>
             </tbody>
         </table>
-
+        <div id="ddWebFiles" class="ddWebFiles hide">
+            <div class="ddWebFileExit"><button class="ddwebTableBack" onclick="ddBackToWebTable()">X</button></div>
+            <div id="ddWebFilesList" class="ddWebFilesList">
+                <p><span>&#x1F4C1;</span><span id="ddWebFileName1">index</span><span>.html</span></p>
+                <p><span>&#x1F4C1;</span><span id="ddWebFileName2">index</span><span>.css</span></p>
+                <p><span>&#x1F4C1;</span><span id="ddWebFileName3">index</span><span>.js</span></p>
+                <p><span>&#x1F4C1;</span><span id="ddWebFileName4">index</span><span>.sql</span></p>
+                <p><span>&#x1F4C1;</span><span id="ddWebFileName5">index</span><span>.php</span></p>
+            </div>
+        </div>
     </div>
     <div id="ddServerRoom" class="ddServerRoom hide">
         <div class="serverContent">
@@ -353,115 +364,133 @@
         </div>
     </div>
     <!-- New content: Booklet button-->
-    <div class = "ddInfoBookButtonContainer">
-        <button class = "ddInfoButton" onclick = "displayInfoBooklet()">
-            <img src = "img/InfoBookIcon.png" alt = "info">
+    <div class="ddInfoBookButtonContainer">
+        <button class="ddInfoButton" onclick="displayInfoBooklet()">
+            <img src="img/InfoBookIcon.png" alt="info">
         </button>
     </div>
 
     <!-- New Content: Booklet-->
-    <div id = "ddInfoBook" class = "ddInfoBook hide">
-        <div class = "bookHeader">
+    <div id="ddInfoBook" class="ddInfoBook hide">
+        <div class="bookHeader">
             <h1>Denial of Service (DoS) Attacks</h1>
-            <button class = "ddInfoButtonClose" onclick = "removeInfoBooklet()">Close</button>
+            <button class="ddInfoButtonClose" onclick="removeInfoBooklet()">Close</button>
         </div>
-        <div class = "bookContent">
-            <div id = "C1" class = "C1">
+        <div class="bookContent">
+            <div id="C1" class="C1">
                 <h1>Description</h1>
                 <p>
-                    Denial of Service (DoS) attacks are a type of attack where an attacker 
-                    floods a system or network with traffic or requests, making it unavailable to users. 
+                    Denial of Service (DoS) attacks are a type of attack where an attacker
+                    floods a system or network with traffic or requests, making it unavailable to users.
                 </p>
                 <h1>Warning Signs of a DoS Attack: </h1>
                 <ol>
-                    <li>Slow or unresponsive system: A DoS attack may cause a system or network to slow down or become unresponsive, making it difficult or impossible for users to access it. </li>
-                    <li>Unusually high traffic: A DoS attack may generate a large amount of traffic or requests, which can overwhelm a system or network. </li>
-                    <li>Unusual network activity: A DoS attack may generate unusual network activity, such as a sudden increase in network traffic or a large number of requests from a single IP address. </li>
-                    <li>Error messages: A DoS attack may cause error messages to appear on a website or in an application, indicating that the system is experiencing problems. </li>
-                    <li>Inability to access services: A DoS attack may prevent users from accessing certain services or resources, such as websites or email. </li>
+                    <li>Slow or unresponsive system: A DoS attack may cause a system or network to slow down or become
+                        unresponsive, making it difficult or impossible for users to access it. </li>
+                    <li>Unusually high traffic: A DoS attack may generate a large amount of traffic or requests, which
+                        can overwhelm a system or network. </li>
+                    <li>Unusual network activity: A DoS attack may generate unusual network activity, such as a sudden
+                        increase in network traffic or a large number of requests from a single IP address. </li>
+                    <li>Error messages: A DoS attack may cause error messages to appear on a website or in an
+                        application, indicating that the system is experiencing problems. </li>
+                    <li>Inability to access services: A DoS attack may prevent users from accessing certain services or
+                        resources, such as websites or email. </li>
                 </ol>
             </div>
 
             <!-- Test area start -->
 
-            <div id = "C2" class = "C2 hide">
+            <div id="C2" class="C2 hide">
                 <h1>C2</h1>
                 <p>
-                    Denial of Service (DoS) attacks are a type of attack where an attacker 
-                    floods a system or network with traffic or requests, making it unavailable to users. 
+                    Denial of Service (DoS) attacks are a type of attack where an attacker
+                    floods a system or network with traffic or requests, making it unavailable to users.
                 </p>
                 <h1>Warning Signs of a DoS Attack: </h1>
                 <ol>
-                    <li>Slow or unresponsive system: A DoS attack may cause a system or network to slow down or become unresponsive, making it difficult or impossible for users to access it. </li>
-                    <li>Unusually high traffic: A DoS attack may generate a large amount of traffic or requests, which can overwhelm a system or network. </li>
-                    <li>Unusual network activity: A DoS attack may generate unusual network activity, such as a sudden increase in network traffic or a large number of requests from a single IP address. </li>
-                    <li>Error messages: A DoS attack may cause error messages to appear on a website or in an application, indicating that the system is experiencing problems. </li>
-                    <li>Inability to access services: A DoS attack may prevent users from accessing certain services or resources, such as websites or email. </li>
+                    <li>Slow or unresponsive system: A DoS attack may cause a system or network to slow down or become
+                        unresponsive, making it difficult or impossible for users to access it. </li>
+                    <li>Unusually high traffic: A DoS attack may generate a large amount of traffic or requests, which
+                        can overwhelm a system or network. </li>
+                    <li>Unusual network activity: A DoS attack may generate unusual network activity, such as a sudden
+                        increase in network traffic or a large number of requests from a single IP address. </li>
+                    <li>Error messages: A DoS attack may cause error messages to appear on a website or in an
+                        application, indicating that the system is experiencing problems. </li>
+                    <li>Inability to access services: A DoS attack may prevent users from accessing certain services or
+                        resources, such as websites or email. </li>
                 </ol>
             </div>
 
-            <div id = "C3" class = "C3 hide">
+            <div id="C3" class="C3 hide">
                 <h1>C3</h1>
                 <p>
-                    Denial of Service (DoS) attacks are a type of attack where an attacker 
-                    floods a system or network with traffic or requests, making it unavailable to users. 
+                    Denial of Service (DoS) attacks are a type of attack where an attacker
+                    floods a system or network with traffic or requests, making it unavailable to users.
                 </p>
                 <h1>Warning Signs of a DoS Attack: </h1>
                 <ol>
-                    <li>Slow or unresponsive system: A DoS attack may cause a system or network to slow down or become unresponsive, making it difficult or impossible for users to access it. </li>
-                    <li>Unusually high traffic: A DoS attack may generate a large amount of traffic or requests, which can overwhelm a system or network. </li>
-                    <li>Unusual network activity: A DoS attack may generate unusual network activity, such as a sudden increase in network traffic or a large number of requests from a single IP address. </li>
-                    <li>Error messages: A DoS attack may cause error messages to appear on a website or in an application, indicating that the system is experiencing problems. </li>
-                    <li>Inability to access services: A DoS attack may prevent users from accessing certain services or resources, such as websites or email. </li>
+                    <li>Slow or unresponsive system: A DoS attack may cause a system or network to slow down or become
+                        unresponsive, making it difficult or impossible for users to access it. </li>
+                    <li>Unusually high traffic: A DoS attack may generate a large amount of traffic or requests, which
+                        can overwhelm a system or network. </li>
+                    <li>Unusual network activity: A DoS attack may generate unusual network activity, such as a sudden
+                        increase in network traffic or a large number of requests from a single IP address. </li>
+                    <li>Error messages: A DoS attack may cause error messages to appear on a website or in an
+                        application, indicating that the system is experiencing problems. </li>
+                    <li>Inability to access services: A DoS attack may prevent users from accessing certain services or
+                        resources, such as websites or email. </li>
                 </ol>
             </div>
 
-            <div id = "C4" class = "C4 hide">
+            <div id="C4" class="C4 hide">
                 <h1>C4</h1>
                 <p>
-                    Denial of Service (DoS) attacks are a type of attack where an attacker 
-                    floods a system or network with traffic or requests, making it unavailable to users. 
+                    Denial of Service (DoS) attacks are a type of attack where an attacker
+                    floods a system or network with traffic or requests, making it unavailable to users.
                 </p>
                 <h1>Warning Signs of a DoS Attack: </h1>
                 <ol>
-                    <li>Slow or unresponsive system: A DoS attack may cause a system or network to slow down or become unresponsive, making it difficult or impossible for users to access it. </li>
-                    <li>Unusually high traffic: A DoS attack may generate a large amount of traffic or requests, which can overwhelm a system or network. </li>
-                    <li>Unusual network activity: A DoS attack may generate unusual network activity, such as a sudden increase in network traffic or a large number of requests from a single IP address. </li>
-                    <li>Error messages: A DoS attack may cause error messages to appear on a website or in an application, indicating that the system is experiencing problems. </li>
-                    <li>Inability to access services: A DoS attack may prevent users from accessing certain services or resources, such as websites or email. </li>
+                    <li>Slow or unresponsive system: A DoS attack may cause a system or network to slow down or become
+                        unresponsive, making it difficult or impossible for users to access it. </li>
+                    <li>Unusually high traffic: A DoS attack may generate a large amount of traffic or requests, which
+                        can overwhelm a system or network. </li>
+                    <li>Unusual network activity: A DoS attack may generate unusual network activity, such as a sudden
+                        increase in network traffic or a large number of requests from a single IP address. </li>
+                    <li>Error messages: A DoS attack may cause error messages to appear on a website or in an
+                        application, indicating that the system is experiencing problems. </li>
+                    <li>Inability to access services: A DoS attack may prevent users from accessing certain services or
+                        resources, such as websites or email. </li>
                 </ol>
             </div>
 
-            <div id = "C5" class = "C5 hide">
+            <div id="C5" class="C5 hide">
                 <h1>C5</h1>
                 <p>
-                    Denial of Service (DoS) attacks are a type of attack where an attacker 
-                    floods a system or network with traffic or requests, making it unavailable to users. 
+                    Denial of Service (DoS) attacks are a type of attack where an attacker
+                    floods a system or network with traffic or requests, making it unavailable to users.
                 </p>
                 <h1>Warning Signs of a DoS Attack: </h1>
                 <ol>
-                    <li>Slow or unresponsive system: A DoS attack may cause a system or network to slow down or become unresponsive, making it difficult or impossible for users to access it. </li>
-                    <li>Unusually high traffic: A DoS attack may generate a large amount of traffic or requests, which can overwhelm a system or network. </li>
-                    <li>Unusual network activity: A DoS attack may generate unusual network activity, such as a sudden increase in network traffic or a large number of requests from a single IP address. </li>
-                    <li>Error messages: A DoS attack may cause error messages to appear on a website or in an application, indicating that the system is experiencing problems. </li>
-                    <li>Inability to access services: A DoS attack may prevent users from accessing certain services or resources, such as websites or email. </li>
+                    <li>Slow or unresponsive system: A DoS attack may cause a system or network to slow down or become
+                        unresponsive, making it difficult or impossible for users to access it. </li>
+                    <li>Unusually high traffic: A DoS attack may generate a large amount of traffic or requests, which
+                        can overwhelm a system or network. </li>
+                    <li>Unusual network activity: A DoS attack may generate unusual network activity, such as a sudden
+                        increase in network traffic or a large number of requests from a single IP address. </li>
+                    <li>Error messages: A DoS attack may cause error messages to appear on a website or in an
+                        application, indicating that the system is experiencing problems. </li>
+                    <li>Inability to access services: A DoS attack may prevent users from accessing certain services or
+                        resources, such as websites or email. </li>
                 </ol>
             </div>
 
             <!-- test area end -->
 
         </div>
-        <div class = "bookFooter">
-            <button class = "backPage" onclick="turnPageDown()">Back</button>
-            <button class = "nextPage" onclick="turnPageUp()">Next</button>
+        <div class="bookFooter">
+            <button class="backPage" onclick="turnPageDown()">Back</button>
+            <button class="nextPage" onclick="turnPageUp()">Next</button>
         </div>
-    </div>
-    
-    <!-- New Content: test buttons (for triggering different types of attacks)-->
-    <button class = "toTestArea" onclick = "ddOpenTab('testArea')">Test Area</button>
-    <div id = "testArea" class = "testArea hide">
-        <button class = "DoSTest" onclick = "">DoS Test</button>
-        <button class = "malwareAttack" onclick = "">Malware Test</button>
     </div>
 </body>
 

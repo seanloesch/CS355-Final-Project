@@ -684,30 +684,57 @@ input[type="submit"]:hover {
     margin-bottom: 3px;
     margin-top: 3px;
 }
-
-/* Test Area Buttons (including the one that brings you there) */
-/* Reminder to delete after testing is completely done */
-.toTestArea{
-    position: absolute;
-    top: 60px;
-    right: 10px;
-}
-
-.testArea{
+.webDivCenter{
+    width: 75%;
+    height: 60%;
     display: flex;
-    height: 100vh;
-    width: 100vw;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
 }
-
-.testArea button{
-    width: 70px;
-    height: 50px;
-    margin: 7px;
+.ddWebStat{
+    height: 15px;
+    width: 15px;
+    border-radius: 50%;
+    border: 1px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
-/* End Test Area*/
+.ddWebStatcircleDesign{
+    height: 2px;
+    width: 2px;
+    background-color: white;
+    border-radius: 50%;
+    box-shadow: 0 0 4px 2px white;
+}
+.ddWebStatGood{
+    background-color: lime;
+}
+.ddWebStatBad{
+    background-color: yellow;
+}
+.ddWebStatTerrible{
+    background-color: red;
+}
+.ddWebFiles{
+    height: 70%;
+    width: 50%;
+    background-color: white;
+    margin-top: 5%;
+    display: flex;
+    flex-direction: column;
+}
+.ddWebFileExit{
+    width: 100%;
+    height: 5%;
+    background-color: #ccc;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+}
+.ddwebTableBack{
+    margin-right: 1%;
+}
 
 /* Hide command */
 .hide {
