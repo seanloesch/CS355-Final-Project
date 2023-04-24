@@ -281,6 +281,8 @@ const ddtabList = [
   "ddcams",
   "ddreport",
   "ddMsg",
+  //Added testArea, remember to delete later
+  "testArea"
 ];
 const ddTabs = ddtabList.map((id) => document.getElementById(id));
 var placeholder;
