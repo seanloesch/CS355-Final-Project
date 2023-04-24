@@ -685,6 +685,30 @@ input[type="submit"]:hover {
     margin-top: 3px;
 }
 
+/* Test Area Buttons (including the one that brings you there) */
+/* Reminder to delete after testing is completely done */
+.toTestArea{
+    position: absolute;
+    top: 60px;
+    right: 10px;
+}
+
+.testArea{
+    display: flex;
+    height: 100vh;
+    width: 100vw;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.testArea button{
+    width: 70px;
+    height: 50px;
+    margin: 7px;
+}
+/* End Test Area*/
+
 /* Hide command */
 .hide {
     display: none;
