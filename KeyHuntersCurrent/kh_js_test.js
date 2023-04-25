@@ -5,9 +5,9 @@ const kh_totalQuestions = 1;
 var kh_questionBoxArray = new Array(4);
 var kh_answers = [];
 var kh_shuffledArray = [];
-var kh_buzz;
+var kh_buzz =0;
 var kh_clearing;
-var kh_count;
+var kh_count =0;
 var kh_numMinutes = 5;
 var kh_panelActive = false;
 var i = 0;
@@ -72,6 +72,9 @@ function randomEasyCipherChosen(){
     case 2:
       
       randomCipherChosenValue = Math.floor(Math.random() * 2) + 1; //randomly choosing 1 or 3
+      if (randomCipherChosenValue == 2) {
+        randomCipherChosenValue += 1;
+      }
       
       console.log("random chosen cipher value is " + randomCipherChosenValue); 
       correctButton = setCorrectButton(randomCipherChosenValue);
@@ -84,7 +87,8 @@ function randomEasyCipherChosen(){
       console.log(`Correct button: row ${correctButton[0]}, column ${correctButton[1]}`);
       break;
   }
-  previousCipherChosenValue = randomCaesarCipherVal;
+  previousCipherChosenValue = randomCipherChosenValue;
+  console.log("previous chosen cipher is " + previousCipherChosenValue);
   
 }
 
@@ -117,8 +121,7 @@ function kh_startGame() {
   kh_msgPanel.classList.add('hide');
   kh_notePanel.classList.add('hide');
   kh_helpPanel.classList.add('hide');
-  kh_buzz = 0;
-  kh_count = 0;
+  
   
   //var kh_timed = 60 * kh_numMinutes;
   // kh_startTimer(kh_timed, kh_display);
@@ -290,6 +293,7 @@ function kh_running() {
       if (kh_count == 1 || kh_count ==2) {
           kh_buttonReset();
           randomEasyCipherChosen();
+          
       } else if(kh_count == 3) {
         kh_finished();
       }
