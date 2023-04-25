@@ -365,16 +365,28 @@
     </div>
     <!-- New content: Booklet button-->
     <div class="ddInfoBookButtonContainer">
-        <button class="ddInfoButton" onclick="displayInfoBooklet()">
+        <button class="ddInfoButton ddTab" onclick="displayInfoBooklet()">
             <img src="img/InfoBookIcon.png" alt="info">
         </button>
+        <button class="ddNotesButton ddTab" onclick="displayddNotes()">
+            &#x1f4dd;
+        </button>
     </div>
+    <div id="ddNotes" class="ddNotes hide">
+        <button class="ddNotesButtonClose" onclick="displayddNotes()">X</button>
+        <div class="ddNoteHeader">
+          <h1>Notebook</h1>
+        </div>
+        <div class="ddNotes__content">
+          <textarea class="ddNotes__textarea"></textarea>
+        </div>
+      </div>
 
     <!-- New Content: Booklet-->
     <div id="ddInfoBook" class="ddInfoBook hide">
         <div class="bookHeader">
             <h1>Help Book</h1>
-            <button class="ddInfoButtonClose" onclick="removeInfoBooklet()">Close</button>
+            <button class="ddInfoButtonClose" onclick="displayInfoBooklet()">Close</button>
         </div>
         <div class="bookContent">
             <div id="C1" class="C1">
