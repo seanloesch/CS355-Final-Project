@@ -13,11 +13,6 @@ var i = 0;
 var correctButton;
 var textbox = document.getElementById('kh_question');
 
-// var isDictHidden = kh_dictPanel.getAttribute('hide');
-// var isMsgHidden = kh_msgPanel.getAttribute('hide');
-// var isNoteHidden = kh_msgPanel.getAttribute('hide');
-// var isHelpHidden = kh_msgPanel.getAttribute('hide');
-
 let kh_panelActive = false;
 let kh_dictActive = false;
 let kh_msgActive = false;
@@ -57,6 +52,10 @@ const kh_dictButton = document.getElementById('kh_dict_button');
 const kh_msgButton = document.getElementById('kh_msg_button');
 const kh_noteButton = document.getElementById('kh_note_button');
 const kh_helpButton = document.getElementById('kh_help_button');
+
+var link = document.createElement('link');
+link.rel = 'stylesheet';
+link.href = 'kh_css_test.css';
 
 
 
@@ -120,11 +119,19 @@ function kh_startGame() {
 function kh_toggleDict() {
   if (kh_panelActive == false) {
     kh_dictPanel.classList.remove('hide');
+
+    kh_dictButton.style.backgroundColor = "rgb(150,200,255)";
+    kh_dictButton.classList.add('new-pos');
+
     kh_panelActive = true;
     kh_dictActive = true;
   } 
   else if (kh_panelActive == true && kh_dictActive == true) {
     kh_dictPanel.classList.add('hide');
+
+    kh_dictButton.style.backgroundColor = 'white';
+    kh_dictButton.classList.remove('new-pos');
+
     kh_panelActive = false;
     kh_dictActive = false;
   }   
@@ -133,11 +140,19 @@ function kh_toggleDict() {
 function kh_toggleMsg() {
   if (kh_panelActive == false) {
     kh_msgPanel.classList.remove('hide');
+
+    kh_msgButton.style.backgroundColor = "rgb(150,200,255)";
+    kh_msgButton.classList.add('new-pos');
+
     kh_panelActive = true;
     kh_msgActive = true;
   } 
   else if (kh_panelActive == true && kh_msgActive == true) {
     kh_msgPanel.classList.add('hide');
+
+    kh_msgButton.style.backgroundColor = 'white';
+    kh_msgButton.classList.remove('new-pos');
+
     kh_panelActive = false;
     kh_msgActive = false;
   }    
@@ -146,11 +161,19 @@ function kh_toggleMsg() {
 function kh_toggleNote() {
   if (kh_panelActive == false) {
     kh_notePanel.classList.remove('hide');
+
+    kh_noteButton.style.backgroundColor = "rgb(150,200,255)";
+    kh_noteButton.classList.add('new-pos');
+
     kh_panelActive = true;
     kh_noteActive = true;
   } 
   else if (kh_panelActive == true && kh_noteActive == true) {
     kh_notePanel.classList.add('hide');
+
+    kh_noteButton.style.backgroundColor = 'white';
+    kh_noteButton.classList.remove('new-pos');
+
     kh_panelActive = false;
     kh_noteActive = false;
   }    
@@ -159,11 +182,19 @@ function kh_toggleNote() {
 function kh_toggleHelp() {
   if (kh_panelActive == false) {
     kh_helpPanel.classList.remove('hide');
+
+    kh_helpButton.style.backgroundColor = "rgb(150,200,255)";
+    kh_helpButton.classList.add('new-pos');
+
     kh_panelActive = true;
     kh_helpActive = true;
   } 
   else if (kh_panelActive == true && kh_helpActive == true) {
     kh_helpPanel.classList.add('hide');
+
+    kh_helpButton.style.backgroundColor = 'white';
+    kh_helpButton.classList.remove('new-pos');
+
     kh_panelActive = false;
     kh_helpActive = false;
   }    
