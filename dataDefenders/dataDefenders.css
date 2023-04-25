@@ -590,7 +590,8 @@ input[type="submit"]:hover {
     font-size: 12px;
     color: #7d7d7d;
 }
-.ddMessageContainer{
+
+.ddMessageContainer {
     width: 85%;
     height: 100%;
     display: flex;
@@ -598,7 +599,8 @@ input[type="submit"]:hover {
     align-items: center;
     flex-direction: column;
 }
-.ddMessageBox{
+
+.ddMessageBox {
     height: 70%;
     width: 70%;
     background-color: white;
@@ -607,29 +609,52 @@ input[type="submit"]:hover {
     border: 1px solid black;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
 }
-.ddMessageDiv{
+
+.ddMessageDiv {
     font-size: x-large;
     white-space: pre;
 }
-.active{
-    background-color:rgba(60, 177, 255, 0.5);
+
+.active {
+    background-color: rgba(60, 177, 255, 0.5);
 }
 
 
 /* New Content */
 /* info button */
-.ddInfoBookButtonContainer{
+.ddInfoBookButtonContainer {
     position: absolute;
     top: 10px;
     right: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
-.ddInfoButton img{
+.ddInfoButton img {
     height: 30px;
     width: 30px;
 }
+
+.ddTab {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: x-large;
+    height: 45px;
+    width: 45px;
+    margin: 5px;
+}
+
+.ddNotesButtonClose:hover,
+.ddTab:hover {
+    filter: brightness(50%);
+    transition: .6s;
+}
+
 /* info book */
-.ddInfoBook{
+.ddInfoBook {
     height: 700px;
     width: 600px;
     display: flex;
@@ -645,38 +670,39 @@ input[type="submit"]:hover {
     border-radius: 5%;
 }
 
-.bookHeader{
+.bookHeader {
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.bookHeader button{
+.bookHeader button {
     position: absolute;
     top: 7px;
     right: 10px;
 
 }
 
-.bookContent{
+.bookContent {
     margin: 5px;
     overflow-y: scroll;
 }
 
-.bookContent h1{
+.bookContent h1 {
     font-size: 35px;
 }
 
-.bookContent p, li{
+.bookContent p,
+li {
     font-size: 22px;
 }
 
-.bookFooter{
+.bookFooter {
     display: flex;
     justify-content: center;
 }
 
-.bookFooter button{
+.bookFooter button {
     height: 30px;
     width: 80px;
     margin-left: 5px;
@@ -684,14 +710,69 @@ input[type="submit"]:hover {
     margin-bottom: 3px;
     margin-top: 3px;
 }
-.webDivCenter{
+
+.ddNotes {
+    height: 600px;
+    width: 600px;
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -350px;
+    margin-left: -300px;
+    padding: 30px 40px;
+    background-color: rgb(255, 250, 230);
+    border: rgb(232, 232, 232) 5px;
+    border-style: solid;
+    border-radius: 5%;
+}
+
+.ddNotes__textarea {
+    border: none;
+    font-family: "Permanent Marker", cursive;
+    font-size: 18px;
+    line-height: 18px;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.7);
+    resize: none;
+    padding: 8px;
+    background-image: linear-gradient(to bottom, transparent 8px, rgba(0, 0, 0, 0.2) 8px, rgba(0, 0, 0, 0.2) 9px, transparent 9px);
+    background-size: 18px 18px;
+}
+
+.ddNotes__content {
+    height: 99%;
+    width: 99%;
+    overflow: hidden;
+
+}
+
+.ddNoteHeader {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 10px;
+    margin: 0;
+}
+
+.ddNotesButtonClose {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    border-radius: 5px;
+}
+
+.webDivCenter {
     width: 75%;
     height: 60%;
     display: flex;
     justify-content: center;
     align-items: center;
 }
-.ddWebStat{
+
+.ddWebStat {
     height: 15px;
     width: 15px;
     border-radius: 50%;
@@ -700,23 +781,28 @@ input[type="submit"]:hover {
     justify-content: center;
     align-items: center;
 }
-.ddWebStatcircleDesign{
+
+.ddWebStatcircleDesign {
     height: 2px;
     width: 2px;
     background-color: white;
     border-radius: 50%;
     box-shadow: 0 0 4px 2px white;
 }
-.ddWebStatGood{
+
+.ddWebStatGood {
     background-color: lime;
 }
-.ddWebStatBad{
+
+.ddWebStatBad {
     background-color: yellow;
 }
-.ddWebStatTerrible{
+
+.ddWebStatTerrible {
     background-color: red;
 }
-.ddWebFiles{
+
+.ddWebFiles {
     height: 70%;
     width: 50%;
     background-color: white;
@@ -724,7 +810,8 @@ input[type="submit"]:hover {
     display: flex;
     flex-direction: column;
 }
-.ddWebFileExit{
+
+.ddWebFileExit {
     width: 100%;
     height: 5%;
     background-color: #ccc;
@@ -732,7 +819,8 @@ input[type="submit"]:hover {
     justify-content: end;
     align-items: center;
 }
-.ddwebTableBack{
+
+.ddwebTableBack {
     margin-right: 1%;
 }
 
