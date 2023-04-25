@@ -389,7 +389,7 @@ createWebsiteTable();
 function createWebsiteTable() {
     while (tbody.firstChild) {
         tbody.removeChild(tbody.firstChild);
-      }
+    }
     for (let i = 0; i < websites.length; i++) {
         var color;
         if (i % 2 == 0) { color = "lightgrey"; }
@@ -413,9 +413,10 @@ function createWebsiteTable() {
         const ddWebStatcircleDesign = document.createElement("div");
         ddWebStatcircleDesign.classList.add('ddWebStatcircleDesign');
         webStatcircle.appendChild(ddWebStatcircleDesign);
-        if (website.webStatus == 0) { webStatcircle.classList.add('ddWebStatGood') }
-        if (website.webStatus == 1) { webStatcircle.classList.add('ddWebStatBad') }
-        if (website.webStatus == 2) { webStatcircle.classList.add('ddWebStatTerrible') }
+        var webServState = ddServState[website.serverID.split('Server ')[1] - 1];
+        if (website.webStatus == 0 && webServState == 0) { webStatcircle.classList.add('ddWebStatGood') }
+        if (website.webStatus == 1 || webServState == 1 && website.webStatus != 2) { webStatcircle.classList.add('ddWebStatBad') }
+        if (website.webStatus == 2 || webServState == 2) { webStatcircle.classList.add('ddWebStatTerrible') }
         statCell.appendChild(webStatcircle);
 
         nameCell.textContent = website.name;
@@ -440,12 +441,12 @@ function createWebsiteTable() {
     ddAddFileListeners();
 }
 var ddWebFileList = document.getElementById('ddWebFilesList');
-function ddAddFileListeners(){
+function ddAddFileListeners() {
     const files = document.querySelectorAll('.ddFile');
     files.forEach(file => {
         file.addEventListener('click', () => {
             document.getElementById('ddWebsitesTable').classList.add('hide');
-            document.getElementById('ddWebFiles').classList.remove('hide');    
+            document.getElementById('ddWebFiles').classList.remove('hide');
             var ddWebNameFile = file.id.split('-');
             websites.forEach((websiteName) => {
                 if (websiteName.name == ddWebNameFile[1]) {
@@ -926,17 +927,83 @@ function dd_createMalware() {
         ddMalwareArray[ddAttackCount].serverNumber = ddAttackedWebsite.serverID;
         ddMalwareArray[ddAttackCount].targetFile = malwareFiles[Math.floor(Math.random() * malwareFiles.length)];
         var serverChangeid = ddMalwareArray[ddAttackCount].serverNumber.split('Server ')[1];
-        ddAttackedWebsite.webStatus=2
+        ddAttackedWebsite.webStatus = 2
         ddServState[serverChangeid - 1] = 1
         createWebsiteTable();
         ddAttackCount++;
-        //grab website
-        //grab websites server
-        //make server performance slow
-        //update ddMalwareArray with attack information
-        //update file list of specific website to contain blocked or encrypted files
-        //messages from website saying there are a lot of popups or changes in browser settings
+        websites.forEach((website) => {
+            var minMsg = minuteCount;
+            var dayMsg = dayCount;
+            if (minuteCount < 10) {
+                minMsg = "0" + minuteCount;
+            }
+            if (dayCount < 10) {
+                dayMsg = "00" + dayCount;
+            } else if (dayCount < 100) {
+                dayMsg = "0" + dayCount;
+            }
+            if(ddAttackedWebsite.domain == website.domain){
+                addMessage(
+                    website.name,
+                    `Day ${dayMsg} ${hourCount}:${minMsg} ${dayhalf}`,
+                    website.domain,
+                    ddpopUpAds[Math.floor(Math.random() * ddpopUpAds.length)]
+                );
+            }
+            else if (website.serverID.split('Server ')[1] == serverChangeid) {
+                addMessage(
+                    website.name,
+                    `Day ${dayMsg} ${hourCount}:${minMsg} ${dayhalf}`,
+                    website.domain,
+                    ddWebsiteRunningSlow[Math.floor(Math.random() * ddWebsiteRunningSlow.length)]
+                );
+            }
+        });
     }
 }
 var malwareFiles = ["secure.jar", "setup.exe", "keygen.exe", "patch.exe", "virus.exe", "trojan.exe", "ransomware.exe",
     "spyware.exe", "adware.exe", "rootkit.exe", "backdoor.exe", "exploit.doc", "payload.exe", "worm.exe", "exploit.js", "exploit.php", "exploit.asp"];
+const ddWebsiteRunningSlow = [
+    "My website is taking forever to load",
+    "Why is my website so slow?",
+    "I'm experiencing slow website performance",
+    "My website is crawling along",
+    "Is anyone else having trouble with my slow website?",
+    "Why does my website load so slowly?",
+    "My website is lagging",
+    "My website is sluggish",
+    "My website is dragging its feet",
+    "What's causing my website to be so slow?",
+    "My website is moving at a snail's pace",
+    "My website is struggling to load",
+    "I'm frustrated with how slow my website is",
+    "My website is really dragging",
+    "Why is my website taking so long to load?",
+    "My website's speed is unacceptable",
+    "My website is moving like molasses",
+    "My website is barely loading",
+    "Why is my website's performance so poor?",
+    "My website's speed is a major problem"
+];
+const ddpopUpAds = [
+    "My website is being bombarded with pop-up ads",
+    "Why are there so many pop-up ads on my website?",
+    "My website is inundated with annoying pop-up ads",
+    "I can't use my website because of all the pop-up ads",
+    "My website is plagued by pop-up ads",
+    "Why is my website suddenly showing so many pop-up ads?",
+    "I'm seeing too many pop-up ads on my website",
+    "My website is being overrun by pop-up ads",
+    "I'm fed up with the constant pop-up ads on my website",
+    "My website is practically unusable because of the pop-up ads",
+    "Why are there so many intrusive pop-up ads on my website?",
+    "My website is littered with pop-up ads",
+    "I'm getting bombarded with pop-up ads on my website",
+    "My website is experiencing a pop-up ad epidemic",
+    "I'm frustrated with the overwhelming amount of pop-up ads on my website",
+    "My website is being hijacked by pop-up ads",
+    "Why is my website displaying so many annoying pop-up ads?",
+    "My website is completely overrun with pop-up ads",
+    "I'm about ready to abandon my website because of the pop-up ads",
+    "My website is making it impossible to get anything done with all the pop-up ads"
+  ];
