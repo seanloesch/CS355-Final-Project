@@ -19,6 +19,9 @@ body{
 
 .kh_table{
     border-collapse: collapse;
+    
+    text-align: center;
+    margin:5px;
 }
 
 tr {

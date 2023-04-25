@@ -21,7 +21,9 @@ let caeserDone = false;
 let pigPenDone = false;
 let transpositionDone = false;
 const randomCaesarCipherVal = Math.floor(Math.random() * 5) + 1; // Random caeser between 1 and 6
-var randomCipherChosenValue;
+var randomCipherChosenValue = 0;
+var previousCipherChosenValue = 0;
+
 
 var plainTextPrompt;
 
@@ -50,13 +52,40 @@ const kh_helpButton = document.getElementById('kh_help_button');
 
 
 
-kh_easyButton.addEventListener('click', randomCipherChosen);
-function randomCipherChosen(){
+kh_easyButton.addEventListener('click', randomEasyCipherChosen);
+function randomEasyCipherChosen(){
   kh_startGame();
-  randomCipherChosenValue = Math.floor(Math.random() * 3) + 1;
-  console.log("random chosen cipher value is " + randomCipherChosenValue);
-  correctButton = setCorrectButton(randomCipherChosenValue);
-  console.log(`Correct button: row ${correctButton[0]}, column ${correctButton[1]}`);
+  
+  switch(previousCipherChosenValue){
+    case 0:
+      randomCipherChosenValue = Math.floor(Math.random() * 3) + 1; //random values 1-3
+      console.log("random chosen cipher value is " + randomCipherChosenValue);
+      correctButton = setCorrectButton(randomCipherChosenValue);
+      console.log(`Correct button: row ${correctButton[0]}, column ${correctButton[1]}`);
+      break;
+    case 1:
+      randomCipherChosenValue = Math.floor(Math.random() * 2) + 2; //randomly choosing 2 or 3
+      console.log("random chosen cipher value is " + randomCipherChosenValue);
+      correctButton = setCorrectButton(randomCipherChosenValue);
+      console.log(`Correct button: row ${correctButton[0]}, column ${correctButton[1]}`);
+      break;
+    case 2:
+      
+      randomCipherChosenValue = Math.floor(Math.random() * 2) + 1; //randomly choosing 1 or 3
+      
+      console.log("random chosen cipher value is " + randomCipherChosenValue); 
+      correctButton = setCorrectButton(randomCipherChosenValue);
+      console.log(`Correct button: row ${correctButton[0]}, column ${correctButton[1]}`);
+      break;
+    case 3:
+      randomCipherChosenValue = Math.floor(Math.random() * 2) + 1; //randomly choosing 2 or 3
+      console.log("random chosen cipher value is " + randomCipherChosenValue);
+      correctButton = setCorrectButton(randomCipherChosenValue);
+      console.log(`Correct button: row ${correctButton[0]}, column ${correctButton[1]}`);
+      break;
+  }
+  previousCipherChosenValue = randomCaesarCipherVal;
+  
 }
 
 kh_mediumButton.addEventListener('click', randomMediumCipherChosen);
@@ -176,7 +205,7 @@ function setCorrectButton(ranValue) {
   const table = document.getElementById('kh_table');
   const button = table.rows[randomRow].cells[randomCol].querySelector('.khBtn');
   button.dataset.correct = 'true'; // Mark the button as correct
-  ranValue = 6;
+  
   switch (ranValue) {
     case 1:
       isCaeser = true;
@@ -186,7 +215,7 @@ function setCorrectButton(ranValue) {
       break;
     case 2:
       isPigPen = true;
-      plainTextPrompt = " a PigPen Cipher! The answer is row " + spellOutNumber(randomRow) + " and the column is " + spellOutNumber(randomCol);
+      plainTextPrompt = " a PigPen Cipher The answer is row " + spellOutNumber(randomRow) + " and the column is " + spellOutNumber(randomCol);
       generatePigPen(plainTextPrompt);
       break;
     case 3:
@@ -209,10 +238,29 @@ function setCorrectButton(ranValue) {
       
       plainTextPrompt = "polybius cipher, the answer you are looking for is " + spellOutNumber(randomRow) + " and the column is " + spellOutNumber(randomCol);
       document.getElementById('kh_question').innerHTML = atbashCipher(plainTextPrompt);
-      const square = generatePolybiusSquare();
-      console.log(square);
-      document.getElementById('kh_dict_panel').innerHTML = square;
       
+      const table = document.createElement('table');
+      
+      for (let i = 0; i < 6; i++) {
+        const row = document.createElement('tr');
+        
+        for (let j = 0; j < 6; j++) {
+          const cell = document.createElement('td');
+          
+          if (i === 0 && j > 0) {
+            cell.textContent = String.fromCharCode(64 + j);
+          } else if (j === 0 && i > 0) {
+            cell.textContent = i;
+          } else if (i > 0 && j > 0) {
+            cell.textContent = String.fromCharCode(64 + j) + (i);
+          }
+          
+          row.appendChild(cell);
+        }
+        
+        table.appendChild(row);
+      }
+      document.getElementById('kh_dict_panel').appendChild(table); // add table to the document
       break;
   }
   // Return the coordinates of the correct button
@@ -238,9 +286,13 @@ function kh_running() {
     if (kh_row === correctButton[0] && kh_col === correctButton[1]) {
       kh_btn.classList.add('kh_correct');
       kh_count++;
-      // if (kh_count == kh_totalQuestions) {
-      //     kh_finished();
-      // }
+      console.log("kh_count value is " + kh_count);
+      if (kh_count == 1 || kh_count ==2) {
+          kh_buttonReset();
+          randomEasyCipherChosen();
+      } else if(kh_count == 3) {
+        kh_finished();
+      }
     } else {
       kh_btn.classList.add('kh_incorrect');
       kh_buzz++;
@@ -370,30 +422,6 @@ function spellOutNumber(num) {
   return words.trim();
 }
 
-function generatePolybiusSquare() {
-  const square = [];
-  
-  
-  for (let i = 0; i < 5; i++) {
-    square[i] = [];
-    
-    for (let j= 0; j < 5; j++) {
-   
-
-      let charCode = 65 + (i * 5 + j);
-      if (charCode > 74) {
-        charCode++;
-      }
-      
-      square[i][j] = String.fromCharCode(charCode);
-      
-    }
-    
-    
-  }
-
-  return square;
-}
 
 
 function kh_startTimer(kh_duration, kh_display) {
