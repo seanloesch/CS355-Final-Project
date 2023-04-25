@@ -1,7 +1,7 @@
 body{
     margin: 0;
     padding: 0;
-    background-image: url('img/keyHunterStartBack');
+    background-image: url('img/backgrounds/keyHunterStartBack');
     background-size: cover;
     display: flex;
     justify-content: center;
@@ -85,6 +85,7 @@ th, td {
     padding-left: 2px;
 }
 
+
 .kh_question_container {
     position: flex;
     float: left;
@@ -130,26 +131,31 @@ th, td {
     right: 0px;
 }
 
+.kh_button_icon {
+    height:50px;
+    width:50px;
+}
+
 .kh_tab_button {
     position: relative;
     width: 5vw;
-    right: 0px;
+    bottom:-15px;
     font-weight: bolder;
     font-size: 300%;
     background-color: white;
     border: 2px solid black;
     border-top-left-radius: 20px;
-    border-bottom-left-radius: 20px;
-    border-right:none;
+    border-top-right-radius: 20px;
+    border-bottom:none;
     text-align: center;
     /* padding-right:5px; */
     padding:15px;
     margin:5px;
-    margin-right:0px;
+    margin-bottom:0px;
 }
 
 .kh_tab_button:hover{
-    right:10px;
+    bottom:0px;
     transition: ease 0.25s;
 }
 

@@ -257,7 +257,7 @@ function generatePigPen(plaintext) {
     var currentChar = plaintext.charAt(i).toLowerCase();
     if (kh_alphabet.includes(currentChar)) {
       var img = document.createElement('img');
-      var imgTitle = 'img/pigpen' + currentChar.toUpperCase() + '.png';
+      var imgTitle = 'img/pigpen/pigpen' + currentChar.toUpperCase() + '.png';
       img.src = imgTitle;
       img.alt = currentChar;
       img.classList.add('picBack');
