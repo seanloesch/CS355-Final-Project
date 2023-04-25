@@ -9,7 +9,7 @@ body{
 }
 
 .kh_table_container{
-    margin-right: 40px;
+    margin-right: 550px;
 }
 
 .kh_categories_buttons {
@@ -88,7 +88,8 @@ th, td {
 .kh_question_container {
     position: flex;
     float: left;
-    margin-left: -40px;
+    
+    margin-left: 0px;
     top: 5vh;
     font-weight: bolder;
     font-size: x-large;
@@ -104,8 +105,8 @@ th, td {
 }
 
 .kh_panel_container {
-    /* position: absolute;
-    right: 7%; */
+    position: absolute;
+    right: 40px;
 }
 
 .kh_panel {
@@ -122,7 +123,8 @@ th, td {
 .kh_tabs_container {
     position: fixed;
     display: flex;
-    flex-direction:column;
+    flex-direction:row;
+    bottom: 0px;
     right: 0px;
 }
 
