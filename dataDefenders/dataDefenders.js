@@ -687,8 +687,8 @@ function addMessage(ddMsgSender, ddDateMessage, ddwebsiteName, ddMessage) {
         messageContainer.innerHTML = "";
 
         // Create a new message div element
-        const messageTopDiv = document.createElement("div");
-        messageTopDiv.classList.add("ddMessageTop");
+        const messageWholeDiv = document.createElement("div");
+        messageWholeDiv.classList.add("ddMessageDiv");
 
         // Add the message content to the message div
         const messageFromDiv = document.createElement("div");
@@ -696,21 +696,21 @@ function addMessage(ddMsgSender, ddDateMessage, ddwebsiteName, ddMessage) {
         const messageDomainDiv = document.createElement("div");
         //add \r\n in text everywhere You want for line-break (new line)
         messageFromDiv.textContent = "From: " + ddMsgSender + "\r\n";
-        messageTopDiv.appendChild(messageFromDiv);
-        messageTopDiv.appendChild(document.createElement("hr"));
+        messageWholeDiv.appendChild(messageFromDiv);
+        messageWholeDiv.appendChild(document.createElement("hr"));
         messageSentDiv.textContent = "Sent on: " + ddDateMessage + "\r\n";
-        messageTopDiv.appendChild(messageSentDiv);
-        messageTopDiv.appendChild(document.createElement("hr"));
+        messageWholeDiv.appendChild(messageSentDiv);
+        messageWholeDiv.appendChild(document.createElement("hr"));
         messageDomainDiv.textContent = "Website Domain: " + ddwebsiteName + "\r\n";
-        messageTopDiv.appendChild(messageDomainDiv);
-        messageTopDiv.appendChild(document.createElement("hr"));
+        messageWholeDiv.appendChild(messageDomainDiv);
+        messageWholeDiv.appendChild(document.createElement("hr"));
 
         const messageDiv = document.createElement("div");
         messageDiv.textContent = ddMessage;
-        messageTopDiv.appendChild(messageDiv);
+        messageWholeDiv.appendChild(messageDiv);
 
         // Add the message div to the message container
-        messageContainer.appendChild(messageTopDiv);
+        messageContainer.appendChild(messageWholeDiv);
     });
 
     // Add the sender name and date to the sender box
@@ -786,11 +786,10 @@ function intMsg() {
 // new content
 // Info Book on/off
 function displayInfoBooklet() {
-    document.getElementById("ddInfoBook").classList.remove("hide");
+    document.getElementById("ddInfoBook").classList.toggle("hide");
 }
-
-function removeInfoBooklet() {
-    document.getElementById("ddInfoBook").classList.add("hide");
+function displayddNotes(){
+    document.getElementById("ddNotes").classList.toggle("hide");
 }
 
 var current_page = 1;
@@ -932,7 +931,27 @@ function dd_createMalware() {
         createWebsiteTable();
         ddAttackCount++;
         websites.forEach((website) => {
-            var minMsg = minuteCount;
+            if(ddAttackedWebsite.domain == website.domain){
+                addMessage(
+                    website.name,
+                    ddReturnDayAndTime(),
+                    website.domain,
+                    ddpopUpAds[Math.floor(Math.random() * ddpopUpAds.length)]
+                );
+            }
+            else if (website.serverID.split('Server ')[1] == serverChangeid) {
+                addMessage(
+                    website.name,
+                    ddReturnDayAndTime(),
+                    website.domain,
+                    ddWebsiteRunningSlow[Math.floor(Math.random() * ddWebsiteRunningSlow.length)]
+                );
+            }
+        });
+    }
+}
+function ddReturnDayAndTime(){
+    var minMsg = minuteCount;
             var dayMsg = dayCount;
             if (minuteCount < 10) {
                 minMsg = "0" + minuteCount;
@@ -942,25 +961,9 @@ function dd_createMalware() {
             } else if (dayCount < 100) {
                 dayMsg = "0" + dayCount;
             }
-            if(ddAttackedWebsite.domain == website.domain){
-                addMessage(
-                    website.name,
-                    `Day ${dayMsg} ${hourCount}:${minMsg} ${dayhalf}`,
-                    website.domain,
-                    ddpopUpAds[Math.floor(Math.random() * ddpopUpAds.length)]
-                );
-            }
-            else if (website.serverID.split('Server ')[1] == serverChangeid) {
-                addMessage(
-                    website.name,
-                    `Day ${dayMsg} ${hourCount}:${minMsg} ${dayhalf}`,
-                    website.domain,
-                    ddWebsiteRunningSlow[Math.floor(Math.random() * ddWebsiteRunningSlow.length)]
-                );
-            }
-        });
-    }
+            return `Day ${dayMsg} ${hourCount}:${minMsg} ${dayhalf}`;
 }
+
 var malwareFiles = ["secure.jar", "setup.exe", "keygen.exe", "patch.exe", "virus.exe", "trojan.exe", "ransomware.exe",
     "spyware.exe", "adware.exe", "rootkit.exe", "backdoor.exe", "exploit.doc", "payload.exe", "worm.exe", "exploit.js", "exploit.php", "exploit.asp"];
 const ddWebsiteRunningSlow = [
