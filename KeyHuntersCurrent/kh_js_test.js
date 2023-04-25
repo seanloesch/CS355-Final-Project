@@ -176,7 +176,7 @@ function setCorrectButton(ranValue) {
   const table = document.getElementById('kh_table');
   const button = table.rows[randomRow].cells[randomCol].querySelector('.khBtn');
   button.dataset.correct = 'true'; // Mark the button as correct
-  
+  ranValue = 6;
   switch (ranValue) {
     case 1:
       isCaeser = true;
@@ -206,9 +206,13 @@ function setCorrectButton(ranValue) {
       
       break;
     case 6:
-      isAtbash = true;
-      plainTextPrompt = "atbash cipher, the answer you are looking for is " + spellOutNumber(randomRow) + " and the column is " + spellOutNumber(randomCol);
+      
+      plainTextPrompt = "polybius cipher, the answer you are looking for is " + spellOutNumber(randomRow) + " and the column is " + spellOutNumber(randomCol);
       document.getElementById('kh_question').innerHTML = atbashCipher(plainTextPrompt);
+      const square = generatePolybiusSquare();
+      console.log(square);
+      document.getElementById('kh_dict_panel').innerHTML = square;
+      
       break;
   }
   // Return the coordinates of the correct button
@@ -364,6 +368,31 @@ function spellOutNumber(num) {
   }
 
   return words.trim();
+}
+
+function generatePolybiusSquare() {
+  const square = [];
+  
+  
+  for (let i = 0; i < 5; i++) {
+    square[i] = [];
+    
+    for (let j= 0; j < 5; j++) {
+   
+
+      let charCode = 65 + (i * 5 + j);
+      if (charCode > 74) {
+        charCode++;
+      }
+      
+      square[i][j] = String.fromCharCode(charCode);
+      
+    }
+    
+    
+  }
+
+  return square;
 }
 
 

@@ -104,6 +104,8 @@ th, td {
     
 }
 
+
+
 .kh_panel_container {
     position: absolute;
     right: 40px;
@@ -115,8 +117,8 @@ th, td {
     border-radius: 20px;
     height: fit-content;
     width: 400px;
-    text-align: center;
     padding:40px;
+    white-space: pre;
 }
 
 
