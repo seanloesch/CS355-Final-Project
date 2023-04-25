@@ -9,10 +9,20 @@ var kh_buzz;
 var kh_clearing;
 var kh_count;
 var kh_numMinutes = 5;
-var kh_panelActive = false;
 var i = 0;
 var correctButton;
 var textbox = document.getElementById('kh_question');
+
+// var isDictHidden = kh_dictPanel.getAttribute('hide');
+// var isMsgHidden = kh_msgPanel.getAttribute('hide');
+// var isNoteHidden = kh_msgPanel.getAttribute('hide');
+// var isHelpHidden = kh_msgPanel.getAttribute('hide');
+
+let kh_panelActive = false;
+let kh_dictActive = false;
+let kh_msgActive = false;
+let kh_noteActive = false;
+let kh_helpActive = false;
 
 let isCaeser = false;
 let isPigPen = false;
@@ -72,8 +82,8 @@ function randomMediumCipherChosen(){
 kh_homeButton.addEventListener('click', kh_goHome);
 kh_dictButton.addEventListener('click', kh_toggleDict);
 kh_msgButton.addEventListener('click', kh_toggleMsg);
-// kh_noteButton.addEventListener('click', kh_toggleNote);
-// kh_helpButton.addEventListener('click', kh_toggleHelp);
+kh_noteButton.addEventListener('click', kh_toggleNote);
+kh_helpButton.addEventListener('click', kh_toggleHelp);
 
 
 
@@ -111,41 +121,83 @@ function kh_toggleDict() {
   if (kh_panelActive == false) {
     kh_dictPanel.classList.remove('hide');
     kh_panelActive = true;
-  } else {
+    kh_dictActive = true;
+  } 
+  else if (kh_panelActive == true && kh_dictActive == true) {
     kh_dictPanel.classList.add('hide');
     kh_panelActive = false;
-  }
+    kh_dictActive = false;
+  }   
 }
 
 function kh_toggleMsg() {
   if (kh_panelActive == false) {
     kh_msgPanel.classList.remove('hide');
     kh_panelActive = true;
-  } else {
+    kh_msgActive = true;
+  } 
+  else if (kh_panelActive == true && kh_msgActive == true) {
     kh_msgPanel.classList.add('hide');
     kh_panelActive = false;
-  }
+    kh_msgActive = false;
+  }    
 }
 
+function kh_toggleNote() {
+  if (kh_panelActive == false) {
+    kh_notePanel.classList.remove('hide');
+    kh_panelActive = true;
+    kh_noteActive = true;
+  } 
+  else if (kh_panelActive == true && kh_noteActive == true) {
+    kh_notePanel.classList.add('hide');
+    kh_panelActive = false;
+    kh_noteActive = false;
+  }    
+}
+
+function kh_toggleHelp() {
+  if (kh_panelActive == false) {
+    kh_helpPanel.classList.remove('hide');
+    kh_panelActive = true;
+    kh_helpActive = true;
+  } 
+  else if (kh_panelActive == true && kh_helpActive == true) {
+    kh_helpPanel.classList.add('hide');
+    kh_panelActive = false;
+    kh_helpActive = false;
+  }    
+}
+
+console.log(!kh_msgPanel.getAttribute('hide'));
 
 //draw our table
 function table_create() {
   const tableArray = document.getElementById('kh_table');
   for (i = 0; i < 28; i++) {
     const tableRow = document.createElement('tr');
+    tableRow.id = 'kh_tr';
+    tableRow.class = 'kh_tr';
+
     tableArray.appendChild(tableRow);
 
     // add row label
-    const rowLabel = document.createElement('td');
+    const cellLabel = document.createElement('td');
+    cellLabel.id = 'kh_td';
+    cellLabel.class = 'kh_td';
+
     if (i === 0 || i === 27) {
-      rowLabel.innerText = ':)';
+      cellLabel.innerText = ':)';
     } else {
-      rowLabel.innerText = i;
+      cellLabel.innerText = i;
     }
-    tableRow.appendChild(rowLabel);
+    tableRow.appendChild(cellLabel);
 
     for (let j = 0; j < 27; j++) {
       const tableCol = document.createElement('td');
+      tableCol.id = 'kh_td';
+      tableCol.class = 'kh_td';
+
       if (i === 0 || i === 27) {
         // add column label
         if (j === 26) {
