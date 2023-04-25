@@ -1,8 +1,11 @@
 body{
-    width: 100vw;
-    height: 100vh;
     margin: 0;
     padding: 0;
+    background-image: url('img/keyHunterStartBack');
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .kh_table_container{
@@ -100,37 +103,33 @@ th, td {
     
 }
 
-
-
 .kh_panel_container {
-    position: absolute;
-    right: 7%;
+    /* position: absolute;
+    right: 7%; */
 }
 
 .kh_panel {
-    position: relative;
     background-color: white;
     border: 2px solid black;
     border-radius: 20px;
-    height: 80vh;
-    width: 40vw;
+    height: fit-content;
+    width: 400px;
     text-align: center;
     padding:40px;
 }
 
 
 .kh_tabs_container {
-    position: absolute;
-    display:flex;
+    position: fixed;
+    display: flex;
     flex-direction:column;
-    right: -10px;
-    /* background-color: red; */
+    right: 0px;
 }
 
 .kh_tab_button {
     position: relative;
     width: 5vw;
-    right:0px;
+    right: 0px;
     font-weight: bolder;
     font-size: 300%;
     background-color: white;
@@ -276,12 +275,11 @@ th, td {
     padding: 0;
     margin: 0;
     display: flex;
-    width: 100vw;
+    width: 1920px;
     height: 100vh;
     justify-content: center;
     align-items: center;
-    background-color: rgb(0, 68, 102);
-    background-image: url('img/keyHunterStartBack');
+    /* background-color: rgb(0, 68, 102); */
     background-size:cover;
 }
 
@@ -296,12 +294,12 @@ th, td {
     text-align: center;
 }
 .kh_inGame{
+    position: relative;
     height: 100%;
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-image: url('img/keyHunterBack');
     background-size:cover;
 }
 
