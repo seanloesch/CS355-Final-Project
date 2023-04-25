@@ -157,6 +157,10 @@ body{
     margin-bottom:0px;
 }
 
+.kh_tab_button.new-pos {
+    bottom: 0px;
+}
+
 .kh_tab_button:hover{
     bottom:0px;
     transition: ease 0.25s;
