@@ -77,17 +77,20 @@ function randomEasyCipherChosen(){
       
       console.log("random chosen cipher value is " + randomCipherChosenValue);
       correctButton = setCorrectButton(randomCipherChosenValue);
-      console.log(`Correct button: row ${correctButton[0]}, column ${correctButton[1]}`);
+      console.log(`Correct button: row ${correctButton[0]}, column ${String.fromCharCode(64 + correctButton[1])}`);
+
       break;
     case 2:      
       console.log("random chosen cipher value is " + randomCipherChosenValue); 
       correctButton = setCorrectButton(randomCipherChosenValue);
-      console.log(`Correct button: row ${correctButton[0]}, column ${correctButton[1]}`);
+      console.log(`Correct button: row ${correctButton[0]}, column ${String.fromCharCode(64 + correctButton[1])}`);
+
       break;
     case 3:
       console.log("random chosen cipher value is " + randomCipherChosenValue);
       correctButton = setCorrectButton(randomCipherChosenValue);
-      console.log(`Correct button: row ${correctButton[0]}, column ${correctButton[1]}`);
+      console.log(`Correct button: row ${correctButton[0]}, column ${String.fromCharCode(64 + correctButton[1])}`);
+
       break;
   }
   
@@ -371,6 +374,8 @@ function kh_running() {
       if (kh_count == 1 || kh_count ==2) {
           kh_buttonReset();
           cipherSelecter++;
+          var correctButtonToAddMessage = String.fromCharCode(64 + correctButton[1]);
+          document.getElementById('kh_note_panel').innerHTML += correctButtonToAddMessage;
           randomEasyCipherChosen();
           
       } else if(kh_count == 3) {
