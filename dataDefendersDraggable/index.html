@@ -364,17 +364,17 @@
     </div>
     <div id="ddNotes" class="ddNotes hide">
         <button class="ddNotesButtonClose" onclick="displayddNotes()">X</button>
-        <div id="HeaderddNotes" class="ddNoteHeader">
-            <h1>Notebook</h1>
+        <div id="HeaderddNotes" class="ddDraggable ddNoteHeader">
+          <h1>Notebook</h1>
         </div>
         <div class="ddNotes__content">
-            <textarea class="ddNotes__textarea"></textarea>
+          <textarea class="ddNotes__textarea" onmousedown="startDrag()" onmouseup="startDrag()" onfocus="startDrag()" onblur="stopDrag()"></textarea>
         </div>
-    </div>
+      </div>
 
     <!-- New Content: Booklet-->
-    <div id="ddInfoBook" class="ddInfoBook hide">
-        <div id="HeaderddInfoBook" class="bookHeader">
+    <div id="ddInfoBook" class="ddDraggable ddInfoBook hide">
+        <div id="HeaderddInfoBook" class="ddDraggable bookHeader">
             <h1>Help Book</h1>
             <button class="ddInfoButtonClose" onclick="displayInfoBooklet()">Close</button>
         </div>
