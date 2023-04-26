@@ -796,7 +796,6 @@ function displayddNotes() {
 //Make the DIV element draggable:
 dragElement(document.getElementById("ddNotes"));
 dragElement(document.getElementById("ddInfoBook"));
-
 function dragElement(elmnt) {
     var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
     if (document.getElementById(`Header${elmnt}`)) {
@@ -833,13 +832,14 @@ function dragElement(elmnt) {
         elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
         if (elmnt.offsetTop < 350) {
             elmnt.style.top = "350px";
-        } else if (elmnt.offsetTop > 950) {
-            elmnt.style.top = "950px";;
+        } else if (elmnt.offsetTop > window.innerHeight+250) {
+            //elmnt.style.top = "950px";;
+            elmnt.style.top= (window.innerHeight+250)+"px"
         }
         if (elmnt.offsetLeft < 0) {
             elmnt.style.left = "0px";
-        } else if (elmnt.offsetLeft > 1190) {
-            elmnt.style.left = "1190px";
+        } else if (elmnt.offsetLeft > window.innerWidth+250) {
+            elmnt.style.left = (window.innerWidth+250)+"px"
         }
     }
 
