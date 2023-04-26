@@ -184,7 +184,6 @@ setInterval(function () {
 var syscalls = [0, 0, 0, 0];
 setInterval(function () {
     updateMonitor();
-    updateLogStatus();
     const random_sys = Math.random() < 0.4;
     const random_ip = Math.random() < 0.2;
     const random_bit = Math.random() < 0.5;
@@ -501,7 +500,8 @@ var ddPowerConsumpstion = 0;
 var ddGraphColor;
 var Cm = 0;
 var ddGraphInt;
-function updateLogStatus() {
+var ddLogInt;
+function updateLogStatus(serverId) {
     // Update the status div minus connections made
     var ddLogConnection = Math.floor(Math.random() * 101);
     document.getElementById("logConnection").innerHTML = ddLogConnection + "%";
@@ -540,33 +540,48 @@ function updateLogStatus() {
         return `${now.getHours()}:${now.getMinutes()}:${now.getSeconds() + i}`;
     }
 
-    // Loop through each table row and generate random data for each cell
+    // Loop through each table row and generate (mostly) random data for each cell
     const table = document.getElementById("ddlogTable");
     const rows = table.getElementsByTagName("tr");
-    if (Math.random() < 0.3) {
         for (let i = 1; i < rows.length; i++) {
             const cells = rows[i].getElementsByTagName("td");
             cells[0].textContent = returnDate();
             cells[1].textContent = returnTime(i);
-            cells[2].textContent = finalIPvalue();
+            switch (ddDoSArray.attackerIP) {
+                case null:
+                    cells[2].textContent = finalIPvalue();
+                    break;
+                default:
+                    if (serverId == ddDoSArray.serverNumber.split('Server ')[1]) {
+                        cells[2].textContent = ddDoSArray.attackerIP;
+                    }
+                    else{
+                        cells[2].textContent = finalIPvalue();
+                    }
+                    break;
+            }
             cells[3].textContent =
                 requestMethods[getRandomInt(0, requestMethods.length - 1)];
-            cells[4].textContent = urls[getRandomInt(0, urls.length - 1)];
-            cells[5].textContent =
+            cells[5].textContent = urls[getRandomInt(0, urls.length - 1)];
+            cells[6].textContent =
                 statusCodes[getRandomInt(0, statusCodes.length - 1)];
-            cells[6].textContent = speeds() + " KB/s";
             cells[7].textContent = speeds() + " KB/s";
-            cells[8].textContent =
+            cells[8].textContent = speeds() + " KB/s";
+            cells[9].textContent =
                 systemCalls[getRandomInt(0, systemCalls.length - 1)];
         }
         Cm = Cm + Math.floor(Math.random() * 4);
         document.getElementById("logConnectionsMade").innerHTML = Cm;
-    }
 }
 
 function ddOpenLogs(ddserverId) {
+    const ddlogsTable = document.getElementById('ddlogTableContainer')
+    while(ddlogsTable.firstChild){ddlogsTable.removeChild(ddlogsTable.firstChild)}
+    makeLog();
+    updateLogStatus(ddserverId);
     if (ddserverId == "back") {
         clearInterval(ddGraphInt);
+        clearInterval(ddLogInt);
     } else {
         document.getElementById("ddServerRoom").classList.add("hide");
         document.getElementById("ddtaskbar").classList.add("hide");
@@ -599,6 +614,30 @@ function ddOpenLogs(ddserverId) {
         ctx.fillStyle = ddGraphColor;
         ctx.fill();
         ctx.stroke();
+
+        /*
+        should update later so that instead of looking at ddDoSArray look at server status, can then check for
+        different attack types.
+        */
+        switch (ddDoSArray.serverNumber) {
+            case null:
+                ddLogInt = setInterval(function() {
+                    updateLogStatus(ddserverId);
+                  }, 500);
+                break;
+            default:
+                if (ddserverId == ddDoSArray.serverNumber.split('Server ')[1]) {
+                    ddLogInt = setInterval(function() {
+                      updateLogStatus(ddserverId);
+                    }, 100);
+                  } else {
+                    ddLogInt = setInterval(function() {
+                      updateLogStatus(ddserverId);
+                    }, 500);
+                  }
+                break;
+        }
+        
 
         ddGraphInt = setInterval(() => {
             // Update data
@@ -1649,3 +1688,148 @@ const ddWrongMalwareResponses = ["Ignore it, it will go away on its own.",
     "Just keep using your computer as normal and hope for the best.",
     "Delete your antivirus software to remove the conflict with the malware.",
     "Tell all your friends and family to click on the same link that infected you to see if they get the same problem."];
+
+// Make new log
+function makeLog()
+{
+// Create the container div
+const containerDiv = document.getElementById('ddlogTableContainer');
+
+// Create the table
+const table = document.createElement('table');
+table.id = 'ddlogTable';
+table.classList.add('ddlogTable');
+
+// Create the table head
+const tableHead = document.createElement('thead');
+const tableHeadRow = document.createElement('tr');
+const tableHeadCells = [
+  'Date',
+  'Time',
+  'IP Address',
+  'Request Method',
+  'Website IP',
+  'URL',
+  'Status Code',
+  'Download Speed',
+  'Upload Speed',
+  'System Calls',
+];
+
+// Append table head cells to the table head row
+tableHeadCells.forEach((cellText) => {
+  const tableHeadCell = document.createElement('th');
+  tableHeadCell.textContent = cellText;
+  tableHeadRow.appendChild(tableHeadCell);
+});
+
+// Append the table head row to the table head
+tableHead.appendChild(tableHeadRow);
+
+// Create the table body
+const tableBody = document.createElement('tbody');
+
+// Create the table body rows and cells
+const tableBodyRows = [
+  {
+    id: 'logRow1',
+    values: [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+    ],
+  },
+  {
+    id: 'logRow2',
+    values: [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+    ],
+  },
+  {
+    id: 'logRow3',
+    values: [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+    ],
+  },
+  {
+    id: 'logRow4',
+    values: [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+    ],
+  },
+  {
+    id: 'logRow5',
+    values: [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+    ]
+  }
+];
+
+// Append table body rows to the table body
+tableBodyRows.forEach((row) => {
+  const tableBodyRow = document.createElement('tr');
+  tableBodyRow.id = row.id;
+
+  // Append table body cells to the table body row
+  row.values.forEach((cellText) => {
+    const tableBodyCell = document.createElement('td');
+    tableBodyCell.textContent = cellText;
+    tableBodyRow.appendChild(tableBodyCell);
+  });
+
+  // Append the table body row to the table body
+  tableBody.appendChild(tableBodyRow);
+});
+
+// Append the table head and body to the table
+table.appendChild(tableHead);
+table.appendChild(tableBody);
+
+// Append the table to the container div
+containerDiv.appendChild(table);
+
+// Append the container div to the document body
+}
