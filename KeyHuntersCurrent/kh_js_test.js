@@ -12,6 +12,7 @@ var kh_numMinutes = 5;
 var i = 0;
 var correctButton;
 var textbox = document.getElementById('kh_question');
+var cipherSelecter =0;
 
 let kh_panelActive = false;
 let kh_dictActive = false;
@@ -61,43 +62,36 @@ link.href = 'kh_css_test.css';
 
 
 
+const order = [1,2,3];
+var shuffledOrder = order.sort(()=>Math.random()-.5);
 kh_easyButton.addEventListener('click', randomEasyCipherChosen);
 function randomEasyCipherChosen(){
   kh_startGame();
   
-  switch(previousCipherChosenValue){
-    case 0:
-      randomCipherChosenValue = Math.floor(Math.random() * 3) + 1; //random values 1-3
-      console.log("random chosen cipher value is " + randomCipherChosenValue);
-      correctButton = setCorrectButton(randomCipherChosenValue);
-      console.log(`Correct button: row ${correctButton[0]}, column ${correctButton[1]}`);
-      break;
+  console.log("the shuffled order is " +order)
+
+  randomCipherChosenValue = order[cipherSelecter];
+  switch(randomCipherChosenValue){
     case 1:
-      randomCipherChosenValue = Math.floor(Math.random() * 2) + 2; //randomly choosing 2 or 3
+      
+      
       console.log("random chosen cipher value is " + randomCipherChosenValue);
       correctButton = setCorrectButton(randomCipherChosenValue);
       console.log(`Correct button: row ${correctButton[0]}, column ${correctButton[1]}`);
       break;
-    case 2:
-      
-      randomCipherChosenValue = Math.floor(Math.random() * 2) + 1; //randomly choosing 1 or 3
-      if (randomCipherChosenValue == 2) {
-        randomCipherChosenValue += 1;
-      }
-      
+    case 2:      
       console.log("random chosen cipher value is " + randomCipherChosenValue); 
       correctButton = setCorrectButton(randomCipherChosenValue);
       console.log(`Correct button: row ${correctButton[0]}, column ${correctButton[1]}`);
       break;
     case 3:
-      randomCipherChosenValue = Math.floor(Math.random() * 2) + 1; //randomly choosing 2 or 3
       console.log("random chosen cipher value is " + randomCipherChosenValue);
       correctButton = setCorrectButton(randomCipherChosenValue);
       console.log(`Correct button: row ${correctButton[0]}, column ${correctButton[1]}`);
       break;
   }
-  previousCipherChosenValue = randomCipherChosenValue;
-  console.log("previous chosen cipher is " + previousCipherChosenValue);
+  
+  
   
 }
 
@@ -301,6 +295,7 @@ function setCorrectButton(ranValue) {
       break;
     case 2:
       isPigPen = true;
+      document.getElementById('kh_question').innerHTML = ""
       plainTextPrompt = " a PigPen Cipher The answer is row " + spellOutNumber(randomRow) + " and the column is " + spellOutNumber(randomCol);
       generatePigPen(plainTextPrompt);
       break;
@@ -375,6 +370,7 @@ function kh_running() {
       console.log("kh_count value is " + kh_count);
       if (kh_count == 1 || kh_count ==2) {
           kh_buttonReset();
+          cipherSelecter++;
           randomEasyCipherChosen();
           
       } else if(kh_count == 3) {
@@ -391,6 +387,7 @@ function kh_running() {
 }
 
 function generatePigPen(plaintext) {
+  
   var kh_alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
   for (var i = 0; i < plaintext.length; i++) {
     var currentChar = plaintext.charAt(i).toLowerCase();
