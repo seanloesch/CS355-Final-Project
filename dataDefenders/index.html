@@ -36,6 +36,7 @@
                     <td id="ddCrashes">0</td>
                 </tr>
             </table>
+            <button onclick="dd_createDoS()">DoS</button>
             <button onclick="dd_createMalware()">MalwareAttack</button>
         </div>
     </div>
@@ -330,22 +331,15 @@
     </div>
     <div id="ddcams" class="ddcams hide"></div>
     <div id="ddreport" class="ddreport hide">
-        <form class="ddReportform">
-            <h1 class="ddreportHeader">Report Form</h1>
-            <label class="ddlabel" for="attackType">Type of Attack:</label>
-            <input type="text" id="attackType" name="attackType" required>
-
-            <label class="ddlabel" for="attackDescription">Description of Attack:</label>
-            <textarea id="attackDescription" name="attackDescription" rows="5" required></textarea>
-
-            <label class="ddlabel" for="courseOfAction">Recommended Course of Action:</label>
-            <textarea id="courseOfAction" name="courseOfAction" rows="5" required></textarea>
-
-            <label class="ddlabel" for="signature">Signature:</label>
-            <input type="text" id="signature" name="signature" required>
-
-            <input type="submit" value="Submit">
-        </form>
+        <div id="ddReportType" class="ddReportType">
+            <!-- ------------------------------------ -->
+            <div class="ddReportTypesContainer">
+                <button onclick="createDoSForm()">DoS Attack</button>
+                <button onclick="createMalwareForm()">Malware Attack</button>
+            </div>
+        </div>
+        <div id="ddReportFormContainer" class="ddReportFormContainer hide"></div>
+        <button id="ddDeleteReportForm" class="ddDeleteReportForm hide" onclick="removeReportForm()">X</button>
     </div>
     <div id="ddMsg" class="ddMsg hide">
         <div class="ddSenderBox">
@@ -371,12 +365,12 @@
     <div id="ddNotes" class="ddNotes hide">
         <button class="ddNotesButtonClose" onclick="displayddNotes()">X</button>
         <div class="ddNoteHeader">
-          <h1>Notebook</h1>
+            <h1>Notebook</h1>
         </div>
         <div class="ddNotes__content">
-          <textarea class="ddNotes__textarea"></textarea>
+            <textarea class="ddNotes__textarea"></textarea>
         </div>
-      </div>
+    </div>
 
     <!-- New Content: Booklet-->
     <div id="ddInfoBook" class="ddInfoBook hide">
