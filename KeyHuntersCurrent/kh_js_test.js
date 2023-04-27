@@ -4,7 +4,6 @@ var kh_rank = 1;
 const kh_totalQuestions = 1;
 var kh_questionBoxArray = new Array(4);
 var kh_answers = [];
-var kh_shuffledArray = [];
 var kh_buzz =0;
 var kh_clearing;
 var kh_count =0;
@@ -29,6 +28,9 @@ let transpositionDone = false;
 const randomCaesarCipherVal = Math.floor(Math.random() * 5) + 1; // Random caeser between 1 and 6
 var randomCipherChosenValue = 0;
 var previousCipherChosenValue = 0;
+let easyMode = false;
+let mediumMode = false;
+let hardMode = false;
 
 
 var plainTextPrompt;
@@ -62,15 +64,16 @@ link.href = 'kh_css_test.css';
 
 
 
-const order = [1,2,3];
-var shuffledOrder = order.sort(()=>Math.random()-.5);
+const easyOrder = [1,2,3];
+var shuffledEasyOrder = easyOrder.sort(()=>Math.random()-.5);
 kh_easyButton.addEventListener('click', randomEasyCipherChosen);
 function randomEasyCipherChosen(){
+  easyMode = true;
   kh_startGame();
   
-  console.log("the shuffled order is " +order)
+  console.log("the shuffled order is " + easyOrder)
 
-  randomCipherChosenValue = order[cipherSelecter];
+  randomCipherChosenValue = easyOrder[cipherSelecter];
   switch(randomCipherChosenValue){
     case 1:
       
@@ -98,13 +101,39 @@ function randomEasyCipherChosen(){
   
 }
 
+
+const mediumOrder = [4,5,6];
+var shuffledMediumOrder = mediumOrder.sort(()=>Math.random()-.5);
 kh_mediumButton.addEventListener('click', randomMediumCipherChosen);
 function randomMediumCipherChosen(){
+  mediumMode = true;
   kh_startGame();
-  randomCipherChosenValue = Math.floor(Math.random() * 3) + 4;
-  console.log("random chosen cipher value is " + randomCipherChosenValue);
-  correctButton = setCorrectButton(randomCipherChosenValue);
-  console.log(`Correct button: row ${correctButton[0]}, column ${correctButton[1]}`);
+  
+  console.log("the shuffled order is " +mediumOrder)
+
+  randomCipherChosenValue = mediumOrder[cipherSelecter];
+  switch(randomCipherChosenValue){
+    case 4:
+      
+      
+      console.log("random chosen cipher value is " + randomCipherChosenValue);
+      correctButton = setCorrectButton(randomCipherChosenValue);
+      console.log(`Correct button: row ${correctButton[0]}, column ${String.fromCharCode(64 + correctButton[1])}`);
+
+      break;
+    case 5:      
+      console.log("random chosen cipher value is " + randomCipherChosenValue); 
+      correctButton = setCorrectButton(randomCipherChosenValue);
+      console.log(`Correct button: row ${correctButton[0]}, column ${String.fromCharCode(64 + correctButton[1])}`);
+
+      break;
+    case 6:
+      console.log("random chosen cipher value is " + randomCipherChosenValue);
+      correctButton = setCorrectButton(randomCipherChosenValue);
+      console.log(`Correct button: row ${correctButton[0]}, column ${String.fromCharCode(64 + correctButton[1])}`);
+
+      break;
+  }
 }
 
 
@@ -323,8 +352,13 @@ function setCorrectButton(ranValue) {
       plainTextPrompt = "polybius cipher, the answer you are looking for is " + spellOutNumber(randomRow) + " and the column is " + spellOutNumber(randomCol);
       document.getElementById('kh_question').innerHTML = atbashCipher(plainTextPrompt);
       
+
       const table = document.createElement('table');
-      
+
+      // Array of letters to use in the table
+      const letters = "abcdefghiklmnopqrstuvwxyz".split("");
+
+      // Create rows and columns
       for (let i = 0; i < 6; i++) {
         const row = document.createElement('tr');
         
@@ -332,11 +366,15 @@ function setCorrectButton(ranValue) {
           const cell = document.createElement('td');
           
           if (i === 0 && j > 0) {
-            cell.textContent = String.fromCharCode(64 + j);
+            // Set column labels
+            //cell.textContent = j;
           } else if (j === 0 && i > 0) {
-            cell.textContent = i;
+            // Set row labels
+            //cell.textContent = i;
           } else if (i > 0 && j > 0) {
-            cell.textContent = String.fromCharCode(64 + j) + (i);
+            // Encode letters using the Polybius cipher
+            const index = (i - 1) * 5 + j - 1;
+            cell.textContent = `${i}${j} ${letters[index].toUpperCase()}`;
           }
           
           row.appendChild(cell);
@@ -372,11 +410,26 @@ function kh_running() {
       kh_count++;
       console.log("kh_count value is " + kh_count);
       if (kh_count == 1 || kh_count ==2) {
+        if (easyMode){
           kh_buttonReset();
           cipherSelecter++;
           var correctButtonToAddMessage = String.fromCharCode(64 + correctButton[1]);
           document.getElementById('kh_note_panel').innerHTML += correctButtonToAddMessage;
           randomEasyCipherChosen();
+        } else if (mediumMode) {
+          kh_buttonReset();
+          cipherSelecter++;
+          var correctButtonToAddMessage = String.fromCharCode(64 + correctButton[1]);
+          document.getElementById('kh_note_panel').innerHTML += correctButtonToAddMessage;
+          randomMediumCipherChosen();
+        } else if (hardMode){
+          kh_buttonReset();
+          cipherSelecter++;
+          var correctButtonToAddMessage = String.fromCharCode(64 + correctButton[1]);
+          document.getElementById('kh_note_panel').innerHTML += correctButtonToAddMessage;
+          //randomHardCipherChosen();
+        }
+          
           
       } else if(kh_count == 3) {
         kh_finished();
@@ -545,14 +598,23 @@ function kh_timerRanOut() {
 }
 function kh_finished() {
   clearInterval(kh_clearing);
-  kh_easyButton.innerHTML = "Again";
-  kh_msg.innerHTML = "You did it!";
+  if (easyMode)
+    kh_easyButton.innerHTML = "Again";
+    easyMode = false
+  if (mediumMode)
+    kh_mediumButton.innerHTML = "Again";
+    mediumMode = false;
+  if (hardMode)
+    kh_hardButton.innerHTML = "Again";
+    hardMode = false;
+  kh_msg.innerHTML = "You did it! You found the key! '\n'" + "hello";
+  
   kh_promptPlayAgain();
 }
 function kh_promptPlayAgain() {
-  kh_questionBoxArray = [];
-  kh_answers = [];
-  kh_shuffledArray = [];
+  kh_count = 0;
+  cipherSelecter = 0;
+
   kh_buttonReset();
   kh_startScreen.classList.remove('hide');
   kh_easyButton.classList.remove('hide');
@@ -560,6 +622,7 @@ function kh_promptPlayAgain() {
   kh_msg.classList.remove('hide');
   kh_homeButton.classList.remove('hide');
   kh_inGame.classList.add('hide');
+  
 }
 function kh_buttonReset() {
   var kh_div = document.getElementById('kh_table');
