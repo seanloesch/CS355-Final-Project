@@ -308,7 +308,7 @@ const websites = [
         path: "/var/www/website1",
         ipAddress: "192.168.1.1",
         serverSoftware: "Apache",
-        serverID: "Server 1",
+        serverID: "1",
         webStatus: 0,
     },
     {
@@ -317,7 +317,7 @@ const websites = [
         path: "/var/www/website2",
         ipAddress: "192.168.1.2",
         serverSoftware: "Nginx",
-        serverID: "Server 2",
+        serverID: "2",
         webStatus: 0,
     },
     {
@@ -326,7 +326,7 @@ const websites = [
         path: "/var/www/website3",
         ipAddress: "192.168.1.3",
         serverSoftware: "Apache",
-        serverID: "Server 3",
+        serverID: "3",
         webStatus: 0,
     },
     {
@@ -335,7 +335,7 @@ const websites = [
         path: "/var/www/website4",
         ipAddress: "192.168.1.4",
         serverSoftware: "Apache",
-        serverID: "Server 4",
+        serverID: "4",
         webStatus: 0,
     },
     {
@@ -344,7 +344,7 @@ const websites = [
         path: "/var/www/ben",
         ipAddress: "192.168.1.5",
         serverSoftware: "Apache",
-        serverID: "Server 1",
+        serverID: "1",
         webStatus: 0,
     },
     {
@@ -353,7 +353,7 @@ const websites = [
         path: "/var/www/ryan",
         ipAddress: "192.168.1.6",
         serverSoftware: "Apache",
-        serverID: "Server 3",
+        serverID: "3",
         webStatus: 0,
     },
     {
@@ -362,7 +362,7 @@ const websites = [
         path: "/var/www/ryan",
         ipAddress: "192.168.1.7",
         serverSoftware: "Apache",
-        serverID: "Server 4",
+        serverID: "4",
         webStatus: 0,
     },
     {
@@ -371,7 +371,7 @@ const websites = [
         path: "/var/www/sean",
         ipAddress: "192.168.1.8",
         serverSoftware: "Apache",
-        serverID: "Server 1",
+        serverID: "1",
         webStatus: 0,
     },
     {
@@ -380,7 +380,7 @@ const websites = [
         path: "/var/www/jacob",
         ipAddress: "192.168.1.9",
         serverSoftware: "Apache",
-        serverID: "Server 3",
+        serverID: "3",
         webStatus: 0,
     },
 ];
@@ -415,7 +415,9 @@ function createWebsiteTable() {
         const ddWebStatcircleDesign = document.createElement("div");
         ddWebStatcircleDesign.classList.add('ddWebStatcircleDesign');
         webStatcircle.appendChild(ddWebStatcircleDesign);
-        var webServState = ddServState[website.serverID.split('Server ')[1] - 1];
+        //removed .split function
+        var webServState = ddServState[website.serverID - 1];
+        //
         if (website.webStatus == 0 && webServState == 0) { webStatcircle.classList.add('ddWebStatGood') }
         if (website.webStatus == 1 || webServState == 1 && website.webStatus != 2) { webStatcircle.classList.add('ddWebStatBad') }
         if (website.webStatus == 2 || webServState == 2) { webStatcircle.classList.add('ddWebStatTerrible') }
@@ -547,21 +549,39 @@ function updateLogStatus(serverId) {
             const cells = rows[i].getElementsByTagName("td");
             cells[0].textContent = returnDate();
             cells[1].textContent = returnTime(i);
-            switch (ddDoSArray.attackerIP) {
-                case null:
+            //new
+            if(serverId == ddDoSArray.serverNumber)
+            {
+                var temp = Math.floor(Math.random() * 100) + 1;
+                if(temp < 5)
+                {
                     cells[2].textContent = finalIPvalue();
-                    break;
-                default:
-                    if (serverId == ddDoSArray.serverNumber.split('Server ')[1]) {
-                        cells[2].textContent = ddDoSArray.attackerIP;
-                    }
-                    else{
-                        cells[2].textContent = finalIPvalue();
-                    }
-                    break;
+                }
+                else
+                {
+                    cells[2].textContent = ddDoSArray.attackerIP;
+                }
             }
+            else
+            {
+                cells[2].textContent = finalIPvalue();
+            }
+            //
             cells[3].textContent =
                 requestMethods[getRandomInt(0, requestMethods.length - 1)];
+            //new
+            var tempWebDom;
+            if(serverId == ddDoSArray.serverNumber)
+            {
+                cells[4].textContent = ddDoSArray.websiteDom;
+            }
+            else{
+                do{
+                    tempWebDom = websites[Math.floor(Math.random() * websites.length)];
+                }while(tempWebDom.serverID != serverId);
+                cells[4].textContent = tempWebDom.domain;
+            }
+            //
             cells[5].textContent = urls[getRandomInt(0, urls.length - 1)];
             cells[6].textContent =
                 statusCodes[getRandomInt(0, statusCodes.length - 1)];
@@ -575,10 +595,6 @@ function updateLogStatus(serverId) {
 }
 
 function ddOpenLogs(ddserverId) {
-    const ddlogsTable = document.getElementById('ddlogTableContainer')
-    while(ddlogsTable.firstChild){ddlogsTable.removeChild(ddlogsTable.firstChild)}
-    makeLog();
-    updateLogStatus(ddserverId);
     if (ddserverId == "back") {
         clearInterval(ddGraphInt);
         clearInterval(ddLogInt);
@@ -587,6 +603,12 @@ function ddOpenLogs(ddserverId) {
         document.getElementById("ddtaskbar").classList.add("hide");
         document.getElementById("ddServerLogs").classList.remove("hide");
         document.getElementById("ddservid").innerText = ddserverId;
+
+        const ddlogsTable = document.getElementById('ddlogTableContainer')
+        while(ddlogsTable.firstChild){ddlogsTable.removeChild(ddlogsTable.firstChild)}
+        makeLog();
+        updateLogStatus(ddserverId);
+
         var logState = ddServState[ddserverId - 1];
         if (logState == 0) {
             ddGraphColor = "rgba(0, 255, 0, 0.2)";
@@ -615,30 +637,19 @@ function ddOpenLogs(ddserverId) {
         ctx.fill();
         ctx.stroke();
 
-        /*
-        should update later so that instead of looking at ddDoSArray look at server status, can then check for
-        different attack types.
-        */
-        switch (ddDoSArray.serverNumber) {
-            case null:
-                ddLogInt = setInterval(function() {
-                    updateLogStatus(ddserverId);
-                  }, 500);
-                break;
-            default:
-                if (ddserverId == ddDoSArray.serverNumber.split('Server ')[1]) {
-                    ddLogInt = setInterval(function() {
-                      updateLogStatus(ddserverId);
-                    }, 100);
-                  } else {
-                    ddLogInt = setInterval(function() {
-                      updateLogStatus(ddserverId);
-                    }, 500);
-                  }
-                break;
+        //new
+        if(ddserverId == ddDoSArray.serverNumber){
+            ddLogInt = setInterval(function() {
+                updateLogStatus(ddserverId);
+              }, 100);
         }
+        else{
+            ddLogInt = setInterval(function() {
+                updateLogStatus(ddserverId);
+              }, 500);
+        }
+        //
         
-
         ddGraphInt = setInterval(() => {
             // Update data
             logState = ddServState[ddserverId - 1];
@@ -920,34 +931,36 @@ function changeMoney() {
     document.getElementById("ddMoney").innerText = money;
 }
 
-setInterval(changeMoney, 1000);
-
-var ddAttackArray = [
-    {
-        TypeOfAttack: null,
-        attackID: 0,
-    },
-    {
-        TypeOfAttack: null,
-        attackID: 1,
-    },
-    {
-        TypeOfAttack: null,
-        attackID: 2,
-    },
-];
+setInterval(changeMoney, 5000);
 
 var ddAttackCount = 0;
+//New
+var ddAttackArray = [0,0];
 
 function dd_generateAttack() {
-    if (ddAttackArray.length < 2) {
-        //randomize possible attacks (DoS is only attack, will change later)
-        //update attack array
-        const chooseAttack = Math.random() < 0.5;
-        if (chooseAttack) { dd_createDoS(ddAttackArray[ddAttackCount].attackID); }
-        else { dd_createMalware(ddAttackArray[ddAttackCount].attackID); }
+    if(ddAttackCount < 2)
+    {
+        var tempAttack;
+        var tempServer;
+        do {
+            tempServer = Math.floor(Math.random() * ddServState.length);
+        } while (ddServState[tempServer] != 0);
+        do {
+            tempAttack = Math.floor(Math.random() * ddAttackArray.length);
+        } while (ddAttackArray[tempAttack] != 0);
+        ddAttackArray[tempAttack] = 1;
+        switch(tempAttack){
+            case 0:
+                dd_createDoS(tempServer+1);
+                break;
+            case 1:
+                dd_createMalware(tempServer+1);
+                break;
+            default:
+        }
     }
 }
+//
 
 function dd_solvedAttack() {
     ddAttackCount--;
@@ -961,31 +974,27 @@ var ddDoSArray =
     serverNumber: null,
 };
 
-
-function dd_createDoS() {
-    if (ddAttackCount != 2 && ddDoSArray.attackID == null) {
-        ddDoSArray.attackID = ddAttackCount;
+//new attack create using server input
+function dd_createDoS(server) {
+    ddDoSArray.attackID = ddAttackCount;
+    do{
         var ddAttackedWebsite = websites[Math.floor(Math.random() * websites.length)];
-        ddDoSArray.websiteDom = ddAttackedWebsite.domain;
-        ddDoSArray.serverNumber = ddAttackedWebsite.serverID;
+    }while(ddAttackedWebsite.serverID != server)
+    ddDoSArray.websiteDom = ddAttackedWebsite.domain;
+    ddDoSArray.serverNumber = server;
 
-        var first = Math.floor(Math.random() * 192);
-        var second = Math.floor(Math.random() * 99);
-        var third = Math.floor(Math.random() * 256);
-        var ip = first + "." + second + "." + third;
-        ddDoSArray.attackerIP = ip;
+    var first = Math.floor(Math.random() * 192);
+    var second = Math.floor(Math.random() * 99);
+    var third = Math.floor(Math.random() * 256);
+    var ip = first + "." + second + "." + third;
+    ddDoSArray.attackerIP = ip;
 
-        var serverChangeid = ddDoSArray.serverNumber.split('Server ')[1];
-        ddAttackedWebsite.webStatus = 1
-        ddServState[serverChangeid - 1] = 1
-        createWebsiteTable();
-        ddAttackCount++;
-        console.log(ddDoSArray)
-        //update website table for all websites connected to down server
-        //in effected server display random attacker IP and website IP
-        //send message from all people in using effected server that it is running slow
-    }
+    ddAttackedWebsite.webStatus = 1
+    ddServState[server - 1] = 1
+    createWebsiteTable();
+    ddAttackCount++;
 }
+//
 
 const ddComplaintsDoS = [
     "I can't access my website at all!",
@@ -1006,21 +1015,26 @@ var ddMalwareArray = {
     serverNumber: null,
     targetFile: null,
 };
-function dd_createMalware() {
-    if (ddAttackCount != 2 && ddMalwareArray.attackID == null) {
+
+//new createMalware
+function dd_createMalware(server) {
         ddMalwareArray.attackID = ddAttackCount;
-        var ddAttackedWebsite = websites[Math.floor(Math.random() * websites.length)];
+        do{
+            var ddAttackedWebsite = websites[Math.floor(Math.random() * websites.length)];
+        }while(ddAttackedWebsite.serverID != server)
+
         ddMalwareArray.websiteDom = ddAttackedWebsite.domain;
         ddMalwareArray.serverNumber = ddAttackedWebsite.serverID;
         ddMalwareArray.targetFile = malwareFiles[Math.floor(Math.random() * malwareFiles.length)];
-        var serverChangeid = ddMalwareArray.serverNumber.split('Server ')[1];
+
+        
         ddAttackedWebsite.webStatus = 2
-        ddServState[serverChangeid - 1] = 1
+        ddServState[server - 1] = 1
         console.log(ddMalwareArray)
         createWebsiteTable();
         ddAttackCount++;
         websites.forEach((website) => {
-            if (ddAttackedWebsite.domain == website.domain) {
+            if (ddAttackedWebsite.domain == website.domain){
                 addMessage(
                     website.name,
                     ddReturnDayAndTime(),
@@ -1028,7 +1042,7 @@ function dd_createMalware() {
                     ddpopUpAds[Math.floor(Math.random() * ddpopUpAds.length)]
                 );
             }
-            else if (website.serverID.split('Server ')[1] == serverChangeid) {
+            else if (website.serverID == server) {
                 addMessage(
                     website.name,
                     ddReturnDayAndTime(),
@@ -1037,8 +1051,10 @@ function dd_createMalware() {
                 );
             }
         });
-    }
+    
 }
+//
+
 function ddReturnDayAndTime() {
     var minMsg = minuteCount;
     var dayMsg = dayCount;
@@ -1293,13 +1309,17 @@ function createDoSForm() {
         // Do something with the form data here
 
         if (ddDoSArray.attackID != null) {
-            if (ddDoSArray.serverNumber.split('Server ')[1] == affectedServerId) {
+            //remove split
+            if (ddDoSArray.serverNumber == affectedServerId) {
+            //
                 if (ddDoSArray.websiteDom == websiteDomain) {
                     if (ddDoSArray.attackerIP == ddAttackerIP) {
                         var ddMalResetWebsiteID = ddDoSArray.websiteDom
                         websites.forEach((website) => {
                             if (website.domain == ddMalResetWebsiteID) {
-                                var serverStatIndex = website.serverID.split('Server ')[1];
+                                //remove split
+                                var serverStatIndex = website.serverID;
+                                //
                                 website.webStatus = 0
                                 ddServState[serverStatIndex - 1] = 0;
                                 ddAttackCount--;
@@ -1543,13 +1563,17 @@ function createMalwareForm() {
         // console.log("Signature: " + signature)
 
         if (ddMalwareArray.attackID != null) {
-            if (ddMalwareArray.serverNumber.split('Server ')[1] == affectedServerId) {
+            //remove split
+            if (ddMalwareArray.serverNumber == affectedServerId) {
+            //
                 if (ddMalwareArray.websiteDom == websiteDomain) {
                     if (ddMalwareArray.targetFile == malwareFileName) {
                         var ddMalResetWebsiteID = ddMalwareArray.websiteDom
                         websites.forEach((website) => {
                             if (website.domain == ddMalResetWebsiteID) {
-                                var serverStatIndex = website.serverID.split('Server ')[1];
+                                //remove split
+                                var serverStatIndex = website.serverID;
+                                //
                                 website.webStatus = 0
                                 ddServState[serverStatIndex - 1] = 0;
                                 ddAttackCount--;
@@ -1708,7 +1732,7 @@ const tableHeadCells = [
   'Time',
   'IP Address',
   'Request Method',
-  'Website IP',
+  'Website Domain',
   'URL',
   'Status Code',
   'Download Speed',
