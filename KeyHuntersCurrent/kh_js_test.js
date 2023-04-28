@@ -12,6 +12,13 @@ var i = 0;
 var correctButton;
 var textbox = document.getElementById('kh_question');
 var cipherSelecter =0;
+var remainingAttempts =5;
+var playerSccore = 100;
+var kh_duration;
+var kh_check_minutes;
+var kh_seconds;
+var kh_displayedMinutes;
+
 
 let kh_panelActive = false;
 let kh_dictActive = false;
@@ -35,7 +42,7 @@ let hardMode = false;
 
 var plainTextPrompt;
 
-kh_display = document.querySelector('#kh_time');
+kh_timer_display = document.querySelector('#kh_timer');
 
 const kh_easyButton = document.getElementById('kh_easy_btn');
 const kh_mediumButton = document.getElementById('kh_medium_btn');
@@ -146,6 +153,8 @@ kh_helpButton.addEventListener('click', kh_toggleHelp);
 
 
 function kh_startGame() {
+  document.getElementById('numberOfGuesses').innerHTML = remainingAttempts + " attempts left";
+  document.getElementById('kh_score_keeper').innerHTML = playerSccore;
   kh_easyButton.classList.add('hide');
   kh_homeButton.classList.add('hide');
   kh_msg.classList.add('hide');
@@ -158,8 +167,8 @@ function kh_startGame() {
   kh_helpPanel.classList.add('hide');
   
   
-  //var kh_timed = 60 * kh_numMinutes;
-  // kh_startTimer(kh_timed, kh_display);
+  var kh_timed = 60 * kh_numMinutes;
+  kh_startTimer(kh_timed, kh_timer_display);
 
   table_create();
   
@@ -435,6 +444,16 @@ function kh_running() {
         kh_finished();
       }
     } else {
+      remainingAttempts--;
+      playerSccore -= (playerSccore*(1/5));
+      if (remainingAttempts == 0) {
+        kh_finished();
+       
+      }
+      
+      document.getElementById('kh_score_keeper').innerHTML = "player score is now " + playerSccore;
+      
+      document.getElementById('numberOfGuesses').innerHTML = remainingAttempts + " attempts left";
       kh_btn.classList.add('kh_incorrect');
       kh_buzz++;
     }
@@ -567,8 +586,8 @@ function spellOutNumber(num) {
 
 
 function kh_startTimer(kh_duration, kh_display) {
+  
   var kh_timer = kh_duration, kh_minutes, kh_seconds, kh_displayedMinutes;
-
   kh_clearing = setInterval(function () {
     kh_minutes = parseInt(kh_timer / 60, 10);
     kh_seconds = parseInt(kh_timer % 60, 10);
@@ -576,45 +595,86 @@ function kh_startTimer(kh_duration, kh_display) {
     kh_minutes = kh_minutes < 10 ? "0" + kh_minutes : kh_minutes;
     kh_seconds = kh_seconds < 10 ? "0" + kh_seconds : kh_seconds;
 
-    kh_displayedMinutes = kh_minutes - kh_buzz;
+    // kh_displayedMinutes = kh_minutes - kh_buzz;
 
-    if (kh_displayedMinutes < 0 || (kh_displayedMinutes == 0 && kh_seconds == 0)) {
+    if ((kh_minutes == 0 && kh_seconds == 0)) {
       kh_timerRanOut();
     }
     else {
-      kh_display.textContent = kh_displayedMinutes + ":" + kh_seconds;
+      document.getElementById("kh_timer").textContent = kh_minutes + ":" + kh_seconds;
+      
     }
 
     if (--kh_timer < 0) {
       kh_timer = kh_duration;
+      
     }
   }, 1000);
 }
 function kh_timerRanOut() {
-  kh_easyButton.innerHTML = "Retry";
-  kh_msg.innerHTML = "You ran out of time!";
+  if (easyMode){
+    kh_mediumButton.innerHTML = "Medium";
+    kh_easyButton.innerHTML = "Again";
+    kh_hardButton.innerHTML = "Hard";
+    easyMode = false
+  }
+  
+  if (mediumMode){
+    kh_mediumButton.innerHTML = "Again";
+    kh_easyButton.innerHTML = "Easy";
+    kh_hardButton.innerHTML = "Hard";
+    mediumMode = false;
+  }
+    
+  if (hardMode) {
+    kh_mediumButton.innerHTML = "Medium";
+    kh_easyButton.innerHTML = "Easy";
+    kh_hardButton.innerHTML = "Again";
+    hardMode = false;
+  }
+  kh_msg.innerHTML = "You ran out of `time`!";
+  remainingAttempts = 5;
   clearInterval(kh_clearing);
   kh_promptPlayAgain();
 }
 function kh_finished() {
   clearInterval(kh_clearing);
-  if (easyMode)
-    kh_easyButton.innerHTML = "Again";
+  if (easyMode){
+    kh_mediumButton.innerHTML = "Medium";
+  kh_easyButton.innerHTML = "Again";
+  kh_hardButton.innerHTML = "Hard";
     easyMode = false
-  if (mediumMode)
+  }
+  
+  if (mediumMode){
     kh_mediumButton.innerHTML = "Again";
+    kh_easyButton.innerHTML = "Easy";
+    kh_hardButton.innerHTML = "Hard";
     mediumMode = false;
-  if (hardMode)
+  }
+    
+  if (hardMode) {
+    kh_mediumButton.innerHTML = "Medium";
+    kh_easyButton.innerHTML = "Easy";
     kh_hardButton.innerHTML = "Again";
     hardMode = false;
-  kh_msg.innerHTML = "You did it! You found the key! '\n'" + "hello";
+  }
+  
+
+  if (remainingAttempts == 0) {
+    kh_msg.innerHTML = "You're out of tries! Play Again?";
+    remainingAttempts = 5;
+  } else if (kh_count == 3){
+    kh_msg.innerHTML = "You did it! You found the key! '\n'" + "hello";
+
+  }
   
   kh_promptPlayAgain();
 }
 function kh_promptPlayAgain() {
   kh_count = 0;
   cipherSelecter = 0;
-
+  playerSccore = 100;
   kh_buttonReset();
   kh_startScreen.classList.remove('hide');
   kh_easyButton.classList.remove('hide');
