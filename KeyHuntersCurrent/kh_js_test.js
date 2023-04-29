@@ -143,6 +143,61 @@ function randomMediumCipherChosen(){
   }
 }
 
+const hardOrder = [1,2,3,4,5,6];
+var shuffledHardORder = hardOrder.sort(()=>Math.random()-.5);
+kh_hardButton.addEventListener('click', randomHardCipherChosen);
+function randomHardCipherChosen(){
+  hardMode = true;
+  kh_startGame();
+  
+  console.log("the shuffled order is " +hardOrder);
+
+  randomCipherChosenValue = hardOrder[cipherSelecter];
+  switch(randomCipherChosenValue){
+    case 1:
+      
+      
+      console.log("random chosen cipher value is " + randomCipherChosenValue);
+      correctButton = setCorrectButton(randomCipherChosenValue);
+      console.log(`Correct button: row ${correctButton[0]}, column ${String.fromCharCode(64 + correctButton[1])}`);
+
+      break;
+    case 2:      
+      console.log("random chosen cipher value is " + randomCipherChosenValue); 
+      correctButton = setCorrectButton(randomCipherChosenValue);
+      console.log(`Correct button: row ${correctButton[0]}, column ${String.fromCharCode(64 + correctButton[1])}`);
+
+      break;
+    case 3:
+      console.log("random chosen cipher value is " + randomCipherChosenValue);
+      correctButton = setCorrectButton(randomCipherChosenValue);
+      console.log(`Correct button: row ${correctButton[0]}, column ${String.fromCharCode(64 + correctButton[1])}`);
+
+      break;
+    case 4:
+      
+      
+      console.log("random chosen cipher value is " + randomCipherChosenValue);
+      correctButton = setCorrectButton(randomCipherChosenValue);
+      console.log(`Correct button: row ${correctButton[0]}, column ${String.fromCharCode(64 + correctButton[1])}`);
+
+      break;
+    case 5:      
+      console.log("random chosen cipher value is " + randomCipherChosenValue); 
+      correctButton = setCorrectButton(randomCipherChosenValue);
+      console.log(`Correct button: row ${correctButton[0]}, column ${String.fromCharCode(64 + correctButton[1])}`);
+
+      break;
+    case 6:
+      console.log("random chosen cipher value is " + randomCipherChosenValue);
+      correctButton = setCorrectButton(randomCipherChosenValue);
+      console.log(`Correct button: row ${correctButton[0]}, column ${String.fromCharCode(64 + correctButton[1])}`);
+
+      break;
+  }
+}
+
+
 
 kh_homeButton.addEventListener('click', kh_goHome);
 kh_dictButton.addEventListener('click', kh_toggleDict);
@@ -359,7 +414,7 @@ function setCorrectButton(ranValue) {
     case 6:
       
       plainTextPrompt = "polybius cipher, the answer you are looking for is " + spellOutNumber(randomRow) + " and the column is " + spellOutNumber(randomCol);
-      document.getElementById('kh_question').innerHTML = atbashCipher(plainTextPrompt);
+      document.getElementById('kh_question').innerHTML = GeneratePolybiusCipher(plainTextPrompt);
       
 
       const table = document.createElement('table');
@@ -400,6 +455,38 @@ function setCorrectButton(ranValue) {
 }
 
 
+function GeneratePolybiusCipher(plainTextPrompt){
+  const square = [
+    ['A', 'B', 'C', 'D', 'E'],
+    ['F', 'G', 'H', 'I/J', 'K'],
+    ['L', 'M', 'N', 'O', 'P'],
+    ['Q', 'R', 'S', 'T', 'U'],
+    ['V', 'W', 'X', 'Y', 'Z']
+  ];
+  
+  // Convert the message to uppercase and remove any characters that aren't letters or spaces
+  plainTextPrompt = plainTextPrompt.toUpperCase().replace(/[^A-Z\s]/g, '');
+  
+  // Replace each letter in the plainTextPrompt with its corresponding Polybius square coordinates
+  let result = '';
+  for (let i = 0; i < plainTextPrompt.length; i++) {
+    const letter = plainTextPrompt.charAt(i);
+    if (letter === ' ') {
+      result += ' ';
+    } else {
+      for (let row = 0; row < square.length; row++) {
+        const col = square[row].indexOf(letter);
+        if (col !== -1) {
+          result += (row + 1) + '' + (col + 1);
+          break;
+        }
+      }
+    }
+  }
+  
+  return result;
+}
+
 
 
 function kh_running() {
@@ -418,31 +505,38 @@ function kh_running() {
       kh_btn.classList.add('kh_correct');
       kh_count++;
       console.log("kh_count value is " + kh_count);
-      if (kh_count == 1 || kh_count ==2) {
-        if (easyMode){
-          kh_buttonReset();
-          cipherSelecter++;
-          var correctButtonToAddMessage = String.fromCharCode(64 + correctButton[1]);
-          document.getElementById('kh_note_panel').innerHTML += correctButtonToAddMessage;
-          randomEasyCipherChosen();
-        } else if (mediumMode) {
-          kh_buttonReset();
-          cipherSelecter++;
-          var correctButtonToAddMessage = String.fromCharCode(64 + correctButton[1]);
-          document.getElementById('kh_note_panel').innerHTML += correctButtonToAddMessage;
-          randomMediumCipherChosen();
-        } else if (hardMode){
-          kh_buttonReset();
-          cipherSelecter++;
-          var correctButtonToAddMessage = String.fromCharCode(64 + correctButton[1]);
-          document.getElementById('kh_note_panel').innerHTML += correctButtonToAddMessage;
-          //randomHardCipherChosen();
+      if (easyMode || mediumMode) {
+        if (kh_count == 1 || kh_count ==2) {
+          if (easyMode){
+            kh_buttonReset();
+            cipherSelecter++;
+            var correctButtonToAddMessage = String.fromCharCode(64 + correctButton[1]);
+            document.getElementById('kh_note_panel').innerHTML += correctButtonToAddMessage;
+            randomEasyCipherChosen();
+          } else if (mediumMode) {
+            kh_buttonReset();
+            cipherSelecter++;
+            var correctButtonToAddMessage = String.fromCharCode(64 + correctButton[1]);
+            document.getElementById('kh_note_panel').innerHTML += correctButtonToAddMessage;
+            randomMediumCipherChosen();
+          } 
+        } else if(kh_count == 3) {
+          kh_finished();
         }
-          
-          
-      } else if(kh_count == 3) {
-        kh_finished();
+      } else if (hardMode){
+        if (kh_count ==1 || kh_count == 2 || kh_count ==3 || kh_count == 4 || kh_count ==5){
+          kh_buttonReset();
+          cipherSelecter++;
+          var correctButtonToAddMessage = String.fromCharCode(64+correctButton[1]);
+          document.getElementById('kh_note_panel').innerHTML += correctButtonToAddMessage;
+          randomHardCipherChosen();
+        } else if (kh_count ==6) {
+          kh_finished();
+        }
+
       }
+      
+      
     } else {
       remainingAttempts--;
       playerSccore -= (playerSccore*(1/5));
@@ -664,11 +758,11 @@ function kh_finished() {
   if (remainingAttempts == 0) {
     kh_msg.innerHTML = "You're out of tries! Play Again?";
     remainingAttempts = 5;
-  } else if (kh_count == 3){
+  } else if (kh_count == 3 || kh_count == 6){
     kh_msg.innerHTML = "You did it! You found the key! '\n'" + "hello";
 
   }
-  
+  clearInterval(kh_clearing);
   kh_promptPlayAgain();
 }
 function kh_promptPlayAgain() {
