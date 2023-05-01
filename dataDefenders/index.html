@@ -36,8 +36,10 @@
                     <td id="ddCrashes">0</td>
                 </tr>
             </table>
-            <button onclick="dd_createDoS()">DoS</button>
-            <button onclick="dd_createMalware()">MalwareAttack</button>
+            <button onclick="dd_createDoS(1)">DoS</button>
+            <button onclick="dd_createMalware(3)">MalwareAttack</button>            
+            <button onclick="dd_createInsiderIntrusion()">InsiderIntrusion</button>
+            <button onclick="dd_generateAttack()">RandomAttack</button>
         </div>
     </div>
     <div id="ddtaskbar" class="ddtaskbar">
@@ -217,69 +219,8 @@
         <div class="ddLogHead">
             <h1 class="ddServerLogHeader">Server Log <span id="ddservid">1</span></h1>
         </div>
-        <div class="ddlogTableContainer">
-            <table id="ddlogTable" class="ddlogTable">
-                <thead>
-                    <tr>
-                        <th>Date</th>
-                        <th>Time</th>
-                        <th>IP Address</th>
-                        <th>Request Method</th>
-                        <th>URL</th>
-                        <th>Status Code</th>
-                        <th>Download Speed</th>
-                        <th>Upload Speed</th>
-                        <th>System Calls</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr id="logRow1">
-                        <td id="date1">2023-04-07</td>
-                        <td id="time1">12:34:56</td>
-                        <td id="ip1">192.168.1.1</td>
-                        <td id="method1">GET</td>
-                        <td id="url1">/home</td>
-                        <td id="statusCode1">200</td>
-                        <td id="downloadSpeed1">1024 KB/s</td>
-                        <td id="uploadSpeed1">512 KB/s</td>
-                        <td id="systemCalls1">450</td>
-                    </tr>
-                    <tr id="logRow2">
-                        <td id="date2">2023-04-07</td>
-                        <td id="time2">13:45:12</td>
-                        <td id="ip2">192.168.1.2</td>
-                        <td id="method2">POST</td>
-                        <td id="url2">/contact</td>
-                        <td id="statusCode2">404</td>
-                        <td id="downloadSpeed2">512 KB/s</td>
-                        <td id="uploadSpeed2">256 KB/s</td>
-                        <td id="systemCalls2">500</td>
-                    </tr>
-                    <tr id="logRow3">
-                        <td id="date3">2023-04-07</td>
-                        <td id="time3">14:22:36</td>
-                        <td id="ip3">192.168.1.3</td>
-                        <td id="method3">GET</td>
-                        <td id="url3">/about</td>
-                        <td id="statusCode3">200</td>
-                        <td id="downloadSpeed3">2048 KB/s</td>
-                        <td id="uploadSpeed3">1024 KB/s</td>
-                        <td id="systemCalls3">600</td>
-                    </tr>
-                    <tr id="logRow4">
-                        <td id="date4">2023-04-07</td>
-                        <td id="time4">15:10:45</td>
-                        <td id="ip4">192.168.1.4</td>
-                        <td id="method4">GET</td>
-                        <td id="url5">/services</td>
-                        <td id="statusCode4">200</td>
-                        <td id="downloadSpeed4">4096 KB/s</td>
-                        <td id="uploadSpeed4">2048 KB/s</td>
-                        <td id="systemCalls4">800</td>
-
-                    </tr>
-                </tbody>
-            </table>
+        <div id = "ddlogTableContainer" class="ddlogTableContainer">
+            
         </div>
         <div class="ddBottomLogContainer">
             <div class="ddlogStatsContainer">
@@ -329,13 +270,59 @@
             </div>
         </div>
     </div>
-    <div id="ddcams" class="ddcams hide"></div>
+    <div id="ddcams" class="ddcams hide">
+        <div id="ddCamScreenWhole" class="ddCamScreenWhole">
+            <div id="screen1" class="screen1 ddIndivScreen">
+                <div class="ddIndivScreenTop">
+                    <div class="flash"></div>
+                    <div id="ddInsider1" class="ddInsider hide" onclick="ddToggleNametag()"></div>
+                </div>
+                <div class="ddIndivScreenBottom">Server 1</div>
+            </div>
+            <div id="screen2" class="ddIndivScreen">
+                <div class="ddIndivScreenTop">
+                    <div class="flash"></div>
+                    <div id="ddInsider2" class="ddInsider hide" onclick="ddToggleNametag()"></div>
+                </div>
+                <div class="ddIndivScreenBottom">Server 2</div>
+            </div>
+            <div id="screen3" class="ddIndivScreen">
+                <div class="ddIndivScreenTop">
+                    <div class="flash"></div>
+                    <div id="ddInsider3" class="ddInsider hide" onclick="ddToggleNametag()"></div>
+                </div>
+                <div class="ddIndivScreenBottom">Server 3</div>
+            </div>
+            <div id="screen4" class="ddIndivScreen">
+                <div class="ddIndivScreenTop">
+                    <div class="flash"></div>
+                    <div id="ddInsider4" class="ddInsider hide" onclick="ddToggleNametag()"></div>
+                </div>
+                <div class="ddIndivScreenBottom">Server 4</div>
+            </div>
+        </div>
+        <div id="ddNametag" class="ddNametag hide" onclick="ddToggleNametag()">
+            <h1 class="ddNametagGreeting"> Hello My Name is:</h1>
+            <div id="ddNametagName" class="ddNametagName"></div>
+            <div class="ddLowerNameTag">
+                <div class="ddRoleBox">
+                    <div class="ddRoleTagText">Role: </div>
+                    <div id="ddRoleTypeText" class="ddRoleTypeText"></div>
+                </div>
+                <div class="ddAccessLvlBox">
+                    <div class="ddAccessTagText">Access Level: </div>
+                    <div id="ddAccessTypeText" class="ddAccessTypeText"></div>
+                </div>
+            </div>
+        </div>
+    </div>
     <div id="ddreport" class="ddreport hide">
         <div id="ddReportType" class="ddReportType">
             <!-- ------------------------------------ -->
             <div class="ddReportTypesContainer">
                 <button onclick="createDoSForm()">DoS Attack</button>
                 <button onclick="createMalwareForm()">Malware Attack</button>
+                <button onclick="createInsiderForm()">Insider Intruder</button>
             </div>
         </div>
         <div id="ddReportFormContainer" class="ddReportFormContainer hide"></div>
@@ -364,17 +351,17 @@
     </div>
     <div id="ddNotes" class="ddNotes hide">
         <button class="ddNotesButtonClose" onclick="displayddNotes()">X</button>
-        <div class="ddNoteHeader">
-            <h1>Notebook</h1>
+        <div id="HeaderddNotes" class="ddDraggable ddNoteHeader">
+          <h1>Notebook</h1>
         </div>
         <div class="ddNotes__content">
-            <textarea class="ddNotes__textarea"></textarea>
+          <textarea class="ddNotes__textarea" onmousedown="startDrag()" onmouseup="startDrag()" onfocus="startDrag()" onblur="stopDrag()"></textarea>
         </div>
-    </div>
+      </div>
 
     <!-- New Content: Booklet-->
-    <div id="ddInfoBook" class="ddInfoBook hide">
-        <div class="bookHeader">
+    <div id="ddInfoBook" class="ddDraggable ddInfoBook hide">
+        <div id="HeaderddInfoBook" class="ddDraggable bookHeader">
             <h1>Help Book</h1>
             <button class="ddInfoButtonClose" onclick="displayInfoBooklet()">Close</button>
         </div>
