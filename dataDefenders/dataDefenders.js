@@ -1,3 +1,35 @@
+var ddOpenScreen = document.getElementById("ddOpenScreen");
+const ddtabList = [
+    "ddwebsitesList",
+    "ddServerRoom",
+    "ddcams",
+    "ddreport",
+    "ddMsg",
+];
+const ddTabs = ddtabList.map((id) => document.getElementById(id));
+var placeholder;
+
+function ddOpenTab(tab) {
+    if (placeholder == tab) {
+        ddOpenScreen.classList.remove("hide");
+        placeholder = ddOpenScreen;
+    } else {
+        ddOpenScreen.classList.add("hide");
+        ddTabs.forEach((tabs) => {
+            if (!tabs.classList.contains("hide")) {
+                tabs.classList.add("hide");
+            }
+        });
+        ddTabs.forEach((tabs) => {
+            if (tabs.classList.contains(tab)) {
+                tabs.classList.remove("hide");
+                placeholder = tab;
+            }
+        });
+    }
+    if (tab == "Day Over") { ddOpenScreen.classList.remove("hide"); }
+}
+
 var ddhourDisplay = document.getElementById("ddhour");
 var ddminDisplay = document.getElementById("ddminute");
 var ddDayHalf = document.getElementById("ddDayHalf");
@@ -13,8 +45,16 @@ var ddWeatherDesc = document.getElementById("ddWeatherDesc");
 var hourCount = 9;
 var minuteCount = 0;
 var dayhalf = "AM";
-var dayCount = 1;
+var dayCount = 0;
 var dayTotalMinutes = 0;
+
+var fixes = parseInt(document.getElementById('ddSaves').innerText);
+console.log(fixes);
+
+function updateFixes(){
+    fixes++;
+    document.getElementById('ddSaves').innerText = fixes;
+}
 
 var daySpeed = 1000;
 var boolFast = false;
@@ -42,7 +82,7 @@ function fastForward() {
     }
     dayInt();
 }
-dayInt();
+
 
 function dayInt() {
     clearInterval(ddDayInterval);
@@ -93,13 +133,16 @@ function setDisabledState(isDisabled) {
         document.getElementById(button).disabled = isDisabled;
     });
 }
-
+ddDayOver();
 function ddDayOver() {
     ddOpenTab("Day Over");
     setDisabledState(true);
+    dayTotalMinutes = 0;
     //show shop
     //see if another website can join and give a percentage chance that they will join base on reputation (maybe reputation/2 so it isn't too common)
 }
+
+var attackTimes;
 
 function ddStartNewDay() {
     //hide shop
@@ -107,6 +150,7 @@ function ddStartNewDay() {
     hourCount = 9;
     dayCount++;
     dayhalf = "AM";
+    attackTimes = getAttackTimes();
     ddDisplayNewWeatherReport();
     dayInt();
 }
@@ -133,7 +177,12 @@ function changeMoney() {
 //calculate Reputation after Form Submission
 var reputation = parseInt(document.getElementById("ddRep").innerText);
 function formReputationChange(formPercentage){
-    if(formPercentage==null){reputation -= 25}
+    if(formPercentage==null){
+        reputation -= 25
+        if(reputation < 0){
+            reputation = 0;
+        }
+    }
     else{reputation = Math.round((reputation+formPercentage)/2);}
     document.getElementById("ddRep").innerText=reputation;
 }
@@ -341,37 +390,8 @@ function updateMonitor() {
     });
 }
 
-var ddOpenScreen = document.getElementById("ddOpenScreen");
-const ddtabList = [
-    "ddwebsitesList",
-    "ddServerRoom",
-    "ddcams",
-    "ddreport",
-    "ddMsg",
-];
-const ddTabs = ddtabList.map((id) => document.getElementById(id));
-var placeholder;
 
-function ddOpenTab(tab) {
-    if (placeholder == tab) {
-        ddOpenScreen.classList.remove("hide");
-        placeholder = ddOpenScreen;
-    } else {
-        ddOpenScreen.classList.add("hide");
-        ddTabs.forEach((tabs) => {
-            if (!tabs.classList.contains("hide")) {
-                tabs.classList.add("hide");
-            }
-        });
-        ddTabs.forEach((tabs) => {
-            if (tabs.classList.contains(tab)) {
-                tabs.classList.remove("hide");
-                placeholder = tab;
-            }
-        });
-    }
-    if (tab == "Day Over") { ddOpenScreen.classList.remove("hide"); }
-}
+
 // Define an array of objects with website information
 const websites = [
     {
@@ -968,7 +988,7 @@ function dd_generateAttack() {
         }
     }
     else{
-
+        formReputationChange(null);
     }
 }
 //
@@ -1593,6 +1613,7 @@ function createDoSForm() {
                                 ddServState[serverStatIndex - 1] = 0;
                                 ddAttackCount--;
                                 ddAttackArray[0] = 0;
+                                updateFixes();
                             }
                         });
                         ddDoSArray.attackID = null;
@@ -1849,6 +1870,7 @@ function createMalwareForm() {
                                 ddServState[serverStatIndex - 1] = 0;
                                 ddAttackCount--;
                                 ddAttackArray[1] = 0;
+                                updateFixes();
                             }
                         });
                         ddMalwareArray.attackID = null;
@@ -2138,6 +2160,7 @@ function createInsiderForm() {
                                 ddInsiderArray.accessLevel = null;
                                 ddAttackCount--;
                                 ddAttackArray[2] = 0;
+                                updateFixes();
                                 createWebsiteTable();
                             }
                             else {
