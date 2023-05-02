@@ -47,6 +47,7 @@ function dayInt() {
     clearInterval(ddDayInterval);
     ddDayInterval = setInterval(function () {
         minuteCount++;
+        if (minuteCount%30==0) {changeMoney();}
         if (minuteCount == 60) {
             minuteCount = 0;
             hourCount++;
@@ -57,14 +58,51 @@ function dayInt() {
                 hourCount = 1;
             }
             if (hourCount == 5) {
-                hourCount = 9;
-                dayCount++;
-                dayhalf = "AM";
-                ddDisplayNewWeatherReport();
+                clearInterval(ddDayInterval);
+                ddDayOver();
             }
         }
         ddSetDateAndTime();
     }, daySpeed);
+}
+
+function setDisabledState(isDisabled) {
+    const buttons = ['ddOpenWeb', 'ddOpenServer', 'ddOpenReport', 'ddOpenCams', 'ddOpenMsg', 'ddFastFwd'];
+    buttons.forEach((button) => {
+        document.getElementById(button).disabled = isDisabled;
+    });
+}
+
+function ddDayOver() {
+    ddOpenTab("Day Over");
+    setDisabledState(true);
+}
+
+function ddStartNewDay() {
+    setDisabledState(false);
+    hourCount = 9;
+    dayCount++;
+    dayhalf = "AM";
+    ddDisplayNewWeatherReport();
+    dayInt();
+}
+
+//Add money
+var money = parseInt(document.getElementById("ddMoney").innerText);
+
+function changeMoney() {
+    var temp = 0;
+    websites.forEach(function (element) {
+        if (element.webStatus == 0) {
+            temp += 5000;
+        }
+        if (element.webStatus == 2) {
+            temp -= 362;
+        }
+    });
+    console.log(money, "+", temp)
+    money += temp;
+    document.getElementById("ddMoney").innerText = money;
 }
 
 function ddSetDateAndTime() {
@@ -299,6 +337,7 @@ function ddOpenTab(tab) {
             }
         });
     }
+    if (tab == "Day Over") { ddOpenScreen.classList.remove("hide"); }
 }
 // Define an array of objects with website information
 const websites = [
@@ -907,26 +946,6 @@ function turnPageDown() {
         document.getElementById("C" + current_page).classList.remove("hide");
     }
 }
-
-//Add money
-var money = 0;
-document.getElementById("ddMoney").innerText = money;
-
-function changeMoney() {
-    var temp = 0;
-    ddServState.forEach(function (element) {
-        if (element == 0) {
-            temp += 5000;
-        }
-        if (element == 2) {
-            temp -= 362;
-        }
-    });
-    money += temp;
-    document.getElementById("ddMoney").innerText = money;
-}
-
-setInterval(changeMoney, 5000);
 
 var ddAttackCount = 0;
 //New

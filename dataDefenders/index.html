@@ -21,25 +21,57 @@
                 </tr>
                 <tr>
                     <td>Money:</td>
-                    <td>$<span id="ddMoney"></span></td>
+                    <td>$<span id="ddMoney">0</span></td>
                 </tr>
                 <tr>
                     <td>Websites:</td>
                     <td id="ddNumWebsites">0</td>
                 </tr>
                 <tr>
-                    <td>Saves: </td>
+                    <td>Fixes: </td>
                     <td id="ddSaves">0</td>
                 </tr>
                 <tr>
                     <td>Crashes: </td>
                     <td id="ddCrashes">0</td>
                 </tr>
+                <tr>
+                    <td>Reputation: </td>
+                    <td id="ddRep">0</td>
+                </tr>
+            </table>
+            <table class="ddServerTableDisplay">
+                <tr>
+                    <th>Server ID: </th>
+                    <th>Space</th>
+                    <th>Hosting</th>
+                </tr>
+                <tr>
+                    <td>Server 1: </td>
+                    <td id="ddServ1Space">2</td>
+                    <td id="ddServ1Host">2</td>
+                </tr>
+                <tr>
+                    <td>Server 2: </td>
+                    <td id="ddServ2Space">2</td>
+                    <td id="ddServ2Host">2</td>
+                </tr>
+                <tr>
+                    <td>Server 3: </td>
+                    <td id="ddServ3Space">2</td>
+                    <td id="ddServ3Host">2</td>
+                </tr>
+                <tr>
+                    <td>Server 4: </td>
+                    <td id="ddServ4Space">2</td>
+                    <td id="ddServ4Host">2</td>
+                </tr>
             </table>
             <button onclick="dd_createDoS(1)">DoS</button>
             <button onclick="dd_createMalware(3)">MalwareAttack</button>            
             <button onclick="dd_createInsiderIntrusion()">InsiderIntrusion</button>
             <button onclick="dd_generateAttack()">RandomAttack</button>
+            <button onclick="ddStartNewDay()">Start New Day</button>
         </div>
     </div>
     <div id="ddtaskbar" class="ddtaskbar">
@@ -57,13 +89,13 @@
             </div>
         </div>
         <div class="ddMiddleTaskBar">
-            <button class="ddTaskBtn ddTaskBtnHome"><i class="fa fa-home" aria-hidden="true"></i></button>
-            <button class="ddTaskBtn" onclick="ddOpenTab('ddwebsitesList')">Websites</button>
-            <button class="ddTaskBtn" onclick="ddOpenTab('ddServerRoom')">Servers</button>
-            <button class="ddTaskBtn ddTaskBtnReport" onclick="ddOpenTab('ddreport')">Report</button>
-            <button class="ddTaskBtn" onclick="ddOpenTab('ddcams')">Sec. Cams</button>
-            <button class="ddTaskBtn" onclick="ddOpenTab('ddMsg')">Messages</button>
-            <button class="ddTaskBtn" onclick="fastForward()"><i id="ddFastFowardBtn" class="fa fa-fast-forward"
+            <button id="ddHome" class="ddTaskBtn ddTaskBtnHome"><i class="fa fa-home" aria-hidden="true"></i></button>
+            <button id="ddOpenWeb" class="ddTaskBtn" onclick="ddOpenTab('ddwebsitesList')">Websites</button>
+            <button id="ddOpenServer" class="ddTaskBtn" onclick="ddOpenTab('ddServerRoom')">Servers</button>
+            <button id="ddOpenReport" class="ddTaskBtn ddTaskBtnReport" onclick="ddOpenTab('ddreport')">Report</button>
+            <button id="ddOpenCams" class="ddTaskBtn" onclick="ddOpenTab('ddcams')">Sec. Cams</button>
+            <button id="ddOpenMsg" class="ddTaskBtn" onclick="ddOpenTab('ddMsg')">Messages</button>
+            <button id="ddFastFwd" class="ddTaskBtn" onclick="fastForward()"><i id="ddFastFowardBtn" class="fa fa-fast-forward"
                     aria-hidden="true"></i></button>
         </div>
         <div class="ddRightTaskBar">
