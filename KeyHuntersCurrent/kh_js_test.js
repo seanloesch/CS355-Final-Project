@@ -494,7 +494,7 @@ function GeneratePolybiusCipher(plainTextPrompt){
 }
 
 
-
+// ---------------------------- main game loop for  guessing write or wrong answer ---------------------- //
 function kh_running() {
   const kh_buttons = document.getElementsByClassName("khBtn");
   const kh_buttonPressed = kh_e => {
@@ -544,8 +544,11 @@ function kh_running() {
       
       
     } else {
+      if (isCaeser) {
+        document.getElementById('kh_msg_panel').innerHTML = "A Caeser cipher is when you take the selected coordinate and shift it by the given value";
+      }
       remainingAttempts--;
-      playerSccore -= (playerSccore*(1/5));
+      playerSccore -= Math.round((playerSccore*(1/5)));
       if (remainingAttempts == 0) {
         kh_finished();
        

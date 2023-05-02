@@ -10,6 +10,10 @@ body{
     min-width: fit-content;
 }
 
+.kh_msg_panel {
+    width:inherit;
+    height: inherit;
+}
 
 
 .kh_categories_buttons {
