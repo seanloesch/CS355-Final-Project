@@ -14,6 +14,7 @@ var hourCount = 9;
 var minuteCount = 0;
 var dayhalf = "AM";
 var dayCount = 1;
+var dayTotalMinutes = 0;
 
 var daySpeed = 1000;
 var boolFast = false;
@@ -47,6 +48,13 @@ function dayInt() {
     clearInterval(ddDayInterval);
     ddDayInterval = setInterval(function () {
         minuteCount++;
+        dayTotalMinutes++;
+        for(var i = 0; i <= attackTimes.length; i++){
+            if(dayTotalMinutes == attackTimes[i])
+            {
+                dd_generateAttack();
+            }
+        }
         if (minuteCount % 30 == 0) { changeMoney(); }
         if (minuteCount == 60) {
             minuteCount = 0;
@@ -64,6 +72,19 @@ function dayInt() {
         }
         ddSetDateAndTime();
     }, daySpeed);
+}
+
+function getAttackTimes(){
+    var howMany = Math.floor(Math.random() * 3) + 1;
+    var T1 = Math.floor(Math.random() * 160) + 1;
+    if(howMany > 1){
+    var T2 = Math.floor(Math.random() * 160) + 161;
+    }
+    if(howMany > 2){
+    var T3 = Math.floor(Math.random() * 80) + 321;
+    }
+    var times = [T1, T2, T3]
+    return times
 }
 
 function setDisabledState(isDisabled) {
@@ -920,10 +941,10 @@ function turnPageDown() {
 
 var ddAttackCount = 0;
 //New
-var ddAttackArray = [0, 0];
+var ddAttackArray = [0, 0, 0];
 
 function dd_generateAttack() {
-    if (ddAttackCount < 2) {
+    if (ddAttackCount < 3) {
         var tempAttack;
         var tempServer;
         do {
@@ -940,8 +961,14 @@ function dd_generateAttack() {
             case 1:
                 dd_createMalware(tempServer + 1);
                 break;
+            case 2:
+                dd_createInsiderIntrusion(tempServer + 1);
+                break;
             default:
         }
+    }
+    else{
+
     }
 }
 //
@@ -1117,39 +1144,41 @@ var ddInsiderArray = {
     staffRole: null,
     accessLevel: null,
 };
-function dd_createInsiderIntrusion() {
-    if (ddAttackCount != 2 && ddInsiderArray.attackID == null) {
-        ddInsiderArray.attackID = ddAttackCount;
-        //The websiteDomain will be passed inside dd_createInsiderIntrusion(id) but for now it is random
+
+function dd_createInsiderIntrusion(server) {
+    ddInsiderArray.attackID = ddAttackCount;
+
+    do {
         var ddTempAttackedWebsite = websites[Math.floor(Math.random() * websites.length)];
+    } while (ddTempAttackedWebsite.serverID != server);
+    
+    var ddWebsiteOwnder = ddTempAttackedWebsite.name
+    ddInsiderArray.attackedwebsite = ddTempAttackedWebsite.domain;
+    ddInsiderArray.serverNumber = ddTempAttackedWebsite.serverID;
+    var insiderInfo = insiders[Math.floor(Math.random() * insiders.length)];
+    ddInsiderArray.staffName = insiderInfo.ddUsernameInsider;
+    ddInsiderArray.staffRole = insiderInfo.ddRoleInsider;
+    ddInsiderArray.accessLevel = insiderInfo.ddAccessLevelInsider;
 
-        var ddWebsiteOwnder = ddTempAttackedWebsite.name
-        ddInsiderArray.attackedwebsite = ddTempAttackedWebsite.domain;
-        ddInsiderArray.serverNumber = ddTempAttackedWebsite.serverID;
-        var insiderInfo = insiders[Math.floor(Math.random() * insiders.length)];
-        ddInsiderArray.staffName = insiderInfo.ddUsernameInsider;
-        ddInsiderArray.staffRole = insiderInfo.ddRoleInsider;
-        ddInsiderArray.accessLevel = insiderInfo.ddAccessLevelInsider;
+    console.log(ddInsiderArray)
 
-        console.log(ddInsiderArray)
+    ddTempAttackedWebsite.webStatus = 2;
+    createWebsiteTable();
+    var ddInsiderSecurityCamera = document.getElementById(`ddInsider${ddInsiderArray.serverNumber}`)
+    ddInsiderSecurityCamera.classList.remove('hide');
+    document.getElementById('ddNametagName').innerText = ddInsiderArray.staffName;
+    document.getElementById('ddRoleTypeText').innerText = ddInsiderArray.staffRole;
+    document.getElementById('ddAccessTypeText').innerText = ddInsiderArray.accessLevel;
 
-        ddTempAttackedWebsite.webStatus = 2;
-        createWebsiteTable();
-        var ddInsiderSecurityCamera = document.getElementById(`ddInsider${ddInsiderArray.serverNumber}`)
-        ddInsiderSecurityCamera.classList.remove('hide');
-        document.getElementById('ddNametagName').innerText = ddInsiderArray.staffName;
-        document.getElementById('ddRoleTypeText').innerText = ddInsiderArray.staffRole;
-        document.getElementById('ddAccessTypeText').innerText = ddInsiderArray.accessLevel;
-
-        ddAttackCount++;
-        addMessage(
-            ddWebsiteOwnder,
-            ddReturnDayAndTime(),
-            ddInsiderArray.attackedwebsite,
-            ddWebsiteDataLeak[Math.floor(Math.random() * ddWebsiteDataLeak.length)]
-        );
-    }
+    ddAttackCount++;
+    addMessage(
+        ddWebsiteOwnder,
+        ddReturnDayAndTime(),
+        ddInsiderArray.attackedwebsite,
+        ddWebsiteDataLeak[Math.floor(Math.random() * ddWebsiteDataLeak.length)]
+    );
 }
+
 function ddToggleNametag() {
     document.getElementById("ddCamScreenWhole").classList.toggle("hide");
     document.getElementById("ddNametag").classList.toggle("hide");
@@ -1563,6 +1592,7 @@ function createDoSForm() {
                                 website.webStatus = 0
                                 ddServState[serverStatIndex - 1] = 0;
                                 ddAttackCount--;
+                                ddAttackArray[0] = 0;
                             }
                         });
                         ddDoSArray.attackID = null;
@@ -1818,6 +1848,7 @@ function createMalwareForm() {
                                 website.webStatus = 0
                                 ddServState[serverStatIndex - 1] = 0;
                                 ddAttackCount--;
+                                ddAttackArray[1] = 0;
                             }
                         });
                         ddMalwareArray.attackID = null;
@@ -2106,6 +2137,7 @@ function createInsiderForm() {
                                 ddInsiderArray.staffRole = null;
                                 ddInsiderArray.accessLevel = null;
                                 ddAttackCount--;
+                                ddAttackArray[2] = 0;
                                 createWebsiteTable();
                             }
                             else {
