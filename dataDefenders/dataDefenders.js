@@ -76,9 +76,12 @@ function setDisabledState(isDisabled) {
 function ddDayOver() {
     ddOpenTab("Day Over");
     setDisabledState(true);
+    //show shop
+    //see if another website can join and give a percentage chance that they will join base on reputation (maybe reputation/2 so it isn't too common)
 }
 
 function ddStartNewDay() {
+    //hide shop
     setDisabledState(false);
     hourCount = 9;
     dayCount++;

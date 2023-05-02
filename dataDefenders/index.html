@@ -14,65 +14,64 @@
 <body>
     <div id="ddOpenScreen" class="ddOpenScreen">
         <div class="ddhome">
-            <table class="ddScoresDisplay">
-                <tr>
-                    <th>Welcome: </th>
-                    <th id="ddUsername"></th>
-                </tr>
-                <tr>
-                    <td>Money:</td>
-                    <td>$<span id="ddMoney">0</span></td>
-                </tr>
-                <tr>
-                    <td>Websites:</td>
-                    <td id="ddNumWebsites">0</td>
-                </tr>
-                <tr>
-                    <td>Fixes: </td>
-                    <td id="ddSaves">0</td>
-                </tr>
-                <tr>
-                    <td>Crashes: </td>
-                    <td id="ddCrashes">0</td>
-                </tr>
-                <tr>
-                    <td>Reputation: </td>
-                    <td id="ddRep">0</td>
-                </tr>
-            </table>
-            <table class="ddServerTableDisplay">
-                <tr>
-                    <th>Server ID: </th>
-                    <th>Space</th>
-                    <th>Hosting</th>
-                </tr>
-                <tr>
-                    <td>Server 1: </td>
-                    <td id="ddServ1Space">2</td>
-                    <td id="ddServ1Host">2</td>
-                </tr>
-                <tr>
-                    <td>Server 2: </td>
-                    <td id="ddServ2Space">2</td>
-                    <td id="ddServ2Host">2</td>
-                </tr>
-                <tr>
-                    <td>Server 3: </td>
-                    <td id="ddServ3Space">2</td>
-                    <td id="ddServ3Host">2</td>
-                </tr>
-                <tr>
-                    <td>Server 4: </td>
-                    <td id="ddServ4Space">2</td>
-                    <td id="ddServ4Host">2</td>
-                </tr>
-            </table>
-            <button onclick="dd_createDoS(1)">DoS</button>
-            <button onclick="dd_createMalware(3)">MalwareAttack</button>            
-            <button onclick="dd_createInsiderIntrusion()">InsiderIntrusion</button>
-            <button onclick="dd_generateAttack()">RandomAttack</button>
-            <button onclick="ddStartNewDay()">Start New Day</button>
+            <div class="ddHomeTables">
+                <table class="ddScoresDisplay">
+                    <tr>
+                        <th>Welcome: </th>
+                        <th id="ddUsername"></th>
+                    </tr>
+                    <tr>
+                        <td>Money:</td>
+                        <td>$<span id="ddMoney">0</span></td>
+                    </tr>
+                    <tr>
+                        <td>Daily Pay:</td>
+                        <td>$<span id="ddDailyPayEstimate">0</span></td>
+                    </tr>
+                    <tr>
+                        <td>Fixes: </td>
+                        <td id="ddSaves">0</td>
+                    </tr>
+                    <tr>
+                        <td>Reputation: </td>
+                        <td id="ddRep">100</td>
+                    </tr>
+                </table>
+                <table class="ddServerTableDisplay">
+                    <tr>
+                        <th>Server ID: </th>
+                        <th>Space</th>
+                        <th>Hosting</th>
+                    </tr>
+                    <tr>
+                        <td>Server 1: </td>
+                        <td id="ddServ1Space">1</td>
+                        <td id="ddServ1Host">1</td>
+                    </tr>
+                    <tr>
+                        <td>Server 2: </td>
+                        <td id="ddServ2Space">1</td>
+                        <td id="ddServ2Host">1</td>
+                    </tr>
+                    <tr>
+                        <td>Server 3: </td>
+                        <td id="ddServ3Space">1</td>
+                        <td id="ddServ3Host">1</td>
+                    </tr>
+                    <tr>
+                        <td>Server 4: </td>
+                        <td id="ddServ4Space">1</td>
+                        <td id="ddServ4Host">1</td>
+                    </tr>
+                </table>
+                <button onclick="dd_createDoS(1)">DoS</button>
+                <button onclick="dd_createMalware(3)">MalwareAttack</button>
+                <button onclick="dd_createInsiderIntrusion()">InsiderIntrusion</button>
+                <button onclick="dd_generateAttack()">RandomAttack</button>
+                <button onclick="ddStartNewDay()">Start New Day</button>
+            </div>
         </div>
+        <div class="ddShop">Shop is here</div>
     </div>
     <div id="ddtaskbar" class="ddtaskbar">
         <div class="ddLeftTaskBar">
@@ -95,8 +94,8 @@
             <button id="ddOpenReport" class="ddTaskBtn ddTaskBtnReport" onclick="ddOpenTab('ddreport')">Report</button>
             <button id="ddOpenCams" class="ddTaskBtn" onclick="ddOpenTab('ddcams')">Sec. Cams</button>
             <button id="ddOpenMsg" class="ddTaskBtn" onclick="ddOpenTab('ddMsg')">Messages</button>
-            <button id="ddFastFwd" class="ddTaskBtn" onclick="fastForward()"><i id="ddFastFowardBtn" class="fa fa-fast-forward"
-                    aria-hidden="true"></i></button>
+            <button id="ddFastFwd" class="ddTaskBtn" onclick="fastForward()"><i id="ddFastFowardBtn"
+                    class="fa fa-fast-forward" aria-hidden="true"></i></button>
         </div>
         <div class="ddRightTaskBar">
             <i class="taskdetail fa fa-chevron-up" aria-hidden="true"></i>
@@ -251,8 +250,8 @@
         <div class="ddLogHead">
             <h1 class="ddServerLogHeader">Server Log <span id="ddservid">1</span></h1>
         </div>
-        <div id = "ddlogTableContainer" class="ddlogTableContainer">
-            
+        <div id="ddlogTableContainer" class="ddlogTableContainer">
+
         </div>
         <div class="ddBottomLogContainer">
             <div class="ddlogStatsContainer">
@@ -384,12 +383,13 @@
     <div id="ddNotes" class="ddNotes hide">
         <button class="ddNotesButtonClose" onclick="displayddNotes()">X</button>
         <div id="HeaderddNotes" class="ddDraggable ddNoteHeader">
-          <h1>Notebook</h1>
+            <h1>Notebook</h1>
         </div>
         <div class="ddNotes__content">
-          <textarea class="ddNotes__textarea" onmousedown="startDrag()" onmouseup="startDrag()" onfocus="startDrag()" onblur="stopDrag()"></textarea>
+            <textarea class="ddNotes__textarea" onmousedown="startDrag()" onmouseup="startDrag()" onfocus="startDrag()"
+                onblur="stopDrag()"></textarea>
         </div>
-      </div>
+    </div>
 
     <!-- New Content: Booklet-->
     <div id="ddInfoBook" class="ddDraggable ddInfoBook hide">

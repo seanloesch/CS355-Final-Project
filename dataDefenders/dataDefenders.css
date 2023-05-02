@@ -9,6 +9,7 @@ body {
     width: 100vw;
     background-image: url("img/ddHomescreen.png");
     background-size: cover;
+    display: flex;
     overflow: hidden;
 }
 
@@ -48,6 +49,10 @@ body {
 
 .ddServerTableDisplay td {
     font-size: .9rem;
+}
+.ddShop{
+    color: lime;
+    margin-left: 50%;
 }
 
 .ddtaskbar {
