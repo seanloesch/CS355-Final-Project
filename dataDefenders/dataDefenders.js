@@ -94,10 +94,10 @@ function changeMoney() {
     var temp = 0;
     websites.forEach(function (element) {
         if (element.webStatus == 0) {
-            temp += 5000;
+            temp += element.pay;
         }
         if (element.webStatus == 2) {
-            temp -= 362;
+            temp -= element.pay;
         }
     });
     console.log(money, "+", temp)
@@ -342,49 +342,54 @@ function ddOpenTab(tab) {
 // Define an array of objects with website information
 const websites = [
     {
-        name: "Website 1",
-        domain: "www.website1.com",
-        path: "/var/www/website1",
+        name: "SecureArcade",
+        domain: "www.securearcade.com",
+        path: "/var/www/securearcade",
         ipAddress: "192.168.1.1",
         serverSoftware: "Apache",
         serverID: "1",
         webStatus: 0,
+        pay:10
     },
     {
-        name: "Website 2",
-        domain: "www.website2.com",
-        path: "/var/www/website2",
-        ipAddress: "192.168.1.2",
-        serverSoftware: "Nginx",
-        serverID: "2",
-        webStatus: 0,
-    },
-    {
-        name: "Website 3",
-        domain: "www.website3.com",
-        path: "/var/www/website3",
-        ipAddress: "192.168.1.3",
+        name: "Targart",
+        domain: "www.targart.com",
+        path: "/var/www/targart",
+        ipAddress: "192.168.1.1",
         serverSoftware: "Apache",
+        serverID: "1",
+        webStatus: 0,
+        pay:13
+    },
+    {
+        name: "Copsi",
+        domain: "www.copsi.com",
+        path: "/var/www/copsi",
+        ipAddress: "192.168.1.3",
+        serverSoftware: "Nginx",
         serverID: "3",
         webStatus: 0,
+        pay:25
     },
     {
-        name: "Website 4",
-        domain: "www.website4.com",
-        path: "/var/www/website4",
+        name: "Cool Gamez",
+        domain: "www.coolgamez.com",
+        path: "/var/www/coolgamez",
         ipAddress: "192.168.1.4",
         serverSoftware: "Apache",
         serverID: "4",
         webStatus: 0,
+        pay:5
     },
     {
         name: "Ben",
         domain: "www.ben.com",
         path: "/var/www/ben",
         ipAddress: "192.168.1.5",
-        serverSoftware: "Apache",
+        serverSoftware: "Nginx",
         serverID: "1",
         webStatus: 0,
+        pay:11
     },
     {
         name: "Ryan",
@@ -394,6 +399,7 @@ const websites = [
         serverSoftware: "Apache",
         serverID: "3",
         webStatus: 0,
+        pay:17
     },
     {
         name: "Jordan",
@@ -403,6 +409,7 @@ const websites = [
         serverSoftware: "Apache",
         serverID: "4",
         webStatus: 0,
+        pay:13
     },
     {
         name: "Sean",
@@ -412,6 +419,7 @@ const websites = [
         serverSoftware: "Apache",
         serverID: "1",
         webStatus: 0,
+        pay:10
     },
     {
         name: "Jacob",
@@ -421,6 +429,7 @@ const websites = [
         serverSoftware: "Apache",
         serverID: "3",
         webStatus: 0,
+        pay:7
     },
 ];
 

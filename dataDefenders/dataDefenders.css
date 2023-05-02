@@ -39,7 +39,7 @@ body {
 }
 .ddServerTableDisplay th,
 .ddServerTableDisplay td {
-    text-align: left;
+    text-align: center;
     background-color: #191919;
     padding: 8px;
     border: 1px solid lime;
