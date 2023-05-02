@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="dataDefenders.css" rel="stylesheet">
+    <script defer src="dataDefenders.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="ddOpenScreen" class="ddOpenScreen">
+        <div class="ddhome">
+            <div class="ddHomeTables">
+                <table class="ddScoresDisplay">
+                    <tr>
+                        <th>Welcome: </th>
+                        <th id="ddUsername"></th>
+                    </tr>
+                    <tr>
+                        <td>Money:</td>
+                        <td>$<span id="ddMoney">0</span></td>
+                    </tr>
+                    <tr>
+                        <td>Daily Pay:</td>
+                        <td>$<span id="ddDailyPayEstimate">0</span></td>
+                    </tr>
+                    <tr>
+                        <td>Fixes: </td>
+                        <td id="ddSaves">0</td>
+                    </tr>
+                    <tr>
+                        <td>Reputation: </td>
+                        <td id="ddRep">100</td>
+                    </tr>
+                </table>
+                <table class="ddServerTableDisplay">
+                    <tr>
+                        <th>Server ID: </th>
+                        <th>Space</th>
+                        <th>Hosting</th>
+                    </tr>
+                    <tr>
+                        <td>Server 1: </td>
+                        <td id="ddServ1Space">1</td>
+                        <td id="ddServ1Host">1</td>
+                    </tr>
+                    <tr>
+                        <td>Server 2: </td>
+                        <td id="ddServ2Space">1</td>
+                        <td id="ddServ2Host">1</td>
+                    </tr>
+                    <tr>
+                        <td>Server 3: </td>
+                        <td id="ddServ3Space">1</td>
+                        <td id="ddServ3Host">1</td>
+                    </tr>
+                    <tr>
+                        <td>Server 4: </td>
+                        <td id="ddServ4Space">1</td>
+                        <td id="ddServ4Host">1</td>
+                    </tr>
+                </table>
+                <button onclick="dd_createDoS(1)">DoS</button>
+                <button onclick="dd_createMalware(3)">MalwareAttack</button>
+                <button onclick="dd_createInsiderIntrusion()">InsiderIntrusion</button>
+                <button onclick="dd_generateAttack()">RandomAttack</button>
+                <button onclick="ddStartNewDay()">Start New Day</button>
+            </div>
+        </div>
+        <div class="ddShop">Shop is here</div>
+    </div>
+    <div id="ddtaskbar" class="ddtaskbar">
+        <div class="ddLeftTaskBar">
+            <div class="ddWIcons">
+                <div id="ddSunny" class="ddSunny hide"><i class="ddSun fa fa-sun-o" aria-hidden="true"></i></div>
+                <div id="ddCloudy" class="ddCloudy hide"><i class="ddCloud fa fa-cloud" aria-hidden="true"></i>
+                </div>
+                <div id="ddRainy" class="ddRainy hide"><i class="ddRain fa fa-tint" aria-hidden="true"></i>
+                </div>
+            </div>
+            <div class="ddtempAndDesc">
+                <div class="ddTempurature"><span id="ddTemp"></span><span>&#176;F</span></div>
+                <div id="ddWeatherDesc" class="ddWeatherDesc"></div>
+            </div>
+        </div>
+        <div class="ddMiddleTaskBar">
+            <button id="ddHome" class="ddTaskBtn ddTaskBtnHome"><i class="fa fa-home" aria-hidden="true"></i></button>
+            <button id="ddOpenWeb" class="ddTaskBtn" onclick="ddOpenTab('ddwebsitesList')">Websites</button>
+            <button id="ddOpenServer" class="ddTaskBtn" onclick="ddOpenTab('ddServerRoom')">Servers</button>
+            <button id="ddOpenReport" class="ddTaskBtn ddTaskBtnReport" onclick="ddOpenTab('ddreport')">Report</button>
+            <button id="ddOpenCams" class="ddTaskBtn" onclick="ddOpenTab('ddcams')">Sec. Cams</button>
+            <button id="ddOpenMsg" class="ddTaskBtn" onclick="ddOpenTab('ddMsg')">Messages</button>
+            <button id="ddFastFwd" class="ddTaskBtn" onclick="fastForward()"><i id="ddFastFowardBtn"
+                    class="fa fa-fast-forward" aria-hidden="true"></i></button>
+        </div>
+        <div class="ddRightTaskBar">
+            <i class="taskdetail fa fa-chevron-up" aria-hidden="true"></i>
+            <i class="taskdetail fa fa-wifi"></i>
+            <i class="taskdetail fa fa-volume-up" aria-hidden="true"></i>
+            <i class="taskdetail fa fa-battery-three-quarters" aria-hidden="true"></i>
+            <div class="ddDateAndTimeTask">
+                <div class="ddTime"><span id="ddhour">9</span>:<span id="ddminute">00</span> <span
+                        id="ddDayHalf">AM</span></div>
+                <div class="ddDate">Day <span id="ddDayCount">001</span></div>
+            </div>
+            <i class="fa fa-bell-o" aria-hidden="true"></i>
+        </div>
+    </div>
+    <div id="ddwebsitesList" class="ddwebsitesList hide">
+        <table id="ddWebsitesTable" class="ddWebsitesTable">
+            <thead>
+                <tr>
+                    <th>Status</th>
+                    <th>Website Name</th>
+                    <th>Domain Name</th>
+                    <th>Directory Path</th>
+                    <th>IP Address</th>
+                    <th>Server Software</th>
+                    <th>Server ID</th>
+                    <th>Files</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+        <div id="ddWebFiles" class="ddWebFiles hide">
+            <div class="ddWebFileExit"><button class="ddwebTableBack" onclick="ddBackToWebTable()">X</button></div>
+            <div id="ddWebFilesList" class="ddWebFilesList">
+                <p><span>&#x1F4C1;</span><span id="ddWebFileName1">index</span><span>.html</span></p>
+                <p><span>&#x1F4C1;</span><span id="ddWebFileName2">index</span><span>.css</span></p>
+                <p><span>&#x1F4C1;</span><span id="ddWebFileName3">index</span><span>.js</span></p>
+                <p><span>&#x1F4C1;</span><span id="ddWebFileName4">index</span><span>.sql</span></p>
+                <p><span>&#x1F4C1;</span><span id="ddWebFileName5">index</span><span>.php</span></p>
+            </div>
+        </div>
+    </div>
+    <div id="ddServerRoom" class="ddServerRoom hide">
+        <div class="serverContent">
+            <div id="server1" class="server" onclick="ddOpenLogs(1)">
+                <div class="serverText">
+                    <div class="ipContent">
+                        <span class="ipText">IP Connections:</span>
+                        <span id="IPServer1" class="inputboxes">192.168.1.0</span>
+                    </div>
+                    <div class="sysCallsContent">
+                        <span class="sysCallsText"># System Calls:</span>
+                        <span id="sysCallsServer1" class="inputboxes">0</span>
+                    </div>
+                    <div class="dataFlow">
+                        <span class="ipText">Data Flow:</span>
+                        <span id="dataFlowServer1" class="inputboxes">10011101011001</span>
+                    </div>
+                </div>
+                <div class="serverhealth">
+                    <h1 class="serverTitle">Server 1</h1>
+                    <div id="circleServer1" class="circle"></div>
+                    <p id="runServer1">running</p>
+                </div>
+                <div class="monitorContent">
+                    <p>Connection: <span id="connectionHP1"></span></p>
+                    <p>Download Speed: <span id="downloadSpeedHP1"></span></p>
+                    <p>Upload Speed: <span id="uploadSpeedHP1"></span></p>
+                </div>
+            </div>
+            <div id="server2" class="server" onclick="ddOpenLogs(2)">
+                <div class="serverText">
+                    <div class="ipContent">
+                        <span class="ipText">IP Connections:</span>
+                        <span id="IPServer2" class="inputboxes">192.168.1.0</span>
+                    </div>
+                    <div class="sysCallsContent">
+                        <span class="sysCallsText"># System Calls:</span>
+                        <span id="sysCallsServer2" class="inputboxes">0</span>
+                    </div>
+                    <div class="dataFlow">
+                        <span class="ipText">Data Flow:</span>
+                        <span id="dataFlowServer2" class="inputboxes">10011101011001</span>
+                    </div>
+                </div>
+                <div class="serverhealth">
+                    <h1 class="serverTitle">Server 2</h1>
+                    <div id="circleServer2" class="circle"></div>
+                    <p id="runServer2">running</p>
+                </div>
+                <div class="monitorContent">
+                    <p>Connection: <span id="connectionHP2"></span></p>
+                    <p>Download Speed: <span id="downloadSpeedHP2"></span></p>
+                    <p>Upload Speed: <span id="uploadSpeedHP2"></span></p>
+                </div>
+            </div>
+            <div id="server3" class="server" onclick="ddOpenLogs(3)">
+                <div class="serverText">
+                    <div class="ipContent">
+                        <span class="ipText">IP Connections:</span>
+                        <span id="IPServer3" class="inputboxes">192.168.1.0</span>
+                    </div>
+                    <div class="sysCallsContent">
+                        <span class="sysCallsText"># System Calls:</span>
+                        <span id="sysCallsServer3" class="inputboxes">0</span>
+                    </div>
+                    <div class="dataFlow">
+                        <span class="ipText">Data Flow:</span>
+                        <span id="dataFlowServer3" class="inputboxes">10011101011001</span>
+                    </div>
+                </div>
+                <div class="serverhealth">
+                    <h1 class="serverTitle">Server 3</h1>
+                    <div id="circleServer3" class="circle"></div>
+                    <p id="runServer3">running</p>
+                </div>
+                <div class="monitorContent">
+                    <p>Connection: <span id="connectionHP3"></span></p>
+                    <p>Download Speed: <span id="downloadSpeedHP3"></span></p>
+                    <p>Upload Speed: <span id="uploadSpeedHP3"></span></p>
+                </div>
+            </div>
+            <div id="server4" class="server" onclick="ddOpenLogs(4)">
+                <div class="serverText">
+                    <div class="ipContent">
+                        <span class="ipText">IP Connections:</span>
+                        <span id="IPServer4" class="inputboxes">192.168.1.0</span>
+                    </div>
+                    <div class="sysCallsContent">
+                        <span class="sysCallsText"># System Calls:</span>
+                        <span id="sysCallsServer4" class="inputboxes">0</span>
+                    </div>
+                    <div class="dataFlow">
+                        <span class="ipText">Data Flow:</span>
+                        <span id="dataFlowServer4" class="inputboxes">10011101011001</span>
+                    </div>
+                </div>
+                <div class="serverhealth">
+                    <h1 class="serverTitle">Server 4</h1>
+                    <div id="circleServer4" class="circle"></div>
+                    <p id="runServer4">running</p>
+                </div>
+                <div class="monitorContent">
+                    <p>Connection: <span id="connectionHP4"></span></p>
+                    <p>Download Speed: <span id="downloadSpeedHP4"></span></p>
+                    <p>Upload Speed: <span id="uploadSpeedHP4"></span></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="ddServerLogs" class="ddServerLogs hide">
+        <div class="ddLogHead">
+            <h1 class="ddServerLogHeader">Server Log <span id="ddservid">1</span></h1>
+        </div>
+        <div id="ddlogTableContainer" class="ddlogTableContainer">
+
+        </div>
+        <div class="ddBottomLogContainer">
+            <div class="ddlogStatsContainer">
+                <div id="logStatus" class="logStatus">
+                    <p>Connection: <span id="logConnection"></span></p>
+                    <p>Download Speed: <span id="logDownloadSpeed"></span></p>
+                    <p>Upload Speed: <span id="logUploadSpeed"></span></p>
+                    <p>Connections Made: <span id="logConnectionsMade">0</span></p>
+                    <button id="ddLogBackBtn" class="ddLogBackBtn" onclick="ddlogBack()">Back</button>
+                </div>
+            </div>
+            <div class="ddLogGraphContainer">
+                <div class="ddGraphWhole">
+                    <div class="ddTopGraph">Performance</div>
+                    <div class="ddGraphMiddle">
+                        <div class="ddLeftGraph">
+                            <div class="percentElement">100%-</div>
+                            <div class="percentElement">90%-</div>
+                            <div class="percentElement">80%-</div>
+                            <div class="percentElement">70%-</div>
+                            <div class="percentElement">60%-</div>
+                            <div class="percentElement">50%-</div>
+                            <div class="percentElement">40%-</div>
+                            <div class="percentElement">30%-</div>
+                            <div class="percentElement">20%-</div>
+                            <div class="percentElement">10%-</div>
+                            <div class="percentElement">0%-</div>
+                        </div>
+                        <canvas id="ddGraphCanvas" class="ddGraphCanvas"></canvas>
+                    </div>
+                    <div class="ddBtmGraph">
+                        <div class="ddBtmGraphInterval">
+                            <div class="ddtimeElement">|</div>
+                            <div class="ddtimeElement">|</div>
+                            <div class="ddtimeElement">|</div>
+                            <div class="ddtimeElement">|</div>
+                            <div class="ddtimeElement">|</div>
+                            <div class="ddtimeElement">|</div>
+                            <div class="ddtimeElement">|</div>
+                            <div class="ddtimeElement">|</div>
+                            <div class="ddtimeElement">|</div>
+                            <div class="ddtimeElement">|</div>
+                        </div>
+                        <p class="ddtimeLabel">Seconds</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="ddcams" class="ddcams hide">
+        <div id="ddCamScreenWhole" class="ddCamScreenWhole">
+            <div id="screen1" class="screen1 ddIndivScreen">
+                <div class="ddIndivScreenTop">
+                    <div class="flash"></div>
+                    <div id="ddInsider1" class="ddInsider hide" onclick="ddToggleNametag()"></div>
+                </div>
+                <div class="ddIndivScreenBottom">Server 1</div>
+            </div>
+            <div id="screen2" class="ddIndivScreen">
+                <div class="ddIndivScreenTop">
+                    <div class="flash"></div>
+                    <div id="ddInsider2" class="ddInsider hide" onclick="ddToggleNametag()"></div>
+                </div>
+                <div class="ddIndivScreenBottom">Server 2</div>
+            </div>
+            <div id="screen3" class="ddIndivScreen">
+                <div class="ddIndivScreenTop">
+                    <div class="flash"></div>
+                    <div id="ddInsider3" class="ddInsider hide" onclick="ddToggleNametag()"></div>
+                </div>
+                <div class="ddIndivScreenBottom">Server 3</div>
+            </div>
+            <div id="screen4" class="ddIndivScreen">
+                <div class="ddIndivScreenTop">
+                    <div class="flash"></div>
+                    <div id="ddInsider4" class="ddInsider hide" onclick="ddToggleNametag()"></div>
+                </div>
+                <div class="ddIndivScreenBottom">Server 4</div>
+            </div>
+        </div>
+        <div id="ddNametag" class="ddNametag hide" onclick="ddToggleNametag()">
+            <h1 class="ddNametagGreeting"> Hello My Name is:</h1>
+            <div id="ddNametagName" class="ddNametagName"></div>
+            <div class="ddLowerNameTag">
+                <div class="ddRoleBox">
+                    <div class="ddRoleTagText">Role: </div>
+                    <div id="ddRoleTypeText" class="ddRoleTypeText"></div>
+                </div>
+                <div class="ddAccessLvlBox">
+                    <div class="ddAccessTagText">Access Level: </div>
+                    <div id="ddAccessTypeText" class="ddAccessTypeText"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="ddreport" class="ddreport hide">
+        <div id="ddReportType" class="ddReportType">
+            <!-- ------------------------------------ -->
+            <div class="ddReportTypesContainer">
+                <button onclick="createDoSForm()">DoS Attack</button>
+                <button onclick="createMalwareForm()">Malware Attack</button>
+                <button onclick="createInsiderForm()">Insider Intruder</button>
+            </div>
+        </div>
+        <div id="ddReportFormContainer" class="ddReportFormContainer hide"></div>
+        <button id="ddDeleteReportForm" class="ddDeleteReportForm hide" onclick="removeReportForm()">X</button>
+    </div>
+    <div id="ddMsg" class="ddMsg hide">
+        <div class="ddSenderBox">
+            <h2 class="ddmessageTitle">Messages</h2>
+            <div class="ddSenderContainer">
+                <!-- Sender Information will be added dynamically through JavaScript -->
+            </div>
+        </div>
+        <div class="ddMessageContainer">
+            <div class="ddMessageBox">
+                <div class="ddMessage hide">
+                    <!-- Messages will be added dynamically through JavaScript -->
+                </div>
+            </div>
+            <button onclick="intMsg()">New Message</button>
+        </div>
+    </div>
+    <!-- New content: Booklet button-->
+    <div class="ddInfoBookButtonContainer">
+        <button class="ddInfoButton ddTab" onclick="displayInfoBooklet()">&#x1f4d6;</button>
+        <button class="ddNotesButton ddTab" onclick="displayddNotes()">&#x1f4dd;</button>
+    </div>
+    <div id="ddNotes" class="ddNotes hide">
+        <button class="ddNotesButtonClose" onclick="displayddNotes()">X</button>
+        <div id="HeaderddNotes" class="ddDraggable ddNoteHeader">
+            <h1>Notebook</h1>
+        </div>
+        <div class="ddNotes__content">
+            <textarea class="ddNotes__textarea" onmousedown="startDrag()" onmouseup="startDrag()" onfocus="startDrag()"
+                onblur="stopDrag()"></textarea>
+        </div>
+    </div>
+
+    <!-- New Content: Booklet-->
+    <div id="ddInfoBook" class="ddDraggable ddInfoBook hide">
+        <div id="HeaderddInfoBook" class="ddDraggable bookHeader">
+            <h1>Help Book</h1>
+            <button class="ddInfoButtonClose" onclick="displayInfoBooklet()">Close</button>
+        </div>
+        <div class="bookContent">
+            <div id="C1" class="C1">
+                <h1>Denial of Service (DoS)</h1>
+                <p>
+                    DoS attacks are a type of attack where an attacker
+                    floods a system or network with traffic or requests, making it unavailable to users.
+                </p>
+                <h1>Warning Signs of a DoS Attack: </h1>
+                <ol>
+                    <li>Slow or unresponsive system: A DoS attack may cause a system or network to slow down or become
+                        unresponsive, making it difficult or impossible for users to access it. </li>
+                    <li>Unusually high traffic: A DoS attack may generate a large amount of traffic or requests, which
+                        can overwhelm a system or network. </li>
+                    <li>Unusual network activity: A DoS attack may generate unusual network activity, such as a sudden
+                        increase in network traffic or a large number of requests from a single IP address. </li>
+                    <li>Error messages: A DoS attack may cause error messages to appear on a website or in an
+                        application, indicating that the system is experiencing problems. </li>
+                    <li>Inability to access services: A DoS attack may prevent users from accessing certain services or
+                        resources, such as websites or email. </li>
+                </ol>
+            </div>
+
+            <!-- Test area start -->
+
+            <div id="C2" class="C2 hide">
+                <h1>Malware</h1>
+                <p>
+                    Malware attacks are a type of attack where an attacker tries to gain unauthorized access to a system
+                    or data by introducing malicious software on the target system.
+                </p>
+                <h1>Warning Signs of a Malware Attack: </h1>
+                <ol>
+                    <li>Slow computer performance: If a computer or system suddenly becomes slow or unresponsive, it
+                        could be a sign of a malware attack. Malware can consume a lot of system resources, making the
+                        system slow or even crash. </li>
+                    <li>Pop-up windows: If a user starts seeing an unusual amount of pop-up windows or ads, it could be
+                        a sign of a malware attack. Malware can cause pop-up windows to appear, even when the user is
+                        not browsing the web. </li>
+                    <li>Changes to browser settings: If there are changes to the browser settings, such as a new
+                        homepage or search engine, without the user's knowledge, it could be a sign of a malware attack.
+                        Malware can change browser settings to redirect users to malicious websites. </li>
+                    <li>Unfamiliar programs or toolbars: If there are unfamiliar programs or toolbars installed on a
+                        system, it could be a sign of a malware attack. Malware can install additional software on the
+                        target system without the user's knowledge. </li>
+                    <li>Encrypted files: If files on a system suddenly become encrypted or inaccessible, it could be a
+                        sign of a ransomware attack. Ransomware encrypts files and demands payment in exchange for the
+                        decryption key. </li>
+                </ol>
+            </div>
+
+            <div id="C3" class="C3 hide">
+                <h1>C3</h1>
+                <p>
+                    Denial of Service (DoS) attacks are a type of attack where an attacker
+                    floods a system or network with traffic or requests, making it unavailable to users.
+                </p>
+                <h1>Warning Signs of a DoS Attack: </h1>
+                <ol>
+                    <li>Slow or unresponsive system: A DoS attack may cause a system or network to slow down or become
+                        unresponsive, making it difficult or impossible for users to access it. </li>
+                    <li>Unusually high traffic: A DoS attack may generate a large amount of traffic or requests, which
+                        can overwhelm a system or network. </li>
+                    <li>Unusual network activity: A DoS attack may generate unusual network activity, such as a sudden
+                        increase in network traffic or a large number of requests from a single IP address. </li>
+                    <li>Error messages: A DoS attack may cause error messages to appear on a website or in an
+                        application, indicating that the system is experiencing problems. </li>
+                    <li>Inability to access services: A DoS attack may prevent users from accessing certain services or
+                        resources, such as websites or email. </li>
+                </ol>
+            </div>
+
+            <div id="C4" class="C4 hide">
+                <h1>C4</h1>
+                <p>
+                    Denial of Service (DoS) attacks are a type of attack where an attacker
+                    floods a system or network with traffic or requests, making it unavailable to users.
+                </p>
+                <h1>Warning Signs of a DoS Attack: </h1>
+                <ol>
+                    <li>Slow or unresponsive system: A DoS attack may cause a system or network to slow down or become
+                        unresponsive, making it difficult or impossible for users to access it. </li>
+                    <li>Unusually high traffic: A DoS attack may generate a large amount of traffic or requests, which
+                        can overwhelm a system or network. </li>
+                    <li>Unusual network activity: A DoS attack may generate unusual network activity, such as a sudden
+                        increase in network traffic or a large number of requests from a single IP address. </li>
+                    <li>Error messages: A DoS attack may cause error messages to appear on a website or in an
+                        application, indicating that the system is experiencing problems. </li>
+                    <li>Inability to access services: A DoS attack may prevent users from accessing certain services or
+                        resources, such as websites or email. </li>
+                </ol>
+            </div>
+
+            <div id="C5" class="C5 hide">
+                <h1>C5</h1>
+                <p>
+                    Denial of Service (DoS) attacks are a type of attack where an attacker
+                    floods a system or network with traffic or requests, making it unavailable to users.
+                </p>
+                <h1>Warning Signs of a DoS Attack: </h1>
+                <ol>
+                    <li>Slow or unresponsive system: A DoS attack may cause a system or network to slow down or become
+                        unresponsive, making it difficult or impossible for users to access it. </li>
+                    <li>Unusually high traffic: A DoS attack may generate a large amount of traffic or requests, which
+                        can overwhelm a system or network. </li>
+                    <li>Unusual network activity: A DoS attack may generate unusual network activity, such as a sudden
+                        increase in network traffic or a large number of requests from a single IP address. </li>
+                    <li>Error messages: A DoS attack may cause error messages to appear on a website or in an
+                        application, indicating that the system is experiencing problems. </li>
+                    <li>Inability to access services: A DoS attack may prevent users from accessing certain services or
+                        resources, such as websites or email. </li>
+                </ol>
+            </div>
+
+            <!-- test area end -->
+
+        </div>
+        <div class="bookFooter">
+            <button class="backPage" onclick="turnPageDown()">Back</button>
+            <button class="nextPage" onclick="turnPageUp()">Next</button>
+        </div>
+    </div>
+</body>
+
+</html>
+
+</body>
+
+</html>
