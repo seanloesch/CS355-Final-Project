@@ -18,6 +18,7 @@ var kh_duration;
 var kh_check_minutes;
 var kh_seconds;
 var kh_displayedMinutes;
+var firstGame = true;
 
 
 let kh_panelActive = false;
@@ -77,7 +78,7 @@ kh_easyButton.addEventListener('click', randomEasyCipherChosen);
 function randomEasyCipherChosen(){
   easyMode = true;
   kh_startGame();
-  
+  firstGame = false;
   console.log("the shuffled order is " + easyOrder)
 
   randomCipherChosenValue = easyOrder[cipherSelecter];
@@ -115,6 +116,7 @@ kh_mediumButton.addEventListener('click', randomMediumCipherChosen);
 function randomMediumCipherChosen(){
   mediumMode = true;
   kh_startGame();
+  firstGame = false;
   
   console.log("the shuffled order is " +mediumOrder)
 
@@ -149,7 +151,7 @@ kh_hardButton.addEventListener('click', randomHardCipherChosen);
 function randomHardCipherChosen(){
   hardMode = true;
   kh_startGame();
-  
+  firstGame = false;
   console.log("the shuffled order is " +hardOrder);
 
   randomCipherChosenValue = hardOrder[cipherSelecter];
@@ -221,9 +223,13 @@ function kh_startGame() {
   kh_notePanel.classList.add('hide');
   kh_helpPanel.classList.add('hide');
   
+  if (firstGame){
+    var kh_timed = 60 * kh_numMinutes;
+    kh_startTimer(kh_timed, kh_timer_display);
+  }
   
-  var kh_timed = 60 * kh_numMinutes;
-  kh_startTimer(kh_timed, kh_timer_display);
+  
+  
 
   table_create();
   
@@ -680,7 +686,8 @@ function spellOutNumber(num) {
 
 
 function kh_startTimer(kh_duration, kh_display) {
-  
+  var countingTimer =1;
+  console.log("timer is " + countingTimer);
   var kh_timer = kh_duration, kh_minutes, kh_seconds, kh_displayedMinutes;
   kh_clearing = setInterval(function () {
     kh_minutes = parseInt(kh_timer / 60, 10);
@@ -788,5 +795,6 @@ function kh_goHome() {
   kh_easyButton.innerHTML = "Start";
   document.getElementById("kh").classList.add("hide");
   document.getElementById("homepage").classList.remove("hide");
+  
 }
 
