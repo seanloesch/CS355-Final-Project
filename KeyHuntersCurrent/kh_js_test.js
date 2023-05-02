@@ -783,6 +783,7 @@ function kh_promptPlayAgain() {
   kh_msg.classList.remove('hide');
   kh_homeButton.classList.remove('hide');
   kh_inGame.classList.add('hide');
+  firstGame = true;
   
 }
 function kh_buttonReset() {
@@ -795,6 +796,6 @@ function kh_goHome() {
   kh_easyButton.innerHTML = "Start";
   document.getElementById("kh").classList.add("hide");
   document.getElementById("homepage").classList.remove("hide");
-  
+
 }
 
