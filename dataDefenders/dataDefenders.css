@@ -1048,6 +1048,29 @@ li {
     margin-right: 1%;
 }
 
+.startNewDayButton {
+    background-color: #4c4c4c;
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: bold;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    transition: background-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    margin-left: 10px;
+  }
+  
+  .startNewDayButton:hover {
+    background-color: #666666;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  }
+  
+  .startNewDayButton:active {
+    background-color: #333333;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  }
+
 /* Hide command */
 .hide {
     display: none;
