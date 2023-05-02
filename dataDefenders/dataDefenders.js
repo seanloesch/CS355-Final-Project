@@ -47,7 +47,7 @@ function dayInt() {
     clearInterval(ddDayInterval);
     ddDayInterval = setInterval(function () {
         minuteCount++;
-        if (minuteCount%30==0) {changeMoney();}
+        if (minuteCount % 30 == 0) { changeMoney(); }
         if (minuteCount == 60) {
             minuteCount = 0;
             hourCount++;
@@ -103,6 +103,15 @@ function changeMoney() {
     console.log(money, "+", temp)
     money += temp;
     document.getElementById("ddMoney").innerText = money;
+    document.getElementById("ddDailyPayEstimate").innerText = (temp*16);
+}
+
+//calculate Reputation after Form Submission
+var reputation = parseInt(document.getElementById("ddRep").innerText);
+function formReputationChange(formPercentage){
+    if(formPercentage==null){reputation -= 25}
+    else{reputation = Math.round((reputation+formPercentage)/2);}
+    document.getElementById("ddRep").innerText=reputation;
 }
 
 function ddSetDateAndTime() {
@@ -349,7 +358,7 @@ const websites = [
         serverSoftware: "Apache",
         serverID: "1",
         webStatus: 0,
-        pay:10
+        pay: 10
     },
     {
         name: "Targart",
@@ -357,9 +366,9 @@ const websites = [
         path: "/var/www/targart",
         ipAddress: "192.168.1.1",
         serverSoftware: "Apache",
-        serverID: "1",
+        serverID: "2",
         webStatus: 0,
-        pay:13
+        pay: 13
     },
     {
         name: "Copsi",
@@ -369,7 +378,7 @@ const websites = [
         serverSoftware: "Nginx",
         serverID: "3",
         webStatus: 0,
-        pay:25
+        pay: 25
     },
     {
         name: "Cool Gamez",
@@ -379,57 +388,7 @@ const websites = [
         serverSoftware: "Apache",
         serverID: "4",
         webStatus: 0,
-        pay:5
-    },
-    {
-        name: "Ben",
-        domain: "www.ben.com",
-        path: "/var/www/ben",
-        ipAddress: "192.168.1.5",
-        serverSoftware: "Nginx",
-        serverID: "1",
-        webStatus: 0,
-        pay:11
-    },
-    {
-        name: "Ryan",
-        domain: "www.ryan.com",
-        path: "/var/www/ryan",
-        ipAddress: "192.168.1.6",
-        serverSoftware: "Apache",
-        serverID: "3",
-        webStatus: 0,
-        pay:17
-    },
-    {
-        name: "Jordan",
-        domain: "www.jordan.com",
-        path: "/var/www/ryan",
-        ipAddress: "192.168.1.7",
-        serverSoftware: "Apache",
-        serverID: "4",
-        webStatus: 0,
-        pay:13
-    },
-    {
-        name: "Sean",
-        domain: "www.sean.com",
-        path: "/var/www/sean",
-        ipAddress: "192.168.1.8",
-        serverSoftware: "Apache",
-        serverID: "1",
-        webStatus: 0,
-        pay:10
-    },
-    {
-        name: "Jacob",
-        domain: "www.jacob.com",
-        path: "/var/www/jacob",
-        ipAddress: "192.168.1.9",
-        serverSoftware: "Apache",
-        serverID: "3",
-        webStatus: 0,
-        pay:7
+        pay: 5
     },
 ];
 
@@ -1579,7 +1538,8 @@ function createDoSForm() {
             }
         }
         var malPercent = (ddMalnumcorrect / 4) * 100
-        console.log(ddMalnumcorrect)
+
+        formReputationChange(malPercent);
 
         const signature = signatureInput.value;
 
@@ -1827,7 +1787,8 @@ function createMalwareForm() {
             }
         }
         var malPercent = (ddMalnumcorrect / 4) * 100
-        //console.log(ddMalnumcorrect)
+        
+        formReputationChange(malPercent);
 
         const signature = signatureInput.value;
 
@@ -2116,7 +2077,7 @@ function createInsiderForm() {
             }
         }
         var malPercent = (ddMalnumcorrect / 4) * 100
-        console.log(ddMalnumcorrect)
+        formReputationChange(malPercent);
 
         const signature = signatureInput.value;
 
@@ -2463,3 +2424,113 @@ function makeLog() {
 
     // Append the container div to the document body
 }
+const possibleWebsites = [
+    {
+        name: "PlayfulPanda",
+        domain: "www.playfulpanda.com",
+        path: "/var/www/playfulpanda",
+        ipAddress: "192.168.1.10",
+        serverSoftware: "Nginx",
+        webStatus: 0,
+        pay: 20
+    },
+    {
+        name: "CodeNinjas", 
+        domain: "www.codeninjas.com", 
+        path: "/var/www/codeninjas", 
+        ipAddress: "192.168.1.11", 
+        serverSoftware: "Apache", 
+        webStatus: 0, 
+        pay:12
+    },
+    {
+        name: "WebMasters", 
+        domain: "www.webmasters.com", 
+        path: "/var/www/webmasters", 
+        ipAddress: "192.168.1.12", 
+        serverSoftware: "Nginx", 
+        webStatus: 0, 
+        pay:14
+    },
+    {
+        name: "DesignHive", 
+        domain: "www.designhive.com", 
+        path: "/var/www/designhive", 
+        ipAddress: "192.168.1.13", 
+        serverSoftware: "Apache", 
+        webStatus: 0, 
+        pay:8
+    },
+    {
+        name: "GameChangers", 
+        domain: "www.gamechangers.com", 
+        path: "/var/www/gamechangers", 
+        ipAddress: "192.168.1.14", 
+        serverSoftware: "Nginx", 
+        webStatus: 0, 
+        pay:19
+    },
+    {
+        name: "ScriptingSquad", 
+        domain: "www.scriptingsquad.com", 
+        path: "/var/www/scriptingsquad", 
+        ipAddress: "192.168.1.15", 
+        serverSoftware: "Nginx", 
+        webStatus: 0, 
+        pay:16
+    },
+    {
+        name: "DevDynasty", 
+        domain: "www.devdynasty.com", 
+        path: "/var/www/devdynasty", 
+        ipAddress: "192.168.1.16", 
+        serverSoftware: "Apache", 
+        webStatus: 0, 
+        pay:11
+    },
+    {
+        name: "PixelPioneers", 
+        domain: "www.pixelpioneers.com", 
+        path: "/var/www/pixelpioneers", 
+        ipAddress: "192.168.1.17", 
+        serverSoftware: "Nginx", 
+        webStatus: 0, 
+        pay:15
+    },
+    {
+        name: "MindCraft", 
+        domain: "www.mindcraft.com", 
+        path: "/var/www/mindcraft", 
+        ipAddress: "192.168.1.18", 
+        serverSoftware: "Apache", 
+        webStatus: 0, 
+        pay:7
+    },
+    {
+        name: "BuildWeb", 
+        domain: "www.buildweb.com", 
+        path: "/var/www/buildweb", 
+        ipAddress: "192.168.1.19", 
+        serverSoftware: "Nginx",
+        webStatus: 0, 
+        pay:21
+    },
+    {
+        name: "InnoSoft", 
+        domain: "www.innosoft.com", 
+        path: "/var/www/innosoft", 
+        ipAddress: "192.168.1.20", 
+        serverSoftware: "Apache", 
+        webStatus: 0, 
+        pay:13
+    },
+    {
+        name: "WaveWeb", 
+        domain: "www.waveweb.com", 
+        path: "/var/www/waveweb", 
+        ipAddress: "192.168.1.21", 
+        serverSoftware: "Apache", 
+        webStatus: 0, 
+        pay:13
+    }
+];
