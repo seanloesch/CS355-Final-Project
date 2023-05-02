@@ -105,6 +105,23 @@ body{
     
 }
 
+.kh_information_container {
+    position: flex;
+    float: left;    
+    
+    top: 40vh;
+    font-weight: bolder;
+    font-size: x-large;
+    width: 500px;
+    height: 200px;
+    background-color: white;
+    border: 2px solid black;
+    border-radius: 20px;
+    text-align: center;
+    margin-top: 50px;
+
+    
+}
 
 
 .kh_panel_container {
@@ -359,6 +376,8 @@ body{
     align-items: center;
     background-size:cover;
 }
+
+
 
 .hide {
     display: none;
