@@ -235,6 +235,7 @@ var websiteNumberIndex = 0;
 
 ddDayOver("start");
 function ddDayOver(order) {
+    if(document.getElementById('startNewDayButton').classList.contains('hide')){document.getElementById('startNewDayButton').classList.remove('hide')};
     ddOpenTab("Day Over");
     setDisabledState(true);
     dayTotalMinutes = 0;
@@ -265,6 +266,7 @@ function ddDayOver(order) {
 var attackTimes;
 
 function ddStartNewDay() {
+    document.getElementById('startNewDayButton').classList.add('hide')
     document.getElementById('ddShop').classList.add('hide');
     setDisabledState(false);
     hourCount = 9;

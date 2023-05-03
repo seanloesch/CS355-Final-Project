@@ -64,7 +64,8 @@
                         <td id="ddServ4Host">3</td>
                     </tr>
                 </table>
-                <button class="startNewDayButton" onclick="ddStartNewDay()">&#x23F5;Start New Day&#x23F5;</button>
+                <button id="startNewDayButton" class="startNewDayButton" onclick="ddStartNewDay()">&#x23F5;Start New
+                    Day&#x23F5;</button>
             </div>
             <div id="ddShop" class="ddShop hide">
                 <div id="ddShopContainer" class="ddShopContainer">
@@ -84,23 +85,31 @@
                             <tbody>
                                 <tr>
                                     <td>Server 1</td>
-                                    <td class="ddServUpgradeCost"><span id="ddUpgradeServ1$">$</span><span id="ddUpgradeServ1"></span></td>
-                                    <td><button id="ddAddSpaceServ1" class="ddAddSpace" onclick="ddBuyServSpace(1)">+</button></td>
+                                    <td class="ddServUpgradeCost"><span id="ddUpgradeServ1$">$</span><span
+                                            id="ddUpgradeServ1"></span></td>
+                                    <td><button id="ddAddSpaceServ1" class="ddAddSpace"
+                                            onclick="ddBuyServSpace(1)">+</button></td>
                                 </tr>
                                 <tr>
                                     <td>Server 2</td>
-                                    <td class="ddServUpgradeCost"><span id="ddUpgradeServ2$">$</span><span id="ddUpgradeServ2"></span></td>
-                                    <td><button id="ddAddSpaceServ2" class="ddAddSpace" onclick="ddBuyServSpace(2)">+</button></td>
+                                    <td class="ddServUpgradeCost"><span id="ddUpgradeServ2$">$</span><span
+                                            id="ddUpgradeServ2"></span></td>
+                                    <td><button id="ddAddSpaceServ2" class="ddAddSpace"
+                                            onclick="ddBuyServSpace(2)">+</button></td>
                                 </tr>
                                 <tr>
                                     <td>Server 3</td>
-                                    <td class="ddServUpgradeCost"><span id="ddUpgradeServ3$">$</span><span id="ddUpgradeServ3"></span></td>
-                                    <td><button id="ddAddSpaceServ3" class="ddAddSpace" onclick="ddBuyServSpace(3)">+</button></td>
+                                    <td class="ddServUpgradeCost"><span id="ddUpgradeServ3$">$</span><span
+                                            id="ddUpgradeServ3"></span></td>
+                                    <td><button id="ddAddSpaceServ3" class="ddAddSpace"
+                                            onclick="ddBuyServSpace(3)">+</button></td>
                                 </tr>
                                 <tr>
                                     <td>Server 4</td>
-                                    <td class="ddServUpgradeCost"><span id="ddUpgradeServ4$">$</span><span id="ddUpgradeServ4"></span></td>
-                                    <td><button id="ddAddSpaceServ4" class="ddAddSpace" onclick="ddBuyServSpace(4)">+</button></td>
+                                    <td class="ddServUpgradeCost"><span id="ddUpgradeServ4$">$</span><span
+                                            id="ddUpgradeServ4"></span></td>
+                                    <td><button id="ddAddSpaceServ4" class="ddAddSpace"
+                                            onclick="ddBuyServSpace(4)">+</button></td>
                                 </tr>
                             </tbody>
                         </table>
@@ -129,7 +138,8 @@
             <button id="ddOpenServer" class="ddTaskBtn" onclick="ddOpenTab('ddServerRoom')">Servers</button>
             <button id="ddOpenReport" class="ddTaskBtn ddTaskBtnReport" onclick="ddOpenTab('ddreport')">Report</button>
             <button id="ddOpenCams" class="ddTaskBtn" onclick="ddOpenTab('ddcams')">Sec. Cams</button>
-            <button id="ddOpenMsg" class="ddTaskBtn" onclick="ddOpenTab('ddMsg')">Messages<span id="ddExclamation" class="ddExclamation hide">!</span></button>
+            <button id="ddOpenMsg" class="ddTaskBtn" onclick="ddOpenTab('ddMsg')">Messages<span id="ddExclamation"
+                    class="ddExclamation hide">!</span></button>
             <button id="ddFastFwd" class="ddTaskBtn" onclick="fastForward()"><i id="ddFastFowardBtn"
                     class="fa fa-fast-forward" aria-hidden="true"></i></button>
         </div>
@@ -387,10 +397,17 @@
         <div id="ddReportType" class="ddReportType">
             <!-- ------------------------------------ -->
             <div class="ddReportTypesContainer">
-                <h1 class="ddreportBtnHeader">Report Forms:</h1><hr>
-                <button class="ddGetReportForm" onclick="createDoSForm()"><div class="ddReportFormText"><mark class="ddMarkWhite">DoS Attack</mark></div></button>
-                <button class="ddGetReportForm" onclick="createMalwareForm()"><div class="ddReportFormText"><mark class="ddMarkWhite">Malware Attack</mark></div></button>
-                <button class="ddGetReportForm" onclick="createInsiderForm()"><div class="ddReportFormText"><mark class="ddMarkWhite">Insider Intruder</mark></div></button>
+                <h1 class="ddreportBtnHeader">Report Forms:</h1>
+                <hr>
+                <button class="ddGetReportForm" onclick="createDoSForm()">
+                    <div class="ddReportFormText"><mark class="ddMarkWhite">DoS Attack</mark></div>
+                </button>
+                <button class="ddGetReportForm" onclick="createMalwareForm()">
+                    <div class="ddReportFormText"><mark class="ddMarkWhite">Malware Attack</mark></div>
+                </button>
+                <button class="ddGetReportForm" onclick="createInsiderForm()">
+                    <div class="ddReportFormText"><mark class="ddMarkWhite">Insider Intruder</mark></div>
+                </button>
             </div>
         </div>
         <div id="ddReportFormContainer" class="ddReportFormContainer hide"></div>
@@ -485,23 +502,29 @@
             </div>
 
             <div id="C3" class="C3 hide">
-                <h1>C3</h1>
+                <h1>Insider Intrusion</h1>
                 <p>
-                    Denial of Service (DoS) attacks are a type of attack where an attacker
-                    floods a system or network with traffic or requests, making it unavailable to users.
+                    Insider attacks are a type of cyber-attack where an authorized person with access to sensitive
+                    information or
+                    systems misuses them for personal gain, espionage, or other malicious purposes.
                 </p>
-                <h1>Warning Signs of a DoS Attack: </h1>
+                <h1>Warning Signs of Insider Intrusion: </h1>
                 <ol>
-                    <li>Slow or unresponsive system: A DoS attack may cause a system or network to slow down or become
-                        unresponsive, making it difficult or impossible for users to access it. </li>
-                    <li>Unusually high traffic: A DoS attack may generate a large amount of traffic or requests, which
-                        can overwhelm a system or network. </li>
-                    <li>Unusual network activity: A DoS attack may generate unusual network activity, such as a sudden
-                        increase in network traffic or a large number of requests from a single IP address. </li>
-                    <li>Error messages: A DoS attack may cause error messages to appear on a website or in an
-                        application, indicating that the system is experiencing problems. </li>
-                    <li>Inability to access services: A DoS attack may prevent users from accessing certain services or
-                        resources, such as websites or email. </li>
+                    <li>Suspicious behavior: An insider may exhibit suspicious behavior, such as avoiding security
+                        measures, acting aggressively or defensively, or exhibiting changes in behavior or work
+                        patterns. This behavior may be observed by coworkers or supervisors. </li>
+                    <li>Unauthorized access or use of systems: An insider may access or use systems or data that they
+                        are not authorized to access or use. This may include accessing sensitive information or systems
+                        outside of their normal job duties or accessing data after their employment has ended. </li>
+                    <li>Unusual network activity: An insider may engage in unusual network activity, such as downloading
+                        large amounts of data or accessing systems outside of normal business hours. This activity may
+                        be detected through network monitoring or system logs. </li>
+                    <li>Changes to access privileges: An insider may attempt to change access privileges or create new
+                        user accounts to gain access to sensitive information or systems. This may be done to maintain
+                        access after their employment has ended or to cover their tracks. </li>
+                    <li>Financial irregularities: An insider may engage in financial irregularities, such as stealing or
+                        misusing company funds. This may be detected through financial audits or accounting records.
+                    </li>
                 </ol>
             </div>
 
