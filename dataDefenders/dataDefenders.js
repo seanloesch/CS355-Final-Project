@@ -6,6 +6,8 @@ const ddtabList = [
     "ddreport",
     "ddMsg",
 ];
+// Get the tbody element of the table
+const tbody = document.querySelector("#ddWebsitesTable tbody");
 // Define an array of objects with website information
 const websites = [
     {
@@ -51,12 +53,12 @@ const websites = [
 ];
 var serverLengths = [1, 1, 1, 1];
 var serverSpaces = [
-    parseInt(document.getElementById('ddServ1Space').innerText), 
-    parseInt(document.getElementById('ddServ2Space').innerText), 
-    parseInt(document.getElementById('ddServ3Space').innerText), 
+    parseInt(document.getElementById('ddServ1Space').innerText),
+    parseInt(document.getElementById('ddServ2Space').innerText),
+    parseInt(document.getElementById('ddServ3Space').innerText),
     parseInt(document.getElementById('ddServ4Space').innerText)
 ]
-var ddNewWebAvailability = [false,false, false, false]
+var ddNewWebAvailability = [false, false, false, false]
 const ddTabs = ddtabList.map((id) => document.getElementById(id));
 var placeholder;
 
@@ -104,7 +106,7 @@ var ddServ3Price = 0;
 var ddServ4Price = 0;
 
 var fixes = parseInt(document.getElementById('ddSaves').innerText);
-console.log(fixes);
+var reputation = parseInt(document.getElementById("ddRep").innerText);
 
 function updateFixes() {
     fixes++;
@@ -161,7 +163,7 @@ function dayInt() {
             }
             if (hourCount == 5) {
                 clearInterval(ddDayInterval);
-                ddDayOver();
+                ddDayOver(null);
             }
         }
         ddSetDateAndTime();
@@ -187,14 +189,37 @@ function setDisabledState(isDisabled) {
         document.getElementById(button).disabled = isDisabled;
     });
 }
-ddDayOver();
-function ddDayOver() {
+
+//I want to initiallize the number of websites attained from the database here... but for now
+var websiteNumberIndex = 0;
+
+ddDayOver("start");
+function ddDayOver(order) {
     ddOpenTab("Day Over");
     setDisabledState(true);
     dayTotalMinutes = 0;
     document.getElementById('ddShop').classList.remove('hide');
     setStorePrices();
-    //see if another website can join and give a percentage chance that they will join base on reputation (maybe reputation/2 so it isn't too common)
+    var addToAvailableServer = websiteSpaceAvailable(); //If Server added, this will give you the first server id that has the space available (1-4)
+    console.log(addToAvailableServer)
+    if (order != "start") {
+        if (addToAvailableServer != null) {
+            console.log("attempted")
+            //see if another website can join and give a percentage chance that they will join base on reputation (maybe reputation/2 so it isn't too common)
+            if(Math.random() < (reputation/2)/100){
+                var newWebsite = possibleWebsites[websiteNumberIndex];
+                websiteNumberIndex++;
+                newWebsite.serverID = addToAvailableServer;
+                websites.push(newWebsite)
+                addMessage(
+                    ddSystemMsg.name,
+                    ddReturnDayAndTime(),
+                    ddSystemMsg.addr,
+                    `A new website was pushed to server ${newWebsite.serverID}`)
+            }
+        }
+    }
+    createWebsiteTable();
 }
 
 var attackTimes;
@@ -223,7 +248,6 @@ function changeMoney() {
             temp -= element.pay;
         }
     });
-    console.log(money, "+", temp)
     money += temp;
     document.getElementById("ddMoney").innerText = money;
     document.getElementById("ddDailyPayEstimate").innerText = (temp * 16);
@@ -257,13 +281,11 @@ function ddBuyServSpace(num) {
         money -= price;
         space.innerText = parseInt(space.innerText) + 1;
         serverSpaces[num - 1] = serverSpaces[num - 1] + 1
-        console.log(serverSpaces)
     } else {
         ddFlashGreenRed();
     }
     document.getElementById("ddMoney").innerText = money;
     setStorePrices();
-    compareSpaceVsHosting();
 }
 
 function ddFlashGreenRed() {
@@ -280,17 +302,23 @@ function ddFlashGreenRed() {
         }, 300 * i); // delay 300ms between color changes
     }
 }
-function compareSpaceVsHosting(){
-    for(let i =0; i<4; i++){
-        if(serverLengths[i]<serverSpaces[i]){
-            ddNewWebAvailability[i]=true;
-        }
+function websiteSpaceAvailable() {
+    for (let i = 0; i < 4; i++) {
+        ddNewWebAvailability[i] = (serverLengths[i] < serverSpaces[i]);
     }
-    console.log(ddNewWebAvailability)
+    if (!ddNewWebAvailability[0]) {
+        if (!ddNewWebAvailability[1]) {
+            if (!ddNewWebAvailability[2]) {
+                if (!ddNewWebAvailability[3]) { return null } else { return 4; }
+            }
+            else { return 3; }
+        }
+        else { return 2; }
+    }
+    else { return 1; }
 }
 
 //calculate Reputation after Form Submission
-var reputation = parseInt(document.getElementById("ddRep").innerText);
 function formReputationChange(formPercentage) {
     if (formPercentage == null) {
         reputation -= 25
@@ -505,9 +533,6 @@ function updateMonitor() {
     });
 }
 
-// Get the tbody element of the table
-const tbody = document.querySelector("#ddWebsitesTable tbody");
-createWebsiteTable();
 function createWebsiteTable() {
     while (tbody.firstChild) {
         tbody.removeChild(tbody.firstChild);
@@ -1914,14 +1939,6 @@ function createMalwareForm() {
         formReputationChange(malPercent);
 
         const signature = signatureInput.value;
-
-        // Do something with the form data here
-        // console.log("inputted:")
-        // console.log("Website Domain: " + websiteDomain)
-        // console.log("Affected Server: " + affectedServerId)
-        // console.log("Malware File Name: " + malwareFileName)
-        // console.log("Percentage Correct: " + malPercent)
-        // console.log("Signature: " + signature)
 
         if (ddMalwareArray.attackID != null) {
             //remove split
