@@ -602,9 +602,7 @@ function createWebsiteTable() {
         const ddWebStatcircleDesign = document.createElement("div");
         ddWebStatcircleDesign.classList.add('ddWebStatcircleDesign');
         webStatcircle.appendChild(ddWebStatcircleDesign);
-        //removed .split function
         var webServState = ddServState[website.serverID - 1];
-        //
         if (website.webStatus == 0 && webServState == 0) { webStatcircle.classList.add('ddWebStatGood') }
         if (website.webStatus == 1 || webServState == 1 && website.webStatus != 2) { webStatcircle.classList.add('ddWebStatBad') }
         if (website.webStatus == 2 || webServState == 2) { webStatcircle.classList.add('ddWebStatTerrible') }
@@ -736,7 +734,6 @@ function updateLogStatus(serverId) {
         const cells = rows[i].getElementsByTagName("td");
         cells[0].textContent = returnDate();
         cells[1].textContent = returnTime(i);
-        //new
         if (serverId == ddDoSArray.serverNumber) {
             var temp = Math.floor(Math.random() * 100) + 1;
             if (temp < 5) {
@@ -749,10 +746,8 @@ function updateLogStatus(serverId) {
         else {
             cells[2].textContent = finalIPvalue();
         }
-        //
         cells[3].textContent =
             requestMethods[getRandomInt(0, requestMethods.length - 1)];
-        //new
         var tempWebDom;
         if (serverId == ddDoSArray.serverNumber) {
             cells[4].textContent = ddDoSArray.websiteDom;
@@ -763,7 +758,6 @@ function updateLogStatus(serverId) {
             } while (tempWebDom.serverID != serverId);
             cells[4].textContent = tempWebDom.domain;
         }
-        //
         cells[5].textContent = urls[getRandomInt(0, urls.length - 1)];
         cells[6].textContent =
             statusCodes[getRandomInt(0, statusCodes.length - 1)];
@@ -819,7 +813,6 @@ function ddOpenLogs(ddserverId) {
         ctx.fill();
         ctx.stroke();
 
-        //new
         if (ddserverId == ddDoSArray.serverNumber) {
             ddLogInt = setInterval(function () {
                 updateLogStatus(ddserverId);
@@ -830,7 +823,6 @@ function ddOpenLogs(ddserverId) {
                 updateLogStatus(ddserverId);
             }, 500);
         }
-        //
 
         ddGraphInt = setInterval(() => {
             // Update data
@@ -1019,7 +1011,6 @@ function intMsg() {
     );
 }
 
-// new content
 // Info Book on/off
 function displayInfoBooklet() {
     document.getElementById("ddInfoBook").classList.toggle("hide");
@@ -1099,16 +1090,16 @@ function turnPageDown() {
 }
 
 var ddAttackCount = 0;
-//New
-var ddAttackArray = [0, 0, 0];
+var ddAttackArray = [0, 0, 0, 0];
+var ddServerIsUnderAttack = [0, 0, 0, 0];
 
 function dd_generateAttack() {
     if (ddAttackCount < 3) {
         var tempAttack;
         var tempServer;
         do {
-            tempServer = Math.floor(Math.random() * ddServState.length);
-        } while (ddServState[tempServer] != 0);
+            tempServer = Math.floor(Math.random() * ddServerIsUnderAttack.length);
+        } while (ddServerIsUnderAttack[tempServer] != 0);
         do {
             tempAttack = Math.floor(Math.random() * ddAttackArray.length);
         } while (ddAttackArray[tempAttack] != 0);
@@ -1122,6 +1113,9 @@ function dd_generateAttack() {
                 break;
             case 2:
                 dd_createInsiderIntrusion(tempServer + 1);
+                break;
+            case 3:
+                dd_createDNS(tempServer + 1);
                 break;
             default:
         }
@@ -1144,7 +1138,6 @@ var ddDoSArray =
     serverNumber: null,
 };
 
-//new attack create using server input
 function dd_createDoS(server) {
     ddDoSArray.attackID = ddAttackCount;
     do {
@@ -1161,6 +1154,7 @@ function dd_createDoS(server) {
 
     ddAttackedWebsite.webStatus = 1
     ddServState[server - 1] = 1
+    ddServerIsUnderAttack[server - 1]  = 1;
     createWebsiteTable();
     websites.forEach((website) => {
         if (website.serverID == server) {
@@ -1174,7 +1168,6 @@ function dd_createDoS(server) {
     });
     ddAttackCount++;
 }
-//
 
 const ddComplaintsDoS = [
     "I can't access my website at all!",
@@ -1196,7 +1189,6 @@ var ddMalwareArray = {
     targetFile: null,
 };
 
-//new createMalware
 function dd_createMalware(server) {
     ddMalwareArray.attackID = ddAttackCount;
     do {
@@ -1210,6 +1202,7 @@ function dd_createMalware(server) {
 
     ddAttackedWebsite.webStatus = 2
     ddServState[server - 1] = 1
+    ddServerIsUnderAttack[server - 1]  = 1;
     console.log(ddMalwareArray)
     createWebsiteTable();
     ddAttackCount++;
@@ -1233,7 +1226,6 @@ function dd_createMalware(server) {
     });
 
 }
-//
 
 function ddReturnDayAndTime() {
     var minMsg = minuteCount;
@@ -1321,6 +1313,7 @@ function dd_createInsiderIntrusion(server) {
 
     console.log(ddInsiderArray)
 
+    ddServerIsUnderAttack[server - 1]  = 1;
     ddTempAttackedWebsite.webStatus = 2;
     createWebsiteTable();
     var ddInsiderSecurityCamera = document.getElementById(`ddInsider${ddInsiderArray.serverNumber}`)
@@ -1567,6 +1560,8 @@ function dd_createDNS(server) {
     ddDNSArray.newPath = ddAttackedWebsite.path + "/" + DNSBadDomains[Math.floor(Math.random() * DNSBadDomains.length)]
 
     ddAttackedWebsite.path = ddDNSArray.newPath;
+
+    ddServerIsUnderAttack[server - 1]  = 1;
 
     console.log(ddDNSArray)
     createWebsiteTable();
@@ -1817,20 +1812,17 @@ function createDoSForm() {
         // Do something with the form data here
 
         if (ddDoSArray.attackID != null) {
-            //remove split
             if (ddDoSArray.serverNumber == affectedServerId) {
-                //
                 if (ddDoSArray.websiteDom == websiteDomain) {
                     if (ddDoSArray.attackerIP == ddAttackerIP) {
                         var ddMalResetWebsiteID = ddDoSArray.websiteDom
                         websites.forEach((website) => {
                             if (website.domain == ddMalResetWebsiteID) {
-                                //remove split
                                 var serverStatIndex = website.serverID;
-                                //
                                 website.webStatus = 0
                                 ddServState[serverStatIndex - 1] = 0;
                                 ddAttackCount--;
+                                ddServerIsUnderAttack[serverStatIndex - 1] = 0;
                                 ddAttackArray[0] = 0;
                                 updateFixes();
                             }
@@ -2066,20 +2058,17 @@ function createMalwareForm() {
         const signature = signatureInput.value;
 
         if (ddMalwareArray.attackID != null) {
-            //remove split
             if (ddMalwareArray.serverNumber == affectedServerId) {
-                //
                 if (ddMalwareArray.websiteDom == websiteDomain) {
                     if (ddMalwareArray.targetFile == malwareFileName) {
                         var ddMalResetWebsiteID = ddMalwareArray.websiteDom
                         websites.forEach((website) => {
                             if (website.domain == ddMalResetWebsiteID) {
-                                //remove split
                                 var serverStatIndex = website.serverID;
-                                //
                                 website.webStatus = 0
                                 ddServState[serverStatIndex - 1] = 0;
                                 ddAttackCount--;
+                                ddServerIsUnderAttack[serverStatIndex - 1] = 0;
                                 ddAttackArray[1] = 0;
                                 updateFixes();
                             }
@@ -2363,6 +2352,7 @@ function createInsiderForm() {
                                 ddInsiderSecurityCamera.classList.add('hide');
 
                                 if (!document.getElementById('ddNametag').classList.contains("hide")) { ddToggleNametag(); }
+                                ddServerIsUnderAttack[ddInsiderArray.serverNumber - 1] = 0;
                                 ddInsiderArray.attackID = null;
                                 ddInsiderArray.attackedwebsite = null;
                                 ddInsiderArray.serverNumber = null;
@@ -2632,6 +2622,7 @@ function createDNSForm() {
                                     website.path = ddDNSArray.originalPath
                                 }
                             });
+                            ddServerIsUnderAttack[ddDNSArray.servID - 1] = 0;
                             ddDNSArray.attackID = null;
                             ddDNSArray.websiteDom = null;
                             ddDNSArray.originalPath = null;
@@ -2639,6 +2630,8 @@ function createDNSForm() {
                             ddDNSArray.servID = null;
                             ddDNSArray.newPath = null;
                             ddAttackCount--;
+                            ddAttackArray[3] = 0;
+                            updateFixes();
                             createWebsiteTable();
 
                         }
