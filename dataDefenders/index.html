@@ -22,7 +22,7 @@
                     </tr>
                     <tr>
                         <td>Money:</td>
-                        <td>$<span id="ddMoney">0</span></td>
+                        <td>$<span id="ddMoney">30000</span></td>
                     </tr>
                     <tr>
                         <td>Daily Pay:</td>
@@ -50,24 +50,64 @@
                     </tr>
                     <tr>
                         <td>Server 2: </td>
-                        <td id="ddServ2Space">1</td>
+                        <td id="ddServ2Space">2</td>
                         <td id="ddServ2Host">1</td>
                     </tr>
                     <tr>
                         <td>Server 3: </td>
-                        <td id="ddServ3Space">1</td>
+                        <td id="ddServ3Space">3</td>
                         <td id="ddServ3Host">1</td>
                     </tr>
                     <tr>
                         <td>Server 4: </td>
-                        <td id="ddServ4Space">1</td>
+                        <td id="ddServ4Space">4</td>
                         <td id="ddServ4Host">1</td>
                     </tr>
                 </table>
-                <button class = "startNewDayButton" onclick="ddStartNewDay()">Start New Day</button>
+                <button class="startNewDayButton" onclick="ddStartNewDay()">&#x23F5;Start New Day&#x23F5;</button>
+            </div>
+            <div id="ddShop" class="ddShop hide">
+                <div id="ddShopContainer" class="ddShopContainer">
+                    <br>
+                    <div id="ddShopBorder" class="ddShopBorder">
+                        <h1 class="ddMiddleHeader" style="font-weight: bolder;">Store</h1>
+                        <h2 class="ddMiddleHeader">Upgrade Servers to Add More Space which <br>will Allow you to Host
+                            More Websites?</h2>
+                        <table class="ddShopTable">
+                            <thead>
+                                <tr>
+                                    <th>Server ID</th>
+                                    <th>&emsp;Price&emsp;</th>
+                                    <th>Purchase</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Server 1</td>
+                                    <td class="ddServUpgradeCost"><span id="ddUpgradeServ1$">$</span><span id="ddUpgradeServ1"></span></td>
+                                    <td><button id="ddAddSpaceServ1" class="ddAddSpace" onclick="ddBuyServSpace(1)">+</button></td>
+                                </tr>
+                                <tr>
+                                    <td>Server 2</td>
+                                    <td class="ddServUpgradeCost"><span id="ddUpgradeServ2$">$</span><span id="ddUpgradeServ2"></span></td>
+                                    <td><button id="ddAddSpaceServ2" class="ddAddSpace" onclick="ddBuyServSpace(2)">+</button></td>
+                                </tr>
+                                <tr>
+                                    <td>Server 3</td>
+                                    <td class="ddServUpgradeCost"><span id="ddUpgradeServ3$">$</span><span id="ddUpgradeServ3"></span></td>
+                                    <td><button id="ddAddSpaceServ3" class="ddAddSpace" onclick="ddBuyServSpace(3)">+</button></td>
+                                </tr>
+                                <tr>
+                                    <td>Server 4</td>
+                                    <td class="ddServUpgradeCost"><span id="ddUpgradeServ4$">$</span><span id="ddUpgradeServ4"></span></td>
+                                    <td><button id="ddAddSpaceServ4" class="ddAddSpace" onclick="ddBuyServSpace(4)">+</button></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="ddShop">Shop is here</div>
     </div>
     <div id="ddtaskbar" class="ddtaskbar">
         <div class="ddLeftTaskBar">

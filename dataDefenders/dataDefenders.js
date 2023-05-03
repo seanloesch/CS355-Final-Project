@@ -6,6 +6,57 @@ const ddtabList = [
     "ddreport",
     "ddMsg",
 ];
+// Define an array of objects with website information
+const websites = [
+    {
+        name: "SecureArcade",
+        domain: "www.securearcade.com",
+        path: "/var/www/securearcade",
+        ipAddress: "192.168.1.1",
+        serverSoftware: "Apache",
+        serverID: "1",
+        webStatus: 0,
+        pay: 10
+    },
+    {
+        name: "Targart",
+        domain: "www.targart.com",
+        path: "/var/www/targart",
+        ipAddress: "192.168.1.1",
+        serverSoftware: "Apache",
+        serverID: "2",
+        webStatus: 0,
+        pay: 13
+    },
+    {
+        name: "Copsi",
+        domain: "www.copsi.com",
+        path: "/var/www/copsi",
+        ipAddress: "192.168.1.3",
+        serverSoftware: "Nginx",
+        serverID: "3",
+        webStatus: 0,
+        pay: 25
+    },
+    {
+        name: "Cool Gamez",
+        domain: "www.coolgamez.com",
+        path: "/var/www/coolgamez",
+        ipAddress: "192.168.1.4",
+        serverSoftware: "Apache",
+        serverID: "4",
+        webStatus: 0,
+        pay: 5
+    },
+];
+var serverLengths = [1, 1, 1, 1];
+var serverSpaces = [
+    parseInt(document.getElementById('ddServ1Space').innerText), 
+    parseInt(document.getElementById('ddServ2Space').innerText), 
+    parseInt(document.getElementById('ddServ3Space').innerText), 
+    parseInt(document.getElementById('ddServ4Space').innerText)
+]
+var ddNewWebAvailability = [false,false, false, false]
 const ddTabs = ddtabList.map((id) => document.getElementById(id));
 var placeholder;
 
@@ -47,11 +98,15 @@ var minuteCount = 0;
 var dayhalf = "AM";
 var dayCount = 0;
 var dayTotalMinutes = 0;
+var ddServ1Price = 0;
+var ddServ2Price = 0;
+var ddServ3Price = 0;
+var ddServ4Price = 0;
 
 var fixes = parseInt(document.getElementById('ddSaves').innerText);
 console.log(fixes);
 
-function updateFixes(){
+function updateFixes() {
     fixes++;
     document.getElementById('ddSaves').innerText = fixes;
 }
@@ -89,9 +144,8 @@ function dayInt() {
     ddDayInterval = setInterval(function () {
         minuteCount++;
         dayTotalMinutes++;
-        for(var i = 0; i <= attackTimes.length; i++){
-            if(dayTotalMinutes == attackTimes[i])
-            {
+        for (var i = 0; i <= attackTimes.length; i++) {
+            if (dayTotalMinutes == attackTimes[i]) {
                 dd_generateAttack();
             }
         }
@@ -114,14 +168,14 @@ function dayInt() {
     }, daySpeed);
 }
 
-function getAttackTimes(){
+function getAttackTimes() {
     var howMany = Math.floor(Math.random() * 3) + 1;
     var T1 = Math.floor(Math.random() * 160) + 1;
-    if(howMany > 1){
-    var T2 = Math.floor(Math.random() * 160) + 161;
+    if (howMany > 1) {
+        var T2 = Math.floor(Math.random() * 160) + 161;
     }
-    if(howMany > 2){
-    var T3 = Math.floor(Math.random() * 80) + 321;
+    if (howMany > 2) {
+        var T3 = Math.floor(Math.random() * 80) + 321;
     }
     var times = [T1, T2, T3]
     return times
@@ -138,14 +192,15 @@ function ddDayOver() {
     ddOpenTab("Day Over");
     setDisabledState(true);
     dayTotalMinutes = 0;
-    //show shop
+    document.getElementById('ddShop').classList.remove('hide');
+    setStorePrices();
     //see if another website can join and give a percentage chance that they will join base on reputation (maybe reputation/2 so it isn't too common)
 }
 
 var attackTimes;
 
 function ddStartNewDay() {
-    //hide shop
+    document.getElementById('ddShop').classList.add('hide');
     setDisabledState(false);
     hourCount = 9;
     dayCount++;
@@ -171,20 +226,80 @@ function changeMoney() {
     console.log(money, "+", temp)
     money += temp;
     document.getElementById("ddMoney").innerText = money;
-    document.getElementById("ddDailyPayEstimate").innerText = (temp*16);
+    document.getElementById("ddDailyPayEstimate").innerText = (temp * 16);
+}
+
+function setStorePrices() {
+    // Set Store Prices
+    const ddBasePrice = 2;
+    const ddDecimalValue = 1000;
+
+    // Get initial Store spaces
+    for (let i = 1; i <= 4; i++) {
+        const space = parseInt(document.getElementById(`ddServ${i}Space`).innerText);
+        window[`ddServ${i}Price`] = (ddBasePrice * (ddBasePrice ** space)) * ddDecimalValue;
+        document.getElementById(`ddUpgradeServ${i}`).innerText = window[`ddServ${i}Price`];
+        if (space == 4) {
+            document.getElementById(`ddAddSpaceServ${i}`).innerText = "MAX";
+            document.getElementById(`ddAddSpaceServ${i}`).disabled = true;
+            document.getElementById(`ddUpgradeServ${i}$`).classList.add('hide');
+            document.getElementById(`ddAddSpaceServ${i}`).style.color = "darkred";
+            document.getElementById(`ddAddSpaceServ${i}`).style.fontSize = "25px";
+            document.getElementById(`ddUpgradeServ${i}`).innerText = "Maxed";
+        }
+    }
+}
+
+function ddBuyServSpace(num) {
+    const price = window[`ddServ${num}Price`];
+    const space = document.getElementById(`ddServ${num}Space`);
+    if (money >= price) {
+        money -= price;
+        space.innerText = parseInt(space.innerText) + 1;
+        serverSpaces[num - 1] = serverSpaces[num - 1] + 1
+        console.log(serverSpaces)
+    } else {
+        ddFlashGreenRed();
+    }
+    document.getElementById("ddMoney").innerText = money;
+    setStorePrices();
+    compareSpaceVsHosting();
+}
+
+function ddFlashGreenRed() {
+    const shopItems = ['ddAddSpaceServ1', 'ddAddSpaceServ2', 'ddAddSpaceServ3', 'ddAddSpaceServ4', 'ddUpgradeServ1', 'ddUpgradeServ2', 'ddUpgradeServ3', 'ddUpgradeServ4'];
+    const shopContainer = document.getElementById('ddShopContainer');
+    const shopBorder = document.getElementById('ddShopBorder');
+    let color = 'red';
+    for (let i = 0; i < 6; i++) {
+        setTimeout(() => {
+            shopContainer.style.color = color;
+            shopBorder.style.border = `1px solid ${color}`;
+            shopItems.forEach(item => document.getElementById(item).classList.toggle('ddAddSpaceRed'));
+            color = (color === 'red') ? 'lime' : 'red';
+        }, 300 * i); // delay 300ms between color changes
+    }
+}
+function compareSpaceVsHosting(){
+    for(let i =0; i<4; i++){
+        if(serverLengths[i]<serverSpaces[i]){
+            ddNewWebAvailability[i]=true;
+        }
+    }
+    console.log(ddNewWebAvailability)
 }
 
 //calculate Reputation after Form Submission
 var reputation = parseInt(document.getElementById("ddRep").innerText);
-function formReputationChange(formPercentage){
-    if(formPercentage==null){
+function formReputationChange(formPercentage) {
+    if (formPercentage == null) {
         reputation -= 25
-        if(reputation < 0){
+        if (reputation < 0) {
             reputation = 0;
         }
     }
-    else{reputation = Math.round((reputation+formPercentage)/2);}
-    document.getElementById("ddRep").innerText=reputation;
+    else { reputation = Math.round((reputation + formPercentage) / 2); }
+    document.getElementById("ddRep").innerText = reputation;
 }
 
 function ddSetDateAndTime() {
@@ -389,52 +504,6 @@ function updateMonitor() {
         +" KB/s";
     });
 }
-
-
-
-// Define an array of objects with website information
-const websites = [
-    {
-        name: "SecureArcade",
-        domain: "www.securearcade.com",
-        path: "/var/www/securearcade",
-        ipAddress: "192.168.1.1",
-        serverSoftware: "Apache",
-        serverID: "1",
-        webStatus: 0,
-        pay: 10
-    },
-    {
-        name: "Targart",
-        domain: "www.targart.com",
-        path: "/var/www/targart",
-        ipAddress: "192.168.1.1",
-        serverSoftware: "Apache",
-        serverID: "2",
-        webStatus: 0,
-        pay: 13
-    },
-    {
-        name: "Copsi",
-        domain: "www.copsi.com",
-        path: "/var/www/copsi",
-        ipAddress: "192.168.1.3",
-        serverSoftware: "Nginx",
-        serverID: "3",
-        webStatus: 0,
-        pay: 25
-    },
-    {
-        name: "Cool Gamez",
-        domain: "www.coolgamez.com",
-        path: "/var/www/coolgamez",
-        ipAddress: "192.168.1.4",
-        serverSoftware: "Apache",
-        serverID: "4",
-        webStatus: 0,
-        pay: 5
-    },
-];
 
 // Get the tbody element of the table
 const tbody = document.querySelector("#ddWebsitesTable tbody");
@@ -987,7 +1056,7 @@ function dd_generateAttack() {
             default:
         }
     }
-    else{
+    else {
         formReputationChange(null);
     }
 }
@@ -1171,7 +1240,7 @@ function dd_createInsiderIntrusion(server) {
     do {
         var ddTempAttackedWebsite = websites[Math.floor(Math.random() * websites.length)];
     } while (ddTempAttackedWebsite.serverID != server);
-    
+
     var ddWebsiteOwnder = ddTempAttackedWebsite.name
     ddInsiderArray.attackedwebsite = ddTempAttackedWebsite.domain;
     ddInsiderArray.serverNumber = ddTempAttackedWebsite.serverID;
@@ -1841,7 +1910,7 @@ function createMalwareForm() {
             }
         }
         var malPercent = (ddMalnumcorrect / 4) * 100
-        
+
         formReputationChange(malPercent);
 
         const signature = signatureInput.value;
@@ -2493,102 +2562,102 @@ const possibleWebsites = [
         pay: 20
     },
     {
-        name: "CodeNinjas", 
-        domain: "www.codeninjas.com", 
-        path: "/var/www/codeninjas", 
-        ipAddress: "192.168.1.11", 
-        serverSoftware: "Apache", 
-        webStatus: 0, 
-        pay:12
+        name: "CodeNinjas",
+        domain: "www.codeninjas.com",
+        path: "/var/www/codeninjas",
+        ipAddress: "192.168.1.11",
+        serverSoftware: "Apache",
+        webStatus: 0,
+        pay: 12
     },
     {
-        name: "WebMasters", 
-        domain: "www.webmasters.com", 
-        path: "/var/www/webmasters", 
-        ipAddress: "192.168.1.12", 
-        serverSoftware: "Nginx", 
-        webStatus: 0, 
-        pay:14
-    },
-    {
-        name: "DesignHive", 
-        domain: "www.designhive.com", 
-        path: "/var/www/designhive", 
-        ipAddress: "192.168.1.13", 
-        serverSoftware: "Apache", 
-        webStatus: 0, 
-        pay:8
-    },
-    {
-        name: "GameChangers", 
-        domain: "www.gamechangers.com", 
-        path: "/var/www/gamechangers", 
-        ipAddress: "192.168.1.14", 
-        serverSoftware: "Nginx", 
-        webStatus: 0, 
-        pay:19
-    },
-    {
-        name: "ScriptingSquad", 
-        domain: "www.scriptingsquad.com", 
-        path: "/var/www/scriptingsquad", 
-        ipAddress: "192.168.1.15", 
-        serverSoftware: "Nginx", 
-        webStatus: 0, 
-        pay:16
-    },
-    {
-        name: "DevDynasty", 
-        domain: "www.devdynasty.com", 
-        path: "/var/www/devdynasty", 
-        ipAddress: "192.168.1.16", 
-        serverSoftware: "Apache", 
-        webStatus: 0, 
-        pay:11
-    },
-    {
-        name: "PixelPioneers", 
-        domain: "www.pixelpioneers.com", 
-        path: "/var/www/pixelpioneers", 
-        ipAddress: "192.168.1.17", 
-        serverSoftware: "Nginx", 
-        webStatus: 0, 
-        pay:15
-    },
-    {
-        name: "MindCraft", 
-        domain: "www.mindcraft.com", 
-        path: "/var/www/mindcraft", 
-        ipAddress: "192.168.1.18", 
-        serverSoftware: "Apache", 
-        webStatus: 0, 
-        pay:7
-    },
-    {
-        name: "BuildWeb", 
-        domain: "www.buildweb.com", 
-        path: "/var/www/buildweb", 
-        ipAddress: "192.168.1.19", 
+        name: "WebMasters",
+        domain: "www.webmasters.com",
+        path: "/var/www/webmasters",
+        ipAddress: "192.168.1.12",
         serverSoftware: "Nginx",
-        webStatus: 0, 
-        pay:21
+        webStatus: 0,
+        pay: 14
     },
     {
-        name: "InnoSoft", 
-        domain: "www.innosoft.com", 
-        path: "/var/www/innosoft", 
-        ipAddress: "192.168.1.20", 
-        serverSoftware: "Apache", 
-        webStatus: 0, 
-        pay:13
+        name: "DesignHive",
+        domain: "www.designhive.com",
+        path: "/var/www/designhive",
+        ipAddress: "192.168.1.13",
+        serverSoftware: "Apache",
+        webStatus: 0,
+        pay: 8
     },
     {
-        name: "WaveWeb", 
-        domain: "www.waveweb.com", 
-        path: "/var/www/waveweb", 
-        ipAddress: "192.168.1.21", 
-        serverSoftware: "Apache", 
-        webStatus: 0, 
-        pay:13
+        name: "GameChangers",
+        domain: "www.gamechangers.com",
+        path: "/var/www/gamechangers",
+        ipAddress: "192.168.1.14",
+        serverSoftware: "Nginx",
+        webStatus: 0,
+        pay: 19
+    },
+    {
+        name: "ScriptingSquad",
+        domain: "www.scriptingsquad.com",
+        path: "/var/www/scriptingsquad",
+        ipAddress: "192.168.1.15",
+        serverSoftware: "Nginx",
+        webStatus: 0,
+        pay: 16
+    },
+    {
+        name: "DevDynasty",
+        domain: "www.devdynasty.com",
+        path: "/var/www/devdynasty",
+        ipAddress: "192.168.1.16",
+        serverSoftware: "Apache",
+        webStatus: 0,
+        pay: 11
+    },
+    {
+        name: "PixelPioneers",
+        domain: "www.pixelpioneers.com",
+        path: "/var/www/pixelpioneers",
+        ipAddress: "192.168.1.17",
+        serverSoftware: "Nginx",
+        webStatus: 0,
+        pay: 15
+    },
+    {
+        name: "MindCraft",
+        domain: "www.mindcraft.com",
+        path: "/var/www/mindcraft",
+        ipAddress: "192.168.1.18",
+        serverSoftware: "Apache",
+        webStatus: 0,
+        pay: 7
+    },
+    {
+        name: "BuildWeb",
+        domain: "www.buildweb.com",
+        path: "/var/www/buildweb",
+        ipAddress: "192.168.1.19",
+        serverSoftware: "Nginx",
+        webStatus: 0,
+        pay: 21
+    },
+    {
+        name: "InnoSoft",
+        domain: "www.innosoft.com",
+        path: "/var/www/innosoft",
+        ipAddress: "192.168.1.20",
+        serverSoftware: "Apache",
+        webStatus: 0,
+        pay: 13
+    },
+    {
+        name: "WaveWeb",
+        domain: "www.waveweb.com",
+        path: "/var/www/waveweb",
+        ipAddress: "192.168.1.21",
+        serverSoftware: "Apache",
+        webStatus: 0,
+        pay: 13
     }
 ];

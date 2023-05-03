@@ -12,7 +12,59 @@ body {
     display: flex;
     overflow: hidden;
 }
+.ddShopContainer,
+.ddHomeTables{
+    width: 50vw;
+    height: 100%;
+}
+.ddShopContainer{
+    display: flex;
+    align-items: center;
+    justify-content: right;
+    flex-direction: column;
+    color: lime;
+}
+.ddMiddleHeader{
+    text-align: center;
+    margin: 0;
+}
+.ddShopTable{
+    text-align: center;
+    font-size: xx-large;
+    
+}
+.ddShopTable td{border-bottom: 1px solid lime;  }
+.ddAddSpace{
+    background-color: #3f3f3f;
+    font-size: 30px;
+    color: lime;
+    border-radius: 5px;
+}
 
+.ddAddSpace:hover{
+    filter: brightness(140%);
+    transition: .6s;
+}
+.ddAddSpace:disabled{
+    color: #142f15;
+    background-color: #191919;
+}
+.ddShopBorder{
+    width: fit-content;
+    height: fit-content;
+    border: 1px solid lime;
+    border-radius: 20px;
+    padding-left: 3%;
+    padding-right: 1%;
+}
+.ddServUpgradeCost{
+    font-size: x-large;
+    font-weight: bolder;
+    color: rgb(142, 255, 142);
+}
+.ddAddSpaceRed{
+    color: red;
+}
 .ddScoresDisplay {
     width: fit-content;
     color: lime;
@@ -33,7 +85,7 @@ body {
     font-size: .9rem;
 }
 .ddServerTableDisplay {
-    width: 20%;
+    width: 40%;
     color: lime;
     border-spacing: 5px;
     table-layout: fixed;
@@ -51,9 +103,12 @@ body {
     font-size: .9rem;
 }
 .ddShop{
+    display: flex;
     color: lime;
-    margin-left: 50%;
+    justify-content: center;
+    align-items: center;
 }
+
 
 .ddtaskbar {
     position: fixed;
@@ -1049,14 +1104,15 @@ li {
 }
 
 .startNewDayButton {
-    background-color: #4c4c4c;
+    background-color: #3f3f3f;
     color: #ffffff;
-    border: none;
+    border: 1px solid lime;
     padding: 10px 20px;
     border-radius: 4px;
     font-size: 16px;
     font-weight: bold;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    text-shadow: 2px 2px 3px lime;
     transition: background-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
     margin-left: 10px;
   }
