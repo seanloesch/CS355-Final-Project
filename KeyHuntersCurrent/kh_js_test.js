@@ -49,6 +49,7 @@ const kh_easyButton = document.getElementById('kh_easy_btn');
 const kh_mediumButton = document.getElementById('kh_medium_btn');
 const kh_hardButton = document.getElementById('kh_hard_btn');
 
+const kh_notebook = document.getElementById('kh_note_textarea');
 
 const kh_homeButton = document.getElementById('kh_home_btn');
 const kh_inGame = document.getElementById('kh_inGame');
@@ -246,89 +247,108 @@ function kh_startGame() {
 
 function kh_toggleDict() {
   if (kh_panelActive == false) {
-    kh_dictPanel.classList.remove('hide');
-
-    kh_dictButton.style.backgroundColor = "rgb(150,200,255)";
-    kh_dictButton.classList.add('new-pos');
-
-    kh_panelActive = true;
-    kh_dictActive = true;
+    kh_turnOnDict();
   } 
   else if (kh_panelActive == true && kh_dictActive == true) {
-    kh_dictPanel.classList.add('hide');
-
-    kh_dictButton.style.backgroundColor = 'white';
-    kh_dictButton.classList.remove('new-pos');
-
-    kh_panelActive = false;
-    kh_dictActive = false;
+    kh_turnOffDict();
   }   
+}
+
+function kh_turnOnDict() {
+  kh_dictPanel.classList.remove('hide');
+  kh_dictButton.style.backgroundColor = "rgb(150,200,255)";
+  kh_dictButton.classList.add('new-pos');
+  kh_panelActive = true;
+  kh_dictActive = true;
+}
+
+function kh_turnOffDict() {
+  kh_dictPanel.classList.add('hide');
+  kh_dictButton.style.backgroundColor = 'white';
+  kh_dictButton.classList.remove('new-pos');
+  kh_panelActive = false;
+  kh_dictActive = false;
 }
 
 function kh_toggleMsg() {
   if (kh_panelActive == false) {
-    kh_msgPanel.classList.remove('hide');
-
-    kh_msgButton.style.backgroundColor = "rgb(150,200,255)";
-    kh_msgButton.classList.add('new-pos');
-
-    kh_panelActive = true;
-    kh_msgActive = true;
+    kh_turnOnMsg();
   } 
   else if (kh_panelActive == true && kh_msgActive == true) {
-    kh_msgPanel.classList.add('hide');
-
-    kh_msgButton.style.backgroundColor = 'white';
-    kh_msgButton.classList.remove('new-pos');
-
-    kh_panelActive = false;
-    kh_msgActive = false;
+    kh_turnOffMsg();
   }    
+}
+
+function kh_turnOnMsg() {
+  kh_msgPanel.classList.remove('hide');
+  kh_msgButton.style.backgroundColor = "rgb(150,200,255)";
+  kh_msgButton.classList.add('new-pos');
+  kh_panelActive = true;
+  kh_msgActive = true;
+}
+
+function kh_turnOffMsg() {
+  kh_msgPanel.classList.add('hide');
+  kh_msgButton.style.backgroundColor = 'white';
+  kh_msgButton.classList.remove('new-pos');
+  kh_panelActive = false;
+  kh_msgActive = false;
 }
 
 function kh_toggleNote() {
   if (kh_panelActive == false) {
-    kh_notePanel.classList.remove('hide');
-
-    kh_noteButton.style.backgroundColor = "rgb(150,200,255)";
-    kh_noteButton.classList.add('new-pos');
-
-    kh_panelActive = true;
-    kh_noteActive = true;
+    kh_turnOnNote();
   } 
   else if (kh_panelActive == true && kh_noteActive == true) {
-    kh_notePanel.classList.add('hide');
-
-    kh_noteButton.style.backgroundColor = 'white';
-    kh_noteButton.classList.remove('new-pos');
-
-    kh_panelActive = false;
-    kh_noteActive = false;
+    kh_turnOffNote();
   }    
+}
+
+function kh_turnOnNote() {
+  kh_notePanel.classList.remove('hide');
+  kh_noteButton.style.backgroundColor = "rgb(150,200,255)";
+  kh_noteButton.classList.add('new-pos');
+  kh_panelActive = true;
+  kh_noteActive = true;
+}
+
+function kh_turnOffNote() {
+  kh_notePanel.classList.add('hide');
+  kh_noteButton.style.backgroundColor = 'white';
+  kh_noteButton.classList.remove('new-pos');
+  kh_panelActive = false;
+  kh_noteActive = false;
 }
 
 function kh_toggleHelp() {
   if (kh_panelActive == false) {
-    kh_helpPanel.classList.remove('hide');
-
-    kh_helpButton.style.backgroundColor = "rgb(150,200,255)";
-    kh_helpButton.classList.add('new-pos');
-
-    kh_panelActive = true;
-    kh_helpActive = true;
+    kh_turnOnHelp();
   } 
   else if (kh_panelActive == true && kh_helpActive == true) {
-    kh_helpPanel.classList.add('hide');
-
-    kh_helpButton.style.backgroundColor = 'white';
-    kh_helpButton.classList.remove('new-pos');
-
-    kh_panelActive = false;
-    kh_helpActive = false;
+    kh_turnOffHelp();
   }    
 }
 
-console.log(!kh_msgPanel.getAttribute('hide'));
+function kh_turnOnHelp() {
+  kh_helpPanel.classList.remove('hide');
+  kh_helpButton.style.backgroundColor = "rgb(150,200,255)";
+  kh_helpButton.classList.add('new-pos');
+  kh_panelActive = true;
+  kh_helpActive = true;
+}
+
+function kh_turnOffHelp() {
+  kh_helpPanel.classList.add('hide');
+  kh_helpButton.style.backgroundColor = 'white';
+  kh_helpButton.classList.remove('new-pos');
+  kh_panelActive = false;
+  kh_helpActive = false;
+}
+
+function kh_clearNotebook() {
+  var kh_notebook = document.getElementById('kh_note_textarea');
+  kh_notebook.value=''
+}
 
 //draw our table
 function table_create() {
@@ -793,6 +813,15 @@ function kh_promptPlayAgain() {
   kh_msg.classList.remove('hide');
   kh_homeButton.classList.remove('hide');
   kh_inGame.classList.add('hide');
+
+  
+  kh_turnOffDict();
+  kh_turnOffMsg();
+  kh_turnOffNote();
+  kh_turnOffHelp();
+
+  kh_clearNotebook();
+
   firstGame = true;
   
 }
