@@ -126,7 +126,6 @@ body{
 
 
 .kh_table_container {
-    margin-top: 90px;
     margin-bottom: 90px;
 }
 
@@ -361,6 +360,19 @@ body{
     align-items: center;
     /* background-color: rgb(0, 68, 102); */
     background-size:cover;
+    flex-direction: column;
+}
+
+.kh_logo_container {
+    background-color: white;
+    border-radius: 5px;
+    padding: 10px;
+    box-shadow: 0 0 10px 2px;
+    font-weight: 600;
+    font-size: xx-large;
+    line-height: 5px;
+    text-align: center;
+    margin:50px;
 }
 
 .kh_startScreen {
@@ -372,6 +384,7 @@ body{
     font-size: xx-large;
     line-height: 5px;
     text-align: center;
+    padding: 20px;
 }
 .kh_inGame{
     /* position: relative;
