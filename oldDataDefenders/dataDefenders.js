@@ -106,15 +106,15 @@ function changeMoney() {
     console.log(money, "+", temp)
     money += temp;
     document.getElementById("ddMoney").innerText = money;
-    document.getElementById("ddDailyPayEstimate").innerText = (temp*16);
+    document.getElementById("ddDailyPayEstimate").innerText = (temp * 16);
 }
 
 //calculate Reputation after Form Submission
 var reputation = parseInt(document.getElementById("ddRep").innerText);
-function formReputationChange(formPercentage){
-    if(formPercentage==null){reputation -= 25}
-    else{reputation = Math.round((reputation+formPercentage)/2);}
-    document.getElementById("ddRep").innerText=reputation;
+function formReputationChange(formPercentage) {
+    if (formPercentage == null) { reputation -= 25 }
+    else { reputation = Math.round((reputation + formPercentage) / 2); }
+    document.getElementById("ddRep").innerText = reputation;
 }
 
 function ddSetDateAndTime() {
@@ -1047,7 +1047,90 @@ function dd_createMalware(server) {
     });
 
 }
-//
+//-------------------------------------------------------------------------------------------------------------------------
+//Create DNS
+var ddDNSArray = {
+    attackID: null,
+    websiteDom: null,
+    originalPath: null,
+    owner: null,
+    servID: null,
+    newPath: null,
+};
+
+//new DNS spoofing attack
+function dd_createDNS(server) {
+    ddDNSArray.attackID = ddAttackCount;
+    do {
+        var ddAttackedWebsite = websites[Math.floor(Math.random() * websites.length)];
+    } while (ddAttackedWebsite.serverID != server)
+
+    ddDNSArray.websiteDom = ddAttackedWebsite.domain;
+    ddDNSArray.owner = ddAttackedWebsite.name;
+    ddDNSArray.originalPath = ddAttackedWebsite.path
+    ddDNSArray.servID = ddAttackedWebsite.serverID;
+    ddAttackedWebsite.webStatus = 2
+    ddDNSArray.newPath = ddAttackedWebsite.path + "/" + DNSBadDomains[Math.floor(Math.random() * DNSBadDomains.length)]
+
+    ddAttackedWebsite.path = ddDNSArray.newPath;
+
+    console.log(ddDNSArray)
+    createWebsiteTable();
+    ddAttackCount++;
+
+    addMessage(
+        ddDNSArray.owner,
+        ddReturnDayAndTime(),
+        ddDNSArray.domain,
+        DNSSpoofResponses[Math.floor(Math.random() * DNSSpoofResponses.length)]
+    );
+
+}
+const DNSBadDomains = [
+    "phishybanking.com",
+    "notreallyamazon.com",
+    "paypalhackerz.net",
+    "malicious-google.com",
+    "suspicious-payments.com",
+    "amazonprime-verify.com",
+    "fakeebay-login.com",
+    "appleid-confirm.com",
+    "netflix-phishers.net",
+    "yahoo-verify.net",
+    "facebook-verify.net",
+    "instagram-security.com",
+    "twitter-fraud.net",
+    "linkedin-phishing.net",
+    "microsoft-account-verify.com",
+    "icloud-logon.com",
+    "sketchy-wellsfargo.com",
+    "unusual-chase-login.com",
+    "sneakyspotify.com",
+    "cryptic-bitcoin-wallet.net"
+];
+const DNSSpoofResponses = [
+    "I think my domain name doesnt wotk",
+    "My browser is redirecting to unexpected websites",
+    "I'm seeing strange IP addresses in my network connections",
+    "My domain name service cache seems to have been poisoned",
+    "I'm getting invalid domain name service responses",
+    "My network is behaving strangely",
+    "I suspect a domain name service man-in-the-middle attack",
+    "My domain name service queries are being intercepted",
+    "I'm getting domain name service errors on legitimate websites",
+    "My network traffic is being diverted",
+    "I'm seeing unexpected domain name service resolution results",
+    "My domain name service requests are being tampered with",
+    "I'm getting redirected to phishing websites",
+    "My domain name service server is giving me incorrect responses",
+    "I'm experiencing domain name service-related network outages",
+    "My domain name service settings have been changed without my permission",
+    "I'm getting errors when trying to access legitimate websites",
+    "My network is slow and unresponsive",
+    "I'm seeing suspicious activity in my domain name service logs"
+];
+//-------------------------------------------------------------------------------------------------------------------------
+
 
 function ddReturnDayAndTime() {
     var minMsg = minuteCount;
@@ -1790,7 +1873,7 @@ function createMalwareForm() {
             }
         }
         var malPercent = (ddMalnumcorrect / 4) * 100
-        
+
         formReputationChange(malPercent);
 
         const signature = signatureInput.value;
@@ -2057,7 +2140,7 @@ function createInsiderForm() {
         const websiteDomain = websiteInput.value;
         const affectedServerId = serverSelect.value;
         const ddStaffName = InsiderAttackerNameInput.value;
-        const ddStaffRole = InsiderAttackerRoleInput.value;
+        const ddfixedPath = InsiderAttackerRoleInput.value;
         const ddStaffAccessLVL = accessSelect.value;
         var ddDoSCheckboxArray = [false, false, false, false];
         var ddMalnumcorrect = 0;
@@ -2088,7 +2171,7 @@ function createInsiderForm() {
             if (ddInsiderArray.serverNumber == affectedServerId) {
                 if (ddInsiderArray.attackedwebsite == websiteDomain) {
                     if (ddInsiderArray.staffName == ddStaffName) {
-                        if (ddInsiderArray.staffRole == ddStaffRole) {
+                        if (ddInsiderArray.staffRole == ddfixedPath) {
                             if (ddInsiderArray.accessLevel == ddStaffAccessLVL) {
                                 websites.forEach((website) => {
                                     if (website.domain == websiteDomain) {
@@ -2159,6 +2242,268 @@ function createInsiderForm() {
         removeReportForm();
     });
 }
+//----------------------------------------------------------------------------------------------------------------------------------
+function createDNSForm() {
+    document.getElementById('ddReportType').classList.add('hide');
+    ddReportFormContainer.classList.remove('hide');
+    document.getElementById('ddDeleteReportForm').classList.remove('hide');
+
+    const ddForm = document.createElement('form');
+    ddForm.classList.add('ddReportform');
+
+    const ddReportheader = document.createElement('h1');
+    ddReportheader.classList.add('ddreportHeader')
+    ddReportheader.textContent = 'DNS Spoof Report Form';
+    ddForm.appendChild(ddReportheader);
+    ddForm.appendChild(document.createElement('hr'));
+    const websiteLabel = document.createElement('label');
+    websiteLabel.textContent = 'Attacked Website Domain:';
+    const websiteInput = document.createElement('input');
+    websiteInput.type = 'text';
+    websiteInput.name = 'website-domain';
+    websiteInput.required = true;
+    websiteLabel.appendChild(websiteInput);
+    ddForm.appendChild(websiteLabel);
+    const serverLabel = document.createElement('label');
+    serverLabel.textContent = 'Affected Websites Server ID:';
+    const serverSelect = document.createElement('select');
+    serverSelect.name = 'affected-server-id';
+    serverSelect.required = true;
+    const option1 = document.createElement('option');
+    option1.value = '1';
+    option1.textContent = 'Server 1';
+    serverSelect.appendChild(option1);
+    const option2 = document.createElement('option');
+    option2.value = '2';
+    option2.textContent = 'Server 2';
+    serverSelect.appendChild(option2);
+    const option3 = document.createElement('option');
+    option3.value = '3';
+    option3.textContent = 'Server 3';
+    serverSelect.appendChild(option3);
+    const option4 = document.createElement('option');
+    option4.value = '4';
+    option4.textContent = 'Server 4';
+    serverSelect.appendChild(option4);
+    serverLabel.appendChild(serverSelect);
+    ddForm.appendChild(serverLabel);
+
+    ddForm.appendChild(document.createElement('br'));
+    ddForm.appendChild(document.createElement('br'));
+
+    const FakePathLabel = document.createElement('label');
+    FakePathLabel.textContent = 'Fake Path:';
+    const FakePathInput = document.createElement('input');
+    FakePathInput.type = 'text';
+    FakePathInput.name = 'fake-path';
+    FakePathInput.required = true;
+    FakePathLabel.appendChild(FakePathInput);
+    ddForm.appendChild(FakePathLabel);
+
+    const fixedPathLabel = document.createElement('label');
+    fixedPathLabel.textContent = 'Intended Path:';
+    const fixedPathInput = document.createElement('input');
+    fixedPathInput.type = 'text';
+    fixedPathInput.name = 'fix-path';
+    fixedPathInput.required = true;
+    fixedPathLabel.appendChild(fixedPathInput);
+    ddForm.appendChild(fixedPathLabel);
+
+    const fixLabel = document.createElement('label');
+    fixLabel.textContent = 'Suggested Fix:';
+
+    const randomNumCorrect = Math.floor(Math.random() * 4);
+
+    var ddReportQuestionArray = []
+    var ddReportQIndex = 0
+
+    for (let i = 0; i <= randomNumCorrect; i++) {
+        ddReportQuestionArray[i] = { response: ddCorrectDNSResponses[Math.floor(Math.random() * ddCorrectDNSResponses.length)], correct: true }
+        ddReportQIndex++;
+    }
+    while (ddReportQuestionArray.length <= 3) {
+        ddReportQuestionArray[ddReportQIndex] = { response: ddWrongDNSResponses[Math.floor(Math.random() * ddWrongDNSResponses.length)], correct: false }
+        ddReportQIndex++
+    }
+
+    ddReportQuestionArray = ddReportQuestionArray.sort(() => Math.random() - .5);
+    console.log(ddReportQuestionArray)
+
+    const checkbox1 = document.createElement('input');
+    checkbox1.type = 'checkbox';
+    checkbox1.name = 'fix-option-1';
+    const label1 = document.createElement('label');
+    checkbox1.value = ddReportQuestionArray[0].correct;
+    label1.textContent = 'Option 1';
+    label1.appendChild(checkbox1);
+    const suggest1 = document.createElement('span');
+    suggest1.innerText = ddReportQuestionArray[0].response;
+    label1.appendChild(suggest1);
+
+    const checkbox2 = document.createElement('input');
+    checkbox2.type = 'checkbox';
+    checkbox2.name = 'fix-option-2';
+    const label2 = document.createElement('label');
+    label2.textContent = 'Option 2';
+    checkbox2.value = ddReportQuestionArray[1].correct;
+    label2.appendChild(checkbox2);
+    const suggest2 = document.createElement('span');
+    suggest2.innerText = ddReportQuestionArray[1].response;
+    label2.appendChild(suggest2);
+
+    const checkbox3 = document.createElement('input');
+    checkbox3.type = 'checkbox';
+    checkbox3.name = 'fix-option-3';
+    const label3 = document.createElement('label');
+    label3.textContent = 'Option 3';
+    checkbox3.value = ddReportQuestionArray[2].correct;
+    label3.appendChild(checkbox3);
+    const suggest3 = document.createElement('span');
+    suggest3.innerText = ddReportQuestionArray[2].response;
+    label3.appendChild(suggest3);
+
+    const checkbox4 = document.createElement('input');
+    checkbox4.type = 'checkbox';
+    checkbox4.name = 'fix-option-4';
+    const label4 = document.createElement('label');
+    label4.textContent = 'Option 4';
+    checkbox4.value = ddReportQuestionArray[3].correct;
+    label4.appendChild(checkbox4);
+    const suggest4 = document.createElement('span');
+    suggest4.innerText = ddReportQuestionArray[3].response;
+    label4.appendChild(suggest4);
+
+    fixLabel.appendChild(document.createElement('hr'));
+    fixLabel.appendChild(label1);
+    fixLabel.appendChild(document.createElement('hr'));
+    fixLabel.appendChild(label2);
+    fixLabel.appendChild(document.createElement('hr'));
+    fixLabel.appendChild(label3);
+    fixLabel.appendChild(document.createElement('hr'));
+    fixLabel.appendChild(label4);
+    fixLabel.appendChild(document.createElement('hr'));
+    ddForm.appendChild(fixLabel);
+    ddForm.appendChild(document.createElement('br'));
+    // create the signature input field and add it to the form
+    const signatureLabel = document.createElement('label');
+    signatureLabel.textContent = 'Signature:';
+    const signatureInput = document.createElement('input');
+    signatureInput.type = 'text';
+    signatureInput.name = 'signature';
+    signatureInput.required = true;
+    signatureLabel.appendChild(signatureInput);
+    ddForm.appendChild(signatureLabel);
+    const submitButton = document.createElement('button');
+    submitButton.type = 'submit';
+    submitButton.textContent = 'Report';
+    submitButton.classList.add('ddMalSubmit');
+    const malSubmit = document.createElement('div');
+    malSubmit.classList.add('ddreportSumbit')
+    malSubmit.appendChild(submitButton);
+    ddForm.appendChild(malSubmit);
+
+
+
+    // add the form to the document
+    ddReportFormContainer.appendChild(ddForm);
+
+    ddForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const websiteDomain = websiteInput.value;
+        const affectedServerId = serverSelect.value;
+        const ddfakePath = FakePathInput.value;
+        const ddfixedPath = fixedPathInput.value;
+        var ddDoSCheckboxArray = [false, false, false, false];
+        var ddMalnumcorrect = 0;
+        if (checkbox1.checked) {
+            ddDoSCheckboxArray[0] = true;
+        }
+        if (checkbox2.checked) {
+            ddDoSCheckboxArray[1] = true;
+        }
+        if (checkbox3.checked) {
+            ddDoSCheckboxArray[2] = true;
+        }
+        if (checkbox4.checked) {
+            ddDoSCheckboxArray[3] = true;
+        }
+
+        for (let i = 0; i <= 3; i++) {
+            if (ddDoSCheckboxArray[i] == ddReportQuestionArray[i].correct) {
+                ddMalnumcorrect++;
+            }
+        }
+        var malPercent = (ddMalnumcorrect / 4) * 100
+        formReputationChange(malPercent);
+
+        const signature = signatureInput.value;
+
+        if (ddDNSArray.attackID != null) {
+            if (ddDNSArray.websiteDom == websiteDomain) {
+                if (ddDNSArray.servID == affectedServerId) {
+                    if (ddDNSArray.newPath == ddfakePath) {
+                        if (ddDNSArray.originalPath == ddfixedPath) {
+
+                            websites.forEach((website) => {
+                                if (website.domain == websiteDomain) {
+                                    website.webStatus = 0
+                                    website.path = ddDNSArray.originalPath
+                                }
+                            });
+                            ddDNSArray.attackID = null;
+                            ddDNSArray.websiteDom = null;
+                            ddDNSArray.originalPath = null;
+                            ddDNSArray.owner = null;
+                            ddDNSArray.servID = null;
+                            ddDNSArray.newPath = null;
+                            ddAttackCount--;
+                            createWebsiteTable();
+
+                        }
+                        else {
+                            addMessage(
+                                ddSystemMsg.name,
+                                ddReturnDayAndTime(),
+                                ddSystemMsg.addr,
+                                "The fixed path is incorrect");
+                        }
+                    }
+                    else {
+                        addMessage(
+                            ddSystemMsg.name,
+                            ddReturnDayAndTime(),
+                            ddSystemMsg.addr,
+                            "The spoofed path is incorrect")
+                    }
+                }
+                else {
+                    addMessage(
+                        ddSystemMsg.name,
+                        ddReturnDayAndTime(),
+                        ddSystemMsg.addr,
+                        "The server you put in is incorrect")
+                }
+            }
+            else {
+                addMessage(
+                    ddSystemMsg.name,
+                    ddReturnDayAndTime(),
+                    ddSystemMsg.addr,
+                    "The website domain you put in is not being attacked")
+            }
+        }
+        else {
+            addMessage(
+                ddSystemMsg.name,
+                ddReturnDayAndTime(),
+                ddSystemMsg.addr,
+                "there are no DNS Spoof attacks")
+        }
+        ddForm.reset();
+        removeReportForm();
+    });
+}
+//----------------------------------------------------------------------------------------------------------------------------------
 function removeReportForm() {
     while (ddReportFormContainer.firstChild) {
         ddReportFormContainer.removeChild(ddReportFormContainer.firstChild);
@@ -2284,6 +2629,38 @@ const insiderWrongResponses = [
     "Use physical violence or intimidation against the insider",
     "Blame the company's security team for failing to prevent the incident"
 ];
+//----------------------------------------------------------------------------------------------------------
+const ddCorrectDNSResponses = [
+    'Implement DNSSEC to authenticate DNS responses',
+    'Configure DNS servers to use only trusted sources for DNS resolution',
+    'Use DNS resolvers with built-in security measures like DNS-over-HTTPS or DNS-over-TLS',
+    'Use firewalls and IDS/IPS to detect and block spoofed DNS traffic',
+    'Monitor DNS traffic patterns for signs of spoofing attacks',
+    'Educate employees and users about the risks of DNS spoofing and how to avoid it',
+    'Use tools like dig and nslookup to verify the authenticity of DNS responses',
+    'Harden network security by using multifactor authentication, access controls, and other security measures',
+    'Keep DNS servers up to date with the latest patches and security updates'
+];
+
+const ddWrongDNSResponses = [
+    'Ignore the attack and hope it goes away',
+    'Shut down your entire network to stop the attack',
+    'Blame your internet service provider for the attack',
+    'Delete important system files to stop the attack',
+    "Give in to the attacker's demands",
+    'Just wait it out and hope for the best',
+    "Do nothing and hope the attack doesn't get worse",
+    'Disable all firewalls and security measures to stop the attack',
+    "Call the attacker's bluff and threaten legal action",
+    'Assume the attack is a false positive and ignore it',
+    'Blame your users for causing the attack',
+    'Delete your entire network and start over',
+    'Reboot your servers repeatedly to stop the attack',
+    'Wait for the attacker to get bored and move on',
+    'Engage in a hacking counter-attack against the attacker',
+    'Delete all logs and evidence of the attack to cover it up'
+];
+//----------------------------------------------------------------------------------------------------------
 // Make new log
 function makeLog() {
     // Create the container div
@@ -2438,102 +2815,102 @@ const possibleWebsites = [
         pay: 20
     },
     {
-        name: "CodeNinjas", 
-        domain: "www.codeninjas.com", 
-        path: "/var/www/codeninjas", 
-        ipAddress: "192.168.1.11", 
-        serverSoftware: "Apache", 
-        webStatus: 0, 
-        pay:12
+        name: "CodeNinjas",
+        domain: "www.codeninjas.com",
+        path: "/var/www/codeninjas",
+        ipAddress: "192.168.1.11",
+        serverSoftware: "Apache",
+        webStatus: 0,
+        pay: 12
     },
     {
-        name: "WebMasters", 
-        domain: "www.webmasters.com", 
-        path: "/var/www/webmasters", 
-        ipAddress: "192.168.1.12", 
-        serverSoftware: "Nginx", 
-        webStatus: 0, 
-        pay:14
-    },
-    {
-        name: "DesignHive", 
-        domain: "www.designhive.com", 
-        path: "/var/www/designhive", 
-        ipAddress: "192.168.1.13", 
-        serverSoftware: "Apache", 
-        webStatus: 0, 
-        pay:8
-    },
-    {
-        name: "GameChangers", 
-        domain: "www.gamechangers.com", 
-        path: "/var/www/gamechangers", 
-        ipAddress: "192.168.1.14", 
-        serverSoftware: "Nginx", 
-        webStatus: 0, 
-        pay:19
-    },
-    {
-        name: "ScriptingSquad", 
-        domain: "www.scriptingsquad.com", 
-        path: "/var/www/scriptingsquad", 
-        ipAddress: "192.168.1.15", 
-        serverSoftware: "Nginx", 
-        webStatus: 0, 
-        pay:16
-    },
-    {
-        name: "DevDynasty", 
-        domain: "www.devdynasty.com", 
-        path: "/var/www/devdynasty", 
-        ipAddress: "192.168.1.16", 
-        serverSoftware: "Apache", 
-        webStatus: 0, 
-        pay:11
-    },
-    {
-        name: "PixelPioneers", 
-        domain: "www.pixelpioneers.com", 
-        path: "/var/www/pixelpioneers", 
-        ipAddress: "192.168.1.17", 
-        serverSoftware: "Nginx", 
-        webStatus: 0, 
-        pay:15
-    },
-    {
-        name: "MindCraft", 
-        domain: "www.mindcraft.com", 
-        path: "/var/www/mindcraft", 
-        ipAddress: "192.168.1.18", 
-        serverSoftware: "Apache", 
-        webStatus: 0, 
-        pay:7
-    },
-    {
-        name: "BuildWeb", 
-        domain: "www.buildweb.com", 
-        path: "/var/www/buildweb", 
-        ipAddress: "192.168.1.19", 
+        name: "WebMasters",
+        domain: "www.webmasters.com",
+        path: "/var/www/webmasters",
+        ipAddress: "192.168.1.12",
         serverSoftware: "Nginx",
-        webStatus: 0, 
-        pay:21
+        webStatus: 0,
+        pay: 14
     },
     {
-        name: "InnoSoft", 
-        domain: "www.innosoft.com", 
-        path: "/var/www/innosoft", 
-        ipAddress: "192.168.1.20", 
-        serverSoftware: "Apache", 
-        webStatus: 0, 
-        pay:13
+        name: "DesignHive",
+        domain: "www.designhive.com",
+        path: "/var/www/designhive",
+        ipAddress: "192.168.1.13",
+        serverSoftware: "Apache",
+        webStatus: 0,
+        pay: 8
     },
     {
-        name: "WaveWeb", 
-        domain: "www.waveweb.com", 
-        path: "/var/www/waveweb", 
-        ipAddress: "192.168.1.21", 
-        serverSoftware: "Apache", 
-        webStatus: 0, 
-        pay:13
+        name: "GameChangers",
+        domain: "www.gamechangers.com",
+        path: "/var/www/gamechangers",
+        ipAddress: "192.168.1.14",
+        serverSoftware: "Nginx",
+        webStatus: 0,
+        pay: 19
+    },
+    {
+        name: "ScriptingSquad",
+        domain: "www.scriptingsquad.com",
+        path: "/var/www/scriptingsquad",
+        ipAddress: "192.168.1.15",
+        serverSoftware: "Nginx",
+        webStatus: 0,
+        pay: 16
+    },
+    {
+        name: "DevDynasty",
+        domain: "www.devdynasty.com",
+        path: "/var/www/devdynasty",
+        ipAddress: "192.168.1.16",
+        serverSoftware: "Apache",
+        webStatus: 0,
+        pay: 11
+    },
+    {
+        name: "PixelPioneers",
+        domain: "www.pixelpioneers.com",
+        path: "/var/www/pixelpioneers",
+        ipAddress: "192.168.1.17",
+        serverSoftware: "Nginx",
+        webStatus: 0,
+        pay: 15
+    },
+    {
+        name: "MindCraft",
+        domain: "www.mindcraft.com",
+        path: "/var/www/mindcraft",
+        ipAddress: "192.168.1.18",
+        serverSoftware: "Apache",
+        webStatus: 0,
+        pay: 7
+    },
+    {
+        name: "BuildWeb",
+        domain: "www.buildweb.com",
+        path: "/var/www/buildweb",
+        ipAddress: "192.168.1.19",
+        serverSoftware: "Nginx",
+        webStatus: 0,
+        pay: 21
+    },
+    {
+        name: "InnoSoft",
+        domain: "www.innosoft.com",
+        path: "/var/www/innosoft",
+        ipAddress: "192.168.1.20",
+        serverSoftware: "Apache",
+        webStatus: 0,
+        pay: 13
+    },
+    {
+        name: "WaveWeb",
+        domain: "www.waveweb.com",
+        path: "/var/www/waveweb",
+        ipAddress: "192.168.1.21",
+        serverSoftware: "Apache",
+        webStatus: 0,
+        pay: 13
     }
 ];
