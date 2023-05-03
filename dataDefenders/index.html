@@ -45,8 +45,8 @@
                     </tr>
                     <tr>
                         <td>Server 1: </td>
-                        <td id="ddServ1Space">1</td>
-                        <td id="ddServ1Host">1</td>
+                        <td id="ddServ1Space">2</td>
+                        <td id="ddServ1Host">2</td>
                     </tr>
                     <tr>
                         <td>Server 2: </td>
@@ -60,8 +60,8 @@
                     </tr>
                     <tr>
                         <td>Server 4: </td>
-                        <td id="ddServ4Space">1</td>
-                        <td id="ddServ4Host">1</td>
+                        <td id="ddServ4Space">3</td>
+                        <td id="ddServ4Host">3</td>
                     </tr>
                 </table>
                 <button class="startNewDayButton" onclick="ddStartNewDay()">&#x23F5;Start New Day&#x23F5;</button>
@@ -129,7 +129,7 @@
             <button id="ddOpenServer" class="ddTaskBtn" onclick="ddOpenTab('ddServerRoom')">Servers</button>
             <button id="ddOpenReport" class="ddTaskBtn ddTaskBtnReport" onclick="ddOpenTab('ddreport')">Report</button>
             <button id="ddOpenCams" class="ddTaskBtn" onclick="ddOpenTab('ddcams')">Sec. Cams</button>
-            <button id="ddOpenMsg" class="ddTaskBtn" onclick="ddOpenTab('ddMsg')">Messages</button>
+            <button id="ddOpenMsg" class="ddTaskBtn" onclick="ddOpenTab('ddMsg')">Messages<span id="ddExclamation" class="ddExclamation hide">!</span></button>
             <button id="ddFastFwd" class="ddTaskBtn" onclick="fastForward()"><i id="ddFastFowardBtn"
                     class="fa fa-fast-forward" aria-hidden="true"></i></button>
         </div>
@@ -387,9 +387,10 @@
         <div id="ddReportType" class="ddReportType">
             <!-- ------------------------------------ -->
             <div class="ddReportTypesContainer">
-                <button onclick="createDoSForm()">DoS Attack</button>
-                <button onclick="createMalwareForm()">Malware Attack</button>
-                <button onclick="createInsiderForm()">Insider Intruder</button>
+                <h1 class="ddreportBtnHeader">Report Forms:</h1><hr>
+                <button class="ddGetReportForm" onclick="createDoSForm()"><div class="ddReportFormText"><mark class="ddMarkWhite">DoS Attack</mark></div></button>
+                <button class="ddGetReportForm" onclick="createMalwareForm()"><div class="ddReportFormText"><mark class="ddMarkWhite">Malware Attack</mark></div></button>
+                <button class="ddGetReportForm" onclick="createInsiderForm()"><div class="ddReportFormText"><mark class="ddMarkWhite">Insider Intruder</mark></div></button>
             </div>
         </div>
         <div id="ddReportFormContainer" class="ddReportFormContainer hide"></div>

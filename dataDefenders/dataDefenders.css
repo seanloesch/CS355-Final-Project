@@ -203,7 +203,9 @@ body {
 .ddtempAndDesc {
     padding-left: 10px;
 }
-
+.ddExclamation{
+    color: red;
+}
 .ddServerRoom {
     width: 100vw;
     height: 100vh;
@@ -541,6 +543,33 @@ body {
     justify-content: center;
     font-size: small;
 }
+.ddGetReportForm{
+    margin: 2%;
+    background-image: url('img/reportBackgroundImage.png');
+    background-size: cover;
+    border: none;
+    height: 22%;
+    width: 43%;
+    border-radius: 25px;
+}
+.ddreportBtnHeader{text-align: center;}
+.ddGetReportForm:hover{
+    height: 24%;
+    width: 46%;
+    filter: brightness(90%);
+    transition: .8s;
+}
+.ddReportFormText{
+    height: 90%;
+    width: 90%;
+    display: flex;
+    justify-content: center;
+    align-items: end;
+    text-decoration: underline;
+    font-size: large;
+    font-weight: bold;
+}
+.ddMarkWhite{background-color: white;}
 
 .ddReportform {
     margin: 50px auto;

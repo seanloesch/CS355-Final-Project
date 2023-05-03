@@ -1,11 +1,4 @@
 var ddOpenScreen = document.getElementById("ddOpenScreen");
-const ddtabList = [
-    "ddwebsitesList",
-    "ddServerRoom",
-    "ddcams",
-    "ddreport",
-    "ddMsg",
-];
 // Get the tbody element of the table
 const tbody = document.querySelector("#ddWebsitesTable tbody");
 // Define an array of objects with website information
@@ -51,18 +44,64 @@ const websites = [
         pay: 5
     },
 ];
-var serverLengths = [1, 1, 1, 1];
+var serverLengths = [
+    parseInt(document.getElementById('ddServ1Host').innerText),
+    parseInt(document.getElementById('ddServ2Host').innerText),
+    parseInt(document.getElementById('ddServ3Host').innerText),
+    parseInt(document.getElementById('ddServ4Host').innerText)
+];
 var serverSpaces = [
     parseInt(document.getElementById('ddServ1Space').innerText),
     parseInt(document.getElementById('ddServ2Space').innerText),
     parseInt(document.getElementById('ddServ3Space').innerText),
     parseInt(document.getElementById('ddServ4Space').innerText)
 ]
+
+function ddInitiallizeWebsiteList() {
+    var initWebCount = 0;
+    for (let i = 1; i < serverLengths[0]; i++) {
+        var newInitWebsite = possibleWebsites[initWebCount];
+        newInitWebsite.serverID = 1;
+        websites.push(newInitWebsite)
+        initWebCount++;
+    }
+    for (let i = 1; i < serverLengths[1]; i++) {
+        var newInitWebsite = possibleWebsites[initWebCount];
+        newInitWebsite.serverID = 2;
+        websites.push(newInitWebsite)
+        initWebCount++;
+    }
+    for (let i = 1; i < serverLengths[2]; i++) {
+        var newInitWebsite = possibleWebsites[initWebCount];
+        newInitWebsite.serverID = 3;
+        websites.push(newInitWebsite)
+        initWebCount++;
+    }
+    for (let i = 1; i < serverLengths[3]; i++) {
+        var newInitWebsite = possibleWebsites[initWebCount];
+        newInitWebsite.serverID = 4;
+        websites.push(newInitWebsite)
+        initWebCount++;
+    }
+    createWebsiteTable();
+    console.log(websites)
+}
+
 var ddNewWebAvailability = [false, false, false, false]
-const ddTabs = ddtabList.map((id) => document.getElementById(id));
 var placeholder;
 
+const ddtabList = [
+    "ddwebsitesList",
+    "ddServerRoom",
+    "ddcams",
+    "ddreport",
+    "ddMsg",
+];
+const ddTabs = ddtabList.map((id) => document.getElementById(id));
 function ddOpenTab(tab) {
+    if(tab=="ddMsg"){
+        if(!document.getElementById('ddExclamation').classList.contains('hide')){document.getElementById('ddExclamation').classList.add('hide')}
+    }
     if (placeholder == tab) {
         ddOpenScreen.classList.remove("hide");
         placeholder = ddOpenScreen;
@@ -126,6 +165,7 @@ var ddSystemMsg = { name: "systemAdmin", addr: "systemAdmin@noReply.com" };
 //let person = prompt("Please enter your name");
 let person = "you"
 document.getElementById("ddUsername").innerText = person;
+
 var fastForwardBtn = document.getElementById("ddFastFowardBtn");
 function fastForward() {
     if (boolFast) {
@@ -206,7 +246,7 @@ function ddDayOver(order) {
         if (addToAvailableServer != null) {
             console.log("attempted")
             //see if another website can join and give a percentage chance that they will join base on reputation (maybe reputation/2 so it isn't too common)
-            if(Math.random() < (reputation/2)/100){
+            if (Math.random() < (reputation / 2) / 100) {
                 var newWebsite = possibleWebsites[websiteNumberIndex];
                 websiteNumberIndex++;
                 newWebsite.serverID = addToAvailableServer;
@@ -853,6 +893,9 @@ function ddlogBack() {
 }
 
 function addMessage(ddMsgSender, ddDateMessage, ddwebsiteName, ddMessage) {
+
+    document.getElementById('ddExclamation').classList.remove('hide')
+
     const senderContainer = document.querySelector(".ddSenderContainer");
     const messageContainer = document.querySelector(".ddMessage");
 
@@ -2568,6 +2611,7 @@ function makeLog() {
 
     // Append the container div to the document body
 }
+
 const possibleWebsites = [
     {
         name: "PlayfulPanda",
@@ -2678,3 +2722,4 @@ const possibleWebsites = [
         pay: 13
     }
 ];
+ddInitiallizeWebsiteList();
