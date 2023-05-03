@@ -380,6 +380,8 @@ function table_create() {
   }
 }
 
+//*----------- sets the correct button in each grid while also displaying the appropriate cipher chosen from easy-hard arrays----*
+
 function setCorrectButton(ranValue) {
   const randomRow = Math.floor(Math.random() * 25) + 1; // Random row between 1 and 26
   const randomCol = Math.floor(Math.random() * 25) + 1; // Random column between 1 and 26
@@ -387,7 +389,7 @@ function setCorrectButton(ranValue) {
   const table = document.getElementById('kh_table');
   const button = table.rows[randomRow].cells[randomCol].querySelector('.khBtn');
   button.dataset.correct = 'true'; // Mark the button as correct
-  
+  ranValue = 3;
   switch (ranValue) {
     case 1:
       isCaeser = true;
@@ -400,10 +402,11 @@ function setCorrectButton(ranValue) {
       document.getElementById('kh_question').innerHTML = ""
       plainTextPrompt = " a PigPen Cipher The answer is row " + spellOutNumber(randomRow) + " and the column is " + spellOutNumber(randomCol);
       generatePigPen(plainTextPrompt);
+      document.getElementById('kh_dict_panel').innerHTML = "<img src=\"img\\pigpen\\pigpencipheralphabet.png\" width=\"250px\" height=\"250px\">";
       break;
     case 3:
       isTransposition = true;
-      plainTextPrompt = " A basic transposition Cipher the answer is row " + spellOutNumber(randomRow) + " and the column is " + spellOutNumber(randomCol);
+      plainTextPrompt = " A basic transposition cipher the answer is row " + spellOutNumber(randomRow) + " and the column is " + spellOutNumber(randomCol);
       document.getElementById('kh_question').innerHTML = shiftBackwardByValue(plainTextPrompt, randomCaesarCipherVal);
       break;
     case 4:
@@ -546,6 +549,10 @@ function kh_running() {
     } else {
       if (isCaeser) {
         document.getElementById('kh_msg_panel').innerHTML = "A Caeser cipher is when you take the selected coordinate and shift it by the given value";
+      }
+      if (isTransposition) {
+        document.getElementById('kh_msg_panel').innerHTML = "A transposition cipher rearranges the letters of a message to create an encoded message without replacing the letters themselves. To identify a transposition cipher in JavaScript, look for similar frequency distributions in the ciphertext and plaintext or repeating character sequences. To decrypt a transposition cipher, use a known method like columnar transposition or rail fence cipher to rearrange the letters. For example, a message like \"HELLO WORLD\" could be transposed by reversing the order of the letters to create the encoded message \"DLROW OLLEH\".";
+        
       }
       remainingAttempts--;
       playerSccore -= Math.round((playerSccore*(1/5)));
