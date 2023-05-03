@@ -567,11 +567,13 @@ function kh_running() {
       
       
     } else {
+      var kh_msg = document.createElement("p");
+      kh_msgPanel.appendChild(kh_msg);
       if (isCaeser) {
-        document.getElementById('kh_msg_panel').innerHTML = "A Caeser cipher is when you take the selected coordinate and shift it by the given value";
+        kh_msg.innerHTML = "A Caeser cipher is when you take the selected coordinate and shift it by the given value";
       }
       if (isTransposition) {
-        document.getElementById('kh_msg_panel').innerHTML = "A transposition cipher rearranges the letters of a message to create an encoded message without replacing the letters themselves. To identify a transposition cipher in JavaScript, look for similar frequency distributions in the ciphertext and plaintext or repeating character sequences. To decrypt a transposition cipher, use a known method like columnar transposition or rail fence cipher to rearrange the letters. For example, a message like \"HELLO WORLD\" could be transposed by reversing the order of the letters to create the encoded message \"DLROW OLLEH\".";
+        kh_msg.innerHTML = "A transposition cipher rearranges the letters of a message to create an encoded message without replacing the letters themselves. To identify a transposition cipher in JavaScript, look for similar frequency distributions in the ciphertext and plaintext or repeating character sequences. To decrypt a transposition cipher, use a known method like columnar transposition or rail fence cipher to rearrange the letters. For example, a message like \"HELLO WORLD\" could be transposed by reversing the order of the letters to create the encoded message \"DLROW OLLEH\".";
         
       }
       remainingAttempts--;
