@@ -1,127 +1,3 @@
-var ddOpenScreen = document.getElementById("ddOpenScreen");
-// Get the tbody element of the table
-const tbody = document.querySelector("#ddWebsitesTable tbody");
-// Define an array of objects with website information
-const websites = [
-    {
-        name: "SecureArcade",
-        domain: "www.securearcade.com",
-        path: "/var/www/securearcade",
-        ipAddress: "192.168.1.1",
-        serverSoftware: "Apache",
-        serverID: "1",
-        webStatus: 0,
-        pay: 10
-    },
-    {
-        name: "Targart",
-        domain: "www.targart.com",
-        path: "/var/www/targart",
-        ipAddress: "192.168.1.1",
-        serverSoftware: "Apache",
-        serverID: "2",
-        webStatus: 0,
-        pay: 13
-    },
-    {
-        name: "Copsi",
-        domain: "www.copsi.com",
-        path: "/var/www/copsi",
-        ipAddress: "192.168.1.3",
-        serverSoftware: "Nginx",
-        serverID: "3",
-        webStatus: 0,
-        pay: 25
-    },
-    {
-        name: "Cool Gamez",
-        domain: "www.coolgamez.com",
-        path: "/var/www/coolgamez",
-        ipAddress: "192.168.1.4",
-        serverSoftware: "Apache",
-        serverID: "4",
-        webStatus: 0,
-        pay: 5
-    },
-];
-var serverLengths = [
-    parseInt(document.getElementById('ddServ1Host').innerText),
-    parseInt(document.getElementById('ddServ2Host').innerText),
-    parseInt(document.getElementById('ddServ3Host').innerText),
-    parseInt(document.getElementById('ddServ4Host').innerText)
-];
-var serverSpaces = [
-    parseInt(document.getElementById('ddServ1Space').innerText),
-    parseInt(document.getElementById('ddServ2Space').innerText),
-    parseInt(document.getElementById('ddServ3Space').innerText),
-    parseInt(document.getElementById('ddServ4Space').innerText)
-]
-
-function ddInitiallizeWebsiteList() {
-    var initWebCount = 0;
-    for (let i = 1; i < serverLengths[0]; i++) {
-        var newInitWebsite = possibleWebsites[initWebCount];
-        newInitWebsite.serverID = 1;
-        websites.push(newInitWebsite)
-        initWebCount++;
-    }
-    for (let i = 1; i < serverLengths[1]; i++) {
-        var newInitWebsite = possibleWebsites[initWebCount];
-        newInitWebsite.serverID = 2;
-        websites.push(newInitWebsite)
-        initWebCount++;
-    }
-    for (let i = 1; i < serverLengths[2]; i++) {
-        var newInitWebsite = possibleWebsites[initWebCount];
-        newInitWebsite.serverID = 3;
-        websites.push(newInitWebsite)
-        initWebCount++;
-    }
-    for (let i = 1; i < serverLengths[3]; i++) {
-        var newInitWebsite = possibleWebsites[initWebCount];
-        newInitWebsite.serverID = 4;
-        websites.push(newInitWebsite)
-        initWebCount++;
-    }
-    createWebsiteTable();
-    console.log(websites)
-}
-
-var ddNewWebAvailability = [false, false, false, false]
-var placeholder;
-
-const ddtabList = [
-    "ddwebsitesList",
-    "ddServerRoom",
-    "ddcams",
-    "ddreport",
-    "ddMsg",
-];
-const ddTabs = ddtabList.map((id) => document.getElementById(id));
-function ddOpenTab(tab) {
-    if(tab=="ddMsg"){
-        if(!document.getElementById('ddExclamation').classList.contains('hide')){document.getElementById('ddExclamation').classList.add('hide')}
-    }
-    if (placeholder == tab) {
-        ddOpenScreen.classList.remove("hide");
-        placeholder = ddOpenScreen;
-    } else {
-        ddOpenScreen.classList.add("hide");
-        ddTabs.forEach((tabs) => {
-            if (!tabs.classList.contains("hide")) {
-                tabs.classList.add("hide");
-            }
-        });
-        ddTabs.forEach((tabs) => {
-            if (tabs.classList.contains(tab)) {
-                tabs.classList.remove("hide");
-                placeholder = tab;
-            }
-        });
-    }
-    if (tab == "Day Over") { ddOpenScreen.classList.remove("hide"); }
-}
-
 var ddhourDisplay = document.getElementById("ddhour");
 var ddminDisplay = document.getElementById("ddminute");
 var ddDayHalf = document.getElementById("ddDayHalf");
@@ -137,20 +13,7 @@ var ddWeatherDesc = document.getElementById("ddWeatherDesc");
 var hourCount = 9;
 var minuteCount = 0;
 var dayhalf = "AM";
-var dayCount = 0;
-var dayTotalMinutes = 0;
-var ddServ1Price = 0;
-var ddServ2Price = 0;
-var ddServ3Price = 0;
-var ddServ4Price = 0;
-
-var fixes = parseInt(document.getElementById('ddSaves').innerText);
-var reputation = parseInt(document.getElementById("ddRep").innerText);
-
-function updateFixes() {
-    fixes++;
-    document.getElementById('ddSaves').innerText = fixes;
-}
+var dayCount = 1;
 
 var daySpeed = 1000;
 var boolFast = false;
@@ -165,7 +28,6 @@ var ddSystemMsg = { name: "systemAdmin", addr: "systemAdmin@noReply.com" };
 //let person = prompt("Please enter your name");
 let person = "you"
 document.getElementById("ddUsername").innerText = person;
-
 var fastForwardBtn = document.getElementById("ddFastFowardBtn");
 function fastForward() {
     if (boolFast) {
@@ -179,18 +41,12 @@ function fastForward() {
     }
     dayInt();
 }
-
+dayInt();
 
 function dayInt() {
     clearInterval(ddDayInterval);
     ddDayInterval = setInterval(function () {
         minuteCount++;
-        dayTotalMinutes++;
-        for (var i = 0; i <= attackTimes.length; i++) {
-            if (dayTotalMinutes == attackTimes[i]) {
-                dd_generateAttack();
-            }
-        }
         if (minuteCount % 30 == 0) { changeMoney(); }
         if (minuteCount == 60) {
             minuteCount = 0;
@@ -203,24 +59,11 @@ function dayInt() {
             }
             if (hourCount == 5) {
                 clearInterval(ddDayInterval);
-                ddDayOver(null);
+                ddDayOver();
             }
         }
         ddSetDateAndTime();
     }, daySpeed);
-}
-
-function getAttackTimes() {
-    var howMany = Math.floor(Math.random() * 3) + 1;
-    var T1 = Math.floor(Math.random() * 160) + 1;
-    if (howMany > 1) {
-        var T2 = Math.floor(Math.random() * 160) + 161;
-    }
-    if (howMany > 2) {
-        var T3 = Math.floor(Math.random() * 80) + 321;
-    }
-    var times = [T1, T2, T3]
-    return times
 }
 
 function setDisabledState(isDisabled) {
@@ -230,49 +73,19 @@ function setDisabledState(isDisabled) {
     });
 }
 
-//I want to initiallize the number of websites attained from the database here... but for now
-var websiteNumberIndex = 0;
-
-ddDayOver("start");
-function ddDayOver(order) {
-    if(document.getElementById('startNewDayButton').classList.contains('hide')){document.getElementById('startNewDayButton').classList.remove('hide')};
+function ddDayOver() {
     ddOpenTab("Day Over");
     setDisabledState(true);
-    dayTotalMinutes = 0;
-    document.getElementById('ddShop').classList.remove('hide');
-    setStorePrices();
-    var addToAvailableServer = websiteSpaceAvailable(); //If Server added, this will give you the first server id that has the space available (1-4)
-    console.log(addToAvailableServer)
-    if (order != "start") {
-        if (addToAvailableServer != null) {
-            console.log("attempted")
-            //see if another website can join and give a percentage chance that they will join base on reputation (maybe reputation/2 so it isn't too common)
-            if (Math.random() < (reputation / 2) / 100) {
-                var newWebsite = possibleWebsites[websiteNumberIndex];
-                websiteNumberIndex++;
-                newWebsite.serverID = addToAvailableServer;
-                websites.push(newWebsite)
-                addMessage(
-                    ddSystemMsg.name,
-                    ddReturnDayAndTime(),
-                    ddSystemMsg.addr,
-                    `A new website was pushed to server ${newWebsite.serverID}`)
-            }
-        }
-    }
-    createWebsiteTable();
+    //show shop
+    //see if another website can join and give a percentage chance that they will join base on reputation (maybe reputation/2 so it isn't too common)
 }
 
-var attackTimes;
-
 function ddStartNewDay() {
-    document.getElementById('startNewDayButton').classList.add('hide')
-    document.getElementById('ddShop').classList.add('hide');
+    //hide shop
     setDisabledState(false);
     hourCount = 9;
     dayCount++;
     dayhalf = "AM";
-    attackTimes = getAttackTimes();
     ddDisplayNewWeatherReport();
     dayInt();
 }
@@ -290,84 +103,16 @@ function changeMoney() {
             temp -= element.pay;
         }
     });
+    console.log(money, "+", temp)
     money += temp;
     document.getElementById("ddMoney").innerText = money;
     document.getElementById("ddDailyPayEstimate").innerText = (temp * 16);
 }
 
-function setStorePrices() {
-    // Set Store Prices
-    const ddBasePrice = 2;
-    const ddDecimalValue = 1000;
-
-    // Get initial Store spaces
-    for (let i = 1; i <= 4; i++) {
-        const space = parseInt(document.getElementById(`ddServ${i}Space`).innerText);
-        window[`ddServ${i}Price`] = (ddBasePrice * (ddBasePrice ** space)) * ddDecimalValue;
-        document.getElementById(`ddUpgradeServ${i}`).innerText = window[`ddServ${i}Price`];
-        if (space == 4) {
-            document.getElementById(`ddAddSpaceServ${i}`).innerText = "MAX";
-            document.getElementById(`ddAddSpaceServ${i}`).disabled = true;
-            document.getElementById(`ddUpgradeServ${i}$`).classList.add('hide');
-            document.getElementById(`ddAddSpaceServ${i}`).style.color = "darkred";
-            document.getElementById(`ddAddSpaceServ${i}`).style.fontSize = "25px";
-            document.getElementById(`ddUpgradeServ${i}`).innerText = "Maxed";
-        }
-    }
-}
-
-function ddBuyServSpace(num) {
-    const price = window[`ddServ${num}Price`];
-    const space = document.getElementById(`ddServ${num}Space`);
-    if (money >= price) {
-        money -= price;
-        space.innerText = parseInt(space.innerText) + 1;
-        serverSpaces[num - 1] = serverSpaces[num - 1] + 1
-    } else {
-        ddFlashGreenRed();
-    }
-    document.getElementById("ddMoney").innerText = money;
-    setStorePrices();
-}
-
-function ddFlashGreenRed() {
-    const shopItems = ['ddAddSpaceServ1', 'ddAddSpaceServ2', 'ddAddSpaceServ3', 'ddAddSpaceServ4', 'ddUpgradeServ1', 'ddUpgradeServ2', 'ddUpgradeServ3', 'ddUpgradeServ4'];
-    const shopContainer = document.getElementById('ddShopContainer');
-    const shopBorder = document.getElementById('ddShopBorder');
-    let color = 'red';
-    for (let i = 0; i < 6; i++) {
-        setTimeout(() => {
-            shopContainer.style.color = color;
-            shopBorder.style.border = `1px solid ${color}`;
-            shopItems.forEach(item => document.getElementById(item).classList.toggle('ddAddSpaceRed'));
-            color = (color === 'red') ? 'lime' : 'red';
-        }, 300 * i); // delay 300ms between color changes
-    }
-}
-function websiteSpaceAvailable() {
-    for (let i = 0; i < 4; i++) {
-        ddNewWebAvailability[i] = (serverLengths[i] < serverSpaces[i]);
-    }
-    if (!ddNewWebAvailability[0]) {
-        if (!ddNewWebAvailability[1]) {
-            if (!ddNewWebAvailability[2]) {
-                if (!ddNewWebAvailability[3]) { return null } else { return 4; }
-            }
-            else { return 3; }
-        }
-        else { return 2; }
-    }
-    else { return 1; }
-}
-
 //calculate Reputation after Form Submission
+var reputation = parseInt(document.getElementById("ddRep").innerText);
 function formReputationChange(formPercentage) {
-    if (formPercentage == null) {
-        reputation -= 25
-        if (reputation < 0) {
-            reputation = 0;
-        }
-    }
+    if (formPercentage == null) { reputation -= 25 }
     else { reputation = Math.round((reputation + formPercentage) / 2); }
     document.getElementById("ddRep").innerText = reputation;
 }
@@ -575,6 +320,84 @@ function updateMonitor() {
     });
 }
 
+var ddOpenScreen = document.getElementById("ddOpenScreen");
+const ddtabList = [
+    "ddwebsitesList",
+    "ddServerRoom",
+    "ddcams",
+    "ddreport",
+    "ddMsg",
+];
+const ddTabs = ddtabList.map((id) => document.getElementById(id));
+var placeholder;
+
+function ddOpenTab(tab) {
+    if (placeholder == tab) {
+        ddOpenScreen.classList.remove("hide");
+        placeholder = ddOpenScreen;
+    } else {
+        ddOpenScreen.classList.add("hide");
+        ddTabs.forEach((tabs) => {
+            if (!tabs.classList.contains("hide")) {
+                tabs.classList.add("hide");
+            }
+        });
+        ddTabs.forEach((tabs) => {
+            if (tabs.classList.contains(tab)) {
+                tabs.classList.remove("hide");
+                placeholder = tab;
+            }
+        });
+    }
+    if (tab == "Day Over") { ddOpenScreen.classList.remove("hide"); }
+}
+// Define an array of objects with website information
+const websites = [
+    {
+        name: "SecureArcade",
+        domain: "www.securearcade.com",
+        path: "/var/www/securearcade",
+        ipAddress: "192.168.1.1",
+        serverSoftware: "Apache",
+        serverID: "1",
+        webStatus: 0,
+        pay: 10
+    },
+    {
+        name: "Targart",
+        domain: "www.targart.com",
+        path: "/var/www/targart",
+        ipAddress: "192.168.1.1",
+        serverSoftware: "Apache",
+        serverID: "2",
+        webStatus: 0,
+        pay: 13
+    },
+    {
+        name: "Copsi",
+        domain: "www.copsi.com",
+        path: "/var/www/copsi",
+        ipAddress: "192.168.1.3",
+        serverSoftware: "Nginx",
+        serverID: "3",
+        webStatus: 0,
+        pay: 25
+    },
+    {
+        name: "Cool Gamez",
+        domain: "www.coolgamez.com",
+        path: "/var/www/coolgamez",
+        ipAddress: "192.168.1.4",
+        serverSoftware: "Apache",
+        serverID: "4",
+        webStatus: 0,
+        pay: 5
+    },
+];
+
+// Get the tbody element of the table
+const tbody = document.querySelector("#ddWebsitesTable tbody");
+createWebsiteTable();
 function createWebsiteTable() {
     while (tbody.firstChild) {
         tbody.removeChild(tbody.firstChild);
@@ -602,7 +425,9 @@ function createWebsiteTable() {
         const ddWebStatcircleDesign = document.createElement("div");
         ddWebStatcircleDesign.classList.add('ddWebStatcircleDesign');
         webStatcircle.appendChild(ddWebStatcircleDesign);
+        //removed .split function
         var webServState = ddServState[website.serverID - 1];
+        //
         if (website.webStatus == 0 && webServState == 0) { webStatcircle.classList.add('ddWebStatGood') }
         if (website.webStatus == 1 || webServState == 1 && website.webStatus != 2) { webStatcircle.classList.add('ddWebStatBad') }
         if (website.webStatus == 2 || webServState == 2) { webStatcircle.classList.add('ddWebStatTerrible') }
@@ -734,6 +559,7 @@ function updateLogStatus(serverId) {
         const cells = rows[i].getElementsByTagName("td");
         cells[0].textContent = returnDate();
         cells[1].textContent = returnTime(i);
+        //new
         if (serverId == ddDoSArray.serverNumber) {
             var temp = Math.floor(Math.random() * 100) + 1;
             if (temp < 5) {
@@ -746,8 +572,10 @@ function updateLogStatus(serverId) {
         else {
             cells[2].textContent = finalIPvalue();
         }
+        //
         cells[3].textContent =
             requestMethods[getRandomInt(0, requestMethods.length - 1)];
+        //new
         var tempWebDom;
         if (serverId == ddDoSArray.serverNumber) {
             cells[4].textContent = ddDoSArray.websiteDom;
@@ -758,6 +586,7 @@ function updateLogStatus(serverId) {
             } while (tempWebDom.serverID != serverId);
             cells[4].textContent = tempWebDom.domain;
         }
+        //
         cells[5].textContent = urls[getRandomInt(0, urls.length - 1)];
         cells[6].textContent =
             statusCodes[getRandomInt(0, statusCodes.length - 1)];
@@ -813,6 +642,7 @@ function ddOpenLogs(ddserverId) {
         ctx.fill();
         ctx.stroke();
 
+        //new
         if (ddserverId == ddDoSArray.serverNumber) {
             ddLogInt = setInterval(function () {
                 updateLogStatus(ddserverId);
@@ -823,6 +653,7 @@ function ddOpenLogs(ddserverId) {
                 updateLogStatus(ddserverId);
             }, 500);
         }
+        //
 
         ddGraphInt = setInterval(() => {
             // Update data
@@ -887,9 +718,6 @@ function ddlogBack() {
 }
 
 function addMessage(ddMsgSender, ddDateMessage, ddwebsiteName, ddMessage) {
-
-    document.getElementById('ddExclamation').classList.remove('hide')
-
     const senderContainer = document.querySelector(".ddSenderContainer");
     const messageContainer = document.querySelector(".ddMessage");
 
@@ -1011,6 +839,7 @@ function intMsg() {
     );
 }
 
+// new content
 // Info Book on/off
 function displayInfoBooklet() {
     document.getElementById("ddInfoBook").classList.toggle("hide");
@@ -1090,16 +919,16 @@ function turnPageDown() {
 }
 
 var ddAttackCount = 0;
-var ddAttackArray = [0, 0, 0, 0];
-var ddServerIsUnderAttack = [0, 0, 0, 0];
+//New
+var ddAttackArray = [0, 0];
 
 function dd_generateAttack() {
-    if (ddAttackCount < 3) {
+    if (ddAttackCount < 2) {
         var tempAttack;
         var tempServer;
         do {
-            tempServer = Math.floor(Math.random() * ddServerIsUnderAttack.length);
-        } while (ddServerIsUnderAttack[tempServer] != 0);
+            tempServer = Math.floor(Math.random() * ddServState.length);
+        } while (ddServState[tempServer] != 0);
         do {
             tempAttack = Math.floor(Math.random() * ddAttackArray.length);
         } while (ddAttackArray[tempAttack] != 0);
@@ -1111,17 +940,8 @@ function dd_generateAttack() {
             case 1:
                 dd_createMalware(tempServer + 1);
                 break;
-            case 2:
-                dd_createInsiderIntrusion(tempServer + 1);
-                break;
-            case 3:
-                dd_createDNS(tempServer + 1);
-                break;
             default:
         }
-    }
-    else {
-        formReputationChange(null);
     }
 }
 //
@@ -1138,6 +958,7 @@ var ddDoSArray =
     serverNumber: null,
 };
 
+//new attack create using server input
 function dd_createDoS(server) {
     ddDoSArray.attackID = ddAttackCount;
     do {
@@ -1154,7 +975,6 @@ function dd_createDoS(server) {
 
     ddAttackedWebsite.webStatus = 1
     ddServState[server - 1] = 1
-    ddServerIsUnderAttack[server - 1]  = 1;
     createWebsiteTable();
     websites.forEach((website) => {
         if (website.serverID == server) {
@@ -1168,6 +988,7 @@ function dd_createDoS(server) {
     });
     ddAttackCount++;
 }
+//
 
 const ddComplaintsDoS = [
     "I can't access my website at all!",
@@ -1189,6 +1010,7 @@ var ddMalwareArray = {
     targetFile: null,
 };
 
+//new createMalware
 function dd_createMalware(server) {
     ddMalwareArray.attackID = ddAttackCount;
     do {
@@ -1202,7 +1024,6 @@ function dd_createMalware(server) {
 
     ddAttackedWebsite.webStatus = 2
     ddServState[server - 1] = 1
-    ddServerIsUnderAttack[server - 1]  = 1;
     console.log(ddMalwareArray)
     createWebsiteTable();
     ddAttackCount++;
@@ -1226,6 +1047,90 @@ function dd_createMalware(server) {
     });
 
 }
+//-------------------------------------------------------------------------------------------------------------------------
+//Create DNS
+var ddDNSArray = {
+    attackID: null,
+    websiteDom: null,
+    originalPath: null,
+    owner: null,
+    servID: null,
+    newPath: null,
+};
+
+//new DNS spoofing attack
+function dd_createDNS(server) {
+    ddDNSArray.attackID = ddAttackCount;
+    do {
+        var ddAttackedWebsite = websites[Math.floor(Math.random() * websites.length)];
+    } while (ddAttackedWebsite.serverID != server)
+
+    ddDNSArray.websiteDom = ddAttackedWebsite.domain;
+    ddDNSArray.owner = ddAttackedWebsite.name;
+    ddDNSArray.originalPath = ddAttackedWebsite.path
+    ddDNSArray.servID = ddAttackedWebsite.serverID;
+    ddAttackedWebsite.webStatus = 2
+    ddDNSArray.newPath = ddAttackedWebsite.path + "/" + DNSBadDomains[Math.floor(Math.random() * DNSBadDomains.length)]
+
+    ddAttackedWebsite.path = ddDNSArray.newPath;
+
+    console.log(ddDNSArray)
+    createWebsiteTable();
+    ddAttackCount++;
+
+    addMessage(
+        ddDNSArray.owner,
+        ddReturnDayAndTime(),
+        ddDNSArray.domain,
+        DNSSpoofResponses[Math.floor(Math.random() * DNSSpoofResponses.length)]
+    );
+
+}
+const DNSBadDomains = [
+    "phishybanking.com",
+    "notreallyamazon.com",
+    "paypalhackerz.net",
+    "malicious-google.com",
+    "suspicious-payments.com",
+    "amazonprime-verify.com",
+    "fakeebay-login.com",
+    "appleid-confirm.com",
+    "netflix-phishers.net",
+    "yahoo-verify.net",
+    "facebook-verify.net",
+    "instagram-security.com",
+    "twitter-fraud.net",
+    "linkedin-phishing.net",
+    "microsoft-account-verify.com",
+    "icloud-logon.com",
+    "sketchy-wellsfargo.com",
+    "unusual-chase-login.com",
+    "sneakyspotify.com",
+    "cryptic-bitcoin-wallet.net"
+];
+const DNSSpoofResponses = [
+    "I think my domain name doesnt wotk",
+    "My browser is redirecting to unexpected websites",
+    "I'm seeing strange IP addresses in my network connections",
+    "My domain name service cache seems to have been poisoned",
+    "I'm getting invalid domain name service responses",
+    "My network is behaving strangely",
+    "I suspect a domain name service man-in-the-middle attack",
+    "My domain name service queries are being intercepted",
+    "I'm getting domain name service errors on legitimate websites",
+    "My network traffic is being diverted",
+    "I'm seeing unexpected domain name service resolution results",
+    "My domain name service requests are being tampered with",
+    "I'm getting redirected to phishing websites",
+    "My domain name service server is giving me incorrect responses",
+    "I'm experiencing domain name service-related network outages",
+    "My domain name service settings have been changed without my permission",
+    "I'm getting errors when trying to access legitimate websites",
+    "My network is slow and unresponsive",
+    "I'm seeing suspicious activity in my domain name service logs"
+];
+//-------------------------------------------------------------------------------------------------------------------------
+
 
 function ddReturnDayAndTime() {
     var minMsg = minuteCount;
@@ -1295,42 +1200,39 @@ var ddInsiderArray = {
     staffRole: null,
     accessLevel: null,
 };
-
-function dd_createInsiderIntrusion(server) {
-    ddInsiderArray.attackID = ddAttackCount;
-
-    do {
+function dd_createInsiderIntrusion() {
+    if (ddAttackCount != 2 && ddInsiderArray.attackID == null) {
+        ddInsiderArray.attackID = ddAttackCount;
+        //The websiteDomain will be passed inside dd_createInsiderIntrusion(id) but for now it is random
         var ddTempAttackedWebsite = websites[Math.floor(Math.random() * websites.length)];
-    } while (ddTempAttackedWebsite.serverID != server);
 
-    var ddWebsiteOwnder = ddTempAttackedWebsite.name
-    ddInsiderArray.attackedwebsite = ddTempAttackedWebsite.domain;
-    ddInsiderArray.serverNumber = ddTempAttackedWebsite.serverID;
-    var insiderInfo = insiders[Math.floor(Math.random() * insiders.length)];
-    ddInsiderArray.staffName = insiderInfo.ddUsernameInsider;
-    ddInsiderArray.staffRole = insiderInfo.ddRoleInsider;
-    ddInsiderArray.accessLevel = insiderInfo.ddAccessLevelInsider;
+        var ddWebsiteOwnder = ddTempAttackedWebsite.name
+        ddInsiderArray.attackedwebsite = ddTempAttackedWebsite.domain;
+        ddInsiderArray.serverNumber = ddTempAttackedWebsite.serverID;
+        var insiderInfo = insiders[Math.floor(Math.random() * insiders.length)];
+        ddInsiderArray.staffName = insiderInfo.ddUsernameInsider;
+        ddInsiderArray.staffRole = insiderInfo.ddRoleInsider;
+        ddInsiderArray.accessLevel = insiderInfo.ddAccessLevelInsider;
 
-    console.log(ddInsiderArray)
+        console.log(ddInsiderArray)
 
-    ddServerIsUnderAttack[server - 1]  = 1;
-    ddTempAttackedWebsite.webStatus = 2;
-    createWebsiteTable();
-    var ddInsiderSecurityCamera = document.getElementById(`ddInsider${ddInsiderArray.serverNumber}`)
-    ddInsiderSecurityCamera.classList.remove('hide');
-    document.getElementById('ddNametagName').innerText = ddInsiderArray.staffName;
-    document.getElementById('ddRoleTypeText').innerText = ddInsiderArray.staffRole;
-    document.getElementById('ddAccessTypeText').innerText = ddInsiderArray.accessLevel;
+        ddTempAttackedWebsite.webStatus = 2;
+        createWebsiteTable();
+        var ddInsiderSecurityCamera = document.getElementById(`ddInsider${ddInsiderArray.serverNumber}`)
+        ddInsiderSecurityCamera.classList.remove('hide');
+        document.getElementById('ddNametagName').innerText = ddInsiderArray.staffName;
+        document.getElementById('ddRoleTypeText').innerText = ddInsiderArray.staffRole;
+        document.getElementById('ddAccessTypeText').innerText = ddInsiderArray.accessLevel;
 
-    ddAttackCount++;
-    addMessage(
-        ddWebsiteOwnder,
-        ddReturnDayAndTime(),
-        ddInsiderArray.attackedwebsite,
-        ddWebsiteDataLeak[Math.floor(Math.random() * ddWebsiteDataLeak.length)]
-    );
+        ddAttackCount++;
+        addMessage(
+            ddWebsiteOwnder,
+            ddReturnDayAndTime(),
+            ddInsiderArray.attackedwebsite,
+            ddWebsiteDataLeak[Math.floor(Math.random() * ddWebsiteDataLeak.length)]
+        );
+    }
 }
-
 function ddToggleNametag() {
     document.getElementById("ddCamScreenWhole").classList.toggle("hide");
     document.getElementById("ddNametag").classList.toggle("hide");
@@ -1535,89 +1437,7 @@ const insiders = [
         ddAccessLevelInsider: 1
     }
 ];
-//Create DNS
-var ddDNSArray = {
-    attackID: null,
-    websiteDom: null,
-    originalPath: null,
-    owner: null,
-    servID: null,
-    newPath: null,
-};
 
-//new DNS spoofing attack
-function dd_createDNS(server) {
-    ddDNSArray.attackID = ddAttackCount;
-    do {
-        var ddAttackedWebsite = websites[Math.floor(Math.random() * websites.length)];
-    } while (ddAttackedWebsite.serverID != server)
-
-    ddDNSArray.websiteDom = ddAttackedWebsite.domain;
-    ddDNSArray.owner = ddAttackedWebsite.name;
-    ddDNSArray.originalPath = ddAttackedWebsite.path
-    ddDNSArray.servID = ddAttackedWebsite.serverID;
-    ddAttackedWebsite.webStatus = 2
-    ddDNSArray.newPath = ddAttackedWebsite.path + "/" + DNSBadDomains[Math.floor(Math.random() * DNSBadDomains.length)]
-
-    ddAttackedWebsite.path = ddDNSArray.newPath;
-
-    ddServerIsUnderAttack[server - 1]  = 1;
-
-    console.log(ddDNSArray)
-    createWebsiteTable();
-    ddAttackCount++;
-
-    addMessage(
-        ddDNSArray.owner,
-        ddReturnDayAndTime(),
-        ddDNSArray.domain,
-        DNSSpoofResponses[Math.floor(Math.random() * DNSSpoofResponses.length)]
-    );
-
-}
-const DNSBadDomains = [
-    "phishybanking.com",
-    "notreallyamazon.com",
-    "paypalhackerz.net",
-    "malicious-google.com",
-    "suspicious-payments.com",
-    "amazonprime-verify.com",
-    "fakeebay-login.com",
-    "appleid-confirm.com",
-    "netflix-phishers.net",
-    "yahoo-verify.net",
-    "facebook-verify.net",
-    "instagram-security.com",
-    "twitter-fraud.net",
-    "linkedin-phishing.net",
-    "microsoft-account-verify.com",
-    "icloud-logon.com",
-    "sketchy-wellsfargo.com",
-    "unusual-chase-login.com",
-    "sneakyspotify.com",
-    "cryptic-bitcoin-wallet.net"
-];
-const DNSSpoofResponses = [
-    "I think my domain name doesnt wotk",
-    "My browser is redirecting to unexpected websites",
-    "I'm seeing strange IP addresses in my network connections",
-    "My domain name service cache seems to have been poisoned",
-    "I'm getting invalid domain name service responses",
-    "My network is behaving strangely",
-    "I suspect a domain name service man-in-the-middle attack",
-    "My domain name service queries are being intercepted",
-    "I'm getting domain name service errors on legitimate websites",
-    "My network traffic is being diverted",
-    "I'm seeing unexpected domain name service resolution results",
-    "My domain name service requests are being tampered with",
-    "I'm getting redirected to phishing websites",
-    "My domain name service server is giving me incorrect responses",
-    "I'm experiencing domain name service-related network outages",
-    "My domain name service settings have been changed without my permission",
-    "I'm getting errors when trying to access legitimate websites",
-    "My network is slow and unresponsive",
-    "I'm seeing suspicious activity in my domain name service logs"
-];
 var ddReportFormContainer = document.getElementById('ddReportFormContainer');
 var malQuestionArray = []
 
@@ -1812,19 +1632,20 @@ function createDoSForm() {
         // Do something with the form data here
 
         if (ddDoSArray.attackID != null) {
+            //remove split
             if (ddDoSArray.serverNumber == affectedServerId) {
+                //
                 if (ddDoSArray.websiteDom == websiteDomain) {
                     if (ddDoSArray.attackerIP == ddAttackerIP) {
                         var ddMalResetWebsiteID = ddDoSArray.websiteDom
                         websites.forEach((website) => {
                             if (website.domain == ddMalResetWebsiteID) {
+                                //remove split
                                 var serverStatIndex = website.serverID;
+                                //
                                 website.webStatus = 0
                                 ddServState[serverStatIndex - 1] = 0;
                                 ddAttackCount--;
-                                ddServerIsUnderAttack[serverStatIndex - 1] = 0;
-                                ddAttackArray[0] = 0;
-                                updateFixes();
                             }
                         });
                         ddDoSArray.attackID = null;
@@ -2057,20 +1878,29 @@ function createMalwareForm() {
 
         const signature = signatureInput.value;
 
+        // Do something with the form data here
+        // console.log("inputted:")
+        // console.log("Website Domain: " + websiteDomain)
+        // console.log("Affected Server: " + affectedServerId)
+        // console.log("Malware File Name: " + malwareFileName)
+        // console.log("Percentage Correct: " + malPercent)
+        // console.log("Signature: " + signature)
+
         if (ddMalwareArray.attackID != null) {
+            //remove split
             if (ddMalwareArray.serverNumber == affectedServerId) {
+                //
                 if (ddMalwareArray.websiteDom == websiteDomain) {
                     if (ddMalwareArray.targetFile == malwareFileName) {
                         var ddMalResetWebsiteID = ddMalwareArray.websiteDom
                         websites.forEach((website) => {
                             if (website.domain == ddMalResetWebsiteID) {
+                                //remove split
                                 var serverStatIndex = website.serverID;
+                                //
                                 website.webStatus = 0
                                 ddServState[serverStatIndex - 1] = 0;
                                 ddAttackCount--;
-                                ddServerIsUnderAttack[serverStatIndex - 1] = 0;
-                                ddAttackArray[1] = 0;
-                                updateFixes();
                             }
                         });
                         ddMalwareArray.attackID = null;
@@ -2310,7 +2140,7 @@ function createInsiderForm() {
         const websiteDomain = websiteInput.value;
         const affectedServerId = serverSelect.value;
         const ddStaffName = InsiderAttackerNameInput.value;
-        const ddStaffRole = InsiderAttackerRoleInput.value;
+        const ddfixedPath = InsiderAttackerRoleInput.value;
         const ddStaffAccessLVL = accessSelect.value;
         var ddDoSCheckboxArray = [false, false, false, false];
         var ddMalnumcorrect = 0;
@@ -2341,7 +2171,7 @@ function createInsiderForm() {
             if (ddInsiderArray.serverNumber == affectedServerId) {
                 if (ddInsiderArray.attackedwebsite == websiteDomain) {
                     if (ddInsiderArray.staffName == ddStaffName) {
-                        if (ddInsiderArray.staffRole == ddStaffRole) {
+                        if (ddInsiderArray.staffRole == ddfixedPath) {
                             if (ddInsiderArray.accessLevel == ddStaffAccessLVL) {
                                 websites.forEach((website) => {
                                     if (website.domain == websiteDomain) {
@@ -2352,7 +2182,6 @@ function createInsiderForm() {
                                 ddInsiderSecurityCamera.classList.add('hide');
 
                                 if (!document.getElementById('ddNametag').classList.contains("hide")) { ddToggleNametag(); }
-                                ddServerIsUnderAttack[ddInsiderArray.serverNumber - 1] = 0;
                                 ddInsiderArray.attackID = null;
                                 ddInsiderArray.attackedwebsite = null;
                                 ddInsiderArray.serverNumber = null;
@@ -2360,8 +2189,6 @@ function createInsiderForm() {
                                 ddInsiderArray.staffRole = null;
                                 ddInsiderArray.accessLevel = null;
                                 ddAttackCount--;
-                                ddAttackArray[2] = 0;
-                                updateFixes();
                                 createWebsiteTable();
                             }
                             else {
@@ -2415,6 +2242,7 @@ function createInsiderForm() {
         removeReportForm();
     });
 }
+//----------------------------------------------------------------------------------------------------------------------------------
 function createDNSForm() {
     document.getElementById('ddReportType').classList.add('hide');
     ddReportFormContainer.classList.remove('hide');
@@ -2622,7 +2450,6 @@ function createDNSForm() {
                                     website.path = ddDNSArray.originalPath
                                 }
                             });
-                            ddServerIsUnderAttack[ddDNSArray.servID - 1] = 0;
                             ddDNSArray.attackID = null;
                             ddDNSArray.websiteDom = null;
                             ddDNSArray.originalPath = null;
@@ -2630,8 +2457,6 @@ function createDNSForm() {
                             ddDNSArray.servID = null;
                             ddDNSArray.newPath = null;
                             ddAttackCount--;
-                            ddAttackArray[3] = 0;
-                            updateFixes();
                             createWebsiteTable();
 
                         }
@@ -2678,6 +2503,7 @@ function createDNSForm() {
         removeReportForm();
     });
 }
+//----------------------------------------------------------------------------------------------------------------------------------
 function removeReportForm() {
     while (ddReportFormContainer.firstChild) {
         ddReportFormContainer.removeChild(ddReportFormContainer.firstChild);
@@ -2803,6 +2629,7 @@ const insiderWrongResponses = [
     "Use physical violence or intimidation against the insider",
     "Blame the company's security team for failing to prevent the incident"
 ];
+//----------------------------------------------------------------------------------------------------------
 const ddCorrectDNSResponses = [
     'Implement DNSSEC to authenticate DNS responses',
     'Configure DNS servers to use only trusted sources for DNS resolution',
@@ -2833,6 +2660,7 @@ const ddWrongDNSResponses = [
     'Engage in a hacking counter-attack against the attacker',
     'Delete all logs and evidence of the attack to cover it up'
 ];
+//----------------------------------------------------------------------------------------------------------
 // Make new log
 function makeLog() {
     // Create the container div
@@ -2976,7 +2804,6 @@ function makeLog() {
 
     // Append the container div to the document body
 }
-
 const possibleWebsites = [
     {
         name: "PlayfulPanda",
@@ -3087,4 +2914,3 @@ const possibleWebsites = [
         pay: 13
     }
 ];
-ddInitiallizeWebsiteList();
