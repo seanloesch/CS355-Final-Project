@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script defer src="phishingFrenzy.js"></script>
+    <link href="phishingFrenzy.css" rel="stylesheet">
+    <title>Phishing Frenzy</title>
+</head>
+
+<body>
+    <div id="phishingFrenzy" class="phishingFrenzy">
+
+        <div id="difficultySelector" class="difficultySelector">
+            <button id="home" class="home">Home</button><br>
+            <p id="playerMessage" class="playerMessage"></p>
+            <p class="playerMessage">Select a difficulty:</p>
+            <button id="easy" class="easy">Easy</button>
+            <button id="medium" class="medium">Medium</button>
+            <button id="hard" class="hard">Hard</button>
+        </div>
+
+        <div id="inGame" class="inGame hide">
+            <div class="emailScreen">
+                <p id="scoreDisplay" class="scoreDisplay">0</p>
+                <p id="timeDisplay" class="timeDisplay">60</p>
+                <p id="emailDisplay" class="emailDisplay"></p>
+                <button id="report_button" class="report_button">Report Phishing</button>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

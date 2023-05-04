@@ -1,0 +1,208 @@
+{
+  "1": [
+    {
+      "question": "Caesar was stabbed 21 times at the age of +55 (F24)",
+      "answer": "F24"
+    },
+    {
+      "question": "Another word for everything (A11)",
+      "answer": "A11"
+    },
+    {
+      "question": "Transpositions: 1,4,3,6,5,2,10,7,9,8 -> AWSREN4IYS (Y4)",
+      "answer": "Y4"
+    },
+    {
+      "question": "Substitution: Alphabet: Zyxwvutsrqponmlkjihgfedcba C.T: Gsv Zmhdvi rh I gdvmgb ulfi (L24)",
+      "answer": "L24"
+    },
+    {
+      "question": "G9+5 (L14)",
+      "answer": "L14"
+    },
+    {
+      "question": "NE (N5)",
+      "answer": "N5"
+    }
+  ],
+  
+  "2": [ 
+    {
+      "table_size_rows": 24,
+      "table_size_column":24, 
+<<<<<<< HEAD:CS355-Final-Project-Jordan/testEnvironment/keyhunter.json
+      "answer": "1",
+      "Alphabet": "Greek",
+      "story": [
+        {
+          "type": "Caesar cipher shift by two",
+          "text": "Vjku ku c ecguct ekrjgt, ykvj vjg fkikvu okucnkipgf da vyq! iqqf nwem! ",
+          "quadrant": 2
+        },
+        {
+          "type": "Caesar cipher shift by two",
+          "text": "Vjku ku c ecguct ekrjgt, ykvj vjg fkikvu okucnkipgf da vyq! iqqf nwem! ",
+          "quadrant": 2
+        },
+        {
+          "type": "Caesar cipher shift by two",
+          "text": "Vjku ku c ecguct ekrjgt, ykvj vjg fkikvu okucnkipgf da vyq! iqqf nwem! ",
+          "quadrant": 2
+        },
+        {
+          "type": "Caesar cipher shift by two",
+          "text": "Vjku ku c ecguct ekrjgt, ykvj vjg fkikvu okucnkipgf da vyq! iqqf nwem! ",
+          "quadrant": 2
+        }
+      ]
+    },
+    {
+      "table_size_rows": 26,
+      "table_size_column":26, 
+      "answer": "2",
+      "Alphabet": "Greek",
+      "story": [
+        {
+          "type": "Caesar cipher shift by three",
+          "text": "Vjku ku c ecguct ekrjgt, ykvj vjg fkikvu okucnkipgf da vyq! iqqf nwem! ",
+          "quadrant": 2
+        },
+        {
+          "type": "Caesar cipher shift by three",
+          "text": "Vjku ku c ecguct ekrjgt, ykvj vjg fkikvu okucnkipgf da vyq! iqqf nwem! ",
+          "quadrant": 2
+        },
+        {
+          "type": "Caesar cipher shift by two",
+          "text": "Vjku ku c ecguct ekrjgt, ykvj vjg fkikvu okucnkipgf da vyq! iqqf nwem! ",
+          "quadrant": 2
+        },
+        {
+          "type": "Caesar cipher shift by two",
+          "text": "Vjku ku c ecguct ekrjgt, ykvj vjg fkikvu okucnkipgf da vyq! iqqf nwem! ",
+          "quadrant": 2
+        }
+      ]
+    },{
+      "table_size_rows": 26,
+      "table_size_column":26, 
+      "answer": "3",
+      "Alphabet": "Greek",
+      "story": [
+        {
+          "type": "Caesar cipher shift by three",
+          "text": "Vjku ku c ecguct ekrjgt, ykvj vjg fkikvu okucnkipgf da vyq! iqqf nwem! ",
+          "quadrant": 2
+        },
+        {
+          "type": "Caesar cipher shift by three",
+          "text": "Vjku ku c ecguct ekrjgt, ykvj vjg fkikvu okucnkipgf da vyq! iqqf nwem! ",
+          "quadrant": 2
+        },
+        {
+          "type": "Caesar cipher shift by two",
+          "text": "Vjku ku c ecguct ekrjgt, ykvj vjg fkikvu okucnkipgf da vyq! iqqf nwem! ",
+          "quadrant": 2
+        },
+        {
+          "type": "Caesar cipher shift by two",
+          "text": "Vjku ku c ecguct ekrjgt, ykvj vjg fkikvu okucnkipgf da vyq! iqqf nwem! ",
+          "quadrant": 2
+        }
+      ]
+    },
+    {
+      "table_size_rows": 26,
+      "table_size_column":26, 
+      "answer": "4",
+      "Alphabet": "Greek",
+      "story": [
+        {
+          "type": "Caesar cipher shift by three",
+          "text": "Vjku ku c ecguct ekrjgt, ykvj vjg fkikvu okucnkipgf da vyq! iqqf nwem! ",
+          "quadrant": 2
+        },
+        {
+          "type": "Caesar cipher shift by three",
+          "text": "Vjku ku c ecguct ekrjgt, ykvj vjg fkikvu okucnkipgf da vyq! iqqf nwem! ",
+          "quadrant": 2
+        },
+        {
+          "type": "Caesar cipher shift by two",
+          "text": "Vjku ku c ecguct ekrjgt, ykvj vjg fkikvu okucnkipgf da vyq! iqqf nwem! ",
+          "quadrant": 2
+        },
+        {
+          "type": "Caesar cipher shift by two",
+          "text": "Vjku ku c ecguct ekrjgt, ykvj vjg fkikvu okucnkipgf da vyq! iqqf nwem! ",
+          "quadrant": 2
+        }
+      ]
+    }
+  ],
+  "3": [ 
+    {
+      "table_size_rows": 24,
+      "table_size_column":24, 
+      "answer": "A5",
+      "Alphabet": "Greek",
+=======
+      "answer": "A5",
+      "Alphabet": ["\u0391","\u0391","\u0391","\u0391","\u0391"],
+>>>>>>> origin/Jacob:testEnvironment/keyhunter.json
+      "story": [
+        {
+          "type": "Caesar cipher shift by two",
+          "text": "Vjku ku c ecguct ekrjgt, ykvj vjg fkikvu okucnkipgf da vyq! iqqf nwem! ",
+          "quadrant": 2
+        },
+        {
+          "type": "Caesar cipher shift by two",
+          "text": "Vjku ku c ecguct ekrjgt, ykvj vjg fkikvu okucnkipgf da vyq! iqqf nwem! ",
+          "quadrant": 2
+        },
+        {
+          "type": "Caesar cipher shift by two",
+          "text": "Vjku ku c ecguct ekrjgt, ykvj vjg fkikvu okucnkipgf da vyq! iqqf nwem! ",
+          "quadrant": 2
+        },
+        {
+          "type": "Caesar cipher shift by two",
+          "text": "Vjku ku c ecguct ekrjgt, ykvj vjg fkikvu okucnkipgf da vyq! iqqf nwem! ",
+          "quadrant": 2
+        }
+      ]
+    },
+    {
+      "table_size_rows": 26,
+      "table_size_column":26, 
+      "answer": "A5",
+<<<<<<< HEAD:CS355-Final-Project-Jordan/testEnvironment/keyhunter.json
+      "Alphabet": "Greek",
+=======
+>>>>>>> origin/Jacob:testEnvironment/keyhunter.json
+      "story": [
+        {
+          "type": "Caesar cipher shift by three",
+          "text": "Vjku ku c ecguct ekrjgt, ykvj vjg fkikvu okucnkipgf da vyq! iqqf nwem! ",
+          "quadrant": 2
+        },
+        {
+          "type": "Caesar cipher shift by three",
+          "text": "Vjku ku c ecguct ekrjgt, ykvj vjg fkikvu okucnkipgf da vyq! iqqf nwem! ",
+          "quadrant": 2
+        },
+        {
+          "type": "Caesar cipher shift by two",
+          "text": "Vjku ku c ecguct ekrjgt, ykvj vjg fkikvu okucnkipgf da vyq! iqqf nwem! ",
+          "quadrant": 2
+        },
+        {
+          "type": "Caesar cipher shift by two",
+          "text": "Vjku ku c ecguct ekrjgt, ykvj vjg fkikvu okucnkipgf da vyq! iqqf nwem! ",
+          "quadrant": 2
+        }
+      ]
+    }
+  ]
+}
