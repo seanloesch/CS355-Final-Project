@@ -1,12 +1,14 @@
 body{
-    width: 100vw;
-    height: 100vh;
     margin: 0;
     padding: 0;
+    background: url('img/backgrounds/keyHunterBackground.jpg') no-repeat center center fixed;
+    background-size: cover;
 }
 
 .kh_table_container{
-    margin-right: 40px;
+    /* height: 700px;
+    width: 700px; */
+    position: relative;
 }
 
 .kh_categories_buttons {
@@ -16,10 +18,11 @@ body{
 
 .kh_table{
     border-collapse: collapse;
+    margin: 0px;
 }
 
 tr {
-    padding:0px;
+    padding: 0px;
     width: 100%;
     height: 100%;
 }
@@ -27,40 +30,35 @@ tr {
 table {
     border-collapse: collapse;
     text-align: center;
-    margin:5px;
+    margin: 5px;
 }
 
 th, td {
-    /* display: inline-flex; */
     background-color: rgb(144, 66, 45);
     border: 1px solid black;
     text-shadow: 1px 1px 1px white;
     padding: 0px;
     margin: 0px;
     margin-top: 0px;
-    width:100%;
-    height: 100;
-    font-weight: bold
+    width: fit-content;
+    height: fit-content;
+    font-weight: bold;
   }
 
 .khBtn { 
-    color:black; 
-    /* font: bold 84% 'trebuchet ms',helvetica,sans-serif; */
-    /* font-size: 6px;  */
-    background-color:green; 
-
-    border:1px solid black;
+    color: black;
+    background-color: green; 
+    border: 1px solid black;
     width: 20px;
     height: 20px;
-    /* padding: 2px;
-    margin-top: 3px;
-    margin-left: 3px;*/
     margin: 2px;
 }
+
 .khBtn:hover{
     background-color: rgb(0, 0, 110);
     color: white;
 }
+
 .kh_numerals{
     position: absolute;
     top: 30px;
@@ -68,28 +66,30 @@ th, td {
     left: 3px;
     text-align: center;
 }
-.kh_numerals,.kh_alphabet{
+
+.kh_numerals, .kh_alphabet {
     color: white;
     background-color: rgb(0, 0, 96);
     border: 1px solid black;
     border-radius: 10px;
 }
+
 .kh_alphabet{
     position: absolute;
-    top:10px;
-    left:28px;
+    top: 10px;
+    left: 28px;
     margin: 0;
     padding-left: 2px;
 }
 
+/* .kh_left > div {
+} */
+
 .kh_question_container {
-    position: flex;
-    right: 5px;
-    top: 5vh;
+    height: fit-content;
+    width: 500px;
     font-weight: bolder;
     font-size: x-large;
-    width: 500px;
-    height: 200px;
     background-color: white;
     border: 2px solid black;
     border-radius: 20px;
@@ -98,46 +98,43 @@ th, td {
 }
 
 .kh_panel_container {
-    position: absolute;
-    right: 7%;
+    width: 500px;
+    margin: 40px;
 }
 
 .kh_panel {
-    position: relative;
     background-color: white;
     border: 2px solid black;
     border-radius: 20px;
-    height: 80vh;
-    width: 40vw;
+    height: inherit;
+    width: inherit;
     text-align: center;
-    padding:40px;
+    box-sizing: border-box;
+    padding: 40px;
 }
 
-
 .kh_tabs_container {
-    position: absolute;
-    display:flex;
-    flex-direction:column;
-    right: -10px;
-    /* background-color: red; */
+    display: flex;
+    flex-direction: column;
+    margin: 30px;
 }
 
 .kh_tab_button {
-    position: relative;
-    width: 5vw;
-    right:0px;
-    font-weight: bolder;
-    font-size: 300%;
+    height: 125px;
+    width: 125px;
     background-color: white;
     border: 2px solid black;
-    border-top-left-radius: 20px;
-    border-bottom-left-radius: 20px;
+    border-radius: 20px;
     border-right:none;
     text-align: center;
-    /* padding-right:5px; */
-    padding:15px;
-    margin:5px;
+    padding: 15px;
+    margin: 5px;
     margin-right:0px;
+}
+
+.kh_tab_button > img {
+    height: 100%;
+    width: 100%;
 }
 
 .kh_tab_button:hover{
@@ -145,6 +142,46 @@ th, td {
     transition: ease 0.25s;
 }
 
+.kh_note_panel {
+    height: 400px;
+    display: flex;
+    border: 2px solid black;
+    flex-direction: column;
+    padding: 30px 40px;
+    background-color: rgb(255, 250, 230);
+    border-radius: 15px;
+}
+
+.kh_note_textarea {
+    border: none;
+    font-family: "Permanent Marker", cursive;
+    font-size: 18px;
+    line-height: 18px;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.7);
+    resize: none;
+    padding: 8px;
+    background-image: linear-gradient(to bottom, transparent 8px, rgba(0, 0, 0, 0.2) 8px, rgba(0, 0, 0, 0.2) 9px, transparent 9px);
+    z-index: 10;
+    background-size: 18px 18px;
+}
+
+.kh_note_content {
+    height: 99%;
+    width: 99%;
+    overflow: hidden;
+    border: 1px solid gray;
+    border-radius: 5px;
+}
+
+.kh_note_header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 10px;
+    margin: 0;
+}
 
 .kh_incorrect {
     background-color: red;
@@ -246,6 +283,7 @@ th, td {
         transform: rotateX(360deg);
     }
 }
+
 .kh_next_btn {
     border: 1px solid rgb(0, 100, 190);
     background-color: rgb(0, 170, 255);
@@ -275,9 +313,6 @@ th, td {
     height: 100vh;
     justify-content: center;
     align-items: center;
-    background-color: rgb(0, 68, 102);
-    background-image: url('img/keyHunterStartBack.jpeg');
-    background-size:cover;
 }
 
 .kh_startScreen {
@@ -296,9 +331,39 @@ th, td {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-image: url('img/keyHunterBack.jpeg');
-    background-size:cover;
 }
+
+@media screen and (max-width: 1425px) {
+    
+    .kh_inGame {
+        flex-direction: column;
+    }
+
+    .kh_left {
+        order: 1;
+    }
+
+    .kh_inGame {
+        height: fit-content;
+        padding: 50px 0px 50px 0px;
+    }
+
+    /* .kh_question_container {
+    } */
+
+    .kh_tabs_container {
+        width: 600px;
+        order: 2;
+        flex-direction: row;
+        justify-content: space-evenly;
+    }
+
+    .kh_table_container {
+        order: 3;
+    }
+
+} 
+
 
 .hide {
     display: none;
