@@ -214,16 +214,8 @@ kh_helpButton.addEventListener('click', kh_toggleHelp);
 
 function kh_startGame() {
   
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
   kh_clearNotebook();
 
->>>>>>> origin/Sean
-=======
-  kh_clearNotebook();
-
->>>>>>> refs/remotes/origin/main
   document.getElementById('numberOfGuesses').innerHTML = remainingAttempts + " attempts left";
   document.getElementById('kh_score_keeper').innerHTML = playerSccore;
   if (easyMode || mediumMode) {
@@ -443,29 +435,13 @@ function setCorrectButton(ranValue) {
       document.getElementById('kh_question').innerHTML = ""
       plainTextPrompt = " a PigPen Cipher The answer is row " + spellOutNumber(randomRow) + " and the column is " + spellOutNumber(randomCol);
       generatePigPen(plainTextPrompt);
-<<<<<<< HEAD
-<<<<<<< HEAD
-      document.getElementById('kh_dict_panel').innerHTML = "<img src=\"img\\pigpen\\pigpencipheralphabet.png\" width=\"250px\" height=\"500px\">";
-=======
       document.getElementById('kh_dict_panel').insertAdjacentHTML('beforeend', "<img src=\"img\\pigpen\\pigpencipheralphabet.png\" width=\"350px\" height=\"350px\">");
->>>>>>> origin/Sean
-=======
-      document.getElementById('kh_dict_panel').insertAdjacentHTML('beforeend', "<img src=\"img\\pigpen\\pigpencipheralphabet.png\" width=\"350px\" height=\"350px\">");
->>>>>>> refs/remotes/origin/main
       break;
     case 3:
       isTransposition = true;
       plainTextPrompt = " A basic transposition cipher the answer is row " + spellOutNumber(randomRow) + " and the column is " + spellOutNumber(randomCol);
       document.getElementById('kh_question').innerHTML = shiftBackwardByValue(plainTextPrompt, randomCaesarCipherVal);
-<<<<<<< HEAD
-<<<<<<< HEAD
-      document.getElementById('kh_dict_panel').innerHTML = "the alphabet here is your standard alphabet! A=A and so forth :)"
-=======
       document.getElementById('kh_dict_panel').insertAdjacentHTML('beforeend', "the alphabet here is your standard alphabet! A=A and so forth :)");
->>>>>>> origin/Sean
-=======
-      document.getElementById('kh_dict_panel').insertAdjacentHTML('beforeend', "the alphabet here is your standard alphabet! A=A and so forth :)");
->>>>>>> refs/remotes/origin/main
       break;
     case 4:
       isAtbash = true;
@@ -862,29 +838,13 @@ function kh_promptPlayAgain() {
   kh_turnOffNote();
   kh_turnOffHelp();
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-  kh_clearNotebook();
-
-=======
->>>>>>> origin/Sean
-=======
->>>>>>> refs/remotes/origin/main
   firstGame = true;
   
 }
 function kh_buttonReset() {
   var kh_div = document.getElementById('kh_table');
   kh_msg.innerHTML = "";
-<<<<<<< HEAD
-<<<<<<< HEAD
-  document.getElementById('kh_dict_panel').innerHTML = "";
-=======
   document.getElementById('kh_dict_panel').innerHTML = "<h1>Dictionary</h1>";
->>>>>>> origin/Sean
-=======
-  document.getElementById('kh_dict_panel').innerHTML = "<h1>Dictionary</h1>";
->>>>>>> refs/remotes/origin/main
   if (easyMode || mediumMode) {
     document.getElementById('kh_ciphers_completed').innerHTML = "You have completed " + kh_ciphers_completed + "/3 ciphers";
 
@@ -907,11 +867,3 @@ function kh_goHome() {
   document.getElementById("homepage").classList.remove("hide");
 
 }
-<<<<<<< HEAD
-<<<<<<< HEAD
-
-=======
->>>>>>> origin/Sean
-=======
-  
->>>>>>> refs/remotes/origin/main
