@@ -1,32 +1,14 @@
 body{
     margin: 0;
     padding: 0;
-<<<<<<< HEAD
-<<<<<<< HEAD
-    background-image: url('img/backgrounds/keyHunterStartBack');
-    background-size: cover;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: scroll;
-    min-width: fit-content;
-=======
     background: url('img/backgrounds/keyHunterBackground.jpg') no-repeat center center fixed;
     background-size: cover;
-=======
-    background: url('img/backgrounds/keyHunterBackground.jpg') no-repeat center center fixed;
-    background-size: cover;
->>>>>>> refs/remotes/origin/main
 }
 
 .kh_table_container{
     /* height: 700px;
     width: 700px; */
     position: relative;
-<<<<<<< HEAD
->>>>>>> origin/Sean
-=======
->>>>>>> refs/remotes/origin/main
 }
 
 .kh_categories_buttons {
@@ -36,49 +18,15 @@ body{
 
 .kh_table{
     border-collapse: collapse;
-<<<<<<< HEAD
-<<<<<<< HEAD
-    
-    text-align: center;
-    margin:5px;
-}
-
-
-.kh_tr {
-    padding:0px;
-=======
     margin: 0px;
 }
 
 tr {
     padding: 0px;
->>>>>>> origin/Sean
-=======
-    margin: 0px;
-}
-
-tr {
-    padding: 0px;
->>>>>>> refs/remotes/origin/main
     width: 100%;
     height: 100%;
 }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-/* table {
-=======
-table {
->>>>>>> refs/remotes/origin/main
-    border-collapse: collapse;
-    text-align: center;
-    margin: 5px;
-}
-
-<<<<<<< HEAD
-#kh_th,#kh_td {
-    /* display: inline-flex; */
-=======
 table {
     border-collapse: collapse;
     text-align: center;
@@ -86,38 +34,12 @@ table {
 }
 
 th, td {
->>>>>>> origin/Sean
-=======
-th, td {
->>>>>>> refs/remotes/origin/main
     background-color: rgb(144, 66, 45);
     border: 1px solid black;
     text-shadow: 1px 1px 1px white;
     padding: 0px;
     margin: 0px;
     margin-top: 0px;
-<<<<<<< HEAD
-<<<<<<< HEAD
-    width:100%;
-    height: 100;
-    font-weight: bold
-=======
-    width: fit-content;
-    height: fit-content;
-    font-weight: bold;
->>>>>>> refs/remotes/origin/main
-  }
-
-.khBtn { 
-    color: black;
-    background-color: green; 
-    border: 1px solid black;
-    width: 20px;
-    height: 20px;
-    margin: 2px;
-}
-<<<<<<< HEAD
-=======
     width: fit-content;
     height: fit-content;
     font-weight: bold;
@@ -132,22 +54,11 @@ th, td {
     margin: 2px;
 }
 
->>>>>>> origin/Sean
-=======
-
->>>>>>> refs/remotes/origin/main
 .khBtn:hover{
     background-color: rgb(0, 0, 110);
     color: white;
 }
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
 
->>>>>>> origin/Sean
-=======
-
->>>>>>> refs/remotes/origin/main
 .kh_numerals{
     position: absolute;
     top: 30px;
@@ -155,109 +66,22 @@ th, td {
     left: 3px;
     text-align: center;
 }
-<<<<<<< HEAD
-<<<<<<< HEAD
-.kh_numerals,.kh_alphabet{
-=======
 
 .kh_numerals, .kh_alphabet {
->>>>>>> origin/Sean
-=======
-
-.kh_numerals, .kh_alphabet {
->>>>>>> refs/remotes/origin/main
     color: white;
     background-color: rgb(0, 0, 96);
     border: 1px solid black;
     border-radius: 10px;
 }
-<<<<<<< HEAD
-<<<<<<< HEAD
-.kh_alphabet{
-    position: absolute;
-    top:10px;
-    left:28px;
-=======
 
 .kh_alphabet{
     position: absolute;
     top: 10px;
     left: 28px;
->>>>>>> origin/Sean
-=======
-
-.kh_alphabet{
-    position: absolute;
-    top: 10px;
-    left: 28px;
->>>>>>> refs/remotes/origin/main
     margin: 0;
     padding-left: 2px;
 }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-/* .kh_left > div {
-} */
->>>>>>> refs/remotes/origin/main
-
-.kh_question_container {
-    height: fit-content;
-    width: 500px;
-    font-weight: bolder;
-    font-size: x-large;
-    background-color: white;
-    border: 2px solid black;
-    border-radius: 20px;
-    text-align: center;
-    margin: 40px;
-}
-
-.kh_panel_container {
-    width: 500px;
-    margin: 40px;
-}
-
-.kh_panel {
-    background-color: white;
-    border: 2px solid black;
-    border-radius: 20px;
-    height: inherit;
-    width: inherit;
-    text-align: center;
-    box-sizing: border-box;
-    padding: 40px;
-}
-
-.kh_tabs_container {
-    display: flex;
-    flex-direction: column;
-    margin: 30px;
-}
-
-.kh_tab_button {
-    height: 125px;
-    width: 125px;
-    background-color: white;
-    border: 2px solid black;
-    border-radius: 20px;
-    border-right:none;
-    text-align: center;
-    padding: 15px;
-    margin: 5px;
-    margin-right:0px;
-}
-
-.kh_tab_button > img {
-    height: 100%;
-    width: 100%;
-}
-
-.kh_tab_button:hover{
-<<<<<<< HEAD
-    bottom:0px;
-=======
 /* .kh_left > div {
 } */
 
@@ -315,39 +139,16 @@ th, td {
 
 .kh_tab_button:hover{
     right:10px;
->>>>>>> origin/Sean
-=======
-    right:10px;
->>>>>>> refs/remotes/origin/main
     transition: ease 0.25s;
 }
 
 .kh_note_panel {
-<<<<<<< HEAD
-<<<<<<< HEAD
-    height: 600px;
-    width: 400px;
-=======
-    height: 400px;
->>>>>>> refs/remotes/origin/main
-    display: flex;
-    border: 2px solid black;
-    flex-direction: column;
-    padding: 30px 40px;
-    background-color: rgb(255, 250, 230);
-<<<<<<< HEAD
-    box-shadow: 0 0 10px 2px;
-    border-style: solid;
-=======
     height: 400px;
     display: flex;
     border: 2px solid black;
     flex-direction: column;
     padding: 30px 40px;
     background-color: rgb(255, 250, 230);
->>>>>>> origin/Sean
-=======
->>>>>>> refs/remotes/origin/main
     border-radius: 15px;
 }
 
@@ -482,14 +283,7 @@ th, td {
         transform: rotateX(360deg);
     }
 }
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
 
->>>>>>> origin/Sean
-=======
-
->>>>>>> refs/remotes/origin/main
 .kh_next_btn {
     border: 1px solid rgb(0, 100, 190);
     background-color: rgb(0, 170, 255);
@@ -515,21 +309,6 @@ th, td {
     padding: 0;
     margin: 0;
     display: flex;
-<<<<<<< HEAD
-<<<<<<< HEAD
-    width: fit-content;
-=======
-    width: 100vw;
-    height: 100vh;
->>>>>>> refs/remotes/origin/main
-    justify-content: center;
-    align-items: center;
-}
-
-.kh_startScreen {
-<<<<<<< HEAD
-    background-color: rgba(131, 232, 134, 0.75);
-=======
     width: 100vw;
     height: 100vh;
     justify-content: center;
@@ -538,10 +317,6 @@ th, td {
 
 .kh_startScreen {
     background-color: white;
->>>>>>> origin/Sean
-=======
-    background-color: white;
->>>>>>> refs/remotes/origin/main
     border-radius: 5px;
     padding: 10px;
     box-shadow: 0 0 10px 2px;
@@ -549,12 +324,6 @@ th, td {
     font-size: xx-large;
     line-height: 5px;
     text-align: center;
-<<<<<<< HEAD
-<<<<<<< HEAD
-    padding: 20px;
-    margin-top: 50%;
-=======
->>>>>>> refs/remotes/origin/main
 }
 .kh_inGame{
     height: 100%;
@@ -564,19 +333,6 @@ th, td {
     align-items: center;
 }
 
-<<<<<<< HEAD
-=======
-}
-.kh_inGame{
-    height: 100%;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-=======
->>>>>>> refs/remotes/origin/main
 @media screen and (max-width: 1425px) {
     
     .kh_inGame {
@@ -607,11 +363,6 @@ th, td {
     }
 
 } 
-<<<<<<< HEAD
->>>>>>> origin/Sean
-=======
->>>>>>> refs/remotes/origin/main
-
 
 .hide {
     display: none;
