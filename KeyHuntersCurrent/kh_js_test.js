@@ -473,7 +473,7 @@ function setCorrectButton(ranValue) {
       
       plainTextPrompt = "polybius cipher, the answer you are looking for is " + spellOutNumber(randomRow) + " and the column is " + spellOutNumber(randomCol);
       document.getElementById('kh_question').innerHTML = GeneratePolybiusCipher(plainTextPrompt);
-      document.getElementById('kh_dict_panel').insertAdjacentHTML('beforeend', "<img src=\"img\\pigpen\\polybiusCipher.png\" width=\"350px\" height=\"350px\">");
+      document.getElementById('kh_dict_panel').insertAdjacentHTML('beforeend', "<img src=\"img\\dict_images\\polybiusCipher.png\" width=\"350px\" height=\"350px\">");
       document.getElementById('kh_msg_panel').insertAdjacentHTML('beforeend', "The Polybius square, also known as the Polybius checkerboard, is a device invented by the ancient Greeks Cleoxenus and Democleitus, and made famous by the historian and scholar Polybius.[1] The device is used for fractionating plaintext characters so that they can be represented by a smaller set of symbols, which is useful for telegraphy, steganography, and cryptography. The device was originally used for fire signalling, allowing for the coded transmission of any message, not just a finite amount of predetermined options as was the convention before. ")
 
       break;
