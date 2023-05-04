@@ -19,6 +19,7 @@ var kh_check_minutes;
 var kh_seconds;
 var kh_displayedMinutes;
 var firstGame = true;
+var kh_ciphers_completed = 0;
 
 
 let kh_panelActive = false;
@@ -212,8 +213,17 @@ kh_helpButton.addEventListener('click', kh_toggleHelp);
 
 
 function kh_startGame() {
+  
   document.getElementById('numberOfGuesses').innerHTML = remainingAttempts + " attempts left";
   document.getElementById('kh_score_keeper').innerHTML = playerSccore;
+  if (easyMode || mediumMode) {
+    document.getElementById('kh_ciphers_completed').innerHTML = "You have completed " + kh_ciphers_completed + "/3 ciphers";
+
+  }
+  if (hardMode) {
+    document.getElementById('kh_ciphers_completed').innerHTML = "You have completed " + kh_ciphers_completed + "/6 ciphers";
+
+  }
   kh_easyButton.classList.add('hide');
   kh_homeButton.classList.add('hide');
   kh_msg.classList.add('hide');
@@ -438,7 +448,7 @@ function setCorrectButton(ranValue) {
       break;
     case 5:
       isZigZag = true;
-      plainTextPrompt = "zigzag cipher, the answer is " + spellOutNumber(randomRow) + " and the column is " + spellOutNumber(randomCol);
+      plainTextPrompt = "zigzag cipher, row: " + spellOutNumber(randomRow) + " column: " + spellOutNumber(randomCol);
       document.getElementById('kh_question').innerHTML = zigzagCipher(plainTextPrompt,3);
       document.getElementById('kh_dict_panel').innerHTML = "<img src=\"img\\dict_images\\zigzag.png\" width=\"250px\" height=\"200px\">";
       break;
@@ -539,6 +549,7 @@ function kh_running() {
       if (easyMode || mediumMode) {
         if (kh_count == 1 || kh_count ==2) {
           if (easyMode){
+            kh_ciphers_completed = kh_count;
             kh_buttonReset();
             cipherSelecter++;
             var correctButtonToAddMessage = String.fromCharCode(64 + correctButton[1]);
@@ -569,14 +580,14 @@ function kh_running() {
       
       
     } else {
-      var kh_msg = document.createElement("p");
-      kh_msgPanel.appendChild(kh_msg);
+      var kh_text_msg = document.createElement("p");
+      kh_msgPanel.appendChild(kh_text_msg);
       if (isCaeser) {
-        kh_msg.innerHTML = "A Caeser cipher is when you take the selected coordinate and shift it by the given value";
+        kh_text_msg.innerHTML = "A Caeser cipher is when you take the selected coordinate and shift it by the given value";
         isCaeser = false;
       }
       if (isTransposition) {
-        kh_msg.innerHTML = "A transposition cipher rearranges the letters of a message to create an encoded message without replacing the letters themselves. To identify a transposition cipher in JavaScript, look for similar frequency distributions in the ciphertext and plaintext or repeating character sequences. To decrypt a transposition cipher, use a known method like columnar transposition or rail fence cipher to rearrange the letters. For example, a message like \"HELLO WORLD\" could be transposed by reversing the order of the letters to create the encoded message \"DLROW OLLEH\".";
+        kh_text_msg.innerHTML = "A transposition cipher rearranges the letters of a message to create an encoded message without replacing the letters themselves. To identify a transposition cipher in JavaScript, look for similar frequency distributions in the ciphertext and plaintext or repeating character sequences. To decrypt a transposition cipher, use a known method like columnar transposition or rail fence cipher to rearrange the letters. For example, a message like \"HELLO WORLD\" could be transposed by reversing the order of the letters to create the encoded message \"DLROW OLLEH\".";
         isTransposition = false;
       }
       remainingAttempts--;
@@ -834,6 +845,14 @@ function kh_buttonReset() {
   var kh_div = document.getElementById('kh_table');
   kh_msg.innerHTML = "";
   document.getElementById('kh_dict_panel').innerHTML = "";
+  if (easyMode || mediumMode) {
+    document.getElementById('kh_ciphers_completed').innerHTML = "You have completed " + kh_ciphers_completed + "/3 ciphers";
+
+  }
+  if (hardMode) {
+    document.getElementById('kh_ciphers_completed').innerHTML = "You have completed " + kh_ciphers_completed + "/6 ciphers";
+
+  }
   
   isCaeser = false;
   isPigPen = false;
