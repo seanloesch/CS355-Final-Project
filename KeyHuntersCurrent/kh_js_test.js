@@ -458,7 +458,8 @@ function setCorrectButton(ranValue) {
       
       plainTextPrompt = "polybius cipher, the answer you are looking for is " + spellOutNumber(randomRow) + " and the column is " + spellOutNumber(randomCol);
       document.getElementById('kh_question').innerHTML = GeneratePolybiusCipher(plainTextPrompt);
-      
+      document.getElementById('kh_dict_panel').innerHTML = "<img src=\"img\\dict_images\\polybiusCipher.png\" width=\"250px\" height=\"200px\">";
+
 
       const table = document.createElement('table');
 
