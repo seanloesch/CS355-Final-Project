@@ -1,13 +1,14 @@
 body{
     margin: 0;
     padding: 0;
-    background-image: url('img/backgrounds/keyHunterStartBack');
+    background: url('img/backgrounds/keyHunterBackground.jpg') no-repeat center center fixed;
     background-size: cover;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: scroll;
-    min-width: fit-content;
+}
+
+.kh_table_container{
+    /* height: 700px;
+    width: 700px; */
+    position: relative;
 }
 
 .kh_categories_buttons {
@@ -17,55 +18,47 @@ body{
 
 .kh_table{
     border-collapse: collapse;
-    
-    text-align: center;
-    margin:5px;
+    margin: 0px;
 }
 
-
-.kh_tr {
-    padding:0px;
+tr {
+    padding: 0px;
     width: 100%;
     height: 100%;
 }
 
-/* table {
+table {
     border-collapse: collapse;
     text-align: center;
-    margin:5px;
-} */
+    margin: 5px;
+}
 
-#kh_th,#kh_td {
-    /* display: inline-flex; */
+th, td {
     background-color: rgb(144, 66, 45);
     border: 1px solid black;
     text-shadow: 1px 1px 1px white;
     padding: 0px;
     margin: 0px;
     margin-top: 0px;
-    width:100%;
-    height: 100;
-    font-weight: bold
+    width: fit-content;
+    height: fit-content;
+    font-weight: bold;
   }
 
 .khBtn { 
-    color:black; 
-    /* font: bold 84% 'trebuchet ms',helvetica,sans-serif; */
-    /* font-size: 6px;  */
-    background-color:green; 
-
-    border:1px solid black;
+    color: black;
+    background-color: green; 
+    border: 1px solid black;
     width: 20px;
     height: 20px;
-    /* padding: 2px;
-    margin-top: 3px;
-    margin-left: 3px;*/
     margin: 2px;
 }
+
 .khBtn:hover{
     background-color: rgb(0, 0, 110);
     color: white;
 }
+
 .kh_numerals{
     position: absolute;
     top: 30px;
@@ -73,122 +66,89 @@ body{
     left: 3px;
     text-align: center;
 }
-.kh_numerals,.kh_alphabet{
+
+.kh_numerals, .kh_alphabet {
     color: white;
     background-color: rgb(0, 0, 96);
     border: 1px solid black;
     border-radius: 10px;
 }
+
 .kh_alphabet{
     position: absolute;
-    top:10px;
-    left:28px;
+    top: 10px;
+    left: 28px;
     margin: 0;
     padding-left: 2px;
 }
 
+/* .kh_left > div {
+} */
 
 .kh_question_container {
-    width: 40%;
-    height: max-content;
+    height: fit-content;
+    width: 500px;
+    font-weight: bolder;
+    font-size: x-large;
+    background-color: white;
+    border: 2px solid black;
+    border-radius: 20px;
+    text-align: center;
     margin: 40px;
-
-    
-}
-
-.kh_cipher_container {
-    font-weight: bolder;
-    font-size: x-large;
-    max-width: 100%;
-    min-height: 200px;
-    background-color: white;
-    box-shadow: 0 0 10px 2px;
-    border-radius: 5px;
-    text-align: center;
-    margin-top: 50px;
-    padding:25px;
-}
-
-.kh_information_container {
-    font-weight: bolder;
-    font-size: x-large;
-    max-width: 100%;
-    min-height: 200px;
-    background-color: white;
-    box-shadow: 0 0 10px 2px;
-    border-radius: 5px;
-    text-align: center;
-    margin-top: 50px;
-    padding:25px;
 }
 
 .kh_panel_container {
-    margin:40px;
-    height: fit-content;
-    width: 400px;
+    width: 500px;
+    margin: 40px;
 }
 
 .kh_panel {
-    height: 600px;
-    width: 400px;
-    padding: 30px 40px;
     background-color: white;
-    box-shadow: 0 0 10px 2px;
-    border-style: solid;
-    border-radius: 15px;
+    border: 2px solid black;
+    border-radius: 20px;
+    height: inherit;
+    width: inherit;
     text-align: center;
-    overflow:scroll;
+    box-sizing: border-box;
+    padding: 40px;
 }
 
 .kh_tabs_container {
-    position: fixed;
     display: flex;
-    flex-direction:row;
-    bottom: 0px;
-    right: 0px;
-}
-
-.kh_button_icon {
-    height:50px;
-    width:50px;
+    flex-direction: column;
+    margin: 30px;
 }
 
 .kh_tab_button {
-    position: relative;
-    width: max-content;
-    bottom:-15px;
-    font-weight: bolder;
-    font-size: 300%;
+    height: 125px;
+    width: 125px;
     background-color: white;
     border: 2px solid black;
-    border-top-left-radius: 20px;
-    border-top-right-radius: 20px;
-    border-bottom:none;
+    border-radius: 20px;
+    border-right:none;
     text-align: center;
-    /* padding-right:5px; */
-    padding:15px;
-    margin:5px;
-    margin-bottom:0px;
+    padding: 15px;
+    margin: 5px;
+    margin-right:0px;
 }
 
-.kh_tab_button.new-pos {
-    bottom: 0px;
+.kh_tab_button > img {
+    height: 100%;
+    width: 100%;
 }
 
 .kh_tab_button:hover{
-    bottom:0px;
+    right:10px;
     transition: ease 0.25s;
 }
 
 .kh_note_panel {
-    height: 600px;
-    width: 400px;
+    height: 400px;
     display: flex;
+    border: 2px solid black;
     flex-direction: column;
     padding: 30px 40px;
     background-color: rgb(255, 250, 230);
-    box-shadow: 0 0 10px 2px;
-    border-style: solid;
     border-radius: 15px;
 }
 
@@ -323,6 +283,7 @@ body{
         transform: rotateX(360deg);
     }
 }
+
 .kh_next_btn {
     border: 1px solid rgb(0, 100, 190);
     background-color: rgb(0, 170, 255);
@@ -348,28 +309,14 @@ body{
     padding: 0;
     margin: 0;
     display: flex;
-    width: fit-content;
+    width: 100vw;
+    height: 100vh;
     justify-content: center;
     align-items: center;
-    /* background-color: rgb(0, 68, 102); */
-    background-size:cover;
-    flex-direction: column;
-}
-
-.kh_logo_container {
-    background-color: lightgreen;
-    border-radius: 5px;
-    padding: 10px;
-    box-shadow: 0 0 10px 2px;
-    font-weight: 600;
-    font-size: xx-large;
-    line-height: 5px;
-    text-align: center;
-    margin:50px;
 }
 
 .kh_startScreen {
-    background-color: rgba(131, 232, 134, 0.75);
+    background-color: white;
     border-radius: 5px;
     padding: 10px;
     box-shadow: 0 0 10px 2px;
@@ -377,17 +324,45 @@ body{
     font-size: xx-large;
     line-height: 5px;
     text-align: center;
-    padding: 20px;
-    margin-top: 50%;
 }
 .kh_inGame{
-    height: 100vh;
+    height: 100%;
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-size:cover;
 }
 
+@media screen and (max-width: 1425px) {
+    
+    .kh_inGame {
+        flex-direction: column;
+    }
+
+    .kh_left {
+        order: 1;
+    }
+
+    .kh_inGame {
+        height: fit-content;
+        padding: 50px 0px 50px 0px;
+    }
+
+    /* .kh_question_container {
+    } */
+
+    .kh_tabs_container {
+        width: 600px;
+        order: 2;
+        flex-direction: row;
+        justify-content: space-evenly;
+    }
+
+    .kh_table_container {
+        order: 3;
+    }
+
+} 
 
 
 .hide {
