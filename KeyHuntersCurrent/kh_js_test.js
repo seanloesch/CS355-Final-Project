@@ -30,6 +30,7 @@ let kh_helpActive = false;
 let isCaeser = false;
 let isPigPen = false;
 let isTransposition = false;
+let isZigZag = false;
 let caeserDone = false;
 let pigPenDone = false;
 let transpositionDone = false;
@@ -436,12 +437,10 @@ function setCorrectButton(ranValue) {
       document.getElementById('kh_question').innerHTML = atbashCipher(plainTextPrompt);
       break;
     case 5:
-      isAtbash = true;
+      isZigZag = true;
       plainTextPrompt = "zigzag cipher, the answer is " + spellOutNumber(randomRow) + " and the column is " + spellOutNumber(randomCol);
       document.getElementById('kh_question').innerHTML = zigzagCipher(plainTextPrompt,3);
       document.getElementById('kh_dict_panel').innerHTML = "<img src=\"img\\dict_images\\zigzag.png\" width=\"250px\" height=\"200px\">";
-
-      
       break;
     case 6:
       
@@ -655,11 +654,10 @@ function atbashCipher(plaintext) {
   return result;
 }
 
-// function to encrypt a message
 function zigzagCipher(text, key) {
   // create the matrix to cipher plain text
   // key = rows , text.length = columns
-  let rail = new Array(key).fill().map(() => new Array(text.length).fill('\n'));
+  let rail = new Array(key).fill().map(() => new Array(text.length).fill(''));
  
   // filling the rail matrix to distinguish filled
   // spaces from blank ones
@@ -683,10 +681,11 @@ function zigzagCipher(text, key) {
   let result = '';
   for (let i = 0; i < key; i++)
     for (let j = 0; j < text.length; j++)
-      if (rail[i][j] != '\n') result += rail[i][j];
+      if (rail[i][j] != '') result += rail[i][j];
  
   return result;
 }
+
 
 function spellOutNumber(num) {
   const ones = ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine'];
