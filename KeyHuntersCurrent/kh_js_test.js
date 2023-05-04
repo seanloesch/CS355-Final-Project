@@ -409,7 +409,7 @@ function setCorrectButton(ranValue) {
   const table = document.getElementById('kh_table');
   const button = table.rows[randomRow].cells[randomCol].querySelector('.khBtn');
   button.dataset.correct = 'true'; // Mark the button as correct
-  ranValue = 3;
+  
   switch (ranValue) {
     case 1:
       isCaeser = true;
@@ -422,12 +422,13 @@ function setCorrectButton(ranValue) {
       document.getElementById('kh_question').innerHTML = ""
       plainTextPrompt = " a PigPen Cipher The answer is row " + spellOutNumber(randomRow) + " and the column is " + spellOutNumber(randomCol);
       generatePigPen(plainTextPrompt);
-      document.getElementById('kh_dict_panel').innerHTML = "<img src=\"img\\pigpen\\pigpencipheralphabet.png\" width=\"250px\" height=\"250px\">";
+      document.getElementById('kh_dict_panel').innerHTML = "<img src=\"img\\pigpen\\pigpencipheralphabet.png\" width=\"250px\" height=\"500px\">";
       break;
     case 3:
       isTransposition = true;
       plainTextPrompt = " A basic transposition cipher the answer is row " + spellOutNumber(randomRow) + " and the column is " + spellOutNumber(randomCol);
       document.getElementById('kh_question').innerHTML = shiftBackwardByValue(plainTextPrompt, randomCaesarCipherVal);
+      document.getElementById('kh_dict_panel').innerHTML = "the alphabet here is your standard alphabet! A=A and so forth :)"
       break;
     case 4:
       isAtbash = true;
@@ -438,6 +439,8 @@ function setCorrectButton(ranValue) {
       isAtbash = true;
       plainTextPrompt = "zigzag cipher, the answer is " + spellOutNumber(randomRow) + " and the column is " + spellOutNumber(randomCol);
       document.getElementById('kh_question').innerHTML = zigzagCipher(plainTextPrompt,3);
+      document.getElementById('kh_dict_panel').innerHTML = "<img src=\"img\\dict_images\\zigzag.png\" width=\"250px\" height=\"200px\">";
+
       
       break;
     case 6:
@@ -571,13 +574,14 @@ function kh_running() {
       kh_msgPanel.appendChild(kh_msg);
       if (isCaeser) {
         kh_msg.innerHTML = "A Caeser cipher is when you take the selected coordinate and shift it by the given value";
+        isCaeser = false;
       }
       if (isTransposition) {
         kh_msg.innerHTML = "A transposition cipher rearranges the letters of a message to create an encoded message without replacing the letters themselves. To identify a transposition cipher in JavaScript, look for similar frequency distributions in the ciphertext and plaintext or repeating character sequences. To decrypt a transposition cipher, use a known method like columnar transposition or rail fence cipher to rearrange the letters. For example, a message like \"HELLO WORLD\" could be transposed by reversing the order of the letters to create the encoded message \"DLROW OLLEH\".";
-        
+        isTransposition = false;
       }
       remainingAttempts--;
-      playerSccore -= Math.round((playerSccore*(1/5)));
+      playerSccore -= 20;
       if (remainingAttempts == 0) {
         kh_finished();
        
@@ -829,6 +833,12 @@ function kh_promptPlayAgain() {
 }
 function kh_buttonReset() {
   var kh_div = document.getElementById('kh_table');
+  kh_msg.innerHTML = "";
+  document.getElementById('kh_dict_panel').innerHTML = "";
+  
+  isCaeser = false;
+  isPigPen = false;
+  isTransposition = false;
   while (kh_div.firstChild) {
     kh_div.removeChild(kh_div.firstChild);
   }
