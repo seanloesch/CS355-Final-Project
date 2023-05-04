@@ -216,8 +216,11 @@ function kh_startGame() {
   
   kh_clearNotebook();
 
-  document.getElementById('numberOfGuesses').innerHTML = remainingAttempts + " attempts left";
-  document.getElementById('kh_score_keeper').innerHTML = playerSccore;
+  
+  if (firstGame){
+    kh_ciphers_completed =0;
+    remainingAttempts = 5;
+  }
   if (easyMode || mediumMode) {
     document.getElementById('kh_ciphers_completed').innerHTML = "You have completed " + kh_ciphers_completed + "/3 ciphers";
 
@@ -226,6 +229,8 @@ function kh_startGame() {
     document.getElementById('kh_ciphers_completed').innerHTML = "You have completed " + kh_ciphers_completed + "/6 ciphers";
 
   }
+  document.getElementById('numberOfGuesses').innerHTML = remainingAttempts + " attempts left";
+  document.getElementById('kh_score_keeper').innerHTML = playerSccore;
   kh_easyButton.classList.add('hide');
   kh_homeButton.classList.add('hide');
   kh_msg.classList.add('hide');
@@ -426,8 +431,10 @@ function setCorrectButton(ranValue) {
   switch (ranValue) {
     case 1:
       isCaeser = true;
-      
+      document.getElementById('kh_dict_panel').insertAdjacentHTML('beforeend', "the alphabet here is your standard alphabet! A=A and so forth :)");
       document.getElementById('kh_question').innerHTML = " a Caeser Cipher shift by " + randomCaesarCipherVal + " The column is " + ((randomCaesarCipherVal + randomCol) + 9).toString(36).toUpperCase() + " The row is " + randomRow;
+      document.getElementById('kh_msg_panel').insertAdjacentHTML('beforeend', "a Caesar cipher, also known as Caesar's cipher, the shift cipher, Caesar's code or Caesar shift, is one of the simplest and most widely known encryption techniques. It is a type of substitution cipher in which each letter in the plaintext is replaced by a letter some fixed number of positions down the alphabet. For example, with a left shift of 3, D would be replaced by A, E would become B, and so on. The method is named after Julius Caesar, who used it in his private correspondence. ")
+
       //document.getElementById('question_box').innerHTML = "3";
       break;
     case 2:
@@ -436,29 +443,39 @@ function setCorrectButton(ranValue) {
       plainTextPrompt = " a PigPen Cipher The answer is row " + spellOutNumber(randomRow) + " and the column is " + spellOutNumber(randomCol);
       generatePigPen(plainTextPrompt);
       document.getElementById('kh_dict_panel').insertAdjacentHTML('beforeend', "<img src=\"img\\pigpen\\pigpencipheralphabet.png\" width=\"350px\" height=\"350px\">");
+      document.getElementById('kh_msg_panel').insertAdjacentHTML('beforeend', "The pigpen cipher (alternatively referred to as the masonic cipher, Freemason's cipher, Napoleon cipher, and tic-tac-toe cipher) is a geometric simple substitution cipher, which exchanges letters for symbols which are fragments of a grid. ")
+
       break;
     case 3:
       isTransposition = true;
       plainTextPrompt = " A basic transposition cipher the answer is row " + spellOutNumber(randomRow) + " and the column is " + spellOutNumber(randomCol);
       document.getElementById('kh_question').innerHTML = shiftBackwardByValue(plainTextPrompt, randomCaesarCipherVal);
       document.getElementById('kh_dict_panel').insertAdjacentHTML('beforeend', "the alphabet here is your standard alphabet! A=A and so forth :)");
+      document.getElementById('kh_msg_panel').insertAdjacentHTML('beforeend', "In cryptography, a transposition cipher (also known as a permutation cipher) is a method of encryption which scrambles the positions of characters (transposition) without changing the characters themselves. Transposition ciphers reorder units of plaintext (typically characters or groups of characters) according to a regular system to produce a ciphertext which is a permutation of the plaintext. They differ from substitution ciphers, which do not change the position of units of plaintext but instead change the units themselves. Despite the difference between transposition and substitution operations, they are often combined, as in historical ciphers like the ADFGVX cipher or complex high-quality encryption methods like the modern Advanced Encryption Standard (AES).  ")
+
       break;
     case 4:
       isAtbash = true;
       plainTextPrompt = "atbash cipher, the answer you are looking for is " + spellOutNumber(randomRow) + " and the column is " + spellOutNumber(randomCol);
       document.getElementById('kh_question').innerHTML = atbashCipher(plainTextPrompt);
+      document.getElementById('kh_dict_panel').insertAdjacentHTML('beforeend', "the alphabet here is your standard alphabet! A=A and so forth :)");
+      document.getElementById('kh_msg_panel').insertAdjacentHTML('beforeend', "The Atbash cipher is a particular type of monoalphabetic cipher formed by taking the alphabet (or abjad, syllabary, etc.) and mapping it to its reverse, so that the first letter becomes the last letter, the second letter becomes the second to last letter, and so on. ")
       break;
     case 5:
       isZigZag = true;
       plainTextPrompt = "zigzag cipher, row: " + spellOutNumber(randomRow) + " column: " + spellOutNumber(randomCol);
       document.getElementById('kh_question').innerHTML = zigzagCipher(plainTextPrompt,3);
       document.getElementById('kh_dict_panel').innerHTML = "<img src=\"img\\dict_images\\zigzag.png\" width=\"250px\" height=\"200px\">";
+      document.getElementById('kh_msg_panel').insertAdjacentHTML('beforeend', "The rail fence cipher (also called a zigzag cipher) is a classical type of transposition cipher. It derives its name from the manner in which encryption is performed, in analogy to a fence built with horizontal rails.  ")
+
       break;
     case 6:
       
       plainTextPrompt = "polybius cipher, the answer you are looking for is " + spellOutNumber(randomRow) + " and the column is " + spellOutNumber(randomCol);
       document.getElementById('kh_question').innerHTML = GeneratePolybiusCipher(plainTextPrompt);
+      document.getElementById('kh_msg_panel').insertAdjacentHTML('beforeend', "       The Polybius square, also known as the Polybius checkerboard, is a device invented by the ancient Greeks Cleoxenus and Democleitus, and made famous by the historian and scholar Polybius.[1] The device is used for fractionating plaintext characters so that they can be represented by a smaller set of symbols, which is useful for telegraphy, steganography, and cryptography. The device was originally used for fire signalling, allowing for the coded transmission of any message, not just a finite amount of predetermined options as was the convention before.")
       
+
 
       const table = document.createElement('table');
 
@@ -599,7 +616,7 @@ function kh_running() {
        
       }
       
-      document.getElementById('kh_score_keeper').innerHTML = "player score is now " + playerSccore;
+      document.getElementById('kh_score_keeper').innerHTML = "Score: " + playerSccore;
       
       document.getElementById('numberOfGuesses').innerHTML = remainingAttempts + " attempts left";
       kh_btn.classList.add('kh_incorrect');
@@ -845,6 +862,8 @@ function kh_buttonReset() {
   var kh_div = document.getElementById('kh_table');
   kh_msg.innerHTML = "";
   document.getElementById('kh_dict_panel').innerHTML = "<h1>Dictionary</h1>";
+  document.getElementById('kh_msg_panel').innerHTML = "<h1>Message</h1>";
+
   if (easyMode || mediumMode) {
     document.getElementById('kh_ciphers_completed').innerHTML = "You have completed " + kh_ciphers_completed + "/3 ciphers";
 
