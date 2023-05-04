@@ -214,6 +214,8 @@ kh_helpButton.addEventListener('click', kh_toggleHelp);
 
 function kh_startGame() {
   
+  kh_clearNotebook();
+
   document.getElementById('numberOfGuesses').innerHTML = remainingAttempts + " attempts left";
   document.getElementById('kh_score_keeper').innerHTML = playerSccore;
   if (easyMode || mediumMode) {
@@ -835,8 +837,6 @@ function kh_promptPlayAgain() {
   kh_turnOffMsg();
   kh_turnOffNote();
   kh_turnOffHelp();
-
-  kh_clearNotebook();
 
   firstGame = true;
   
