@@ -461,6 +461,18 @@ body {
     background-color: white;
     font-family: "Permanent Marker", cursive;
 }
+.ddUSB{
+    height: 20px;
+    width: 30px;
+    margin-top: 37%;
+    margin-left: 58%;
+    background-image: url("img/dd_USB.png");
+    background-size: cover;
+}
+.ddUSB:hover{
+    filter: brightness(305%);
+    cursor: grab;
+}
 .ddLowerNameTag{
     display: flex;
     height: 20%;
@@ -708,10 +720,16 @@ input[type="submit"]:hover {
     height: 30%;
 }
 
+/* added 
+    justify-content: space-between;
+    align-items: center;
+    */
 .ddBottomLogContainer {
     height: 60%;
     width: 100%;
     display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .ddlogTable {
@@ -1155,6 +1173,58 @@ li {
     background-color: #333333;
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
   }
+/*new*/
+.ddAlertMessage{
+    width: 25%;
+    height: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(255, 0, 0, 0.1);
+    animation: flash 1s ease-in-out infinite alternate;
+    border: 2px solid red;
+}
+
+.ddAlertBox{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.ddAlertBox h1{
+    margin: 0 0 10px 0;
+    color: red;
+    text-align: center;
+}
+
+.ddAlertBox p{
+    margin: 0;
+    color: red;
+    text-align: center;
+}
+
+@keyframes flash {
+    from {
+      background-color: rgba(255, 0, 0, 0.1);
+    }
+    to {
+      background-color: rgba(255, 0, 0, 0.2);
+    }
+}
+
+.ddDepositUSB{
+    margin-left: 10px;
+    height: 50px;
+    width: 50px;
+    background-image: url("img/dd_dropBox.png");
+    background-size: cover;
+    border-radius: 20px;
+}
+
+.ddDepositUSB:hover{
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
 
 /* Hide command */
 .hide {
