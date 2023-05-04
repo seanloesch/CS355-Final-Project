@@ -473,38 +473,9 @@ function setCorrectButton(ranValue) {
       
       plainTextPrompt = "polybius cipher, the answer you are looking for is " + spellOutNumber(randomRow) + " and the column is " + spellOutNumber(randomCol);
       document.getElementById('kh_question').innerHTML = GeneratePolybiusCipher(plainTextPrompt);
-      
+      document.getElementById('kh_dict_panel').insertAdjacentHTML('beforeend', "<img src=\"img\\pigpen\\polybiusCipher.png\" width=\"350px\" height=\"350px\">");
+      document.getElementById('kh_msg_panel').insertAdjacentHTML('beforeend', "The Polybius square, also known as the Polybius checkerboard, is a device invented by the ancient Greeks Cleoxenus and Democleitus, and made famous by the historian and scholar Polybius.[1] The device is used for fractionating plaintext characters so that they can be represented by a smaller set of symbols, which is useful for telegraphy, steganography, and cryptography. The device was originally used for fire signalling, allowing for the coded transmission of any message, not just a finite amount of predetermined options as was the convention before. ")
 
-      const table = document.createElement('table');
-
-      // Array of letters to use in the table
-      const letters = "abcdefghiklmnopqrstuvwxyz".split("");
-
-      // Create rows and columns
-      for (let i = 0; i < 6; i++) {
-        const row = document.createElement('tr');
-        
-        for (let j = 0; j < 6; j++) {
-          const cell = document.createElement('td');
-          
-          if (i === 0 && j > 0) {
-            // Set column labels
-            //cell.textContent = j;
-          } else if (j === 0 && i > 0) {
-            // Set row labels
-            //cell.textContent = i;
-          } else if (i > 0 && j > 0) {
-            // Encode letters using the Polybius cipher
-            const index = (i - 1) * 5 + j - 1;
-            cell.textContent = `${i}${j} ${letters[index].toUpperCase()}`;
-          }
-          
-          row.appendChild(cell);
-        }
-        
-        table.appendChild(row);
-      }
-      document.getElementById('kh_dict_panel').appendChild(table); // add table to the document
       break;
   }
   // Return the coordinates of the correct button
