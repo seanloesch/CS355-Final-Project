@@ -58,6 +58,7 @@ const kh_homeButton = document.getElementById('kh_home_btn');
 const kh_inGame = document.getElementById('kh_inGame');
 const kh_tabsContainer = document.getElementById('kh_tabs_container');
 const kh_msg = document.getElementById('kh_msg');
+const kh_startContainer = document.getElementById('kh_startContainer');
 const kh_startScreen = document.getElementById('kh_startScreen');
 const kh_panelContainer = document.getElementById('kh_panel_container');
 const kh_dictPanel = document.getElementById('kh_dict_panel');
@@ -195,10 +196,11 @@ function kh_startGame() {
 
   }
   document.getElementById('numberOfGuesses').innerHTML = remainingAttempts + " attempts left";
-  document.getElementById('kh_score_keeper').innerHTML = playerScore;
+  document.getElementById('kh_score_keeper').innerHTML = "Score: " + playerScore;
   kh_easyButton.classList.add('hide');
   kh_homeButton.classList.add('hide');
   kh_msg.classList.add('hide');
+  kh_startContainer.classList.add('hide');
   kh_startScreen.classList.add('hide');
   kh_inGame.classList.remove('hide');
   // kh_tabsContainer.remove('hide');
@@ -781,6 +783,7 @@ function kh_promptPlayAgain() {
   cipherSelecter = 0;
   playerScore = 100;
   kh_buttonReset();
+  kh_startContainer.classList.remove('hide');
   kh_startScreen.classList.remove('hide');
   kh_easyButton.classList.remove('hide');
   kh_easyButton.disabled = false;
