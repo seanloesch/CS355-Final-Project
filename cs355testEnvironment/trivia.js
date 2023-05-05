@@ -107,13 +107,14 @@ triv_inGame_Home.addEventListener('click', () => {
 //Determines whether practice mode or ranked mode then starts game
 function trivia_initPractice() {
     trivia_pracByRorT_btns.classList.remove('hide');
-    trivia_initScreen.classList.add('hide');
+    if(!trivia_initScreen.classList.contains('hide')){trivia_initScreen.classList.add('hide');}
 }
 function trivia_initPracByR() {
     trivia_pracByRForm.classList.remove('hide');
+    if(!trivia_pracByTForm.classList.contains('hide')){trivia_pracByTForm.classList.add('hide');}
     trivia_triv.classList.remove('hide');
-    trivia_rankedForm.style.display = "block";
-    trivia_pracOrRank.style.display = "none";
+    trivia_rankedForm.classList.remove('hide');
+    if(!trivia_pracOrRank.classList.contains('hide')){trivia_pracOrRank.classList.add('hide');}
     trivia_rankedGame = false;
     trivia_startButton.classList.remove('hide');
     trivia_rank = document.getElementById('trivia_rank').value;
@@ -123,9 +124,10 @@ function trivia_initPracByR() {
 function trivia_initPracByT() {
     trivia_topic = document.getElementById('trivia_topic').value;
     trivia_pracByTForm.classList.remove('hide');
+    if(!trivia_pracByRForm.classList.contains('hide')){trivia_pracByRForm.classList.add('hide');}
     trivia_triv.classList.remove('hide');
-    trivia_rankedForm.style.display = "block";
-    trivia_pracOrRank.style.display = "none";
+    trivia_rankedForm.classList.remove('hide');
+    if(!trivia_pracOrRank.classList.contains('hide')){trivia_pracOrRank.classList.add('hide');}
     trivia_rankedGame = false;
     trivia_startButton.classList.remove('hide');
     trivia_rank = document.getElementById('trivia_rank').value; //this should be removed
@@ -137,8 +139,8 @@ function trivia_initPracByT() {
 function trivia_initRanked() {
     trivia_questions = [];
     trivia_rank = trivia_userRank;
-    trivia_pracOrRank.style.display = "none";
-    trivia_rankedForm.style.display = "none";
+    if(!trivia_pracOrRank.classList.contains('hide')){trivia_pracOrRank.classList.add('hide');}
+    if(!trivia_rankedForm.classList.contains('hide')){trivia_rankedForm.classList.add('hide');}
     trivia_triv.classList.remove('hide');
     trivia_rankedGame = true;
     trivia_startButton.classList.remove('hide');
@@ -146,12 +148,8 @@ function trivia_initRanked() {
     trivia_retrieveJSONArray();
 }
 function trivia_resetClassList() {
-    if (trivia_pracByRForm.classList.contains('hide') == false) {
-        trivia_pracByRForm.classList.add('hide');
-    }
-    if (trivia_pracByTForm.classList.contains('hide') == false) {
-        trivia_pracByTForm.classList.add('hide');
-    }
+    if (!trivia_pracByRForm.classList.contains('hide')){trivia_pracByRForm.classList.add('hide');}
+    if (!trivia_pracByTForm.classList.contains('hide')) {trivia_pracByTForm.classList.add('hide');}
 }
 //--------------------------------------------------------------------------------------
 
@@ -162,7 +160,7 @@ function trivia_startGame() {
     trivia_Back_btn2.classList.add('hide')
     trivia_resetClassList();
     trivia_byTopic = false;
-    trivia_rankedForm.style.display = "none";
+    if(!trivia_rankedForm.classList.contains('hide')){trivia_rankedForm.classList.add('hide');}
     document.getElementById('trivia_user_rank').innerHTML = trivia_rank + 1;
     var trivia_interval = setInterval(function () {
         trivia_decreaseQuestionValue();//subtract 30 points from 1000
@@ -406,7 +404,7 @@ function triv_gameHome(){
     if(trivia_Back_btn1.classList.contains('hide')){trivia_Back_btn1.classList.remove('hide')}
     if(trivia_Back_btn2.classList.contains('hide')){trivia_Back_btn2.classList.remove('hide')}
     if(!trivia_scores_container.classList.contains('hide')){trivia_scores_container.classList.add('hide')}
-    trivia_pracOrRank.style.display = "block";
+    trivia_pracOrRank.classList.remove('hide')
     trivia_triv.classList.add('hide');
     if(!trivia_resetButton.classList.contains('hide')){trivia_resetButton.classList.add('hide')}
     if(!trivia_pracByRorT_btns.classList.contains('hide')){trivia_pracByRorT_btns.classList.add('hide')}
@@ -425,7 +423,7 @@ function trivia_resetGame() {
     if(trivia_Back_btn2.classList.contains('hide')){trivia_Back_btn2.classList.remove('hide')}
     if(!trivia_scores_container.classList.contains('hide')){trivia_scores_container.classList.add('hide')}
 
-    trivia_pracOrRank.style.display = "block";
+    trivia_pracOrRank.classList.remove('hide')
     trivia_triv.classList.add('hide');
     trivia_answered = 0;
     trivia_right = 0;
