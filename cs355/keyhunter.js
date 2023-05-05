@@ -4,254 +4,819 @@ var kh_rank = 1;
 const kh_totalQuestions = 1;
 var kh_questionBoxArray = new Array(4);
 var kh_answers = [];
-var kh_shuffledArray = [];
-var kh_buzz;
+var kh_buzz =0;
 var kh_clearing;
-var kh_count;
+var kh_count =0;
 var kh_numMinutes = 5;
+var i = 0;
+var correctButton;
+var textbox = document.getElementById('kh_question');
+var cipherSelecter =0;
+var remainingAttempts =5;
+var playerSccore = 100;
+var kh_duration;
+var kh_check_minutes;
+var kh_seconds;
+var kh_displayedMinutes;
+var firstGame = true;
+var kh_ciphers_completed = 0;
 
 
-kh_display = document.querySelector('#kh_time');
+let kh_panelActive = false;
+let kh_dictActive = false;
+let kh_msgActive = false;
+let kh_noteActive = false;
+let kh_helpActive = false;
 
-const kh_startButton = document.getElementById('kh_start_btn');
+let isCaeser = false;
+let isPigPen = false;
+let isTransposition = false;
+let isZigZag = false;
+let caeserDone = false;
+let pigPenDone = false;
+let transpositionDone = false;
+const randomCaesarCipherVal = Math.floor(Math.random() * 5) + 1; // Random caeser between 1 and 6
+var randomCipherChosenValue = 0;
+var previousCipherChosenValue = 0;
+let easyMode = false;
+let mediumMode = false;
+let hardMode = false;
+
+
+var plainTextPrompt;
+
+kh_timer_display = document.querySelector('#kh_timer');
+
+const kh_easyButton = document.getElementById('kh_easy_btn');
+const kh_mediumButton = document.getElementById('kh_medium_btn');
+const kh_hardButton = document.getElementById('kh_hard_btn');
+
+const kh_notebook = document.getElementById('kh_note_textarea');
+
 const kh_homeButton = document.getElementById('kh_home_btn');
 const kh_inGame = document.getElementById('kh_inGame');
+const kh_tabsContainer = document.getElementById('kh_tabs_container');
 const kh_msg = document.getElementById('kh_msg');
 const kh_startScreen = document.getElementById('kh_startScreen');
+const kh_panelContainer = document.getElementById('kh_panel_container');
+const kh_dictPanel = document.getElementById('kh_dict_panel');
+const kh_msgPanel = document.getElementById('kh_msg_panel');
+const kh_notePanel = document.getElementById('kh_note_panel');
+const kh_helpPanel = document.getElementById('kh_help_panel');
+
+const kh_dictButton = document.getElementById('kh_dict_button');
+const kh_msgButton = document.getElementById('kh_msg_button');
+const kh_noteButton = document.getElementById('kh_note_button');
+const kh_helpButton = document.getElementById('kh_help_button');
+
+var link = document.createElement('link');
+link.rel = 'stylesheet';
+link.href = 'kh_css_test.css';
 
 
 
-for (let i = 0; i < 676; i++) {
-    var button_String = i.toString;
-    kh_add_value = [i];
-    kh_elements.push(kh_add_value)
+const easyOrder = [1,2,3];
+var shuffledEasyOrder = easyOrder.sort(()=>Math.random()-.5);
+kh_easyButton.addEventListener('click', randomEasyCipherChosen);
+function randomEasyCipherChosen(){
+  easyMode = true;
+  kh_startGame();
+  firstGame = false;
+
+  randomCipherChosenValue = easyOrder[cipherSelecter];
+  switch(randomCipherChosenValue){
+    case 1:
+    
+      correctButton = setCorrectButton(randomCipherChosenValue);
+
+      break;
+    case 2:
+      correctButton = setCorrectButton(randomCipherChosenValue);
+
+      break;
+    case 3:
+      correctButton = setCorrectButton(randomCipherChosenValue);
+
+      break;
+  }
+  
+  
+  
 }
 
-kh_startButton.addEventListener('click', kh_startGame);
+
+const mediumOrder = [4,5,6];
+var shuffledMediumOrder = mediumOrder.sort(()=>Math.random()-.5);
+kh_mediumButton.addEventListener('click', randomMediumCipherChosen);
+function randomMediumCipherChosen(){
+  mediumMode = true;
+  kh_startGame();
+  firstGame = false;
+  
+
+  randomCipherChosenValue = mediumOrder[cipherSelecter];
+  switch(randomCipherChosenValue){
+    case 4:
+      
+      correctButton = setCorrectButton(randomCipherChosenValue);
+      break;
+    case 5:
+      correctButton = setCorrectButton(randomCipherChosenValue);
+
+      break;
+    case 6:
+      correctButton = setCorrectButton(randomCipherChosenValue);
+
+      break;
+  }
+}
+
+const hardOrder = [1,2,3,4,5,6];
+var shuffledHardORder = hardOrder.sort(()=>Math.random()-.5);
+kh_hardButton.addEventListener('click', randomHardCipherChosen);
+function randomHardCipherChosen(){
+  hardMode = true;
+  kh_startGame();
+  firstGame = false;
+  randomCipherChosenValue = hardOrder[cipherSelecter];
+  switch(randomCipherChosenValue){
+    case 1:
+      correctButton = setCorrectButton(randomCipherChosenValue);
+      break;
+    case 2:
+      correctButton = setCorrectButton(randomCipherChosenValue);
+
+      break;
+    case 3:
+      correctButton = setCorrectButton(randomCipherChosenValue);
+
+      break;
+    case 4:
+      correctButton = setCorrectButton(randomCipherChosenValue);
+
+      break;
+    case 5: 
+      correctButton = setCorrectButton(randomCipherChosenValue);
+
+      break;
+    case 6:
+      correctButton = setCorrectButton(randomCipherChosenValue);
+
+      break;
+  }
+}
+
+
+
 kh_homeButton.addEventListener('click', kh_goHome);
+kh_dictButton.addEventListener('click', kh_toggleDict);
+kh_msgButton.addEventListener('click', kh_toggleMsg);
+kh_noteButton.addEventListener('click', kh_toggleNote);
+kh_helpButton.addEventListener('click', kh_toggleHelp);
+
+
 
 function kh_startGame() {
-    kh_startButton.classList.add('hide');
-    kh_homeButton.classList.add('hide');
-    kh_msg.classList.add('hide');
-    kh_startScreen.classList.add('hide');
-    kh_inGame.classList.remove('hide');
-    var kh_timed = 60 * kh_numMinutes;
-    kh_buzz = 0;
-    kh_count = 0;
-    kh_startTimer(kh_timed, kh_display);
-    table_create();
-    kh_retrieveJSONArray();
-    //kh_createButtons();
-    kh_running();
+  
+  kh_clearNotebook();
 
+  
+  if (firstGame){
+    kh_ciphers_completed =0;
+    remainingAttempts = 5;
+  }
+  if (easyMode || mediumMode) {
+    document.getElementById('kh_ciphers_completed').innerHTML = "You have completed " + kh_ciphers_completed + "/3 ciphers";
+
+  }
+  if (hardMode) {
+    document.getElementById('kh_ciphers_completed').innerHTML = "You have completed " + kh_ciphers_completed + "/6 ciphers";
+
+  }
+  document.getElementById('numberOfGuesses').innerHTML = remainingAttempts + " attempts left";
+  document.getElementById('kh_score_keeper').innerHTML = playerSccore;
+  kh_easyButton.classList.add('hide');
+  kh_homeButton.classList.add('hide');
+  kh_msg.classList.add('hide');
+  kh_startScreen.classList.add('hide');
+  kh_inGame.classList.remove('hide');
+  // kh_tabsContainer.remove('hide');
+  kh_dictPanel.classList.add('hide');
+  kh_msgPanel.classList.add('hide');
+  kh_notePanel.classList.add('hide');
+  kh_helpPanel.classList.add('hide');
+  
+  if (firstGame){
+    var kh_timed = 60 * kh_numMinutes;
+    kh_startTimer(kh_timed, kh_timer_display);
+  }
+  
+  
+  
+
+  table_create();
+  
+
+  kh_running();
 }
 
+
+
+
+
+// toggling the notepad functions
+
+
+function kh_toggleDict() {
+  if (kh_panelActive == false) {
+    kh_turnOnDict();
+  } 
+  else if (kh_panelActive == true && kh_dictActive == true) {
+    kh_turnOffDict();
+  }   
+}
+
+function kh_turnOnDict() {
+  kh_dictPanel.classList.remove('hide');
+  kh_dictButton.style.backgroundColor = "rgb(150,200,255)";
+  kh_dictButton.classList.add('new-pos');
+  kh_panelActive = true;
+  kh_dictActive = true;
+}
+
+function kh_turnOffDict() {
+  kh_dictPanel.classList.add('hide');
+  kh_dictButton.style.backgroundColor = 'white';
+  kh_dictButton.classList.remove('new-pos');
+  kh_panelActive = false;
+  kh_dictActive = false;
+}
+
+function kh_toggleMsg() {
+  if (kh_panelActive == false) {
+    kh_turnOnMsg();
+  } 
+  else if (kh_panelActive == true && kh_msgActive == true) {
+    kh_turnOffMsg();
+  }    
+}
+
+function kh_turnOnMsg() {
+  kh_msgPanel.classList.remove('hide');
+  kh_msgButton.style.backgroundColor = "rgb(150,200,255)";
+  kh_msgButton.classList.add('new-pos');
+  kh_panelActive = true;
+  kh_msgActive = true;
+}
+
+function kh_turnOffMsg() {
+  kh_msgPanel.classList.add('hide');
+  kh_msgButton.style.backgroundColor = 'white';
+  kh_msgButton.classList.remove('new-pos');
+  kh_panelActive = false;
+  kh_msgActive = false;
+}
+
+function kh_toggleNote() {
+  if (kh_panelActive == false) {
+    kh_turnOnNote();
+  } 
+  else if (kh_panelActive == true && kh_noteActive == true) {
+    kh_turnOffNote();
+  }    
+}
+
+function kh_turnOnNote() {
+  kh_notePanel.classList.remove('hide');
+  kh_noteButton.style.backgroundColor = "rgb(150,200,255)";
+  kh_noteButton.classList.add('new-pos');
+  kh_panelActive = true;
+  kh_noteActive = true;
+}
+
+function kh_turnOffNote() {
+  kh_notePanel.classList.add('hide');
+  kh_noteButton.style.backgroundColor = 'white';
+  kh_noteButton.classList.remove('new-pos');
+  kh_panelActive = false;
+  kh_noteActive = false;
+}
+
+function kh_toggleHelp() {
+  if (kh_panelActive == false) {
+    kh_turnOnHelp();
+  } 
+  else if (kh_panelActive == true && kh_helpActive == true) {
+    kh_turnOffHelp();
+  }    
+}
+
+function kh_turnOnHelp() {
+  kh_helpPanel.classList.remove('hide');
+  kh_helpButton.style.backgroundColor = "rgb(150,200,255)";
+  kh_helpButton.classList.add('new-pos');
+  kh_panelActive = true;
+  kh_helpActive = true;
+}
+
+function kh_turnOffHelp() {
+  kh_helpPanel.classList.add('hide');
+  kh_helpButton.style.backgroundColor = 'white';
+  kh_helpButton.classList.remove('new-pos');
+  kh_panelActive = false;
+  kh_helpActive = false;
+}
+
+function kh_clearNotebook() {
+  var kh_notebook = document.getElementById('kh_note_textarea');
+  kh_notebook.value=''
+}
 
 //draw our table
-
 function table_create() {
-    const tableArray = document.getElementById('kh_table');
-    var colIncrement = 0;
-    for (let i = 0; i <= 26; i++) {
-        if(i==0){
-            let tableRow = document.createElement('tr');
-            tableArray.appendChild(tableRow);
-            for (let c = 0; c <= 26; c++) {
+  const tableArray = document.getElementById('kh_table');
+  for (i = 0; i < 28; i++) {
+    const tableRow = document.createElement('tr');
+    tableRow.id = 'kh_tr';
+    tableRow.class = 'kh_tr';
 
-                var str = c.toString();
+    tableArray.appendChild(tableRow);
 
-                if (c<10) {
-                    str = "";
-                    str = str.concat("0",c.toString());
-                }
-                let tableCol = document.createElement('td');
-                tableCol.innerText = str;
-                tableRow.appendChild(tableCol);
-            }
-        }
+    // add row label
+    const cellLabel = document.createElement('td');
+    cellLabel.id = 'kh_td';
+    cellLabel.class = 'kh_td';
 
-        let tableRow = document.createElement('tr');
-        tableArray.appendChild(tableRow);
-        
-        for (let j = 0; j <= 26; j++) {
-            if (j == 0) {
-
-                var str = colIncrement.toString();
-
-                if (colIncrement<10) {
-                    str = "";
-                    str = str.concat("0",colIncrement.toString());
-                }
-                let tableCol = document.createElement('td');
-                tableRow.appendChild(tableCol);
-                tableCol.innerText = str;
-                colIncrement++;
-                continue;
-            }
-            let tableCol = document.createElement('td');
-            tableRow.appendChild(tableCol)
-            let khBtn = document.createElement('button');
-            khBtn.classList.add('khBtn')
-            khBtn.innerHTML = '';
-            khBtn.value = i + 1;
-            tableCol.appendChild(khBtn);
-
-        }
-
+    if (i === 0 || i === 27) {
+      cellLabel.innerText = ':)';
+    } else {
+      cellLabel.innerText = i;
     }
+    tableRow.appendChild(cellLabel);
+
+    for (let j = 0; j < 27; j++) {
+      const tableCol = document.createElement('td');
+      tableCol.id = 'kh_td';
+      tableCol.class = 'kh_td';
+
+      if (i === 0 || i === 27) {
+        // add column label
+        if (j === 26) {
+          tableCol.innerText = ':) ';
+        } else {
+          tableCol.innerText = String.fromCharCode(64 + j + 1);
+        }
+      }
+      else {
+        const khBtn = document.createElement('button');
+        khBtn.classList.add('khBtn');
+        khBtn.innerHTML = '';
+        khBtn.value = i + 1;
+        tableCol.appendChild(khBtn);
+        if (j === 26) {
+          tableCol.innerText = i;
+        }
+      }
+      tableRow.appendChild(tableCol);
+    }
+  }
+}
+
+//*----------- sets the correct button in each grid while also displaying the appropriate cipher chosen from easy-hard arrays----*
+
+function setCorrectButton(ranValue) {
+  const randomRow = Math.floor(Math.random() * 25) + 1; // Random row between 1 and 26
+  const randomCol = Math.floor(Math.random() * 25) + 1; // Random column between 1 and 26
+  // Set the correct button
+  const table = document.getElementById('kh_table');
+  const button = table.rows[randomRow].cells[randomCol].querySelector('.khBtn');
+  button.dataset.correct = 'true'; // Mark the button as correct
+  
+  switch (ranValue) {
+    case 1:
+      isCaeser = true;
+      document.getElementById('kh_dict_panel').insertAdjacentHTML('beforeend', "the alphabet here is your standard alphabet! A=A and so forth :)");
+      document.getElementById('kh_question').innerHTML = " a Caeser Cipher shift by " + randomCaesarCipherVal + " The column is " + ((randomCaesarCipherVal + randomCol) + 9).toString(36).toUpperCase() + " The row is " + randomRow;
+      document.getElementById('kh_msg_panel').insertAdjacentHTML('beforeend', "a Caesar cipher, also known as Caesar's cipher, the shift cipher, Caesar's code or Caesar shift, is one of the simplest and most widely known encryption techniques. It is a type of substitution cipher in which each letter in the plaintext is replaced by a letter some fixed number of positions down the alphabet. For example, with a left shift of 3, D would be replaced by A, E would become B, and so on. The method is named after Julius Caesar, who used it in his private correspondence. ")
+
+      //document.getElementById('question_box').innerHTML = "3";
+      break;
+    case 2:
+      isPigPen = true;
+      document.getElementById('kh_question').innerHTML = ""
+      plainTextPrompt = " a PigPen Cipher The answer is row " + spellOutNumber(randomRow) + " and the column is " + spellOutNumber(randomCol);
+      generatePigPen(plainTextPrompt);
+      document.getElementById('kh_dict_panel').insertAdjacentHTML('beforeend', "<img src=\"img\\pigpen\\pigpencipheralphabet.png\" width=\"350px\" height=\"350px\">");
+      document.getElementById('kh_msg_panel').insertAdjacentHTML('beforeend', "The pigpen cipher (alternatively referred to as the masonic cipher, Freemason's cipher, Napoleon cipher, and tic-tac-toe cipher) is a geometric simple substitution cipher, which exchanges letters for symbols which are fragments of a grid. ")
+
+      break;
+    case 3:
+      isTransposition = true;
+      plainTextPrompt = " A basic transposition cipher the answer is row " + spellOutNumber(randomRow) + " and the column is " + spellOutNumber(randomCol);
+      document.getElementById('kh_question').innerHTML = shiftBackwardByValue(plainTextPrompt, randomCaesarCipherVal);
+      document.getElementById('kh_dict_panel').insertAdjacentHTML('beforeend', "the alphabet here is your standard alphabet! A=A and so forth :)");
+      document.getElementById('kh_msg_panel').insertAdjacentHTML('beforeend', "In cryptography, a transposition cipher (also known as a permutation cipher) is a method of encryption which scrambles the positions of characters (transposition) without changing the characters themselves. Transposition ciphers reorder units of plaintext (typically characters or groups of characters) according to a regular system to produce a ciphertext which is a permutation of the plaintext. They differ from substitution ciphers, which do not change the position of units of plaintext but instead change the units themselves. Despite the difference between transposition and substitution operations, they are often combined, as in historical ciphers like the ADFGVX cipher or complex high-quality encryption methods like the modern Advanced Encryption Standard (AES).  ")
+
+      break;
+    case 4:
+      isAtbash = true;
+      plainTextPrompt = "atbash cipher, the answer you are looking for is " + spellOutNumber(randomRow) + " and the column is " + spellOutNumber(randomCol);
+      document.getElementById('kh_question').innerHTML = atbashCipher(plainTextPrompt);
+      document.getElementById('kh_dict_panel').insertAdjacentHTML('beforeend', "the alphabet here is your standard alphabet! A=A and so forth :)");
+      document.getElementById('kh_msg_panel').insertAdjacentHTML('beforeend', "The Atbash cipher is a particular type of monoalphabetic cipher formed by taking the alphabet (or abjad, syllabary, etc.) and mapping it to its reverse, so that the first letter becomes the last letter, the second letter becomes the second to last letter, and so on. ")
+      break;
+    case 5:
+      isZigZag = true;
+      plainTextPrompt = "zigzag cipher, row: " + spellOutNumber(randomRow) + " column: " + spellOutNumber(randomCol);
+      document.getElementById('kh_question').innerHTML = zigzagCipher(plainTextPrompt,3);
+      document.getElementById('kh_dict_panel').innerHTML = "<img src=\"img\\dict_images\\zigzag.png\" width=\"250px\" height=\"200px\">";
+      document.getElementById('kh_msg_panel').insertAdjacentHTML('beforeend', "The rail fence cipher (also called a zigzag cipher) is a classical type of transposition cipher. It derives its name from the manner in which encryption is performed, in analogy to a fence built with horizontal rails.  ")
+
+      break;
+    case 6:
+      
+      plainTextPrompt = "polybius cipher, the answer you are looking for is " + spellOutNumber(randomRow) + " and the column is " + spellOutNumber(randomCol);
+      document.getElementById('kh_question').innerHTML = GeneratePolybiusCipher(plainTextPrompt);
+      document.getElementById('kh_dict_panel').insertAdjacentHTML('beforeend', "<img src=\"img\\dict_images\\polybiusCipher.png\" width=\"350px\" height=\"350px\">");
+      document.getElementById('kh_msg_panel').insertAdjacentHTML('beforeend', "The Polybius square, also known as the Polybius checkerboard, is a device invented by the ancient Greeks Cleoxenus and Democleitus, and made famous by the historian and scholar Polybius.[1] The device is used for fractionating plaintext characters so that they can be represented by a smaller set of symbols, which is useful for telegraphy, steganography, and cryptography. The device was originally used for fire signalling, allowing for the coded transmission of any message, not just a finite amount of predetermined options as was the convention before. ")
+
+      break;
+  }
+  // Return the coordinates of the correct button
+  
+  return [randomRow, randomCol];
 }
 
 
-// Get parent div in which you want to add buttons
-const kh_parent = document.getElementById('kh_buttons_container');
-// function kh_createButtons(){
-//     // Creates buttons
-//     for (let i = 0; i < kh_elements.length; i++) {
-//         let khBtn = document.createElement('button');
-//         khBtn.classList.add('khBtn')
-//         khBtn.innerHTML = '';
-//         khBtn.value = i + 1;
-//         kh_parent.appendChild(khBtn);
-//     }
-// }
+function GeneratePolybiusCipher(plainTextPrompt){
+  const square = [
+    ['A', 'B', 'C', 'D', 'E'],
+    ['F', 'G', 'H', 'I/J', 'K'],
+    ['L', 'M', 'N', 'O', 'P'],
+    ['Q', 'R', 'S', 'T', 'U'],
+    ['V', 'W', 'X', 'Y', 'Z']
+  ];
+  
+  // Convert the message to uppercase and remove any characters that aren't letters or spaces
+  plainTextPrompt = plainTextPrompt.toUpperCase().replace(/[^A-Z\s]/g, '');
+  
+  // Replace each letter in the plainTextPrompt with its corresponding Polybius square coordinates
+  let result = '';
+  for (let i = 0; i < plainTextPrompt.length; i++) {
+    const letter = plainTextPrompt.charAt(i);
+    if (letter === ' ') {
+      result += ' ';
+    } else {
+      for (let row = 0; row < square.length; row++) {
+        const col = square[row].indexOf(letter);
+        if (col !== -1) {
+          result += (row + 1) + '' + (col + 1);
+          break;
+        }
+      }
+    }
+  }
+  
+  return result;
+}
+
+
+// ---------------------------- main game loop for  guessing write or wrong answer ---------------------- //
 function kh_running() {
-    const kh_buttons = document.getElementsByTagName("button");
-    const kh_buttonPressed = kh_e => {
-        var kh_classname = kh_e.target.classList[0];
-        if (kh_classname == "khBtn") {
-            var kh_pressed = kh_e.target.value;
-            var kh_classname = kh_e.target.classList[0];
-            kh_e.target.classList.add('wrong');
-            var kh_c = Math.ceil(kh_pressed / 26);
-            var kh_r = ((kh_pressed % 26) + 9).toString(36).toUpperCase();
+  const kh_buttons = document.getElementsByClassName("khBtn");
+  const kh_buttonPressed = kh_e => {
+    const kh_btn = kh_e.target;
+    const kh_row = kh_btn.parentElement.parentElement.rowIndex;
+    const kh_col = kh_btn.parentElement.cellIndex;
+    const kh_gridVal = String.fromCharCode(kh_col + 64) + kh_row;
+    const kh_btnVal = "You Pressed: " + kh_gridVal;
+    document.getElementById('kh_btnVal').innerHTML = kh_btnVal;
 
-            if (kh_r == 9) { kh_r = 'Z'; }
-
-            var kh_txt = "You Pressed: "
-            var kh_gridVal = kh_r.toString() + kh_c.toString()
-            let kh_btnVal = kh_txt.concat(kh_r.toString(), " ", kh_c.toString());
-            document.getElementById('kh_btnVal').innerHTML = kh_btnVal;
-            var kh_findIn = kh_answers.includes(kh_gridVal);
-            kh_e.target.disabled = true;
-            if (kh_findIn == true) {
-                kh_e.target.classList.add('kh_correct');
-                kh_count = kh_count + 1;
-                if (kh_count == kh_totalQuestions) {
-                    kh_finished();
-                }
-            }
-            else {
-                kh_e.target.classList.add('kh_incorrect');
-                kh_buzz++;
-            }
+    kh_btn.disabled = true;
+    if (kh_row === correctButton[0] && kh_col === correctButton[1]) {
+      kh_btn.classList.add('kh_correct');
+      kh_count++;
+      if (easyMode || mediumMode) {
+        if (kh_count == 1 || kh_count ==2) {
+          if (easyMode){
+            kh_ciphers_completed = kh_count;
+            kh_buttonReset();
+            cipherSelecter++;
+            var correctButtonToAddMessage = String.fromCharCode(64 + correctButton[1]);
+            document.getElementById('kh_note_panel').innerHTML += correctButtonToAddMessage;
+            randomEasyCipherChosen();
+          } else if (mediumMode) {
+            kh_buttonReset();
+            cipherSelecter++;
+            var correctButtonToAddMessage = String.fromCharCode(64 + correctButton[1]);
+            document.getElementById('kh_note_panel').innerHTML += correctButtonToAddMessage;
+            randomMediumCipherChosen();
+          } 
+        } else if(kh_count == 3) {
+          kh_finished();
         }
-    }
-    for (let kh_button of kh_buttons) {
-        kh_button.addEventListener("click", kh_buttonPressed);
-    }
-}
-var kh_questions = [];
-function kh_retrieveJSONArray() {
-    var kh_obj = [];
-    var kh_jsonArray = [];
-
-    var oXHR = new XMLHttpRequest();
-    // Initiate request.
-    oXHR.onreadystatechange = reportStatus;
-    oXHR.open("GET", "./keyhunter.json", true);  // get json file.
-    oXHR.send();
-    function reportStatus() {
-        if (oXHR.readyState == 4) {		// Check if request is complete.
-            kh_obj = JSON.parse(this.responseText);
-            kh_jsonArray = Object.values(kh_obj);
-            kh_createQuestionList(kh_jsonArray);
+      } else if (hardMode){
+        if (kh_count ==1 || kh_count == 2 || kh_count ==3 || kh_count == 4 || kh_count ==5){
+          kh_buttonReset();
+          cipherSelecter++;
+          var correctButtonToAddMessage = String.fromCharCode(64+correctButton[1]);
+          document.getElementById('kh_note_panel').innerHTML += correctButtonToAddMessage;
+          randomHardCipherChosen();
+        } else if (kh_count ==6) {
+          kh_finished();
         }
+
+      }
+      
+      
+    } else {
+      var kh_text_msg = document.createElement("p");
+      kh_msgPanel.appendChild(kh_text_msg);
+      if (isCaeser) {
+        kh_text_msg.innerHTML = "A Caeser cipher is when you take the selected coordinate and shift it by the given value";
+        isCaeser = false;
+      }
+      if (isTransposition) {
+        kh_text_msg.innerHTML = "A transposition cipher rearranges the letters of a message to create an encoded message without replacing the letters themselves. To identify a transposition cipher in JavaScript, look for similar frequency distributions in the ciphertext and plaintext or repeating character sequences. To decrypt a transposition cipher, use a known method like columnar transposition or rail fence cipher to rearrange the letters. For example, a message like \"HELLO WORLD\" could be transposed by reversing the order of the letters to create the encoded message \"DLROW OLLEH\".";
+        isTransposition = false;
+      }
+      remainingAttempts--;
+      playerSccore -= 20;
+      if (remainingAttempts == 0) {
+        kh_finished();
+       
+      }
+      
+      document.getElementById('kh_score_keeper').innerHTML = "Score: " + playerSccore;
+      
+      document.getElementById('numberOfGuesses').innerHTML = remainingAttempts + " attempts left";
+      kh_btn.classList.add('kh_incorrect');
+      kh_buzz++;
     }
+  }
+  for (let kh_button of kh_buttons) {
+    kh_button.addEventListener("click", kh_buttonPressed);
+  }
 }
-function kh_createQuestionList(kh_jsonArray) {
-    //Here is where we would determine the rankings and set questions
-    var kh_Gamerank = kh_rank-1;
-    var kh_questionlength = kh_jsonArray[kh_Gamerank].length;
-    var kh_oneDimensionalArray = [];
-    for (var i = 0; i < kh_questionlength; i++) {
-        kh_oneDimensionalArray.push(kh_jsonArray[kh_Gamerank][i]);
+
+function generatePigPen(plaintext) {
+  
+  var kh_alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
+  for (var i = 0; i < plaintext.length; i++) {
+    var currentChar = plaintext.charAt(i).toLowerCase();
+    if (kh_alphabet.includes(currentChar)) {
+      var img = document.createElement('img');
+      var imgTitle = 'img/pigpen/pigpen' + currentChar.toUpperCase() + '.png';
+      img.src = imgTitle;
+      img.alt = currentChar;
+      img.classList.add('picBack');
+      textbox.appendChild(img);
+    }
+    else {
+      var spaceChar = document.createTextNode("\u2003");
+      textbox.appendChild(spaceChar);
+    }
+  }
+}
+
+
+function shiftBackwardByValue(plaintext, shiftBy) {
+  // Split the plaintext into an array of words
+  const words = plaintext.split(' ');
+
+  // Shift each letter within each word by two characters to the left
+  const shiftedWords = words.map(word => {
+    const chars = word.split('');
+    const shiftedChars = chars.slice(shiftBy).concat(chars.slice(0, shiftBy));
+    return shiftedChars.join('');
+  });
+
+  // Join the shifted words back into a string and return it
+  return shiftedWords.join(' ');
+}
+
+function atbashCipher(plaintext) {
+  const letters = 'abcdefghijklmnopqrstuvwxyz';
+  let result = '';
+
+  for (let i = 0; i < plaintext.length; i++) {
+    const letter = plaintext[i].toLowerCase();
+    const index = letters.indexOf(letter);
+    
+    if (index !== -1) {
+      const reverseIndex = letters.length - index - 1;
+      const reverseLetter = letters[reverseIndex];
+      result += (plaintext[i] === letter) ? reverseLetter : reverseLetter.toUpperCase();
+    } else {
+      result += plaintext[i];
+    }
+  }
+
+  return result;
+}
+
+function zigzagCipher(text, key) {
+  // create the matrix to cipher plain text
+  // key = rows , text.length = columns
+  let rail = new Array(key).fill().map(() => new Array(text.length).fill(''));
+ 
+  // filling the rail matrix to distinguish filled
+  // spaces from blank ones
+  let dir_down = false;
+  let row = 0, col = 0;
+ 
+  for (let i = 0; i < text.length; i++) {
+    // check the direction of flow
+    // reverse the direction if we've just
+    // filled the top or bottom rail
+    if (row == 0 || row == key - 1) dir_down = !dir_down;
+ 
+    // fill the corresponding alphabet
+    rail[row][col++] = text[i];
+ 
+    // find the next row using direction flag
+    dir_down ? row++ : row--;
+  }
+ 
+  // now we can construct the cipher using the rail matrix
+  let result = '';
+  for (let i = 0; i < key; i++)
+    for (let j = 0; j < text.length; j++)
+      if (rail[i][j] != '') result += rail[i][j];
+ 
+  return result;
+}
+
+
+function spellOutNumber(num) {
+  const ones = ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine'];
+  const tens = [null, null, 'twenty', 'thirty', 'forty', 'fifty', 'sixty', 'seventy', 'eighty', 'ninety'];
+  const teens = ['ten', 'eleven', 'twelve', 'thirteen', 'fourteen', 'fifteen', 'sixteen', 'seventeen', 'eighteen', 'nineteen'];
+
+  if (num < 0 || num > 9999) {
+    return 'Number out of range';
+  }
+
+  let words = '';
+
+  let tensAndOnes = num % 100;
+
+  if (tensAndOnes >= 10 && tensAndOnes < 20) {
+    words += teens[tensAndOnes - 10];
+  } else {
+    let tensDigit = Math.floor(tensAndOnes / 10);
+    let onesDigit = tensAndOnes % 10;
+
+    if (tensDigit > 0) {
+      words += tens[tensDigit] + ' ';
     }
 
-    for (let i = 0; i < kh_totalQuestions; i++) {
-        var kh_q = kh_oneDimensionalArray[i].question;
-        var kh_a = kh_oneDimensionalArray[i].answer;
-        kh_questionBoxArray[i] = kh_q;
-        console.log(kh_questionBoxArray[i]);
-        kh_answers.push(kh_a);
+    if (onesDigit > 0) {
+      words += ones[onesDigit];
     }
-    kh_loadQuestions();
+  }
+
+  return words.trim();
 }
-function kh_loadQuestions() {
-    document.getElementById('kh_mdQ1').innerHTML = kh_questionBoxArray[0];
-    // document.getElementById('kh_mdQ2').innerHTML = kh_questionBoxArray[1];
-    // document.getElementById('kh_mdQ3').innerHTML = kh_questionBoxArray[2];
-    // document.getElementById('kh_mdQ4').innerHTML = kh_questionBoxArray[3];
-    // document.getElementById('kh_mdQ5').innerHTML = kh_questionBoxArray[4];
-}
+
 
 
 function kh_startTimer(kh_duration, kh_display) {
-    var kh_timer = kh_duration, kh_minutes, kh_seconds, kh_displayedMinutes;
+  var countingTimer =1;
+  var kh_timer = kh_duration, kh_minutes, kh_seconds, kh_displayedMinutes;
+  kh_clearing = setInterval(function () {
+    kh_minutes = parseInt(kh_timer / 60, 10);
+    kh_seconds = parseInt(kh_timer % 60, 10);
 
-    kh_clearing = setInterval(function () {
-        kh_minutes = parseInt(kh_timer / 60, 10);
-        kh_seconds = parseInt(kh_timer % 60, 10);
+    kh_minutes = kh_minutes < 10 ? "0" + kh_minutes : kh_minutes;
+    kh_seconds = kh_seconds < 10 ? "0" + kh_seconds : kh_seconds;
 
-        kh_minutes = kh_minutes < 10 ? "0" + kh_minutes : kh_minutes;
-        kh_seconds = kh_seconds < 10 ? "0" + kh_seconds : kh_seconds;
+    // kh_displayedMinutes = kh_minutes - kh_buzz;
 
-        kh_displayedMinutes = kh_minutes - kh_buzz;
+    if ((kh_minutes == 0 && kh_seconds == 0)) {
+      kh_timerRanOut();
+    }
+    else {
+      document.getElementById("kh_timer").textContent = kh_minutes + ":" + kh_seconds;
+      
+    }
 
-        if (kh_displayedMinutes < 0 || (kh_displayedMinutes == 0 && kh_seconds == 0)) {
-            kh_timerRanOut();
-        }
-        else {
-            kh_display.textContent = kh_displayedMinutes + ":" + kh_seconds;
-        }
-
-        if (--kh_timer < 0) {
-            kh_timer = kh_duration;
-        }
-    }, 1000);
+    if (--kh_timer < 0) {
+      kh_timer = kh_duration;
+      
+    }
+  }, 1000);
 }
 function kh_timerRanOut() {
-    kh_startButton.innerHTML = "Retry";
-    kh_msg.innerHTML = "You ran out of time!";
-    clearInterval(kh_clearing);
-    kh_promptPlayAgain();
+  if (easyMode){
+    kh_mediumButton.innerHTML = "Medium";
+    kh_easyButton.innerHTML = "Again";
+    kh_hardButton.innerHTML = "Hard";
+    easyMode = false
+  }
+  
+  if (mediumMode){
+    kh_mediumButton.innerHTML = "Again";
+    kh_easyButton.innerHTML = "Easy";
+    kh_hardButton.innerHTML = "Hard";
+    mediumMode = false;
+  }
+    
+  if (hardMode) {
+    kh_mediumButton.innerHTML = "Medium";
+    kh_easyButton.innerHTML = "Easy";
+    kh_hardButton.innerHTML = "Again";
+    hardMode = false;
+  }
+  kh_msg.innerHTML = "You ran out of `time`!";
+  remainingAttempts = 5;
+  clearInterval(kh_clearing);
+  kh_promptPlayAgain();
 }
 function kh_finished() {
-    clearInterval(kh_clearing);
-    kh_startButton.innerHTML = "Again";
-    kh_msg.innerHTML = "You did it!";
-    kh_promptPlayAgain();
+  clearInterval(kh_clearing);
+  if (easyMode){
+    kh_mediumButton.innerHTML = "Medium";
+  kh_easyButton.innerHTML = "Again";
+  kh_hardButton.innerHTML = "Hard";
+    easyMode = false
+  }
+  
+  if (mediumMode){
+    kh_mediumButton.innerHTML = "Again";
+    kh_easyButton.innerHTML = "Easy";
+    kh_hardButton.innerHTML = "Hard";
+    mediumMode = false;
+  }
+    
+  if (hardMode) {
+    kh_mediumButton.innerHTML = "Medium";
+    kh_easyButton.innerHTML = "Easy";
+    kh_hardButton.innerHTML = "Again";
+    hardMode = false;
+  }
+  
+
+  if (remainingAttempts == 0) {
+    kh_msg.innerHTML = "You're out of tries! Play Again?";
+    remainingAttempts = 5;
+  } else if (kh_count == 3 || kh_count == 6){
+    kh_msg.innerHTML = "You did it! You found the key! '\n'" + "hello";
+
+  }
+  clearInterval(kh_clearing);
+  kh_promptPlayAgain();
+}
+function kh_inGameHome(){
+  clearInterval(kh_clearing);
+  kh_promptPlayAgain();
 }
 function kh_promptPlayAgain() {
-    kh_questionBoxArray = [];
-    kh_answers = [];
-    kh_shuffledArray = [];
-    kh_buttonReset();
-    kh_startScreen.classList.remove('hide');
-    kh_startButton.classList.remove('hide');
-    kh_startButton.disabled = false;
-    kh_msg.classList.remove('hide');
-    kh_homeButton.classList.remove('hide');
-    kh_inGame.classList.add('hide');
+  kh_count = 0;
+  cipherSelecter = 0;
+  playerSccore = 100;
+  kh_buttonReset();
+  kh_startScreen.classList.remove('hide');
+  kh_easyButton.classList.remove('hide');
+  kh_easyButton.disabled = false;
+  kh_msg.classList.remove('hide');
+  kh_homeButton.classList.remove('hide');
+  kh_inGame.classList.add('hide');
+
+  
+  kh_turnOffDict();
+  kh_turnOffMsg();
+  kh_turnOffNote();
+  kh_turnOffHelp();
+
+  firstGame = true;
+  
 }
 function kh_buttonReset() {
-    var kh_div = document.getElementById('kh_table');
-    while (kh_div.firstChild) {
-        kh_div.removeChild(kh_div.firstChild);
-    }
+  var kh_div = document.getElementById('kh_table');
+  kh_msg.innerHTML = "";
+  document.getElementById('kh_dict_panel').innerHTML = "<h1>Dictionary</h1>";
+  document.getElementById('kh_msg_panel').innerHTML = "<h1>Message</h1>";
+
+  if (easyMode || mediumMode) {
+    document.getElementById('kh_ciphers_completed').innerHTML = "You have completed " + kh_ciphers_completed + "/3 ciphers";
+
+  }
+  if (hardMode) {
+    document.getElementById('kh_ciphers_completed').innerHTML = "You have completed " + kh_ciphers_completed + "/6 ciphers";
+
+  }
+  
+  isCaeser = false;
+  isPigPen = false;
+  isTransposition = false;
+  while (kh_div.firstChild) {
+    kh_div.removeChild(kh_div.firstChild);
+  }
 }
 function kh_goHome() {
-    kh_startButton.innerHTML = "Start";
-    document.getElementById("kh").classList.add("hide");
-    document.getElementById("homepage").classList.remove("hide");
+  kh_easyButton.innerHTML = "Start";
+  document.getElementById("kh").classList.add("hide");
+  document.getElementById("homepage").classList.remove("hide");
+
 }

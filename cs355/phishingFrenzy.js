@@ -17,6 +17,8 @@ var pf_hardButton = document.getElementById("pf_hard");
 var pf_playGame = document.getElementById('pf_inGame');
 var pf_difficultySelector = document.getElementById('pf_difficultySelector');
 var pf_playerMessage = document.getElementById('pf_playerMessage');
+var pf_topHome = document.getElementById('pf_topHome');
+var pf_topHomeText = document.getElementById('pf_topHomeText');
 var pf_life1 = document.getElementById('pf_life1');
 var pf_life2 = document.getElementById('pf_life2');
 var pf_life3 = document.getElementById('pf_life3');
@@ -47,7 +49,7 @@ function createInbox() {
     pf_phishArray.reverse()
     pf_legitArray = pf_legitArray.slice(0, 11)
     pf_phishArray = pf_phishArray.slice(0, 11)
-    for (let i = 0; i < 10; i++) {
+    for (let i = 0; i <= 10; i++) {
         var pf_Laddress = pf_legitArray[i].addr
         var pf_Paddress = pf_phishArray[i].addr
         var pf_Ldot = pf_legitArray[i].answered
@@ -188,6 +190,8 @@ function pf_startGame() {
     pf_endGame = false;
     pf_lives = 3;
     pf_startTime = Math.floor(Date.now() / 1000);
+    pf_topHome.classList.remove('hide');
+    pf_topHomeText.classList.remove('hide');
     phishingFrenzy()
 }
 function phishingFrenzy() {
@@ -207,6 +211,9 @@ function phishingFrenzy() {
         }
         else if (x === pf_lose) {
             pf_gameOver();
+        }
+        else if( x === "home"){
+
         }
         else {
             pf_gameWin();
@@ -296,8 +303,19 @@ function phishingFrenzy() {
         pf_scoreDisplay.innerText = "---"
         pf_playerMessage.innerText = pf_gameOverMessage;
     }
+    document.getElementById('pf_topHome').addEventListener('click', pf_homeSelected);
+    function pf_homeSelected(){
+        pf_updateGame("home");
+        pf_restartGame();
+        pf_gameOverMessage = "URGENT!!! Click a link below to adjust your DiFfIcUlTy settings!!!";
+        pf_scoreDisplay.innerText = "---"
+        pf_playerMessage.innerText = pf_gameOverMessage;
+
+    }
     function pf_restartGame() {
         clearInterval(pf_timerInterval);
+        pf_topHome.classList.add('hide')
+        pf_topHomeText.classList.add('hide');
         pf_addrDisplay.innerText = "legitOrPhish@lorp.com"
         pf_playGame.classList.add('hide');
         pf_difficultySelector.classList.remove('hide')
@@ -358,4 +376,5 @@ function pf_gohome() {
     if (pf_life3.classList.contains('pf_lostLife')) { pf_life3.classList.remove('pf_lostLife'); }
     document.getElementById("phishingFrenzy").classList.add("hide");
     document.getElementById("homepage").classList.remove("hide");
+    document.body.style.overflowY = "scroll"
 }
