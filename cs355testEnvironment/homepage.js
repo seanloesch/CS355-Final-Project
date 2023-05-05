@@ -1,3 +1,6 @@
+let person = prompt("Please enter your name");
+document.getElementById('nickname').innerText = person;
+
 var dd_ss1 = parseInt(document.getElementById('dd_ss1_init').innerText);
 var dd_hs1 = parseInt(document.getElementById('dd_hs1_init').innerText);
 var dd_ss2 = parseInt(document.getElementById('dd_ss2_init').innerText);

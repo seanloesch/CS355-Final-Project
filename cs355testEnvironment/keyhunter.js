@@ -407,7 +407,7 @@ function setCorrectButton(ranValue) {
       document.getElementById('kh_question').innerHTML = ""
       plainTextPrompt = " a PigPen Cipher The answer is row " + spellOutNumber(randomRow) + " and the column is " + spellOutNumber(randomCol);
       generatePigPen(plainTextPrompt);
-      document.getElementById('kh_dict_panel').insertAdjacentHTML('beforeend', "<img src=\"img\\pigpen\\pigpencipheralphabet.png\" width=\"350px\" height=\"350px\">");
+      document.getElementById('kh_dict_panel').insertAdjacentHTML('beforeend', "<img src=\"img\\pigpen\\pigpencipheralphabet.png\" width=\"200px\" height=\"200px\">");
       document.getElementById('kh_msg_panel').insertAdjacentHTML('beforeend', "The pigpen cipher (alternatively referred to as the masonic cipher, Freemason's cipher, Napoleon cipher, and tic-tac-toe cipher) is a geometric simple substitution cipher, which exchanges letters for symbols which are fragments of a grid. ")
 
       break;
@@ -710,23 +710,14 @@ function kh_startTimer(kh_duration, kh_display) {
 }
 function kh_timerRanOut() {
   if (easyMode) {
-    kh_mediumButton.innerHTML = "Medium";
-    kh_easyButton.innerHTML = "Again";
-    kh_hardButton.innerHTML = "Hard";
     easyMode = false
   }
 
   if (mediumMode) {
-    kh_mediumButton.innerHTML = "Again";
-    kh_easyButton.innerHTML = "Easy";
-    kh_hardButton.innerHTML = "Hard";
     mediumMode = false;
   }
 
   if (hardMode) {
-    kh_mediumButton.innerHTML = "Medium";
-    kh_easyButton.innerHTML = "Easy";
-    kh_hardButton.innerHTML = "Again";
     hardMode = false;
   }
   kh_msg.innerHTML = "You ran out of `time`!";
@@ -737,23 +728,14 @@ function kh_timerRanOut() {
 function kh_finished() {
   clearInterval(kh_clearing);
   if (easyMode) {
-    kh_mediumButton.innerHTML = "Medium";
-    kh_easyButton.innerHTML = "Again";
-    kh_hardButton.innerHTML = "Hard";
     easyMode = false
   }
 
   if (mediumMode) {
-    kh_mediumButton.innerHTML = "Again";
-    kh_easyButton.innerHTML = "Easy";
-    kh_hardButton.innerHTML = "Hard";
     mediumMode = false;
   }
 
   if (hardMode) {
-    kh_mediumButton.innerHTML = "Medium";
-    kh_easyButton.innerHTML = "Easy";
-    kh_hardButton.innerHTML = "Again";
     hardMode = false;
   }
 
@@ -766,13 +748,13 @@ function kh_finished() {
 
   }
   clearInterval(kh_clearing);
-  kh_promptPlayAgain();
   if (playerScore > kh_highScore) {
     kh_highScore = playerScore;
     document.getElementById('kh_inGameHighscoreDisplay').innerText = kh_highScore;
     document.getElementById('hs_khHighscore').innerText = kh_highScore;
     document.getElementById('khHighscoreUpdate').value = kh_highScore;
   }
+  kh_promptPlayAgain();
 }
 function kh_inGameHome() {
   clearInterval(kh_clearing);
@@ -823,7 +805,6 @@ function kh_buttonReset() {
   }
 }
 function kh_goHome() {
-  kh_easyButton.innerHTML = "Start";
   document.getElementById("kh").classList.add("hide");
   document.getElementById("homepage").classList.remove("hide");
 

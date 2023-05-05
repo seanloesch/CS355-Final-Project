@@ -194,8 +194,7 @@ var ddDayInterval;
 
 var ddSystemMsg = { name: "systemAdmin", addr: "systemAdmin@noReply.com" };
 
-//let person = prompt("Please enter your name");
-let person = "you";
+
 document.getElementById("ddUsername").innerText = person;
 
 var fastForwardBtn = document.getElementById("ddFastFowardBtn");

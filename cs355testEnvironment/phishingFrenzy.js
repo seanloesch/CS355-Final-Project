@@ -1,6 +1,5 @@
-var pf_userName = document.getElementById('nickname').innerText;
-
 let pf_score = 0;
+var pf_userName;
 var pf_emails, pf_difficulty, pf_gameOverMessage, pf_startTime, pf_timerInterval, pf_subtractInterval, pf_scoreMultiplier;
 const pf_gameTime = 60, pf_points = 10;
 var pf_easy = 1, pf_medium = 2, pf_hard = 3, pf_endGame = false, pf_scoreSubtractor = 0, pf_lives = 3;
@@ -28,7 +27,6 @@ const pf_explanContainer = document.getElementById('pf_explanContainer');
 const pf_emp = { answered: 'empty', addr: '[Empty]', msg: '[Empty]', explanation: 'There is no email', }
 var pf_legitArray = [pf_emp, pf_emp, pf_emp, pf_emp, pf_emp, pf_emp, pf_emp, pf_emp, pf_emp, pf_emp, pf_emp, pf_emp];
 var pf_phishArray = [pf_emp, pf_emp, pf_emp, pf_emp, pf_emp, pf_emp, pf_emp, pf_emp, pf_emp, pf_emp, pf_emp, pf_emp];
-
 var highscoreText = document.getElementById('hs_pfHighscore');
 var pf_HighScore = parseInt(highscoreText.innerText);
 document.getElementById('pf_hsInTab').innerText = pf_HighScore;
@@ -186,6 +184,7 @@ pf_hardButton.addEventListener('click', () => {
     pf_startGame();
 });
 function pf_startGame() {
+    pf_userName = document.getElementById('nickname').innerText;
     pf_difficultySelector.classList.add('hide');
     pf_playGame.classList.remove('hide');
     pf_score = 0;
