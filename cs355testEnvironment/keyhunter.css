@@ -9,13 +9,13 @@
     margin: 0px;
 }
 
-.kh_table>tr {
+.kh_table > tr {
     padding: 0px;
     width: 100%;
     height: 100%;
 }
 
-.kh_table>.kh_table th,
+.kh_table > .kh_table th,
 .kh_table td {
     background-color: rgb(144, 66, 45);
     border: 1px solid black;
@@ -83,7 +83,7 @@
     text-decoration-color: red;
 }
 
-.kh_question_container>div>hr {
+.kh_question_container > div > hr {
     border: 1px solid black;
 }
 
@@ -334,7 +334,17 @@
     background-size: cover;
 }
 
+.kh_startContainer {
+    height: 100vh;
+    width: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .kh_startScreen {
+    height: fit-content;
+    width: fit-content;
     background-color: white;
     border-radius: 5px;
     padding: 10px;
@@ -352,6 +362,7 @@
     justify-content: center;
     align-items: center;
 }
+
 .kh_titleBlue{
     font-family: fantasy;
     font-weight: 100;
@@ -365,8 +376,9 @@
         height: fit-content;
         width: 100%;
     }
-
+    
     .kh_inGame {
+        height: fit-content;
         flex-direction: column;
     }
 
@@ -375,7 +387,6 @@
     }
 
     .kh_inGame {
-        height: fit-content;
         padding: 50px 0px 50px 0px;
     }
 
@@ -389,6 +400,15 @@
     .kh_tab_button {
         height: 110px;
         width: 110px;
+    }
+
+    .kh_tab_button_home {
+        height: 110px;
+        width: 110px;
+    }
+
+    .kh_tab_button_home > i {
+        font-size: 80;
     }
 
     .kh_table_container {
