@@ -84,7 +84,6 @@ function ddInitiallizeWebsiteList() {
     initWebCount++;
   }
   createWebsiteTable();
-  console.log(websites);
 }
 
 var ddNewWebAvailability = [false, false, false, false];
@@ -247,8 +246,8 @@ var websiteNumberIndex = 0;
 
 ddDayOver("start");
 function ddDayOver(order) {
-  if (document.getElementById("startNewDayButton").classList.contains("hide")) {
-    document.getElementById("startNewDayButton").classList.remove("hide");
+  if (document.getElementById("ddstartNewDayButton").classList.contains("hide")) {
+    document.getElementById("ddstartNewDayButton").classList.remove("hide");
   }
   ddOpenTab("Day Over");
   setDisabledState(true);
@@ -256,10 +255,8 @@ function ddDayOver(order) {
   document.getElementById("ddShop").classList.remove("hide");
   setStorePrices();
   var addToAvailableServer = websiteSpaceAvailable(); //If Server added, this will give you the first server id that has the space available (1-4)
-  console.log(addToAvailableServer);
   if (order != "start") {
     if (addToAvailableServer != null) {
-      console.log("attempted");
       //see if another website can join and give a percentage chance that they will join base on reputation (maybe reputation/2 so it isn't too common)
       if (Math.random() < reputation / 2 / 100) {
         var newWebsite = possibleWebsites[websiteNumberIndex];
@@ -281,7 +278,7 @@ function ddDayOver(order) {
 var attackTimes;
 
 function ddStartNewDay() {
-  document.getElementById("startNewDayButton").classList.add("hide");
+  document.getElementById("ddstartNewDayButton").classList.add("hide");
   document.getElementById("ddShop").classList.add("hide");
   setDisabledState(false);
   hourCount = 9;
@@ -872,14 +869,17 @@ function ddOpenLogs(ddserverId) {
     var logState = ddServState[ddserverId - 1];
     if (logState == 0) {
       ddGraphColor = "rgba(0, 255, 0, 0.2)";
+      document.getElementById("ddlogTable").style.color = "limegreen"
       data = [10, 15, 40, 35, 30, 32, 25, 27, 9, 20, 23];
     }
     if (logState == 1) {
       ddGraphColor = "rgba(255, 255, 0, 0.2)";
+      document.getElementById("ddlogTable").style.color = "yellow"
       data = [60, 70, 65, 75, 70, 82, 95, 77, 94, 60, 55];
     }
     if (logState == 2) {
       ddGraphColor = "rgba(255, 0, 0, 0.2)";
+      document.getElementById("ddlogTable").style.color = "red"
       data = [110, 115, 140, 135, 130, 132, 125, 127, 109, 120, 123];
     }
     // Clear canvas
@@ -1069,43 +1069,6 @@ addMessage(
   `Welcome To Data Defenders! staff`
 );
 
-function intMsg() {
-  var name = ["Ryan", "Ben", "Jacob", "Jordan", "Sean"];
-  var web = [
-    "www.ryan.com",
-    "www.ben.com",
-    "www.jacob.com",
-    "www.jordan.com",
-    "www.sean.com",
-  ];
-  let randomIndex = Math.floor(Math.random() * 5);
-
-  var msgEx = [
-    "I am having network Problems",
-    "I cant seem to open files",
-    "URGENT my computer is very slow",
-    "Thanks for the help",
-    "Can you help me? join the voice call",
-  ];
-  let randomMsg = Math.floor(Math.random() * 5);
-  var minMsg = minuteCount;
-  var dayMsg = dayCount;
-  if (minuteCount < 10) {
-    minMsg = "0" + minuteCount;
-  }
-  if (dayCount < 10) {
-    dayMsg = "00" + dayCount;
-  } else if (dayCount < 100) {
-    dayMsg = "0" + dayCount;
-  }
-  addMessage(
-    name[randomIndex],
-    `Day ${dayMsg} ${hourCount}:${minMsg} ${dayhalf}`,
-    web[randomIndex],
-    msgEx[randomMsg]
-  );
-}
-
 // Info Book on/off
 function displayInfoBooklet() {
   document.getElementById("ddInfoBook").classList.toggle("hide");
@@ -1258,7 +1221,6 @@ function dd_createDoS(server) {
   ddServState[server - 1] = 1;
   ddServerIsUnderAttack[server - 1] = 1;
   createWebsiteTable();
-  console.log(ddDoSArray);
   websites.forEach((website) => {
     if (website.serverID == server) {
       addMessage(
@@ -1266,7 +1228,7 @@ function dd_createDoS(server) {
         ddReturnDayAndTime(),
         website.domain,
         ddWebsiteRunningSlow[
-          Math.floor(Math.random() * ddWebsiteRunningSlow.length)
+        Math.floor(Math.random() * ddWebsiteRunningSlow.length)
         ]
       );
     }
@@ -1309,7 +1271,6 @@ function dd_createMalware(server) {
   ddAttackedWebsite.webStatus = 2;
   ddServState[server - 1] = 1;
   ddServerIsUnderAttack[server - 1] = 1;
-  console.log(ddMalwareArray);
   createWebsiteTable();
   ddAttackCount++;
   websites.forEach((website) => {
@@ -1326,7 +1287,7 @@ function dd_createMalware(server) {
         ddReturnDayAndTime(),
         website.domain,
         ddWebsiteRunningSlow[
-          Math.floor(Math.random() * ddWebsiteRunningSlow.length)
+        Math.floor(Math.random() * ddWebsiteRunningSlow.length)
         ]
       );
     }
@@ -1434,8 +1395,6 @@ function dd_createInsiderIntrusion(server) {
   ddInsiderArray.staffName = insiderInfo.ddUsernameInsider;
   ddInsiderArray.staffRole = insiderInfo.ddRoleInsider;
   ddInsiderArray.accessLevel = insiderInfo.ddAccessLevelInsider;
-
-  console.log(ddInsiderArray);
 
   ddServerIsUnderAttack[server - 1] = 1;
   ddTempAttackedWebsite.webStatus = 2;
@@ -1693,15 +1652,13 @@ function dd_createDNS(server) {
   ddAttackedWebsite.path = ddDNSArray.newPath;
 
   ddServerIsUnderAttack[server - 1] = 1;
-
-  console.log(ddDNSArray);
   createWebsiteTable();
   ddAttackCount++;
 
   addMessage(
     ddDNSArray.owner,
     ddReturnDayAndTime(),
-    ddDNSArray.domain,
+    ddDNSArray.websiteDom,
     DNSSpoofResponses[Math.floor(Math.random() * DNSSpoofResponses.length)]
   );
 }
@@ -1784,7 +1741,6 @@ function dd_createSQLInjection(server) {
 
   ddAttackedWebsite.webStatus = 2;
   createWebsiteTable();
-  console.log(ddSQLInjectionArray);
 
   addMessage(
     ddSQLInjectionArray.websiteDom + " Owner",
@@ -1826,15 +1782,16 @@ function dd_createUSBdrop(server) {
   ddUSBdropArray.attackID = ddAttackCount;
   ddUSBdropArray.serverNumber = server;
   document.getElementById(`ddUSB${server}`).classList.remove("hide");
+  ddServerIsUnderAttack[server - 1] = 1;
 
   addMessage(
     ddSystemMsg.name,
     ddReturnDayAndTime(),
     ddSystemMsg.addr,
     ddserverRoomAlerts[Math.floor(Math.random() * ddserverRoomAlerts.length)] +
-      " server room " +
-      server +
-      "."
+    " server room " +
+    server +
+    "."
   );
 }
 
@@ -1942,7 +1899,7 @@ function createDoSForm() {
     ddReportQuestionArray[i] = {
       response:
         ddCorrectDoSResponses[
-          Math.floor(Math.random() * ddCorrectDoSResponses.length)
+        Math.floor(Math.random() * ddCorrectDoSResponses.length)
         ],
       correct: true,
     };
@@ -1952,7 +1909,7 @@ function createDoSForm() {
     ddReportQuestionArray[ddReportQIndex] = {
       response:
         ddWrongDoSResponses[
-          Math.floor(Math.random() * ddWrongDoSResponses.length)
+        Math.floor(Math.random() * ddWrongDoSResponses.length)
         ],
       correct: false,
     };
@@ -1960,7 +1917,6 @@ function createDoSForm() {
   }
 
   ddReportQuestionArray = ddReportQuestionArray.sort(() => Math.random() - 0.5);
-  console.log(ddReportQuestionArray);
 
   const checkbox1 = document.createElement("input");
   checkbox1.type = "checkbox";
@@ -2200,7 +2156,7 @@ function createMalwareForm() {
     malQuestionArray[i] = {
       response:
         ddCorrectMalwareResponses[
-          Math.floor(Math.random() * ddCorrectMalwareResponses.length)
+        Math.floor(Math.random() * ddCorrectMalwareResponses.length)
         ],
       correct: true,
     };
@@ -2210,7 +2166,7 @@ function createMalwareForm() {
     malQuestionArray[ddMalQIndex] = {
       response:
         ddWrongMalwareResponses[
-          Math.floor(Math.random() * ddWrongMalwareResponses.length)
+        Math.floor(Math.random() * ddWrongMalwareResponses.length)
         ],
       correct: false,
     };
@@ -2218,7 +2174,6 @@ function createMalwareForm() {
   }
 
   malQuestionArray = malQuestionArray.sort(() => Math.random() - 0.5);
-  console.log(malQuestionArray);
 
   const checkbox1 = document.createElement("input");
   checkbox1.type = "checkbox";
@@ -2489,7 +2444,7 @@ function createInsiderForm() {
     ddReportQuestionArray[i] = {
       response:
         insiderCorrectResponses[
-          Math.floor(Math.random() * insiderCorrectResponses.length)
+        Math.floor(Math.random() * insiderCorrectResponses.length)
         ],
       correct: true,
     };
@@ -2499,7 +2454,7 @@ function createInsiderForm() {
     ddReportQuestionArray[ddReportQIndex] = {
       response:
         insiderWrongResponses[
-          Math.floor(Math.random() * insiderWrongResponses.length)
+        Math.floor(Math.random() * insiderWrongResponses.length)
         ],
       correct: false,
     };
@@ -2507,7 +2462,6 @@ function createInsiderForm() {
   }
 
   ddReportQuestionArray = ddReportQuestionArray.sort(() => Math.random() - 0.5);
-  console.log(ddReportQuestionArray);
 
   const checkbox1 = document.createElement("input");
   checkbox1.type = "checkbox";
@@ -2749,7 +2703,6 @@ function createDNSForm() {
   ddForm.appendChild(serverLabel);
 
   ddForm.appendChild(document.createElement("br"));
-  ddForm.appendChild(document.createElement("br"));
 
   const FakePathLabel = document.createElement("label");
   FakePathLabel.textContent = "Fake Path:";
@@ -2781,7 +2734,7 @@ function createDNSForm() {
     ddReportQuestionArray[i] = {
       response:
         ddCorrectDNSResponses[
-          Math.floor(Math.random() * ddCorrectDNSResponses.length)
+        Math.floor(Math.random() * ddCorrectDNSResponses.length)
         ],
       correct: true,
     };
@@ -2791,7 +2744,7 @@ function createDNSForm() {
     ddReportQuestionArray[ddReportQIndex] = {
       response:
         ddWrongDNSResponses[
-          Math.floor(Math.random() * ddWrongDNSResponses.length)
+        Math.floor(Math.random() * ddWrongDNSResponses.length)
         ],
       correct: false,
     };
@@ -2799,7 +2752,6 @@ function createDNSForm() {
   }
 
   ddReportQuestionArray = ddReportQuestionArray.sort(() => Math.random() - 0.5);
-  console.log(ddReportQuestionArray);
 
   const checkbox1 = document.createElement("input");
   checkbox1.type = "checkbox";
@@ -3053,7 +3005,7 @@ function createSQLInjectionForm() {
     ddReportQuestionArray[i] = {
       response:
         ddCorrectSQLInjectionResponses[
-          Math.floor(Math.random() * ddCorrectSQLInjectionResponses.length)
+        Math.floor(Math.random() * ddCorrectSQLInjectionResponses.length)
         ],
       correct: true,
     };
@@ -3063,7 +3015,7 @@ function createSQLInjectionForm() {
     ddReportQuestionArray[ddReportQIndex] = {
       response:
         ddWrongSQLInjectionResponses[
-          Math.floor(Math.random() * ddWrongSQLInjectionResponses.length)
+        Math.floor(Math.random() * ddWrongSQLInjectionResponses.length)
         ],
       correct: false,
     };
@@ -3071,7 +3023,6 @@ function createSQLInjectionForm() {
   }
 
   ddReportQuestionArray = ddReportQuestionArray.sort(() => Math.random() - 0.5);
-  console.log(ddReportQuestionArray);
 
   const checkbox1 = document.createElement("input");
   checkbox1.type = "checkbox";
@@ -3244,7 +3195,12 @@ function createSQLInjectionForm() {
   });
 }
 //---------------------------------------------------------------------------------------------------------
-function createUSBDropForm(USBsubmitted, serValue) {
+var USBDropped = false;
+function initCreateUSBDropForm() {
+  createUSBDropForm(USBDropped)
+}
+
+function createUSBDropForm(USBsubmitted) {
   document.getElementById("ddReportType").classList.add("hide");
   ddReportFormContainer.classList.remove("hide");
   document.getElementById("ddDeleteReportForm").classList.remove("hide");
@@ -3257,54 +3213,54 @@ function createUSBDropForm(USBsubmitted, serValue) {
   ddReportheader.textContent = "USB Drop Report Form";
   ddForm.appendChild(ddReportheader);
   ddForm.appendChild(document.createElement("hr"));
-  const serverLabel = document.createElement("label");
-  serverLabel.textContent = "Found in which server room:";
-  const serverSelect = document.createElement("select");
-  serverSelect.name = "affected-server-id";
-  serverSelect.required = true;
-  const option1 = document.createElement("option");
-  option1.value = "1";
-  option1.textContent = "Server 1";
-  serverSelect.appendChild(option1);
-  const option2 = document.createElement("option");
-  option2.value = "2";
-  option2.textContent = "Server 2";
-  serverSelect.appendChild(option2);
-  const option3 = document.createElement("option");
-  option3.value = "3";
-  option3.textContent = "Server 3";
-  serverSelect.appendChild(option3);
-  const option4 = document.createElement("option");
-  option4.value = "4";
-  option4.textContent = "Server 4";
-  serverSelect.appendChild(option4);
-  serverSelect.value = serValue;
-  serverLabel.appendChild(serverSelect);
-  ddForm.appendChild(serverLabel);
-
-  ddForm.appendChild(document.createElement("br"));
-  ddForm.appendChild(document.createElement("br"));
-
-  const depositLabel = document.createElement("label");
-  depositLabel.textContent = "Deposit USB:";
-  const depositInput = document.createElement("input");
-  depositInput.type = "button";
-  depositInput.setAttribute("id", "depositButton");
-  depositInput.classList.add("ddDepositUSB");
-  depositLabel.appendChild(depositInput);
-  ddForm.appendChild(depositLabel);
 
   if (USBsubmitted) {
     ddForm.appendChild(document.createElement("br"));
-    ddForm.appendChild(document.createElement("hr"));
     ddForm.appendChild(document.createElement("br"));
+
     const ddUSBDropped = document.createElement("h1");
     ddUSBDropped.classList.add("ddreportHeader");
     ddUSBDropped.style.color = "green";
-    ddUSBDropped.textContent = "SUCCESS!!!";
+    ddUSBDropped.textContent = "USB Successfully Turned In!";
     ddForm.appendChild(ddUSBDropped);
+
     ddForm.appendChild(document.createElement("br"));
     ddForm.appendChild(document.createElement("hr"));
+    ddForm.appendChild(document.createElement("br"));
+    ddForm.appendChild(document.createElement("br"));
+
+    const serverLabel = document.createElement("label");
+    serverLabel.textContent = "Found in which server room:";
+
+    const serverSelect = document.createElement("select");
+    serverSelect.name = "affected-server-id";
+    serverSelect.required = true;
+    const option1 = document.createElement("option");
+    option1.value = "1";
+    option1.textContent = "Server 1";
+    serverSelect.appendChild(option1);
+    const option2 = document.createElement("option");
+    option2.value = "2";
+    option2.textContent = "Server 2";
+    serverSelect.appendChild(option2);
+    const option3 = document.createElement("option");
+    option3.value = "3";
+    option3.textContent = "Server 3";
+    serverSelect.appendChild(option3);
+    const option4 = document.createElement("option");
+    option4.value = "4";
+    option4.textContent = "Server 4";
+    serverSelect.appendChild(option4);
+    serverLabel.appendChild(serverSelect);
+    serverLabel.style.textAlign = "center"
+    ddForm.appendChild(serverLabel);
+
+    ddForm.appendChild(document.createElement("br"));
+    ddForm.appendChild(document.createElement("br"));
+    ddForm.appendChild(document.createElement("br"));
+    ddForm.appendChild(document.createElement("hr"));
+    ddForm.appendChild(document.createElement("br"));
+    ddForm.appendChild(document.createElement("br"));
 
     const fixLabel = document.createElement("label");
     fixLabel.textContent = "Suggested Fix:";
@@ -3317,9 +3273,7 @@ function createUSBDropForm(USBsubmitted, serValue) {
     for (let i = 0; i <= randomNumCorrect; i++) {
       ddReportQuestionArray[i] = {
         response:
-          ddCorrectDNSResponses[
-            Math.floor(Math.random() * ddCorrectDNSResponses.length)
-          ],
+        ddCorrectUSBResponses[Math.floor(Math.random() * ddCorrectUSBResponses.length)],
         correct: true,
       };
       ddReportQIndex++;
@@ -3327,9 +3281,7 @@ function createUSBDropForm(USBsubmitted, serValue) {
     while (ddReportQuestionArray.length <= 3) {
       ddReportQuestionArray[ddReportQIndex] = {
         response:
-          ddWrongDNSResponses[
-            Math.floor(Math.random() * ddWrongDNSResponses.length)
-          ],
+        ddWrongUSBResponses[Math.floor(Math.random() * ddWrongUSBResponses.length)],
         correct: false,
       };
       ddReportQIndex++;
@@ -3338,7 +3290,6 @@ function createUSBDropForm(USBsubmitted, serValue) {
     ddReportQuestionArray = ddReportQuestionArray.sort(
       () => Math.random() - 0.5
     );
-    console.log(ddReportQuestionArray);
 
     const checkbox1 = document.createElement("input");
     checkbox1.type = "checkbox";
@@ -3418,10 +3369,9 @@ function createUSBDropForm(USBsubmitted, serValue) {
 
     ddForm.addEventListener("submit", (e) => {
       e.preventDefault();
-      const websiteDomain = websiteInput.value;
+
       const affectedServerId = serverSelect.value;
-      const ddfakePath = FakePathInput.value;
-      const ddfixedPath = fixedPathInput.value;
+
       var ddDoSCheckboxArray = [false, false, false, false];
       var ddMalnumcorrect = 0;
       if (checkbox1.checked) {
@@ -3447,58 +3397,23 @@ function createUSBDropForm(USBsubmitted, serValue) {
 
       const signature = signatureInput.value;
 
-      if (ddDNSArray.attackID != null) {
-        if (ddDNSArray.websiteDom == websiteDomain) {
-          if (ddDNSArray.servID == affectedServerId) {
-            if (ddDNSArray.newPath == ddfakePath) {
-              if (ddDNSArray.originalPath == ddfixedPath) {
-                websites.forEach((website) => {
-                  if (website.domain == websiteDomain) {
-                    website.webStatus = 0;
-                    website.path = ddDNSArray.originalPath;
-                  }
-                });
-                ddServerIsUnderAttack[ddDNSArray.servID - 1] = 0;
-                ddDNSArray.attackID = null;
-                ddDNSArray.websiteDom = null;
-                ddDNSArray.originalPath = null;
-                ddDNSArray.owner = null;
-                ddDNSArray.servID = null;
-                ddDNSArray.newPath = null;
-                ddAttackCount--;
-                ddAttackArray[3] = 0;
-                updateFixes();
-                createWebsiteTable();
-              } else {
-                addMessage(
-                  ddSystemMsg.name,
-                  ddReturnDayAndTime(),
-                  ddSystemMsg.addr,
-                  "The fixed path is incorrect"
-                );
-              }
-            } else {
-              addMessage(
-                ddSystemMsg.name,
-                ddReturnDayAndTime(),
-                ddSystemMsg.addr,
-                "The spoofed path is incorrect"
-              );
-            }
-          } else {
-            addMessage(
-              ddSystemMsg.name,
-              ddReturnDayAndTime(),
-              ddSystemMsg.addr,
-              "The server you put in is incorrect"
-            );
-          }
+      if (ddUSBdropArray.attackID != null) {
+        if (ddUSBdropArray.serverNumber == affectedServerId) {
+          ddServerIsUnderAttack[affectedServerId - 1] = 0;
+          ddAttackCount--;
+          ddAttackArray[5]=0;
+          updateFixes();
+          ddUSBdropArray.attackID = null;
+          ddUSBdropArray.serverNumber = null;
+          ddUSBdropArray.holding = false;
+          USBDropped = false;
+
         } else {
           addMessage(
             ddSystemMsg.name,
             ddReturnDayAndTime(),
             ddSystemMsg.addr,
-            "The website domain you put in is not being attacked"
+            "There was no USB found in that server room"
           );
         }
       } else {
@@ -3506,25 +3421,42 @@ function createUSBDropForm(USBsubmitted, serValue) {
           ddSystemMsg.name,
           ddReturnDayAndTime(),
           ddSystemMsg.addr,
-          "there are no DNS Spoof attacks"
+          "there are no USB Drop Attacks"
         );
       }
       ddForm.reset();
       removeReportForm();
     });
-  } else {
+  }
+  else {
+    for (let i = 0; i <= 5; i++) { ddForm.appendChild(document.createElement("br")); }
+
+    const ddReportUSB = document.createElement("h1");
+    ddReportUSB.classList.add("ddreportHeader");
+    ddReportUSB.textContent = "Deposit the USB here:";
+    ddForm.appendChild(ddReportUSB);
+    ddForm.appendChild(document.createElement("hr"));
+
+    for (let i = 0; i <= 5; i++) { ddForm.appendChild(document.createElement("br")); }
+
+    const depositInput = document.createElement("input");
+    depositInput.type = "button";
+    depositInput.setAttribute("id", "depositButton");
+    depositInput.classList.add("ddDepositUSB");
+    ddForm.appendChild(depositInput);
+
     // add the form to the document
     ddReportFormContainer.appendChild(ddForm);
 
     depositInput.addEventListener("click", (e) => {
-      const affectedServerId = serverSelect.value;
       e.preventDefault();
       if (ddUSBdropArray.holding) {
         ddForm.reset();
         removeReportForm();
 
-        console.log(affectedServerId);
-        createUSBDropForm(true, affectedServerId);
+        USBDropped = true;
+
+        createUSBDropForm(USBDropped);
       } else {
         ddForm.reset();
         removeReportForm();
@@ -3725,6 +3657,53 @@ const ddWrongSQLInjectionResponses = [
   "Install more plugins and toolbars to fix the issue.",
   "Use weak or easily guessed passwords for database access.",
 ];
+
+const ddCorrectUSBResponses = [
+  "Train employees on USB safety and to never plug in unknown USB drives.",
+  "Use software that can block USB devices from being used without permission.",
+  "If an unknown USB is found, do not plug it in and instead report it to the IT department for further analysis.",
+  "Keep all systems and antivirus software updated to prevent known USB-based exploits.",
+  "Use encryption for sensitive data to protect against data exfiltration.",
+  "Restrict access to USB ports on company devices to authorized personnel only.",
+  "Implement a policy for regular scans of all USB devices that are connected to company systems.",
+  "Use physical security measures to prevent unauthorized access to company devices and USB ports.",
+  "Establish clear guidelines for the acceptable use of USB devices on company systems.",
+  "Monitor USB activity on company devices for signs of suspicious or unauthorized use.",
+  "Use a secure USB drive with hardware encryption and password protection.",
+  "Conduct periodic security awareness training sessions for employees on USB security best practices.",
+  "Establish a process for secure disposal of old or unused USB devices.",
+  "Implement two-factor authentication for added security when accessing sensitive company information.",
+  "Conduct regular security audits and vulnerability assessments of company systems to identify potential USB-related risks.",
+  "Use endpoint detection and response (EDR) technology to detect and respond to USB-based attacks.",
+  "Develop an incident response plan that includes procedures for responding to USB-based attacks.",
+  "Conduct regular backups of company data to mitigate the impact of data loss due to USB-based attacks.",
+  "Maintain a list of authorized USB devices that can be used on company systems.",
+  "Conduct a risk assessment to identify and prioritize USB-related risks and vulnerabilities."
+];
+
+const ddWrongUSBResponses = [
+  "Plug in the unknown USB to see what's on it.",
+  "Share the unknown USB with other colleagues or friends.",
+  "Disable antivirus software to allow the unknown USB to run.",
+  "Try to clean or repair the unknown USB with untrusted software.",
+  "Format the unknown USB drive without checking its content.",
+  "Call a phone number on a pop-up message that appears on your screen.",
+  "Enter personal information into a pop-up message to remove the USB exploit.",
+  "Pay a ransom demand to prevent further USB attacks.",
+  "Attempt to remove the USB device forcibly from the system.",
+  "Assume that the USB is harmless and ignore it.",
+  "Open all files and folders on the unknown USB drive.",
+  "Use the unknown USB drive on multiple systems without testing it first.",
+  "Copy all files from the unknown USB drive to company systems without checking for malware.",
+  "Download untrusted software to analyze the unknown USB drive.",
+  "Provide login credentials or other sensitive information to the unknown USB drive.",
+  "Physically destroy the unknown USB drive without checking its content.",
+  "Use an unauthorized USB device on company systems.",
+  "Ignore policies and guidelines related to USB device use on company systems.",
+  "Connect USB devices to public or unsecured networks.",
+  "Use a personal USB device on company systems without permission or approval."
+];
+
 // Make new log
 function makeLog() {
   // Create the container div
@@ -3925,3 +3904,15 @@ const possibleWebsites = [
   },
 ];
 ddInitiallizeWebsiteList();
+
+function ddHomePress(){
+  //save day
+  //save reputation
+  //save fixes
+  //save money
+  //save websites spaces & hosting
+  //close
+  document.getElementById('datadefenders').classList.add('hide');
+  document.getElementById('homepage').classList.remove('hide');
+  document.body.style.overflowY = "scroll"
+}
