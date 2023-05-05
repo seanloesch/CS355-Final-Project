@@ -335,7 +335,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background: url('img/backgrounds/keyHunterBackground.jpg') no-repeat center center fixed;
+    background: url('img/keyHunterBackground.jpg') no-repeat center center fixed;
     background-size: cover;
 }
 
