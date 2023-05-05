@@ -25,13 +25,33 @@
             <div class="header">
                 <h1>SECURE ARCADE</h1>
                 <span>Login successfull! Welcome</span>
-                <span id="nickname">nickname</span>
+                <span id="nickname">Your name</span>
             </div>
         </div>
         <div class="navbar">
             <div class="links">
                 <a href="logout.php">Log Out</a>
-                <a href="">Save</a>
+                <form id="saveForm" action="save.php" method="post">
+                    <div class="hide">
+                        <input type="text" id="user_id" name="user_id" value="null">
+                        <input type="number" id="trivRankUpdate" name="trivRankUpdate">
+                        <input type="number" id="khHighscoreUpdate" name="khHighscoreUpdate">
+                        <input type="number" id="pfHighscoreUpdate" name="pfHighscoreUpdate">
+                        <input type="number" id="ddDayUpdate" name="ddDayUpdate">
+                        <input type="number" id="ddBalanceUpdate" name="ddBalanceUpdate">
+                        <input type="number" id="ddFixUpdate" name="ddFixUpdate">
+                        <input type="number" id="ddRepUpdate" name="ddRepUpdate">
+                        <input type="number" id="ddSS1Update" name="ddSS1Update">
+                        <input type="number" id="ddHS1Update" name="ddHS1Update">
+                        <input type="number" id="ddSS2Update" name="ddSS2Update">
+                        <input type="number" id="ddHS2Update" name="ddHS2Update">
+                        <input type="number" id="ddSS3Update" name="ddSS3Update">
+                        <input type="number" id="ddHS3Update" name="ddHS3Update">
+                        <input type="number" id="ddSS4Update" name="ddSS4Update">
+                        <input type="number" id="ddHS4Update" name="ddHS4Update">
+                    </div>
+                    <input class="saveBtn" type="submit" id="save" value="Save">        
+                </form>
             </div>
         </div>
         <div class="hp_bottom">
@@ -45,21 +65,51 @@
                             </tr>
                             <tr>
                                 <td>Trivia Rank</td>
-                                <td>5</td>
+                                <td id="hs_trivRank">1</td>
                             </tr>
                             <tr>
                                 <td>Key Hunter Score</td>
-                                <td>3702</td>
+                                <td id="hs_khHighscore">0</td>
                             </tr>
                             <tr>
                                 <td>Phish Frenzy HS</td>
-                                <td>197</td>
+                                <td id="hs_pfHighscore">0</td>
                             </tr>
                             <tr>
                                 <td>Data Def. Day</td>
-                                <td>2</td>
+                                <td id="dd_day">1</td>
+                            </tr>
+                            <tr>
+                                <td>Data Def. Bal.</td>
+                                <td id="dd_bal">0</td>
+                            </tr>
+                            <tr>
+                                <td>Data Def. Fixes</td>
+                                <td id="dd_fix">0</td>
+                            </tr>
+                            <tr>
+                                <td>Data Def. Rep.</td>
+                                <td id="dd_rep">0</td>
+                            </tr>
+                            <tr>
+                                <td>Data Def. Space</td>
+                                <td id="hs_dataDefTotalSpace"></td>
+                            </tr>
+                            <tr>
+                                <td>Data Def. Hosting</td>
+                                <td id="hs_dataDefTotalHosting"></td>
                             </tr>
                         </table>
+                        <div class="hide">
+                            <p id="dd_ss1_init">1</p>
+                            <p id="dd_hs1_init">1</p>
+                            <p id="dd_ss2_init">1</p>
+                            <p id="dd_hs2_init">1</p>
+                            <p id="dd_ss3_init">1</p>
+                            <p id="dd_hs3_init">1</p>
+                            <p id="dd_ss4_init">1</p>
+                            <p id="dd_hs4_init">1</p>
+                        </div>
     
                     </div>
                 </div>
@@ -121,8 +171,6 @@
                     <button id="triv_inGame_Home" class="triv_inGame_Home"><i class="fa fa-home" aria-hidden="true"></i></button>
                 </div>
                 <div id="trivia_score_rank">
-                    <span>Rank:&nbsp;</span>
-                    <span id="trivia_user_rank">0</span>
                 </div>
                 <hr id="trivia_score_hr">
 
@@ -217,6 +265,9 @@
                         </form>
                         
                     </div>
+                    <span id="trivia_displayRealRank" class="trivia_displayRealRank hide">
+                        <span>Current Trivia Rank: </span><span id="triv_RR">1</span>
+                    </span>
                     <button id="trivia_start_btn" class="trivia_start_btn btn">Start</button>
                     <span id="trivia_Back_btn2"><button class="trivia_Back_btn btn" onclick="trivia_resetGame()">Back</button></span>
                     <button id="trivia_next_btn" class="trivia_next_btn btn hide">Next</button>
@@ -253,6 +304,9 @@
             </button>
             <br>
             <button id="kh_home_btn" class="kh_home_btn btn">&#8962;<br></button>
+            <br>
+            <p class=kh_titleBlue>Current High Score:</p>
+            <p id="kh_inGameHighscoreDisplay" class=kh_titleBlue>0</p>
         </div>
         <div id="kh_inGame" class="kh_inGame hide">
 
@@ -463,8 +517,7 @@
 
                         <div id="pf_difficultySelector" class="pf_difficultySelector">
                             <p id="pf_playerMessage" class="pf_playerMessage">URGENT!!!! Click the link below to
-                                adjust your
-                                DiFfIcUlTy settings:</p>
+                                adjust your DiFfIcUlTy settings:</p>
                             <button id="pf_easy"
                                 class="pf_easy">http://www.easy.com/rll/DyzZxHtqLqI6BBjRp2syzNpl9HP/kc7XRxgz8Sx</button>
                             <button id="pf_medium"
@@ -474,6 +527,7 @@
                             <hr class="pf_smallBlackHr">
                             <button id="pf_home"
                                 class="pf_home">http://www.home.com/VzcTOj4ZCsX80q5uMv_4jaNLgwNer8Y1MS7SR5za1X</button><br>
+                            <p class="pf_highscoreDisplay">Your CuRreNT HigHSCorE iS: <br><span id="pf_hsInTab"></span></p>
                         </div>
 
                         <div id="pf_inGame" class="pf_inGame hide">
@@ -519,7 +573,7 @@
                         </tr>
                         <tr>
                             <td>Money:</td>
-                            <td>$<span id="ddMoney">30000</span></td>
+                            <td>$<span id="ddMoney"></span></td>
                         </tr>
                         <tr>
                             <td>Daily Pay:</td>
@@ -527,7 +581,7 @@
                         </tr>
                         <tr>
                             <td>Fixes: </td>
-                            <td id="ddSaves">0</td>
+                            <td id="ddSaves"></td>
                         </tr>
                         <tr>
                             <td>Reputation: </td>

@@ -1,3 +1,32 @@
+var dd_day_init = parseInt(document.getElementById('dd_day').innerText);
+var dd_bal_init = parseInt(document.getElementById('dd_bal').innerText);
+var dd_fix_init = parseInt(document.getElementById('dd_fix').innerText);
+var dd_rep_init = parseInt(document.getElementById('dd_rep').innerText);
+var dd_ss1 = parseInt(document.getElementById('dd_ss1_init').innerText);
+var dd_hs1 = parseInt(document.getElementById('dd_hs1_init').innerText);
+var dd_ss2 = parseInt(document.getElementById('dd_ss2_init').innerText);
+var dd_hs2 = parseInt(document.getElementById('dd_hs2_init').innerText);
+var dd_ss3 = parseInt(document.getElementById('dd_ss3_init').innerText);
+var dd_hs3 = parseInt(document.getElementById('dd_hs3_init').innerText);
+var dd_ss4 = parseInt(document.getElementById('dd_ss4_init').innerText);
+var dd_hs4 = parseInt(document.getElementById('dd_hs4_init').innerText);
+
+document.getElementById("ddDayCount").innerText = dd_day_init;
+document.getElementById("ddMoney").innerText = dd_bal_init;
+document.getElementById("ddSaves").innerText = dd_fix_init;
+document.getElementById("ddRep").innerText = dd_rep_init;
+
+document.getElementById("ddServ1Space").innerText = dd_ss1;
+document.getElementById("ddServ1Host").innerText = dd_hs1;
+document.getElementById("ddServ2Space").innerText = dd_ss2;
+document.getElementById("ddServ2Host").innerText = dd_hs2;
+document.getElementById("ddServ3Space").innerText = dd_ss3;
+document.getElementById("ddServ3Host").innerText = dd_hs3;
+document.getElementById("ddServ4Space").innerText = dd_ss4;
+document.getElementById("ddServ4Host").innerText = dd_hs4;
+
+
+
 var ddOpenScreen = document.getElementById("ddOpenScreen");
 // Get the tbody element of the table
 const tbody = document.querySelector("#ddWebsitesTable tbody");
@@ -140,7 +169,7 @@ var ddWeatherDesc = document.getElementById("ddWeatherDesc");
 var hourCount = 9;
 var minuteCount = 0;
 var dayhalf = "AM";
-var dayCount = 0;
+var dayCount = parseInt(dd_day_init)-1;
 var dayTotalMinutes = 0;
 var ddServ1Price = 0;
 var ddServ2Price = 0;
@@ -246,6 +275,7 @@ var websiteNumberIndex = 0;
 
 ddDayOver("start");
 function ddDayOver(order) {
+  dayCount++;
   if (document.getElementById("ddstartNewDayButton").classList.contains("hide")) {
     document.getElementById("ddstartNewDayButton").classList.remove("hide");
   }
@@ -282,7 +312,6 @@ function ddStartNewDay() {
   document.getElementById("ddShop").classList.add("hide");
   setDisabledState(false);
   hourCount = 9;
-  dayCount++;
   dayhalf = "AM";
   attackTimes = getAttackTimes();
   ddDisplayNewWeatherReport();
@@ -3273,7 +3302,7 @@ function createUSBDropForm(USBsubmitted) {
     for (let i = 0; i <= randomNumCorrect; i++) {
       ddReportQuestionArray[i] = {
         response:
-        ddCorrectUSBResponses[Math.floor(Math.random() * ddCorrectUSBResponses.length)],
+          ddCorrectUSBResponses[Math.floor(Math.random() * ddCorrectUSBResponses.length)],
         correct: true,
       };
       ddReportQIndex++;
@@ -3281,7 +3310,7 @@ function createUSBDropForm(USBsubmitted) {
     while (ddReportQuestionArray.length <= 3) {
       ddReportQuestionArray[ddReportQIndex] = {
         response:
-        ddWrongUSBResponses[Math.floor(Math.random() * ddWrongUSBResponses.length)],
+          ddWrongUSBResponses[Math.floor(Math.random() * ddWrongUSBResponses.length)],
         correct: false,
       };
       ddReportQIndex++;
@@ -3401,7 +3430,7 @@ function createUSBDropForm(USBsubmitted) {
         if (ddUSBdropArray.serverNumber == affectedServerId) {
           ddServerIsUnderAttack[affectedServerId - 1] = 0;
           ddAttackCount--;
-          ddAttackArray[5]=0;
+          ddAttackArray[5] = 0;
           updateFixes();
           ddUSBdropArray.attackID = null;
           ddUSBdropArray.serverNumber = null;
@@ -3905,13 +3934,30 @@ const possibleWebsites = [
 ];
 ddInitiallizeWebsiteList();
 
-function ddHomePress(){
-  //save day
-  //save reputation
-  //save fixes
-  //save money
-  //save websites spaces & hosting
-  //close
+function ddHomePress() {
+  var homePageServerSpace = serverSpaces[0] + serverSpaces[1] + serverSpaces[2] + serverSpaces[3];
+  var homePageServerHost = serverLengths[0] + serverLengths[1] + serverLengths[2] + serverLengths[3];
+
+  document.getElementById('ddDayUpdate').value = dayCount;
+  document.getElementById('ddBalanceUpdate').value = money;
+  document.getElementById('ddFixUpdate').value = fixes;
+  document.getElementById('ddRepUpdate').value = reputation;
+  document.getElementById('ddSS1Update').value = serverSpaces[0];
+  document.getElementById('ddHS1Update').value = serverLengths[0];
+  document.getElementById('ddSS2Update').value = serverSpaces[1];
+  document.getElementById('ddHS2Update').value = serverLengths[1];
+  document.getElementById('ddSS3Update').value = serverSpaces[2];
+  document.getElementById('ddHS3Update').value = serverLengths[2];
+  document.getElementById('ddSS4Update').value = serverSpaces[3];
+  document.getElementById('ddHS4Update').value = serverLengths[3];
+
+  document.getElementById('dd_day').innerText = dayCount;
+  document.getElementById('dd_bal').innerText = money;
+  document.getElementById('dd_fix').innerText = fixes;
+  document.getElementById('dd_rep').innerText = reputation;
+  document.getElementById('hs_dataDefTotalSpace').innerText = homePageServerSpace;
+  document.getElementById('hs_dataDefTotalHosting').innerText = homePageServerHost;
+
   document.getElementById('datadefenders').classList.add('hide');
   document.getElementById('homepage').classList.remove('hide');
   document.body.style.overflowY = "scroll"

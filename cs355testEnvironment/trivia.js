@@ -37,15 +37,18 @@ var boardWrong = document.getElementById('trivia_total_wrong');
 var trivia_timer = document.getElementById('trivia_timer');
 
 var trivia_total_score_results = document.getElementById('trivia_total_score')
-var trivia_alg_score = document.getElementById('trivia_alg_score')
+var trivia_alg_score = document.getElementById('trivia_alg_score');
+
+var trivia_displayRealRank = document.getElementById('trivia_displayRealRank');
+var trivia_realRank = document.getElementById('triv_RR').innerText;
 //--------------------------------------------------------------------------------------
 //Initializing all global variables
 var trivia_totalQuestions;
 const trivia_rankup = 15000;
 
-var trivia_userRank = 0;//This will be fed through the SQL but right now it is changed in the code
+var trivia_userRank = parseInt(trivia_realRank)-1;
 var trivia_rank = 0;
-var trivia_highestRank = 2;//If a user reaches this level, they are a god among plebs
+var trivia_highestRank = 9;//If a user reaches this level, they are a god among plebs
 
 var trivia_rankedGame;
 
@@ -110,6 +113,7 @@ function trivia_initPractice() {
     if(!trivia_initScreen.classList.contains('hide')){trivia_initScreen.classList.add('hide');}
 }
 function trivia_initPracByR() {
+    if(!trivia_displayRealRank.classList.contains('hide')){trivia_displayRealRank.classList.add('hide');}
     trivia_pracByRForm.classList.remove('hide');
     if(!trivia_pracByTForm.classList.contains('hide')){trivia_pracByTForm.classList.add('hide');}
     trivia_triv.classList.remove('hide');
@@ -122,6 +126,7 @@ function trivia_initPracByR() {
     trivia_retrieveJSONArray();
 }
 function trivia_initPracByT() {
+    if(!trivia_displayRealRank.classList.contains('hide')){trivia_displayRealRank.classList.add('hide');}
     trivia_topic = document.getElementById('trivia_topic').value;
     trivia_pracByTForm.classList.remove('hide');
     if(!trivia_pracByRForm.classList.contains('hide')){trivia_pracByRForm.classList.add('hide');}
@@ -141,6 +146,7 @@ function trivia_initRanked() {
     trivia_rank = trivia_userRank;
     if(!trivia_pracOrRank.classList.contains('hide')){trivia_pracOrRank.classList.add('hide');}
     if(!trivia_rankedForm.classList.contains('hide')){trivia_rankedForm.classList.add('hide');}
+    trivia_displayRealRank.classList.remove('hide');
     trivia_triv.classList.remove('hide');
     trivia_rankedGame = true;
     trivia_startButton.classList.remove('hide');
@@ -155,13 +161,20 @@ function trivia_resetClassList() {
 
 function trivia_startGame() {
     if(document.getElementById('trivia_score').classList.contains('hide')){document.getElementById('trivia_score').classList.remove('hide')}
+    if(!trivia_displayRealRank.classList.contains('hide')){trivia_displayRealRank.classList.add('hide');}
     triv_homePress=false;
     trivia_Back_btn1.classList.add('hide')
     trivia_Back_btn2.classList.add('hide')
     trivia_resetClassList();
+
+    if(trivia_byTopic){document.getElementById('trivia_score_rank').innerHTML = `Topic: ${trivia_topic}`}
+    else{
+        var displayIngameRank = parseInt(trivia_rank) + 1;
+        document.getElementById('trivia_score_rank').innerHTML = `Rank: ${displayIngameRank}`;
+    }
+
     trivia_byTopic = false;
-    if(!trivia_rankedForm.classList.contains('hide')){trivia_rankedForm.classList.add('hide');}
-    document.getElementById('trivia_user_rank').innerHTML = trivia_rank + 1;
+    if(!trivia_rankedForm.classList.contains('hide')){trivia_rankedForm.classList.add('hide');}    
     var trivia_interval = setInterval(function () {
         trivia_decreaseQuestionValue();//subtract 30 points from 1000
         if (trivia_answered == trivia_totalQuestions || triv_homePress) {
@@ -353,7 +366,7 @@ function trivia_scores() {
                 trivia_userRank++;
             }
         }
-        else if (trivia_pointTotal < 20000 && trivia_pointTotal >= 15000) {
+        else if (trivia_pointTotal < 15000 && trivia_pointTotal >= 7000) {
                 let trivia_resultRank = trivia_txt2.concat(trivia_pointTotal.toString(), ". You were so close to ranking up! Try again.");
                 trivia_alg_score.innerHTML = trivia_resultRank;
         }
@@ -373,6 +386,10 @@ function trivia_scores() {
             let trivia_resultRank = trivia_txt2.concat(trivia_pointTotal.toString(), "! Congrats!");
             trivia_alg_score.innerHTML = trivia_resultRank;
     }
+    var newRank = trivia_userRank + 1;
+    document.getElementById('triv_RR').innerText = newRank;
+    document.getElementById('hs_trivRank').innerText = newRank;
+    document.getElementById('trivRankUpdate').value = newRank;
 
 }
 

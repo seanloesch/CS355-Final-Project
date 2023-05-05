@@ -1,4 +1,4 @@
-var pf_userName = "nickname" //this will change depending on PHP
+var pf_userName = document.getElementById('nickname').innerText;
 
 let pf_score = 0;
 var pf_emails, pf_difficulty, pf_gameOverMessage, pf_startTime, pf_timerInterval, pf_subtractInterval, pf_scoreMultiplier;
@@ -28,6 +28,10 @@ const pf_explanContainer = document.getElementById('pf_explanContainer');
 const pf_emp = { answered: 'empty', addr: '[Empty]', msg: '[Empty]', explanation: 'There is no email', }
 var pf_legitArray = [pf_emp, pf_emp, pf_emp, pf_emp, pf_emp, pf_emp, pf_emp, pf_emp, pf_emp, pf_emp, pf_emp, pf_emp];
 var pf_phishArray = [pf_emp, pf_emp, pf_emp, pf_emp, pf_emp, pf_emp, pf_emp, pf_emp, pf_emp, pf_emp, pf_emp, pf_emp];
+
+var highscoreText = document.getElementById('hs_pfHighscore');
+var pf_HighScore = parseInt(highscoreText.innerText);
+document.getElementById('pf_hsInTab').innerText = pf_HighScore;
 
 var pf_monitorMouseOver = 0;
 
@@ -296,6 +300,13 @@ function phishingFrenzy() {
         pf_score = pf_score + (pf_lives * 20);
         pf_scoreDisplay.innerText = pf_score
         pf_playerMessage.innerText = `URGENT!!!! Congratulations! You've won ${pf_score} points Click the link below to redeem your ReWaRdS and adjust your DiFfIcUlTy settings:`;
+        if(pf_score>pf_HighScore){
+            pf_HighScore=pf_score
+            pf_playerMessage.innerText = `URGENT!!!! Congratulations! You've won ${pf_score} points! Thats a new High Score! and adjust your DiFfIcUlTy settings:`;
+            highscoreText.innerText = pf_HighScore;
+            document.getElementById('pf_hsInTab').innerText = pf_HighScore;
+            document.getElementById('pfHighscoreUpdate').value = pf_HighScore;
+        }
     }
     function pf_gameOver() {
         pf_restartGame();
