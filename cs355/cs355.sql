@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 21, 2023 at 03:06 AM
+-- Generation Time: May 05, 2023 at 09:05 PM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 8.1.10
 
@@ -106,26 +106,32 @@ CREATE TABLE `stats` (
   `triviaRank` int(11) NOT NULL DEFAULT 1,
   `keyHunterHighScore` int(11) NOT NULL DEFAULT 0,
   `phishingFrenzyHighScore` int(11) NOT NULL DEFAULT 0,
-  `dataDefLVL` int(11) NOT NULL DEFAULT 0,
-  `dataDefDay` int(11) NOT NULL DEFAULT 0,
+  `dataDefDay` int(11) NOT NULL DEFAULT 1,
   `dataDefBalance` int(11) NOT NULL DEFAULT 0,
   `dataDefFixes` int(11) NOT NULL DEFAULT 0,
-  `dataDefFails` int(11) NOT NULL DEFAULT 0,
-  `dataDefReputation` int(11) NOT NULL DEFAULT 0
+  `dataDefReputation` int(11) NOT NULL DEFAULT 0,
+  `dd_ss1` int(11) NOT NULL DEFAULT 1,
+  `dd_hs1` int(11) NOT NULL DEFAULT 1,
+  `dd_ss2` int(11) NOT NULL DEFAULT 1,
+  `dd_hs2` int(11) NOT NULL DEFAULT 1,
+  `dd_ss3` int(11) NOT NULL DEFAULT 1,
+  `dd_hs3` int(11) NOT NULL DEFAULT 1,
+  `dd_ss4` int(11) NOT NULL DEFAULT 1,
+  `dd_hs4` int(11) NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `stats`
 --
 
-INSERT INTO `stats` (`user_id`, `triviaRank`, `keyHunterHighScore`, `phishingFrenzyHighScore`, `dataDefLVL`, `dataDefDay`, `dataDefBalance`, `dataDefFixes`, `dataDefFails`, `dataDefReputation`) VALUES
-(2, 4, 8, 638, 0, 1, 0, 0, 0, 0),
-(3, 2, 1, 1, 0, 0, 0, 0, 0, 0),
-(5, 1, 0, 0, 0, 0, 0, 0, 0, 0),
-(6, 1, 0, 0, 0, 0, 0, 0, 0, 0),
-(7, 1, 0, 0, 0, 0, 0, 0, 0, 0),
-(8, 1, 0, 0, 0, 0, 0, 0, 0, 0),
-(9, 1, 0, 0, 0, 0, 0, 0, 0, 0);
+INSERT INTO `stats` (`user_id`, `triviaRank`, `keyHunterHighScore`, `phishingFrenzyHighScore`, `dataDefDay`, `dataDefBalance`, `dataDefFixes`, `dataDefReputation`, `dd_ss1`, `dd_hs1`, `dd_ss2`, `dd_hs2`, `dd_ss3`, `dd_hs3`, `dd_ss4`, `dd_hs4`) VALUES
+(2, 2, 0, 714, 2, 5138, 2, 75, 1, 1, 2, 2, 1, 1, 3, 1),
+(3, 2, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1),
+(5, 1, 0, 0, 1, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1),
+(6, 1, 0, 0, 1, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1),
+(7, 1, 0, 0, 1, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1),
+(8, 1, 0, 0, 1, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1),
+(9, 1, 0, 0, 1, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1);
 
 -- --------------------------------------------------------
 

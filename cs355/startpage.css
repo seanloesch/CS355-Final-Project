@@ -99,3 +99,6 @@ html{
   background: rgb(183, 183, 183);
   transition: .6s;
 }
+.hide{
+  display: none;
+}

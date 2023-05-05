@@ -43,7 +43,6 @@ if (isset($_SESSION['logMessage'])) {
         <div class="content">
         <div class="loginForm">
             <form action="authorize.php" method="post">
-
                 <label for="username">Username:</label>
                 <input type="text" id="username" name="username">
                 <label for="password">Password:</label>
