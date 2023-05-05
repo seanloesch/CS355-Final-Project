@@ -155,13 +155,8 @@
     width: 100%;
 }
 
-/* .kh_tab_button:hover {
-    right: 10px;
-    transition: ease 0.25s;
-} */
-
 .kh_note_panel {
-    height: 400px;
+    height: 300px;
     display: flex;
     border: 2px solid black;
     flex-direction: column;
@@ -364,7 +359,7 @@
     color: rgb(70, 124, 253);
 }
 
-@media screen and (max-width: 1425px) {
+@media screen and (max-width: 1500px) {
 
     .kh {
         height: fit-content;
