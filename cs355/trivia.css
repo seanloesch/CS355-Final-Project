@@ -227,7 +227,10 @@
     justify-content: center;
     line-height: 0px;
 }
-
+.trivia_displayRealRank{
+    font-size: x-large;
+    font-family: fantasy;
+}
 .hide{
     display: none;
 }

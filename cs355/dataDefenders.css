@@ -698,19 +698,6 @@ textarea {
     font-family: inherit;
 }
 
-input[type="submit"] {
-    background-color: #4CAF50;
-    color: #fff;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-input[type="submit"]:hover {
-    background-color: #3e8e41;
-}
-
 .ddcolorRed {
     color: red;
     transition: .5s;

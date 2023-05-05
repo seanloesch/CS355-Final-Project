@@ -317,33 +317,36 @@ if($nickname == null){
     </div>
     <div id="kh" class="kh hide">
         
-        <div id="kh_startScreen" class="kh_startScreen">
-            <p id="kh_msg"><img src="img/icons/khlogo.png" alt="Key Hunter Logo" width="500" height="100"></p><br>
-            <button id="kh_easy_btn" class="kh_easy_btn">
-                <div class="khDifSelectTestStyling">
-                    Easy
-                    <div class="khbar"></div>
-                    
-                </div>
-            </button>
-            <button id="kh_medium_btn" class="kh_medium_btn btn">
-                <div class="khDifSelectTestStyling">
-                    Medium
-                    <div class="khbar"></div>
-                </div>
-            </button>
-            <button id="kh_hard_btn" class="kh_hard_btn btn">
-                <div class="khDifSelectTestStyling">
-                    Hard
-                    <div class="khbar"></div>
-                </div>
-            </button>
-            <br>
-            <button id="kh_home_btn" class="kh_home_btn btn">&#8962;<br></button>
-            <br>
-            <p class=kh_titleBlue>Current High Score:</p>
-            <p id="kh_inGameHighscoreDisplay" class=kh_titleBlue><?php echo $keyHunterHighScore; ?></p>
+        <div id="kh_startContainer" class="kh_startContainer">
+            <div id="kh_startScreen" class="kh_startScreen">
+                <p id="kh_msg"><img src="img/icons/khlogo.png" alt="Key Hunter Logo" width="500" height="100"></p><br>
+                <button id="kh_easy_btn" class="kh_easy_btn">
+                    <div class="khDifSelectTestStyling">
+                        Easy
+                        <div class="khbar"></div>
+                        
+                    </div>
+                </button>
+                <button id="kh_medium_btn" class="kh_medium_btn btn">
+                    <div class="khDifSelectTestStyling">
+                        Medium
+                        <div class="khbar"></div>
+                    </div>
+                </button>
+                <button id="kh_hard_btn" class="kh_hard_btn btn">
+                    <div class="khDifSelectTestStyling">
+                        Hard
+                        <div class="khbar"></div>
+                    </div>
+                </button>
+                <br>
+                <button id="kh_home_btn" class="kh_home_btn btn">&#8962;<br></button>
+                <br>
+                <p class=kh_titleBlue>Current High Score:</p>
+                <p id="kh_inGameHighscoreDisplay" class=kh_titleBlue><?php echo $keyHunterHighScore; ?></p>
+            </div>
         </div>
+
         <div id="kh_inGame" class="kh_inGame hide">
 
             <div class="kh_left">

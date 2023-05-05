@@ -4,23 +4,24 @@ var kh_rank = 1;
 const kh_totalQuestions = 1;
 var kh_questionBoxArray = new Array(4);
 var kh_answers = [];
-var kh_buzz =0;
+var kh_buzz = 0;
 var kh_clearing;
-var kh_count =0;
+var kh_count = 0;
 var kh_numMinutes = 5;
 var i = 0;
 var correctButton;
 var textbox = document.getElementById('kh_question');
-var cipherSelecter =0;
-var remainingAttempts =5;
-var playerSccore = 100;
+var cipherSelecter = 0;
+var remainingAttempts = 5;
+var playerScore = 100;
+var kh_highScoreTXT = document.getElementById('kh_inGameHighscoreDisplay').innerText;
+var kh_highScore = parseInt(kh_highScoreTXT);
 var kh_duration;
 var kh_check_minutes;
 var kh_seconds;
 var kh_displayedMinutes;
 var firstGame = true;
 var kh_ciphers_completed = 0;
-
 
 let kh_panelActive = false;
 let kh_dictActive = false;
@@ -57,6 +58,7 @@ const kh_homeButton = document.getElementById('kh_home_btn');
 const kh_inGame = document.getElementById('kh_inGame');
 const kh_tabsContainer = document.getElementById('kh_tabs_container');
 const kh_msg = document.getElementById('kh_msg');
+const kh_startContainer = document.getElementById('kh_startContainer');
 const kh_startScreen = document.getElementById('kh_startScreen');
 const kh_panelContainer = document.getElementById('kh_panel_container');
 const kh_dictPanel = document.getElementById('kh_dict_panel');
@@ -75,18 +77,18 @@ link.href = 'kh_css_test.css';
 
 
 
-const easyOrder = [1,2,3];
-var shuffledEasyOrder = easyOrder.sort(()=>Math.random()-.5);
+const easyOrder = [1, 2, 3];
+var shuffledEasyOrder = easyOrder.sort(() => Math.random() - .5);
 kh_easyButton.addEventListener('click', randomEasyCipherChosen);
-function randomEasyCipherChosen(){
+function randomEasyCipherChosen() {
   easyMode = true;
   kh_startGame();
   firstGame = false;
 
   randomCipherChosenValue = easyOrder[cipherSelecter];
-  switch(randomCipherChosenValue){
+  switch (randomCipherChosenValue) {
     case 1:
-    
+
       correctButton = setCorrectButton(randomCipherChosenValue);
 
       break;
@@ -99,25 +101,25 @@ function randomEasyCipherChosen(){
 
       break;
   }
-  
-  
-  
+
+
+
 }
 
 
-const mediumOrder = [4,5,6];
-var shuffledMediumOrder = mediumOrder.sort(()=>Math.random()-.5);
+const mediumOrder = [4, 5, 6];
+var shuffledMediumOrder = mediumOrder.sort(() => Math.random() - .5);
 kh_mediumButton.addEventListener('click', randomMediumCipherChosen);
-function randomMediumCipherChosen(){
+function randomMediumCipherChosen() {
   mediumMode = true;
   kh_startGame();
   firstGame = false;
-  
+
 
   randomCipherChosenValue = mediumOrder[cipherSelecter];
-  switch(randomCipherChosenValue){
+  switch (randomCipherChosenValue) {
     case 4:
-      
+
       correctButton = setCorrectButton(randomCipherChosenValue);
       break;
     case 5:
@@ -131,15 +133,15 @@ function randomMediumCipherChosen(){
   }
 }
 
-const hardOrder = [1,2,3,4,5,6];
-var shuffledHardORder = hardOrder.sort(()=>Math.random()-.5);
+const hardOrder = [1, 2, 3, 4, 5, 6];
+var shuffledHardORder = hardOrder.sort(() => Math.random() - .5);
 kh_hardButton.addEventListener('click', randomHardCipherChosen);
-function randomHardCipherChosen(){
+function randomHardCipherChosen() {
   hardMode = true;
   kh_startGame();
   firstGame = false;
   randomCipherChosenValue = hardOrder[cipherSelecter];
-  switch(randomCipherChosenValue){
+  switch (randomCipherChosenValue) {
     case 1:
       correctButton = setCorrectButton(randomCipherChosenValue);
       break;
@@ -155,7 +157,7 @@ function randomHardCipherChosen(){
       correctButton = setCorrectButton(randomCipherChosenValue);
 
       break;
-    case 5: 
+    case 5:
       correctButton = setCorrectButton(randomCipherChosenValue);
 
       break;
@@ -177,12 +179,12 @@ kh_helpButton.addEventListener('click', kh_toggleHelp);
 
 
 function kh_startGame() {
-  
+
   kh_clearNotebook();
 
-  
-  if (firstGame){
-    kh_ciphers_completed =0;
+
+  if (firstGame) {
+    kh_ciphers_completed = 0;
     remainingAttempts = 5;
   }
   if (easyMode || mediumMode) {
@@ -194,10 +196,11 @@ function kh_startGame() {
 
   }
   document.getElementById('numberOfGuesses').innerHTML = remainingAttempts + " attempts left";
-  document.getElementById('kh_score_keeper').innerHTML = playerSccore;
+  document.getElementById('kh_score_keeper').innerHTML = "Score: " + playerScore;
   kh_easyButton.classList.add('hide');
   kh_homeButton.classList.add('hide');
   kh_msg.classList.add('hide');
+  kh_startContainer.classList.add('hide');
   kh_startScreen.classList.add('hide');
   kh_inGame.classList.remove('hide');
   // kh_tabsContainer.remove('hide');
@@ -205,17 +208,15 @@ function kh_startGame() {
   kh_msgPanel.classList.add('hide');
   kh_notePanel.classList.add('hide');
   kh_helpPanel.classList.add('hide');
-  
-  if (firstGame){
+
+  if (firstGame) {
     var kh_timed = 60 * kh_numMinutes;
     kh_startTimer(kh_timed, kh_timer_display);
   }
-  
-  
-  
+
 
   table_create();
-  
+
 
   kh_running();
 }
@@ -230,10 +231,10 @@ function kh_startGame() {
 function kh_toggleDict() {
   if (kh_panelActive == false) {
     kh_turnOnDict();
-  } 
+  }
   else if (kh_panelActive == true && kh_dictActive == true) {
     kh_turnOffDict();
-  }   
+  }
 }
 
 function kh_turnOnDict() {
@@ -255,10 +256,10 @@ function kh_turnOffDict() {
 function kh_toggleMsg() {
   if (kh_panelActive == false) {
     kh_turnOnMsg();
-  } 
+  }
   else if (kh_panelActive == true && kh_msgActive == true) {
     kh_turnOffMsg();
-  }    
+  }
 }
 
 function kh_turnOnMsg() {
@@ -280,10 +281,10 @@ function kh_turnOffMsg() {
 function kh_toggleNote() {
   if (kh_panelActive == false) {
     kh_turnOnNote();
-  } 
+  }
   else if (kh_panelActive == true && kh_noteActive == true) {
     kh_turnOffNote();
-  }    
+  }
 }
 
 function kh_turnOnNote() {
@@ -305,10 +306,10 @@ function kh_turnOffNote() {
 function kh_toggleHelp() {
   if (kh_panelActive == false) {
     kh_turnOnHelp();
-  } 
+  }
   else if (kh_panelActive == true && kh_helpActive == true) {
     kh_turnOffHelp();
-  }    
+  }
 }
 
 function kh_turnOnHelp() {
@@ -329,7 +330,7 @@ function kh_turnOffHelp() {
 
 function kh_clearNotebook() {
   var kh_notebook = document.getElementById('kh_note_textarea');
-  kh_notebook.value=''
+  kh_notebook.value = ''
 }
 
 //draw our table
@@ -391,7 +392,7 @@ function setCorrectButton(ranValue) {
   const table = document.getElementById('kh_table');
   const button = table.rows[randomRow].cells[randomCol].querySelector('.khBtn');
   button.dataset.correct = 'true'; // Mark the button as correct
-  
+
   switch (ranValue) {
     case 1:
       isCaeser = true;
@@ -406,7 +407,7 @@ function setCorrectButton(ranValue) {
       document.getElementById('kh_question').innerHTML = ""
       plainTextPrompt = " a PigPen Cipher The answer is row " + spellOutNumber(randomRow) + " and the column is " + spellOutNumber(randomCol);
       generatePigPen(plainTextPrompt);
-      document.getElementById('kh_dict_panel').insertAdjacentHTML('beforeend', "<img src=\"img\\pigpen\\pigpencipheralphabet.png\" width=\"350px\" height=\"350px\">");
+      document.getElementById('kh_dict_panel').insertAdjacentHTML('beforeend', "<img src=\"img\\pigpen\\pigpencipheralphabet.png\" width=\"200px\" height=\"200px\">");
       document.getElementById('kh_msg_panel').insertAdjacentHTML('beforeend', "The pigpen cipher (alternatively referred to as the masonic cipher, Freemason's cipher, Napoleon cipher, and tic-tac-toe cipher) is a geometric simple substitution cipher, which exchanges letters for symbols which are fragments of a grid. ")
 
       break;
@@ -428,13 +429,13 @@ function setCorrectButton(ranValue) {
     case 5:
       isZigZag = true;
       plainTextPrompt = "zigzag cipher, row: " + spellOutNumber(randomRow) + " column: " + spellOutNumber(randomCol);
-      document.getElementById('kh_question').innerHTML = zigzagCipher(plainTextPrompt,3);
+      document.getElementById('kh_question').innerHTML = zigzagCipher(plainTextPrompt, 3);
       document.getElementById('kh_dict_panel').innerHTML = "<img src=\"img\\dict_images\\zigzag.png\" width=\"250px\" height=\"200px\">";
       document.getElementById('kh_msg_panel').insertAdjacentHTML('beforeend', "The rail fence cipher (also called a zigzag cipher) is a classical type of transposition cipher. It derives its name from the manner in which encryption is performed, in analogy to a fence built with horizontal rails.  ")
 
       break;
     case 6:
-      
+
       plainTextPrompt = "polybius cipher, the answer you are looking for is " + spellOutNumber(randomRow) + " and the column is " + spellOutNumber(randomCol);
       document.getElementById('kh_question').innerHTML = GeneratePolybiusCipher(plainTextPrompt);
       document.getElementById('kh_dict_panel').insertAdjacentHTML('beforeend', "<img src=\"img\\dict_images\\polybiusCipher.png\" width=\"350px\" height=\"350px\">");
@@ -443,12 +444,12 @@ function setCorrectButton(ranValue) {
       break;
   }
   // Return the coordinates of the correct button
-  
+
   return [randomRow, randomCol];
 }
 
 
-function GeneratePolybiusCipher(plainTextPrompt){
+function GeneratePolybiusCipher(plainTextPrompt) {
   const square = [
     ['A', 'B', 'C', 'D', 'E'],
     ['F', 'G', 'H', 'I/J', 'K'],
@@ -456,10 +457,10 @@ function GeneratePolybiusCipher(plainTextPrompt){
     ['Q', 'R', 'S', 'T', 'U'],
     ['V', 'W', 'X', 'Y', 'Z']
   ];
-  
+
   // Convert the message to uppercase and remove any characters that aren't letters or spaces
   plainTextPrompt = plainTextPrompt.toUpperCase().replace(/[^A-Z\s]/g, '');
-  
+
   // Replace each letter in the plainTextPrompt with its corresponding Polybius square coordinates
   let result = '';
   for (let i = 0; i < plainTextPrompt.length; i++) {
@@ -476,7 +477,7 @@ function GeneratePolybiusCipher(plainTextPrompt){
       }
     }
   }
-  
+
   return result;
 }
 
@@ -497,8 +498,8 @@ function kh_running() {
       kh_btn.classList.add('kh_correct');
       kh_count++;
       if (easyMode || mediumMode) {
-        if (kh_count == 1 || kh_count ==2) {
-          if (easyMode){
+        if (kh_count == 1 || kh_count == 2) {
+          if (easyMode) {
             kh_ciphers_completed = kh_count;
             kh_buttonReset();
             cipherSelecter++;
@@ -511,24 +512,24 @@ function kh_running() {
             var correctButtonToAddMessage = String.fromCharCode(64 + correctButton[1]);
             document.getElementById('kh_note_panel').innerHTML += correctButtonToAddMessage;
             randomMediumCipherChosen();
-          } 
-        } else if(kh_count == 3) {
+          }
+        } else if (kh_count == 3) {
           kh_finished();
         }
-      } else if (hardMode){
-        if (kh_count ==1 || kh_count == 2 || kh_count ==3 || kh_count == 4 || kh_count ==5){
+      } else if (hardMode) {
+        if (kh_count == 1 || kh_count == 2 || kh_count == 3 || kh_count == 4 || kh_count == 5) {
           kh_buttonReset();
           cipherSelecter++;
-          var correctButtonToAddMessage = String.fromCharCode(64+correctButton[1]);
+          var correctButtonToAddMessage = String.fromCharCode(64 + correctButton[1]);
           document.getElementById('kh_note_panel').innerHTML += correctButtonToAddMessage;
           randomHardCipherChosen();
-        } else if (kh_count ==6) {
+        } else if (kh_count == 6) {
           kh_finished();
         }
 
       }
-      
-      
+
+
     } else {
       var kh_text_msg = document.createElement("p");
       kh_msgPanel.appendChild(kh_text_msg);
@@ -541,14 +542,14 @@ function kh_running() {
         isTransposition = false;
       }
       remainingAttempts--;
-      playerSccore -= 20;
+      playerScore -= 20;
       if (remainingAttempts == 0) {
         kh_finished();
-       
+
       }
-      
-      document.getElementById('kh_score_keeper').innerHTML = "Score: " + playerSccore;
-      
+
+      document.getElementById('kh_score_keeper').innerHTML = "Score: " + playerScore;
+
       document.getElementById('numberOfGuesses').innerHTML = remainingAttempts + " attempts left";
       kh_btn.classList.add('kh_incorrect');
       kh_buzz++;
@@ -560,7 +561,7 @@ function kh_running() {
 }
 
 function generatePigPen(plaintext) {
-  
+
   var kh_alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
   for (var i = 0; i < plaintext.length; i++) {
     var currentChar = plaintext.charAt(i).toLowerCase();
@@ -602,7 +603,7 @@ function atbashCipher(plaintext) {
   for (let i = 0; i < plaintext.length; i++) {
     const letter = plaintext[i].toLowerCase();
     const index = letters.indexOf(letter);
-    
+
     if (index !== -1) {
       const reverseIndex = letters.length - index - 1;
       const reverseLetter = letters[reverseIndex];
@@ -619,31 +620,31 @@ function zigzagCipher(text, key) {
   // create the matrix to cipher plain text
   // key = rows , text.length = columns
   let rail = new Array(key).fill().map(() => new Array(text.length).fill(''));
- 
+
   // filling the rail matrix to distinguish filled
   // spaces from blank ones
   let dir_down = false;
   let row = 0, col = 0;
- 
+
   for (let i = 0; i < text.length; i++) {
     // check the direction of flow
     // reverse the direction if we've just
     // filled the top or bottom rail
     if (row == 0 || row == key - 1) dir_down = !dir_down;
- 
+
     // fill the corresponding alphabet
     rail[row][col++] = text[i];
- 
+
     // find the next row using direction flag
     dir_down ? row++ : row--;
   }
- 
+
   // now we can construct the cipher using the rail matrix
   let result = '';
   for (let i = 0; i < key; i++)
     for (let j = 0; j < text.length; j++)
       if (rail[i][j] != '') result += rail[i][j];
- 
+
   return result;
 }
 
@@ -682,7 +683,7 @@ function spellOutNumber(num) {
 
 
 function kh_startTimer(kh_duration, kh_display) {
-  var countingTimer =1;
+  var countingTimer = 1;
   var kh_timer = kh_duration, kh_minutes, kh_seconds, kh_displayedMinutes;
   kh_clearing = setInterval(function () {
     kh_minutes = parseInt(kh_timer / 60, 10);
@@ -698,34 +699,25 @@ function kh_startTimer(kh_duration, kh_display) {
     }
     else {
       document.getElementById("kh_timer").textContent = kh_minutes + ":" + kh_seconds;
-      
+
     }
 
     if (--kh_timer < 0) {
       kh_timer = kh_duration;
-      
+
     }
   }, 1000);
 }
 function kh_timerRanOut() {
-  if (easyMode){
-    kh_mediumButton.innerHTML = "Medium";
-    kh_easyButton.innerHTML = "Again";
-    kh_hardButton.innerHTML = "Hard";
+  if (easyMode) {
     easyMode = false
   }
-  
-  if (mediumMode){
-    kh_mediumButton.innerHTML = "Again";
-    kh_easyButton.innerHTML = "Easy";
-    kh_hardButton.innerHTML = "Hard";
+
+  if (mediumMode) {
     mediumMode = false;
   }
-    
+
   if (hardMode) {
-    kh_mediumButton.innerHTML = "Medium";
-    kh_easyButton.innerHTML = "Easy";
-    kh_hardButton.innerHTML = "Again";
     hardMode = false;
   }
   kh_msg.innerHTML = "You ran out of `time`!";
@@ -735,47 +727,45 @@ function kh_timerRanOut() {
 }
 function kh_finished() {
   clearInterval(kh_clearing);
-  if (easyMode){
-    kh_mediumButton.innerHTML = "Medium";
-  kh_easyButton.innerHTML = "Again";
-  kh_hardButton.innerHTML = "Hard";
+  if (easyMode) {
     easyMode = false
   }
-  
-  if (mediumMode){
-    kh_mediumButton.innerHTML = "Again";
-    kh_easyButton.innerHTML = "Easy";
-    kh_hardButton.innerHTML = "Hard";
+
+  if (mediumMode) {
     mediumMode = false;
   }
-    
+
   if (hardMode) {
-    kh_mediumButton.innerHTML = "Medium";
-    kh_easyButton.innerHTML = "Easy";
-    kh_hardButton.innerHTML = "Again";
     hardMode = false;
   }
-  
+
 
   if (remainingAttempts == 0) {
     kh_msg.innerHTML = "You're out of tries! Play Again?";
     remainingAttempts = 5;
-  } else if (kh_count == 3 || kh_count == 6){
+  } else if (kh_count == 3 || kh_count == 6) {
     kh_msg.innerHTML = "You did it! You found the key! '\n'" + "hello";
 
   }
   clearInterval(kh_clearing);
+  if (playerScore > kh_highScore) {
+    kh_highScore = playerScore;
+    document.getElementById('kh_inGameHighscoreDisplay').innerText = kh_highScore;
+    document.getElementById('hs_khHighscore').innerText = kh_highScore;
+    document.getElementById('khHighscoreUpdate').value = kh_highScore;
+  }
   kh_promptPlayAgain();
 }
-function kh_inGameHome(){
+function kh_inGameHome() {
   clearInterval(kh_clearing);
   kh_promptPlayAgain();
 }
 function kh_promptPlayAgain() {
   kh_count = 0;
   cipherSelecter = 0;
-  playerSccore = 100;
+  playerScore = 100;
   kh_buttonReset();
+  kh_startContainer.classList.remove('hide');
   kh_startScreen.classList.remove('hide');
   kh_easyButton.classList.remove('hide');
   kh_easyButton.disabled = false;
@@ -783,14 +773,14 @@ function kh_promptPlayAgain() {
   kh_homeButton.classList.remove('hide');
   kh_inGame.classList.add('hide');
 
-  
+
   kh_turnOffDict();
   kh_turnOffMsg();
   kh_turnOffNote();
   kh_turnOffHelp();
 
   firstGame = true;
-  
+
 }
 function kh_buttonReset() {
   var kh_div = document.getElementById('kh_table');
@@ -806,7 +796,7 @@ function kh_buttonReset() {
     document.getElementById('kh_ciphers_completed').innerHTML = "You have completed " + kh_ciphers_completed + "/6 ciphers";
 
   }
-  
+
   isCaeser = false;
   isPigPen = false;
   isTransposition = false;
@@ -815,7 +805,6 @@ function kh_buttonReset() {
   }
 }
 function kh_goHome() {
-  kh_easyButton.innerHTML = "Start";
   document.getElementById("kh").classList.add("hide");
   document.getElementById("homepage").classList.remove("hide");
 

@@ -566,6 +566,11 @@
     margin: 0;
     background-color: black;
 }
+.pf_highscoreDisplay{
+    text-align: center;
+    font-size: xx-large;
+    font-weight: bolder;
+}
 
 @media screen and (max-width: 1650px) {
     .pf_emailBackGround {
