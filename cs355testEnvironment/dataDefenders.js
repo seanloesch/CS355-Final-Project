@@ -275,6 +275,7 @@ var websiteNumberIndex = 0;
 ddDayOver("start");
 function ddDayOver(order) {
   dayCount++;
+  ddlogBack();
   if (document.getElementById("ddstartNewDayButton").classList.contains("hide")) {
     document.getElementById("ddstartNewDayButton").classList.remove("hide");
   }
@@ -999,9 +1000,9 @@ function ddCheckLogClassList(ddUpdateLogColor) {
   }
 }
 function ddlogBack() {
-  document.getElementById("ddServerRoom").classList.remove("hide");
-  document.getElementById("ddtaskbar").classList.remove("hide");
-  document.getElementById("ddServerLogs").classList.add("hide");
+  if(document.getElementById("ddServerRoom").classList.contains("hide")){document.getElementById("ddServerRoom").classList.remove("hide");}
+  if(document.getElementById("ddtaskbar").classList.contains("hide")){document.getElementById("ddtaskbar").classList.remove("hide");}
+  if(!document.getElementById("ddServerLogs").classList.contains("hide")){document.getElementById("ddServerLogs").classList.add("hide");}
   //updated
   if (!document.getElementById("ddAlertMessage").classList.contains("hide")) {
     document.getElementById("ddAlertMessage").classList.add("hide");
