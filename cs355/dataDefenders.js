@@ -194,8 +194,9 @@ var ddDayInterval;
 
 var ddSystemMsg = { name: "systemAdmin", addr: "systemAdmin@noReply.com" };
 
+document.getElementById("ddUsername").innerText = document.getElementById('nickname').innerText;
 
-document.getElementById("ddUsername").innerText = person;
+
 
 var fastForwardBtn = document.getElementById("ddFastFowardBtn");
 function fastForward() {
@@ -1858,9 +1859,9 @@ var ddReportFormContainer = document.getElementById("ddReportFormContainer");
 var malQuestionArray = [];
 
 function createDoSForm() {
-  document.getElementById("ddReportType").classList.add("hide");
-  ddReportFormContainer.classList.remove("hide");
-  document.getElementById("ddDeleteReportForm").classList.remove("hide");
+  if(!document.getElementById("ddReportType").classList.contains("hide")){document.getElementById("ddReportType").classList.add("hide");}
+  if(ddReportFormContainer.classList.contains("hide")){ddReportFormContainer.classList.remove("hide");}
+  if(document.getElementById("ddDeleteReportForm").classList.contains("hide")){document.getElementById("ddDeleteReportForm").classList.remove("hide");}
 
   const ddForm = document.createElement("form");
   ddForm.classList.add("ddReportform");
