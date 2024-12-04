@@ -3,12 +3,12 @@ The contents of this project were written in Visual Studio Code.
 
 _Last updated: May 9th, 2023._
 
-**I wrote published an academic research paper for this project — you can view
+**I published an academic research paper for this project — you can view
 it in the International Journal of Computer Science & Information Technology
 (IJCSIT) here:** https://doi.org/10.5121/ijcsit.2023.15501.
 
 Although all team members' names appear in the publication, I was the sole
-author of the paper, as I was the only member that was also in Dr. Vanamala's
+author of the paper, as I was the only member also in Dr. Vanamala's
 research team.
 
 # MY CONTRIBUTIONS
